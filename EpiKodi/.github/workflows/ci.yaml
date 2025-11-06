@@ -1,0 +1,30 @@
+name: Rust CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build project
+        run: cargo build --verbose
+
+      - name: Run unit tests
+        run: cargo test --verbose
+
+      # Optional: coverage report
+      - name: Generate coverage report
+        run: |
+          cargo install cargo-llvm-cov --locked
+          cargo llvm-cov --summary-only
