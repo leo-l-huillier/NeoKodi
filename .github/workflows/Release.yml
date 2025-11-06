@@ -12,6 +12,10 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
 
+      defaults:
+        run:
+          working-directory: EpiKodi
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
