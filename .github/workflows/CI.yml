@@ -12,7 +12,7 @@ env:
 
 
 jobs:
-  build:
+  build-and-test:
 
     runs-on: ubuntu-latest
 
