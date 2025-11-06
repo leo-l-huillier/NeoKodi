@@ -5,6 +5,8 @@ use media::data::Media;
 use media::video::Video;
 use media::audio::Audio;
 
+use crate::media::image::Image;
+
 fn main() {
     let video = Video {
         name: "Rust Tutorial".to_string(),
@@ -17,9 +19,17 @@ fn main() {
         path: "DJ Rusty".to_string(),
     };
 
+    let image: Image = Image {
+        name: "Rust Logo".to_string(),
+        path: "/images/rust_logo.png".to_string(),
+    };
+
     // We can call methods directly
     video.play();
+    video.pause();
+    video.stop();
     audio.play();
+    image.play();
 
     println!("{}", video.info());
     println!("{}", audio.info());

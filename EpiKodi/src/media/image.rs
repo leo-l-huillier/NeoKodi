@@ -1,8 +1,8 @@
 use super::data::Media;
 
 pub struct Image {
-    path: String,
-    name: String,
+    pub path: String,
+    pub name: String,
 }
 
 impl Media for Image {
