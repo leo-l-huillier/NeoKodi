@@ -11,5 +11,7 @@ pub trait Media {
     fn stop(&self) {
         println!("Stopping media");
     }
+
+    
     fn info(&self) -> String;
 }
