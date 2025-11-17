@@ -4,7 +4,7 @@ pub struct Image {
     path: String,
     name: String,
 }
-
+/*
 impl Media for Image {
     fn play(&self) {
         println!(" image: {}", self.name);
@@ -17,4 +17,4 @@ impl Media for Image {
     fn info(&self) -> String {
         format!("image: {}, path : {}", self.name, self.path)
     }
-}
+} */

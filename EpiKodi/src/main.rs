@@ -4,30 +4,16 @@ mod media;
 use media::data::Media;
 use media::video::Video;
 use media::audio::Audio;
+use std::time::Duration;
+use std::thread::sleep;
 
 fn main() {
-    let video = Video {
-        name: "Rust Tutorial".to_string(),
-        path: "/videos/rust_tutorial.mp4".to_string(),
-        duration: 120.0,
-    };
+    let mut audio = Audio::new("media/test.mp3", "Lo-fi Beats");
 
-    let audio = Audio {
-        name: "Lo-fi Beats".to_string(),
-        path: "DJ Rusty".to_string(),
-    };
+    audio.init();
 
-    // We can call methods directly
-    video.play();
     audio.play();
+    println!("Playing for 3s...");
 
-    println!("{}", video.info());
-    println!("{}", audio.info());
-
-    // You can also store them in a vector of trait objects if needed:
-    let library: Vec<Box<dyn Media>> = vec![Box::new(video), Box::new(audio)];
-
-    for item in library.iter() {
-        item.play(); // dynamic dispatch
-    }
+    sleep(Duration::from_secs(4));
 }

@@ -6,7 +6,7 @@ pub struct Video {
     pub duration: f32,
 }
 
-
+/*
 
 impl Media for Video {
     fn play(&self) {
@@ -43,3 +43,4 @@ mod tests {
         assert!(info.contains("120"));
     }
 }
+*/
