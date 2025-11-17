@@ -13,6 +13,9 @@
     },
     {
       "path": "./music/cacdlmusic2"
+    },
+    {
+      "path": "./media/music/"
     }
   ],
   "video_sources": [
@@ -21,6 +24,9 @@
     },
     {
       "path": "./video/videooo2"
+    },
+    {
+      "path": "./media/videos/"
     }
   ],
   "image_sources": [
@@ -29,6 +35,9 @@
     },
     {
       "path": "./images/cacdlimage2"
+    },
+    {
+      "path": "./media/images/"
     }
   ]
 }
