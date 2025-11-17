@@ -47,6 +47,38 @@ impl MediaLibrary {
         } 
     }
 
+    pub fn scan_video_libraries(& mut self) {
+        for source in &self.libraries.video_sources {
+            if let Ok(paths) = fs::read_dir(&source.path) {
+                for entry in paths.flatten() {
+                    println!("Name: {}", entry.path().display());
+                    self.items.insert(
+                        self.items.len() as u32,
+                        Box::new(Video::new(
+                            entry.path().to_str().unwrap_or_default(),
+                            entry.file_name().to_str().unwrap_or_default(),
+                        )),
+                    );
+                }
+            } else {
+                println!("Warning: folder not found → {}", source.path.display());
+            }
+        } 
+    }
+
+    pub fn scan_image_libraries(& mut self) {
+        for source in &self.libraries.image_sources {
+            if let Ok(paths) = fs::read_dir(&source.path) {
+                for entry in paths.flatten() {
+                    println!("Name: {}", entry.path().display());
+                    // Here you would create an Image item and insert it into self.items
+                }
+            } else {
+                println!("Warning: folder not found → {}", source.path.display());
+            }
+        } 
+    }
+
     pub fn debug_print_items(&self) {
         println!("=== Library Items ===");
         for (id, item) in &self.items {
@@ -55,14 +87,14 @@ impl MediaLibrary {
     }
 
     pub fn play_by_id(&mut self, id: u32) {
-    if let Some(item) = self.items.get_mut(&id) {
-        println!("Playing media ID {id}: {}", item.info());
-        item.init();
-        item.play();
-    } else {
-        println!("Error: media with ID {id} not found.");
+        if let Some(item) = self.items.get_mut(&id) {
+            println!("Playing media ID {id}: {}", item.info());
+            item.init();
+            item.play();
+        } else {
+            println!("Error: media with ID {id} not found.");
+        }
     }
-}
 
 }
 
@@ -117,7 +149,7 @@ fn main() {
     }
     library.play_by_id(1);
 
-        println!("Playing video for 4 seconds...");
+    println!("Playing video for 4 seconds...");
     sleep(Duration::from_secs(4));
 
     
