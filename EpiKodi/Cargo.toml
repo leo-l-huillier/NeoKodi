@@ -5,3 +5,5 @@ edition = "2024"
 
 [dependencies]
 rodio = "0.21.1"
+gstreamer = "0.23"
+gstreamer-video = "0.23"

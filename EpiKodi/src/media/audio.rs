@@ -62,6 +62,12 @@ impl Media for Audio {
         }
     }
 
+    fn stop(&self) {
+        if let Some(sink) = &self.sink {
+            sink.stop();
+        }
+    }
+
     fn info(&self) -> String {
         format!("🎧 Audio: {}, path: {}", self.name, self.path)
     }
