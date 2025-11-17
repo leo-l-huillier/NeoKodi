@@ -1,0 +1,34 @@
+{
+  "sources": [
+    {
+      "path": "/home/leo/Music"
+    },
+    {
+      "path": "/home/leo/Music2"
+    }
+  ],
+  "music_sources": [
+    {
+      "path": "./music/cacdlmusic"
+    },
+    {
+      "path": "./music/cacdlmusic2"
+    }
+  ],
+  "video_sources": [
+    {
+      "path": "./video/videooo"
+    },
+    {
+      "path": "./video/videooo2"
+    }
+  ],
+  "image_sources": [
+    {
+      "path": "./images/cacdlimage"
+    },
+    {
+      "path": "./images/cacdlimage2"
+    }
+  ]
+}
