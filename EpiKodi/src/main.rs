@@ -28,41 +28,54 @@ impl MediaLibrary {
         }
     }
 
-    pub fn scan_audio_libraries(&self) {
+    pub fn scan_audio_libraries(& mut self) {
         for source in &self.libraries.music_sources {
             if let Ok(paths) = fs::read_dir(&source.path) {
                 for entry in paths.flatten() {
                     println!("Name: {}", entry.path().display());
+                    self.items.insert(
+                        self.items.len() as u32,
+                        Box::new(Audio::new(
+                            entry.path().to_str().unwrap_or_default(),
+                            entry.file_name().to_str().unwrap_or_default(),
+                        )),
+                    );
                 }
             } else {
                 println!("Warning: folder not found → {}", source.path.display());
             }
         } 
+    }
 
-        for source in &self.libraries.music_sources {
-            //println!("{:?}", source.path);
-            let paths = fs::read_dir("./media").unwrap();
-            for path in paths {
-                println!("Name: {}", path.unwrap().path().display())
-            }
+    pub fn debug_print_items(&self) {
+        println!("=== Library Items ===");
+        for (id, item) in &self.items {
+            println!("{id} → {}", item.info());
         }
     }
+
+    pub fn play_by_id(&mut self, id: u32) {
+    if let Some(item) = self.items.get_mut(&id) {
+        println!("Playing media ID {id}: {}", item.info());
+        item.init();
+        item.play();
+    } else {
+        println!("Error: media with ID {id} not found.");
+    }
+}
+
 }
 
 
 
 fn test_audio() {
-    let mut audio = Audio::new("media/test.mp3", "Lo-fi Beats");
+    let mut audio = Audio::new("./media/music/Intro.mp3", "Lo-fi Beats");
 
     audio.init();
 
     audio.play();
     println!("Playing for 3s...");
-
-    // --- Video Test ---
-    let mut video = Video::new("media/DRG_LogoIntro_Lower_Sound_720p30.mp4", "Demo Video");
-    video.init();
-    video.play();
+    
     println!("Playing video for 4 seconds...");
     sleep(Duration::from_secs(4));
 }
@@ -91,12 +104,21 @@ use std::fs;
 fn main() {
     test_sources_management();
 
-    let library = MediaLibrary::new();
+    //test_audio();
+
+    let mut library = MediaLibrary::new();
     library.scan_audio_libraries();
+    library.debug_print_items();
 
 
     let paths = fs::read_dir("./media").unwrap();
     for path in paths {
         println!("Name: {}", path.unwrap().path().display())
     }
+    library.play_by_id(1);
+
+        println!("Playing video for 4 seconds...");
+    sleep(Duration::from_secs(4));
+
+    
 }
