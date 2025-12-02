@@ -41,21 +41,25 @@ impl LibraryConfig {
         if !self.sources.iter().any(|s| s.path == folder) {
             self.sources.push(MediaSource { path: folder });
         }
+        self.save(SOURCE_FILE);
     }
     pub fn add_audio_source(&mut self, folder: PathBuf) {
         if !self.music_sources.iter().any(|s| s.path == folder) {
             self.music_sources.push(MediaSource { path: folder });
         }
+        self.save(SOURCE_FILE);
     }
     pub fn add_video_source(&mut self, folder: PathBuf) {
         if !self.video_sources.iter().any(|s| s.path == folder) {
             self.video_sources.push(MediaSource { path: folder });
         }
+        self.save(SOURCE_FILE);
     }
     pub fn add_image_source(&mut self, folder: PathBuf) {
         if !self.image_sources.iter().any(|s| s.path == folder) {
             self.image_sources.push(MediaSource { path: folder });
         }
+        self.save(SOURCE_FILE);
     }
 
     

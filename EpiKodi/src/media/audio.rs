@@ -1,4 +1,5 @@
 use super::data::Media;
+use super::data::MediaType;
 
 
 use rodio::{Decoder, OutputStreamBuilder, Sink};
@@ -14,6 +15,7 @@ pub struct Audio {
     stream: Option<rodio::OutputStream>,
     sink: Option<Sink>,
 
+    media_type: MediaType,
 }
 
 impl Audio {
@@ -23,6 +25,7 @@ impl Audio {
             name: name.to_string(),
             sink: None,
             stream: None,
+            media_type: MediaType::Audio,
         }
     }
 }
@@ -70,5 +73,9 @@ impl Media for Audio {
 
     fn info(&self) -> String {
         format!("🎧 Audio: {}, path: {}", self.name, self.path)
+    }
+
+    fn media_type(&self) -> MediaType {
+        MediaType::Audio
     }
 }

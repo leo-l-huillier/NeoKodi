@@ -1,5 +1,10 @@
 
 
+pub enum MediaType {
+    Audio,
+    Video,
+    Image,
+}
 
 pub trait Media {
     fn init(&mut self) {
@@ -18,4 +23,5 @@ pub trait Media {
         println!("Stopping media");
     }
     fn info(&self) -> String;
+    fn media_type(&self) -> MediaType;
 }

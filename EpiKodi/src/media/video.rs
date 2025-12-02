@@ -1,4 +1,5 @@
 use super::data::Media;
+use super::data::MediaType;
 
 use gstreamer as gst;
 use gstreamer::prelude::*;
@@ -9,6 +10,7 @@ pub struct Video {
     pub name: String,
     pub duration: f32,
     pipeline: Option<gst::Pipeline>,
+    media_type: MediaType,
 }
 
 impl Video {
@@ -18,6 +20,7 @@ impl Video {
             name: name.to_string(),
             duration: 0.0,
             pipeline: None,
+            media_type: MediaType::Video,
         }
     }
 }
@@ -62,5 +65,9 @@ impl Media for Video {
 
     fn info(&self) -> String {
         format!("Video: {} ({})", self.name, self.path)
+    }
+
+    fn media_type(&self) -> MediaType {
+        MediaType::Video
     }
 }

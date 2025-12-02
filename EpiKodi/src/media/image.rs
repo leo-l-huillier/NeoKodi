@@ -1,4 +1,5 @@
 use super::data::Media;
+use super::data::MediaType;
 
 use gstreamer as gst;
 use gstreamer::prelude::*;
@@ -7,7 +8,10 @@ use gstreamer::parse;
 pub struct Image {
     pub path: String,
     pub name: String,
+
     pipeline: Option<gst::Pipeline>,
+
+    media_type: MediaType,
 }
 
 impl Image {
@@ -16,6 +20,7 @@ impl Image {
             path: path.to_string(),
             name: name.to_string(),
             pipeline: None,
+            media_type: MediaType::Image,
         }
     }
 }
@@ -71,5 +76,9 @@ impl Media for Image {
 
     fn info(&self) -> String {
         format!("🖼️ Image: {} ({})", self.name, self.path)
+    }
+
+    fn media_type(&self) -> MediaType {
+        MediaType::Image
     }
 }
