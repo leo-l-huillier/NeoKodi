@@ -7,12 +7,16 @@ use std::fs::File;
 use std::io::BufReader;
 use std::time::Duration;
 use std::thread::sleep;
+use std::fs;
+
+use lofty::probe::Probe;
+use lofty::read_from_path;
 
 pub struct Audio {
     pub path: String,
     pub name: String,
 
-    stream: Option<rodio::OutputStream>,
+    stream: Option<rodio::OutputStream>,    
     sink: Option<Sink>,
 
     media_type: MediaType,
@@ -70,12 +74,21 @@ impl Media for Audio {
             sink.stop();
         }
     }
+    
 
     fn info(&self) -> String {
-        format!("🎧 Audio: {}, path: {}", self.name, self.path)
+        format!("🎧 Audio: {}, path: {}", self.name, self.path);
+
+        
+
+
+        "Audio Info:".to_string()
     }
+    
 
     fn media_type(&self) -> MediaType {
         MediaType::Audio
     }
 }
+
+

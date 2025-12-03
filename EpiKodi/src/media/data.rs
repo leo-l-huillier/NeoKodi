@@ -6,6 +6,7 @@ pub enum MediaType {
     Image,
 }
 
+//TODO: implement finished event handling
 pub trait Media: Send + Sync {
     fn init(&mut self) {
         println!("Media initialized");
