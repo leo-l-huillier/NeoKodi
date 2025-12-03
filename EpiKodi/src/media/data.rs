@@ -6,7 +6,7 @@ pub enum MediaType {
     Image,
 }
 
-pub trait Media {
+pub trait Media: Send + Sync {
     fn init(&mut self) {
         println!("Media initialized");
     }

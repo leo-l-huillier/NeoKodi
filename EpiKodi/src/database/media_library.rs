@@ -37,6 +37,7 @@ impl MediaLibrary {
         }
     }
 
+    //=========== SCANNING FUNCTIONS ===========
     pub fn scan_libraries(&mut self) {
         let music_source_paths: Vec<_> = self.libraries.music_sources.iter().map(|source| source.path.clone()).collect();
         let video_source_paths: Vec<_> = self.libraries.video_sources.iter().map(|source| source.path.clone()).collect();
@@ -156,6 +157,8 @@ impl MediaLibrary {
         }
     }
 
+    // pour afficher la liste des items dans la bibliotheque
+    //TODO : a enlever plus tard, c'est juste pour debug
     pub fn debug_print_items(&self) {
         println!("=== Library Content start ===");
         for (id, item) in &self.items {
@@ -164,13 +167,61 @@ impl MediaLibrary {
         println!("=== Library Content end ===");
     }
 
-    pub fn play_by_id(&mut self, id: u32) {
+
+
+    //=========== MEDIA FUNCTIONS ===========
+
+    pub fn play_id(&mut self, id: u32) {
         if let Some(item) = self.items.get_mut(&id) {
             println!("Playing media ID {id}: {}", item.info());
             item.init();
             item.play();
         } else {
             println!("Error: media with ID {id} not found.");
+        }
+    }
+
+    pub fn pause_id(&mut self, id: u32) {
+        if let Some(item) = self.items.get_mut(&id) {
+            println!("Pausing media ID {id}: {}", item.info());
+            item.pause();
+        } else {
+            println!("Error: media with ID {id} not found.");
+        }
+    }
+
+    pub fn resume_id(&mut self, id: u32) {
+        if let Some(item) = self.items.get_mut(&id) {
+            println!("Resuming media ID {id}: {}", item.info());
+            item.resume();
+        } else {
+            println!("Error: media with ID {id} not found.");
+        }
+    }
+
+        pub fn stop_id(&mut self, id: u32) {
+        if let Some(item) = self.items.get_mut(&id) {
+            println!("Stopping media ID {id}: {}", item.info());
+            item.stop();
+        } else {
+            println!("Error: media with ID {id} not found.");
+        }
+    }
+
+
+    pub fn info_id(&self, id: u32) -> Option<String> {
+        if let Some(item) = self.items.get(&id) {
+            Some(item.info())
+        } else {
+            None
+        }
+    }
+
+    pub fn media_type_id(&self, id: u32) -> Option<crate::media::data::MediaType> {
+        if let Some(item) = self.items.get(&id) {
+            Some(item.media_type())
+        } else {
+            None
         }
     }
 
