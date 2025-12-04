@@ -1,3 +1,9 @@
+
+/*
+se fichier s'occupe de la gestion de la lecture d'images
+TODO: get metadata
+*/
+
 use super::data::Media;
 use super::data::MediaType;
 
@@ -80,5 +86,9 @@ impl Media for Image {
 
     fn media_type(&self) -> MediaType {
         MediaType::Image
+    }
+
+    fn get_name(&self) -> String {
+        self.name.clone()
     }
 }

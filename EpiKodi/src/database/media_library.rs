@@ -1,28 +1,20 @@
 
 /*
-ce fichier s'occupe de gerer la bibliotheque media,
-appeler les fonctions de scan des differentes sources,
-et stocker les medias trouves dans une structure de donnees
-TODO: recuperer seulement les bonnes extensions de fichiers
-TODO: checker les dossiers en recurssif
+In this file we handle the media library, calling the scan functions for different sources,
+and store the found media in a data structure
 */
-use crate::database::sources::LibraryConfig;
 
+use crate::database::sources::LibraryConfig;
 
 use crate::media::data::Media;
 use crate::media::video::Video;
 use crate::media::audio::Audio;
 use crate::media::image::Image;
+use crate::constants::constants::{SOURCE_FILE, AUDIO_EXTS, VIDEO_EXTS, IMAGE_EXTS};
 
 use std::fs;
 use std::collections::HashMap;
 use std::path::Path;
-
-const SOURCE_FILE: &str = "db/sources.json";
-const AUDIO_EXTS: [&str; 4] = ["mp3", "wav", "flac", "ogg"];
-const VIDEO_EXTS: [&str; 4] = ["mp4", "mkv", "avi", "mov"];
-const IMAGE_EXTS: [&str; 4] = ["jpg", "png", "bmp", "gif"];
-
 
 pub struct MediaLibrary {
     pub libraries: LibraryConfig,
@@ -162,7 +154,7 @@ impl MediaLibrary {
     pub fn debug_print_items(&self) {
         println!("=== Library Content start ===");
         for (id, item) in &self.items {
-            println!("{id} → {}", item.info());
+            println!("{id} → {}", item.get_name());
         }
         println!("=== Library Content end ===");
     }
@@ -183,7 +175,6 @@ impl MediaLibrary {
 
     pub fn pause_id(&mut self, id: u32) {
         if let Some(item) = self.items.get_mut(&id) {
-            println!("Pausing media ID {id}: {}", item.info());
             item.pause();
         } else {
             println!("Error: media with ID {id} not found.");
@@ -192,7 +183,6 @@ impl MediaLibrary {
 
     pub fn resume_id(&mut self, id: u32) {
         if let Some(item) = self.items.get_mut(&id) {
-            println!("Resuming media ID {id}: {}", item.info());
             item.resume();
         } else {
             println!("Error: media with ID {id} not found.");

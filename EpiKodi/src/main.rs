@@ -1,8 +1,11 @@
 
-
+/*
+main.rs
+*/
 mod media;
 mod database;
 mod threading;
+mod constants;
 
 use threading::media_thread::launch_media_thread;
 use threading::command::Command;
@@ -11,6 +14,7 @@ use threading::command::Event;
 use std::time::Duration;
 use std::thread::sleep;
 use std::sync::mpsc;
+
 fn main() {
 
     // ========== MEDIA THREADING ===========
@@ -27,8 +31,11 @@ fn main() {
 
         println!("GUI working...");
         sleep(Duration::from_secs(1));
+        let id = 55;
         if i==2 {
-            cmd_tx.send(Command::Info(3)).unwrap();
+            cmd_tx.send(Command::Play(id)).unwrap();
+            cmd_tx.send(Command::Info(id)).unwrap();
+
             if let Ok(event) = evt_rx.try_recv() {
                 match event {
                     Event::Finished(id) => println!("Media finished item {id}"),
