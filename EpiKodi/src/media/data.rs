@@ -25,4 +25,7 @@ pub trait Media: Send + Sync {
     }
     fn info(&self) -> String;
     fn media_type(&self) -> MediaType;
+
+    //debug
+    fn get_name(&self) -> String;
 }

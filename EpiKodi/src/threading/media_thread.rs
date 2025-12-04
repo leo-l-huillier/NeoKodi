@@ -1,5 +1,7 @@
 
-
+/*
+This file manages the media thread, which handles media playback commands
+*/
 
 use crate::database::media_library::MediaLibrary;
 
@@ -9,7 +11,6 @@ use super::command::Event;
 
 use std::thread;
 use std::sync::{Arc, Mutex, mpsc};
-
 
 
 pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender<Event>) {
@@ -23,7 +24,7 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
 
         library.scan_libraries();
         library.debug_print_items();
-        library.play_id(3);
+        //library.play_id(3);
 
         drop(library);
 

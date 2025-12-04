@@ -1,8 +1,14 @@
+
+/*
+This file manages media sources for the library,
+loading and saving source configurations to a JSON file.
+*/
+
 use std::fs;
 use serde::{Serialize, Deserialize};
 use std::path::PathBuf;
 
-const SOURCE_FILE: &str = "db/sources.json";
+use crate::constants::constants::SOURCE_FILE;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct MediaSource {
