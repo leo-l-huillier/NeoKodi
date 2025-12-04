@@ -11,6 +11,49 @@ use threading::command::Event;
 use std::time::Duration;
 use std::thread::sleep;
 use std::sync::mpsc;
+const GLOBAL_STYLE: &str = r#"
+    body {
+        margin: 0;
+        background-color: #0d0d0d;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+
+    .sidebar {
+        width: 250px;
+        background: #1a1a1a;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .sidebar button {
+        background: #2b2b2b;
+        border: none;
+        padding: 12px;
+        color: white;
+        font-size: 18px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .sidebar button:hover {
+        background: #3a3a3a;
+    }
+
+    .content {
+        flex: 1;
+        padding: 30px;
+        font-size: 24px;
+    }
+    "#;
+/*
 fn main() {
 
     // ========== MEDIA THREADING ===========
@@ -49,3 +92,40 @@ fn main() {
         i += 1;
     }
 }
+*/
+
+use dioxus::prelude::*;
+use std::thread::Scope;
+use dioxus_desktop::launch;
+use dioxus_router::prelude::*;
+
+fn main() {
+    launch(Home);
+}
+
+pub fn Home() -> Element {
+    rsx! {
+        style { "{GLOBAL_STYLE}" }
+
+        div { class: "container",
+            // -------- MENU LATERAL --------
+            nav { class: "sidebar",
+                button { "Films" }
+                button { "Series" }
+                button { "Musique" }
+                button { "Images" }
+                button { "Add-ons" }
+                button { "Paramètres" }
+            }
+
+            // -------- ZONE CONTENU --------
+            main { class: "content",
+                h1 { "Welcome to NeoKodi" }
+                p { "Sélectionne un élément dans le menu." }
+            }
+        }
+    }
+}
+
+
+
