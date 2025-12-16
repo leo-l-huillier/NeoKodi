@@ -7,16 +7,25 @@ mod database;
 mod threading;
 mod constants;
 
+//======== MEDIA THREADING ========
 use threading::media_thread::launch_media_thread;
 use threading::command::Command;
 use threading::command::Event;
 
+//======== DATABASE ========
 use database::db::DB;
 use rusqlite::{Connection};
 
 use std::time::Duration;
 use std::thread::sleep;
 use std::sync::mpsc;
+
+
+use dioxus::prelude::*;
+use dioxus::desktop::{Config, WindowBuilder};
+use dioxus_router::prelude::*;
+
+use front::route::Route;
 
 fn main() {
 
@@ -33,6 +42,14 @@ fn main() {
 
     // ========== GUI ===========
 
+
+    let config = Config::new().with_window(WindowBuilder::new().with_title("NeoKodi").with_resizable(true));
+
+    // 2. Lancer l'application
+    LaunchBuilder::desktop().with_cfg(config).launch(|| rsx! { Router::<Route> {} });
+
+
+    // ========== GUI back test ===========
     /* 
     let mut i = 0;
     loop {
@@ -67,3 +84,4 @@ fn main() {
     }
     */
 }
+
