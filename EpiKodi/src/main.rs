@@ -2,19 +2,25 @@
 /*
 main.rs
 */
-mod media;
-mod database;
+
+
 mod threading;
 mod constants;
 
 //======== MEDIA THREADING ========
+mod media;
 use threading::media_thread::launch_media_thread;
 use threading::command::Command;
 use threading::command::Event;
 
 //======== DATABASE ========
+mod database;
 use database::db::DB;
 use rusqlite::{Connection};
+
+//======== GUI ========
+mod gui;
+use gui::route::Route;
 
 use std::time::Duration;
 use std::thread::sleep;
@@ -25,13 +31,15 @@ use dioxus::prelude::*;
 use dioxus::desktop::{Config, WindowBuilder};
 use dioxus_router::prelude::*;
 
-use front::route::Route;
+use crate::constants::constants::MEDIA_DB_FILE;
+
+
 
 fn main() {
 
     // ========== MEDIA THREADING ===========
 
-    let mut db = DB::new(Connection::open("library.db").unwrap());  
+    let mut db = DB::new(Connection::open(MEDIA_DB_FILE).unwrap());  
     db.get_all_media().unwrap();
     db.add_sample_data().unwrap();
     db.print_media_rows();
@@ -43,11 +51,12 @@ fn main() {
     // ========== GUI ===========
 
 
+    /*
     let config = Config::new().with_window(WindowBuilder::new().with_title("NeoKodi").with_resizable(true));
 
     // 2. Lancer l'application
     LaunchBuilder::desktop().with_cfg(config).launch(|| rsx! { Router::<Route> {} });
-
+    */
 
     // ========== GUI back test ===========
     /* 

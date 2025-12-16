@@ -1,4 +1,3 @@
-// src/front/layout.rs
 use dioxus::prelude::*;
 use dioxus_router::prelude::*;
 use super::route::Route;       // On a besoin de connaître les routes pour les liens

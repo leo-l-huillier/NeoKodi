@@ -1,4 +1,3 @@
-// src/front/style.rs
 
 pub const GLOBAL_STYLE: &str = r#"
     body { margin: 0; font-family: sans-serif; background-color: #1a1a1a; color: white; }

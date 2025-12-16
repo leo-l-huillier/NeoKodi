@@ -1,4 +1,3 @@
-// src/front/pages.rs
 use dioxus::prelude::*;
 use super::route::Route; // Nécessaire pour le Link du PageNotFound
 

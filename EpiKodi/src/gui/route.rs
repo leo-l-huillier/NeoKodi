@@ -1,4 +1,3 @@
-// src/front/route.rs
 use dioxus::prelude::*;
 use dioxus_router::prelude::*;
 
