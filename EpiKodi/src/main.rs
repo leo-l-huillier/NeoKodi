@@ -18,6 +18,9 @@ mod database;
 use database::db::DB;
 use rusqlite::{Connection};
 
+mod library;
+mod scan;
+
 //======== GUI ========
 mod gui;
 use gui::route::Route;
@@ -39,10 +42,6 @@ fn main() {
 
     // ========== MEDIA THREADING ===========
 
-    let mut db = DB::new(Connection::open(MEDIA_DB_FILE).unwrap());  
-    db.get_all_media().unwrap();
-    db.add_sample_data().unwrap();
-    db.print_media_rows();
 
     let (cmd_tx, cmd_rx) = mpsc::channel::<Command>();
     let (evt_tx, evt_rx) = mpsc::channel::<Event>();
@@ -59,31 +58,31 @@ fn main() {
     */
 
     // ========== GUI back test ===========
-    /* 
+     
     let mut i = 0;
     loop {
         // Simulate GUI
 
-        println!("GUI working...");
+        //println!("GUI working...");
         sleep(Duration::from_secs(1));
         let id = 55;
         if i==2 {
             cmd_tx.send(Command::Play(id)).unwrap();
-            cmd_tx.send(Command::Info(id)).unwrap();
+            //cmd_tx.send(Command::Info(id)).unwrap();
 
-            if let Ok(event) = evt_rx.try_recv() {
+            /*if let Ok(event) = evt_rx.try_recv() {
                 match event {
                     Event::Finished(id) => println!("Media finished item {id}"),
                     Event::NowPlaying(msg) => println!("MEDIA says: {msg}"),
                     Event::Data(info) => println!("MEDIA info: {info}"),
-            }
-        }
+                }
+            }*/
         }
         if i==5 {
-            cmd_tx.send(Command::Pause(3)).unwrap();
+            cmd_tx.send(Command::Pause(id)).unwrap();
         }
         if i==8 {
-            cmd_tx.send(Command::Resume(3)).unwrap();
+            cmd_tx.send(Command::Resume(id)).unwrap();
         }
         if i==10 {
             break;
@@ -91,6 +90,5 @@ fn main() {
         i += 1;
         
     }
-    */
 }
 

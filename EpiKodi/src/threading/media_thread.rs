@@ -3,7 +3,7 @@
 This file manages the media thread, which handles media playback commands
 */
 
-use crate::database::media_library::MediaLibrary;
+use crate::library::media_library::MediaLibrary;
 
 use super::command::Command;
 use super::command::Event;
@@ -22,8 +22,7 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
     thread::spawn(move || {
         let mut library = lib_thread.lock().unwrap();
 
-        library.scan_libraries();
-        library.debug_print_items();
+        library.init();
         //library.play_id(3);
 
         drop(library);
@@ -37,8 +36,11 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     evt_tx.send(Event::NowPlaying(id)).unwrap();
                 }
                 Ok(Command::Pause(id)) => {
+                    println!("in thread pause 1");
                     let mut library = lib_thread.lock().unwrap();
+                    println!("in thread pause 2");
                     library.pause_id(id);
+                    println!("in thread pause 3");
                 }
                 Ok(Command::Resume(id)) => {
                     let mut library = lib_thread.lock().unwrap();
@@ -53,10 +55,6 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     let library = lib_thread.lock().unwrap();
                     let info = library.info_id(id).unwrap();
                     evt_tx.send(Event::Data(info)).unwrap();
-                }
-                Ok(Command::MediaScan(_)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    library.scan_libraries();
                 }
                 Err(_) => break,
             }
