@@ -11,6 +11,9 @@ use threading::media_thread::launch_media_thread;
 use threading::command::Command;
 use threading::command::Event;
 
+use database::db::DB;
+use rusqlite::{Connection};
+
 use std::time::Duration;
 use std::thread::sleep;
 use std::sync::mpsc;
@@ -19,12 +22,18 @@ fn main() {
 
     // ========== MEDIA THREADING ===========
 
+    let mut db = DB::new(Connection::open("library.db").unwrap());  
+    db.get_all_media().unwrap();
+    db.add_sample_data().unwrap();
+    db.print_media_rows();
+
     let (cmd_tx, cmd_rx) = mpsc::channel::<Command>();
     let (evt_tx, evt_rx) = mpsc::channel::<Event>();
     launch_media_thread(cmd_rx, evt_tx);
 
     // ========== GUI ===========
 
+    /* 
     let mut i = 0;
     loop {
         // Simulate GUI
@@ -54,5 +63,7 @@ fn main() {
             break;
         }
         i += 1;
+        
     }
+    */
 }
