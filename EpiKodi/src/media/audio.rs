@@ -43,7 +43,7 @@ impl Audio {
     pub fn new(path: &str, name: &str) -> Self {
 
 
-       
+        //========= METADATA ========= 
         let tagged_file = read_from_path(path)
             .expect("Failed to read tags from file");
         let tag = match tagged_file.primary_tag() {
@@ -92,15 +92,18 @@ impl Media for Audio {
         sink.append(source);
 
         sink.play();
+        println!("in media play");
     }
 
     fn pause(&self) {
+        println!("in media pause");
         if let Some(sink) = &self.sink {
             sink.pause();
         }
     }
 
     fn resume(&self) {
+        println!("in media resume");
         if let Some(sink) = &self.sink {
             sink.play();
         }

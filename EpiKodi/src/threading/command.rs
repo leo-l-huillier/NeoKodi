@@ -4,16 +4,15 @@ This file defines commands and events for media playback control.
 */
 
 pub enum Command {
-    Play(u32),
-    Pause(u32),
-    Resume(u32),
-    Stop(u32),
-    Info(u32),
-    MediaScan(u32),
+    Play(i64),
+    Pause(i64),
+    Resume(i64),
+    Stop(i64),
+    Info(i64),
 }
 
 pub enum Event {
-    Finished(u32),
-    NowPlaying(u32),
+    Finished(i64),
+    NowPlaying(i64),
     Data(String),
 }
