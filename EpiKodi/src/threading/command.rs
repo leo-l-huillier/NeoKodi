@@ -1,4 +1,7 @@
 
+/*
+This file defines commands and events for media playback control.
+*/
 
 pub enum Command {
     Play(u32),
