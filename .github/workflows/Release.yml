@@ -1,0 +1,39 @@
+name: Auto Release
+
+on:
+  push:
+    branches:
+      - main  # runs each time you push to main
+
+permissions:
+  contents: write  # allows creating/updating releases
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: EpiKodi
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build release binary
+        run: cargo build --release
+
+      - name: Create or update "latest" release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Build
+          body: |
+            Automated release from push to main.
+            Commit: ${{ github.sha }}
+          files: target/release/kodi-rust
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

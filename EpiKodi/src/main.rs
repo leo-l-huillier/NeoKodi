@@ -38,6 +38,8 @@ use crate::constants::constants::MEDIA_DB_FILE;
 
 
 
+use crate::media::image::Image;
+
 fn main() {
 
     // ========== MEDIA THREADING ===========
