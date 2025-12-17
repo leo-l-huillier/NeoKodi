@@ -1,11 +1,20 @@
 
 use std::fmt;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum MediaType {
     Audio,
     Video,
     Image,
+}
+
+#[derive(Debug)]
+pub struct MediaInfo {
+    pub id: i64,
+    pub path: String,
+    pub title: Option<String>,
+    pub duration: Option<f32>,
+    pub media_type: MediaType,
 }
 
 impl MediaType {
@@ -55,9 +64,10 @@ pub trait Media: Send + Sync {
     fn stop(&self) {
         println!("Stopping media");
     }
-    fn info(&self) -> String;
+    fn info(&self) -> MediaInfo;
     fn media_type(&self) -> MediaType;
 
     //debug
     fn get_name(&self) -> String;
+    fn get_path(&self) -> String;
 }

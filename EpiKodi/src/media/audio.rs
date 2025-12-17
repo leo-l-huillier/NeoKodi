@@ -6,6 +6,7 @@ TODO:
 
 use super::data::Media;
 use super::data::MediaType;
+use super::data::MediaInfo;
 
 
 use rodio::{Decoder, OutputStreamBuilder, Sink};
@@ -116,7 +117,7 @@ impl Media for Audio {
     }
     
 
-    fn info(&self) -> String {
+    fn info(&self) -> MediaInfo {
 
 
         //print metadata info
@@ -132,8 +133,15 @@ impl Media for Audio {
             self.metadata.duration
         ));
 
+        MediaInfo {
+            id: 0,
+            path: self.path.clone(),
+            title: Some(self.name.clone()),
+            duration: Some(self.metadata.duration),
+            media_type: MediaType::Audio,
+        }
 
-        "".to_string()
+
     }
     
 
@@ -143,6 +151,10 @@ impl Media for Audio {
 
     fn get_name(&self) -> String {
         self.name.clone()
+    }
+
+    fn get_path(&self) -> String {
+        self.path.clone()
     }
 }
 
