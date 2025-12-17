@@ -1,0 +1,24 @@
+# Cargo lock file
+Cargo.lock
+
+# Copilot instructions
+copilot-instructions.md
+
+# Rust build artifacts
+/target/
+*.rlib
+*.rmeta
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+
+/media/

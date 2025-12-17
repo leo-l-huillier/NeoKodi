@@ -1,0 +1,43 @@
+{
+  "sources": [
+    {
+      "path": "/home/leo/Music"
+    },
+    {
+      "path": "/home/leo/Music2"
+    }
+  ],
+  "music_sources": [
+    {
+      "path": "./music/cacdlmusic"
+    },
+    {
+      "path": "./music/cacdlmusic2"
+    },
+    {
+      "path": "./media/music/"
+    }
+  ],
+  "video_sources": [
+    {
+      "path": "./video/videooo"
+    },
+    {
+      "path": "./video/videooo2"
+    },
+    {
+      "path": "./media/videos/"
+    }
+  ],
+  "image_sources": [
+    {
+      "path": "./images/cacdlimage"
+    },
+    {
+      "path": "./images/cacdlimage2"
+    },
+    {
+      "path": "./media/images/"
+    }
+  ]
+}

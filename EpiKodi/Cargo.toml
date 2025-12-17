@@ -4,3 +4,13 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+rodio = "0.21.1"
+gstreamer = "0.23"
+gstreamer-video = "0.23"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+lofty = "0.22.4"
+dioxus = { version = "0.5", features = ["desktop", "router"] }
+dioxus-desktop = "0.5"
+dioxus-router = "0.5"
+rusqlite = { version = "0.31", features = ["bundled"] }
