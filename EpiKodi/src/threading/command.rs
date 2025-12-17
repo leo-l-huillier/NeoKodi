@@ -15,6 +15,8 @@ pub enum Command {
     GetAllMedia(),
     GetMediaFromType(MediaType), // media type
     GetMediaFromTag(String),
+    GetMediaFromPlaylist(i64),
+
 
     Play(i64), // media id
     Pause(i64), // media id 
@@ -24,9 +26,14 @@ pub enum Command {
     //ActuaizeMedia       //if a user want to change at what time he is in a media
 
     AddTag(String), // tag name
-    AddTagToMedia(i64, i64), // media_id, tag_id
     GetTagId(String), // tag name
+    AddTagToMedia(i64, i64), // media_id, tag_id
     //RemoveTag(String),
+
+    AddPlaylist(String), // playlist name
+    getPlaylistId(String), // playlist name
+    AddMediaToPlaylist(i64, i64), // media_id, playlist_id
+
 }
 
 pub enum Event {

@@ -65,7 +65,7 @@ fn main() {
 
         //println!("GUI working...");
         sleep(Duration::from_secs(1));
-        let id = 35;
+        let id = 30;
         if i==2 {
             cmd_tx.send(Command::Play(id)).unwrap();
             //cmd_tx.send(Command::Info(id)).unwrap();
