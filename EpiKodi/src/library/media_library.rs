@@ -11,6 +11,8 @@ use crate::media::data::MediaType;
 use crate::media::audio::Audio;
 use crate::media::image::Image;
 use crate::media::video::Video;
+use crate::media::data::MediaInfo;
+
 
 use std::fs;
 use std::collections::HashMap;
@@ -21,6 +23,7 @@ use rusqlite::{Connection};
 
 use crate::constants::constants::MEDIA_DB_FILE;
 use crate::scan::scan::Scan;
+use std::path::PathBuf;
 
 
 #[derive(Debug, Clone)]
@@ -33,7 +36,7 @@ pub struct ScannedMedia {
 pub struct MediaLibrary {
     pub items: HashMap<i64, Box<dyn Media>>,
     pub scan_lib: Scan,
-    database: DB,
+    pub database: DB,
 }
 
 impl MediaLibrary {
@@ -57,6 +60,27 @@ impl MediaLibrary {
         self.database.get_all_media().unwrap();
         //self.database.print_media_rows();
 
+        // ===========  test   ==========
+
+        /*
+        self.database.get_or_create_tag("chill").unwrap();
+        self.database.get_or_create_tag("to listen").unwrap();
+        self.database.get_or_create_tag("to watch").unwrap();
+
+
+        self.database.add_tag_to_media(33, 1).unwrap();
+        self.database.add_tag_to_media(34, 2).unwrap();
+        self.database.add_tag_to_media(35, 3).unwrap();
+        self.database.add_tag_to_media(34, 1).unwrap();
+        self.database.add_tag_to_media(35, 1).unwrap();
+        */
+
+
+        let media_list = self.database.get_media_by_tag("chill").unwrap();
+
+        println!("Media with tag 'chill': {:?}", media_list);
+
+        
      
         
         for row in self.database.media_rows.iter() {
@@ -69,6 +93,78 @@ impl MediaLibrary {
         }
 
     }
+
+
+    // =========== TAGS FUNCTIONS ===========
+
+
+    // TODO; retuen result (tag id )
+    pub fn add_tag(&mut self, tag_name: &str) {
+        self.database.get_or_create_tag(tag_name).unwrap();
+    }
+
+    pub fn add_tag_to_media(&mut self, media_id: i64, tag_id: i64) {
+        self.database.add_tag_to_media(media_id, tag_id).unwrap();
+    }
+
+    pub fn get_tag_id(&mut self, tag_name: &str) -> i64 {
+        let tag_id = self.database.get_tag_id(tag_name).unwrap();
+        tag_id
+    }
+
+
+
+    //=========== SOURCES and SCAN FUNCTIONS ===========
+
+
+    pub fn add_source(&mut self, path: PathBuf, media_type: MediaType) {
+        match media_type {
+            MediaType::Audio => self.scan_lib.libraries.add_audio_source(path),
+            MediaType::Video => self.scan_lib.libraries.add_video_source(path),
+            MediaType::Image => self.scan_lib.libraries.add_image_source(path),
+        }
+
+    }
+
+    pub fn get_media_from_path(&mut self, path: PathBuf) -> Vec<MediaInfo> {
+        let mut result = Vec::new();
+
+        for (_id, item) in self.items.iter() {
+            if item.get_path().starts_with(path.to_str().unwrap()) {
+                result.push(item.info());
+            }
+        }
+
+        result
+    }
+
+    pub fn get_all_media(&self) -> Vec<MediaInfo> {
+        let mut result = Vec::new();
+
+        for (_id, item) in self.items.iter() {
+            result.push(item.info());
+        }
+
+        result
+    }
+
+    pub fn get_media_by_type(&self, media_type: MediaType) -> Vec<MediaInfo> {
+        let mut result = Vec::new();
+
+        for (_id, item) in self.items.iter() {
+            if item.media_type() == media_type {
+                result.push(item.info());
+            }
+        }
+
+        result
+    }
+
+    pub fn get_media_from_tag(&mut self, tag_id: &str) -> Vec<i64> {
+        let media_list = self.database.get_media_by_tag(tag_id).unwrap();
+        media_list
+    }
+
    
 
     //=========== MEDIA FUNCTIONS ===========
@@ -104,7 +200,7 @@ impl MediaLibrary {
 
         pub fn stop_id(&mut self, id: i64) {
         if let Some(item) = self.items.get_mut(&id) {
-            println!("Stopping media ID {id}: {}", item.info());
+            //println!("Stopping media ID {id}: {}", item.info());
             item.stop();
         } else {
             println!("Error: media with ID {id} not found.");
@@ -112,7 +208,7 @@ impl MediaLibrary {
     }
 
 
-    pub fn info_id(&self, id: i64) -> Option<String> {
+    pub fn info_id(&self, id: i64) -> Option<MediaInfo> {
         if let Some(item) = self.items.get(&id) {
             Some(item.info())
         } else {

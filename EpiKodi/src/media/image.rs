@@ -6,6 +6,7 @@ TODO: get metadata
 
 use super::data::Media;
 use super::data::MediaType;
+use super::data::MediaInfo;
 
 use gstreamer as gst;
 use gstreamer::prelude::*;
@@ -80,8 +81,17 @@ impl Media for Image {
         }
     }
 
-    fn info(&self) -> String {
-        format!("🖼️ Image: {} ({})", self.name, self.path)
+    fn info(&self) -> MediaInfo {
+        //format!("🖼️ Image: {} ({})", self.name, self.path);
+
+        MediaInfo {
+            id: 0,
+            path: self.path.clone(),
+            title: Some(self.name.clone()),
+            duration: None,
+            media_type: MediaType::Image,
+        }
+        
     }
 
     fn media_type(&self) -> MediaType {
@@ -90,5 +100,8 @@ impl Media for Image {
 
     fn get_name(&self) -> String {
         self.name.clone()
+    }
+    fn get_path(&self) -> String {
+        self.path.clone()
     }
 }

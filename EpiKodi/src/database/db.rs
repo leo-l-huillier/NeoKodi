@@ -30,21 +30,45 @@ impl DB {
         }
     }
 
+    //TODO: check if this is a corrct/clean way to do this
     pub fn init_db(&mut self) -> Result<()> {
         self.conn.execute(
             "
-            CREATE TABLE IF NOT EXISTS media (
-                id INTEGER PRIMARY KEY,
-                path TEXT UNIQUE NOT NULL,
-                title TEXT,
-                duration REAL,
-                media_type TEXT
-            )
+                CREATE TABLE IF NOT EXISTS media (
+                    id INTEGER PRIMARY KEY,
+                    path TEXT UNIQUE NOT NULL,
+                    title TEXT,
+                    duration REAL,
+                    media_type TEXT
+                )
+            ",
+            [],
+        )?;
+         self.conn.execute(
+            "
+                CREATE TABLE IF NOT EXISTS tags (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT UNIQUE NOT NULL
+                );
+            ",
+            [],
+        )?;
+         self.conn.execute(
+            "
+                CREATE TABLE IF NOT EXISTS media_tags (
+                    media_id INTEGER NOT NULL,
+                    tag_id INTEGER NOT NULL,
+                    PRIMARY KEY (media_id, tag_id),
+                    FOREIGN KEY (media_id) REFERENCES media(id) ON DELETE CASCADE,
+                    FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
+                );
             ",
             [],
         )?;
         Ok(())
     }
+
+    //========MEDIA TABLE METHODS========
 
     pub fn insert_media(&mut self, path: &str,title: &str,duration: f32,media_type: &str) -> Result<()> {
         self.conn.execute(
@@ -142,6 +166,64 @@ impl DB {
         stmt.execute(rusqlite::params_from_iter(params))?;
         Ok(())
     }
+
+    //========= TAGS TABLE METHODS========
+
+    pub fn get_or_create_tag(&mut self, name: &str) -> rusqlite::Result<i64> {
+        self.conn.execute(
+            "INSERT OR IGNORE INTO tags (name) VALUES (?1)",
+            [name],
+        )?;
+
+        self.conn.query_row(
+            "SELECT id FROM tags WHERE name = ?1",
+            [name],
+            |row| row.get(0),
+        )
+    }
+
+    //TODO: y a pas de gestion d'erreur ici c'est important à corriger
+    pub fn get_tag_id(&mut self, name: &str) -> rusqlite::Result<i64> {
+        self.conn.query_row(
+            "SELECT id FROM tags WHERE name = ?1",
+            [name],
+            |row| row.get(0),
+        )
+    }
+
+
+    pub fn add_tag_to_media(&mut self, media_id: i64, tag_id: i64) -> rusqlite::Result<()> {
+        self.conn.execute(
+            "
+                INSERT OR IGNORE INTO media_tags (media_id, tag_id)
+                VALUES (?1, ?2)
+            ",
+            (media_id, tag_id),
+        )?;
+        Ok(())
+    }
+
+
+    pub fn get_media_by_tag(&mut self, tag_name: &str) -> rusqlite::Result<Vec<i64>> {
+        let mut stmt = self.conn.prepare(
+            "
+                SELECT media.id
+                FROM media
+                JOIN media_tags ON media.id = media_tags.media_id
+                JOIN tags ON tags.id = media_tags.tag_id
+                WHERE tags.name = ?1
+            ",
+        )?;
+
+        let rows = stmt.query_map([tag_name], |row| row.get(0))?;
+
+        Ok(rows.filter_map(Result::ok).collect())
+    }
+
+
+
+
+
 
 
 

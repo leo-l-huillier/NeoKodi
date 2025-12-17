@@ -7,6 +7,7 @@ TODO: metadata got from lofty crate but not all video formats are supported (onl
 
 use super::data::Media;
 use super::data::MediaType;
+use super::data::MediaInfo;
 
 use gstreamer as gst;
 use gstreamer::prelude::*;
@@ -115,7 +116,7 @@ impl Media for Video {
         }
     }
 
-    fn info(&self) -> String {
+    fn info(&self) -> MediaInfo {
         
         // print metadata info
         println!("{}", format!(
@@ -129,8 +130,13 @@ impl Media for Video {
             self.metadata.writer
         ));
 
-
-        "".to_string()
+        MediaInfo {
+            id: 0,
+            path: self.path.clone(),
+            title: Some(self.name.clone()),
+            duration: Some(self.metadata.duration),
+            media_type: MediaType::Video,
+        }
     }
 
     fn media_type(&self) -> MediaType {
@@ -138,5 +144,8 @@ impl Media for Video {
     }
     fn get_name(&self) -> String {
         self.name.clone()
+    }
+    fn get_path(&self) -> String {
+        self.path.clone()
     }
 }
