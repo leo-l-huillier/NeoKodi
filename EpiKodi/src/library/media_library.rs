@@ -51,48 +51,73 @@ impl MediaLibrary {
 
     pub fn init(&mut self) {
 
+        // scan the libraries
         self.database.init_db().unwrap();
         self.scan_lib.scan_libraries();
 
+        // update the database
         self.database.upsert_media_from_scan(self.scan_lib.scan.clone()).unwrap(); //TODO: ce clone me fait chier, il faudrait qu'on utilise juste scan (ca serait meme mieux si on donne la valeur direct comme ca il se fait drop (on en a plus besoin ) et mm en terme de performance c'est pas terrible parce que c'est un gros object )
         self.database.cleanup_missing_media(self.scan_lib.scan.clone()).unwrap(); // TODO to implement, shuld be called every scans
-        //self.database.print_media_rows();
         self.database.get_all_media().unwrap();
         //self.database.print_media_rows();
-
-        // ===========  test   ==========
-
-        /*
-        self.database.get_or_create_tag("chill").unwrap();
-        self.database.get_or_create_tag("to listen").unwrap();
-        self.database.get_or_create_tag("to watch").unwrap();
-
-
-        self.database.add_tag_to_media(33, 1).unwrap();
-        self.database.add_tag_to_media(34, 2).unwrap();
-        self.database.add_tag_to_media(35, 3).unwrap();
-        self.database.add_tag_to_media(34, 1).unwrap();
-        self.database.add_tag_to_media(35, 1).unwrap();
-        */
-
-
-        let media_list = self.database.get_media_by_tag("chill").unwrap();
-
-        println!("Media with tag 'chill': {:?}", media_list);
-
-        
-     
+    
         
         for row in self.database.media_rows.iter() {
+
             let media: Box<dyn Media> = match row.media_type {
                 MediaType::Audio => Box::new(Audio::new(&row.path,&row.title.as_deref().unwrap_or(""))),
                 MediaType::Video => Box::new(Video::new(&row.path,&row.title.as_deref().unwrap_or(""))),
                 MediaType::Image => Box::new(Image::new(&row.path,&row.title.as_deref().unwrap_or(""))),
             };
+
             self.items.insert(row.id, media);
         }
 
     }
+
+
+
+    // =========== PLAYLISTS FUNCTIONS ===========
+    
+
+    pub fn create_playlist(&mut self, name: &str) {
+
+        match self.database.create_playlist(name) {
+            Ok(playlist_id) => println!("Created playlist '{}' with ID {}", name, playlist_id),
+            Err(e) => println!("Playlist '{}' already exists: {}", name, e),
+        }
+    }
+
+    pub fn add_media_to_playlist(&mut self, media_id: i64, playlist_id: i64) {
+
+        match self.database.add_media_to_playlist(media_id, playlist_id) {
+            Ok(_) => println!("Media ID {} added to Playlist ID {}", media_id, playlist_id),
+            Err(e) => println!("Error adding Media ID {} to Playlist ID {}: {}", media_id, playlist_id, e),
+        }
+    }
+
+    pub fn get_media_from_playlist(&mut self, playlist_id: i64) -> Vec<i64> {
+
+        match self.database.get_media_from_playlist(playlist_id) {
+            Ok(media_list) => media_list,
+            Err(e) => {
+                println!("Error retrieving media from Playlist ID {}: {}", playlist_id, e);
+                Vec::new()
+            }
+        }
+    }
+
+    pub fn get_playlist_id(&mut self, name: &str) -> i64 {
+        
+        match self.database.get_playlist_id(name) {
+            Ok(playlist_id) => playlist_id,
+            Err(e) => {
+                println!("Error retrieving playlist ID for '{}': {}", name, e);
+                -1
+            }
+        }
+    }
+
 
 
     // =========== TAGS FUNCTIONS ===========
@@ -100,16 +125,30 @@ impl MediaLibrary {
 
     // TODO; retuen result (tag id )
     pub fn add_tag(&mut self, tag_name: &str) {
-        self.database.get_or_create_tag(tag_name).unwrap();
+
+        match self.database.get_or_create_tag(tag_name) {
+            Ok(tag_id) => println!("Tag '{}' has ID {}", tag_name, tag_id),
+            Err(e) => println!("Error adding tag '{}': {}", tag_name, e),
+        }
     }
 
     pub fn add_tag_to_media(&mut self, media_id: i64, tag_id: i64) {
-        self.database.add_tag_to_media(media_id, tag_id).unwrap();
+
+        match self.database.add_tag_to_media(media_id, tag_id) {
+            Ok(_) => println!("Tag ID {} added to Media ID {}", tag_id, media_id),
+            Err(e) => println!("Error adding Tag ID {} to Media ID {}: {}", tag_id, media_id, e),
+        }
     }
 
     pub fn get_tag_id(&mut self, tag_name: &str) -> i64 {
-        let tag_id = self.database.get_tag_id(tag_name).unwrap();
-        tag_id
+        
+        match self.database.get_tag_id(tag_name) {
+            Ok(tag_id) => tag_id,
+            Err(e) => {
+                println!("Error retrieving tag ID for '{}': {}", tag_name, e);
+                -1
+            }
+        }
     }
 
 

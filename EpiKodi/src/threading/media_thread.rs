@@ -3,6 +3,8 @@
 This file manages the media thread, which handles media playback commands
 */
 
+use gstreamer::glib::bitflags::iter::IterNames;
+
 use crate::library::media_library::MediaLibrary;
 
 use super::command::Command;
@@ -66,6 +68,13 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     // For simplicity, we just send the count of media items found
                     evt_tx.send(Event::IDList(media_list)).unwrap();
                 }
+                Ok(Command::GetMediaFromPlaylist(playlist_id)) => {
+                    let mut library = lib_thread.lock().unwrap();
+
+                    let media_list = library.get_media_from_playlist(playlist_id);
+                    // For simplicity, we just send the count of media items found
+                    evt_tx.send(Event::IDList(media_list)).unwrap();
+                }
 
 
 
@@ -114,6 +123,24 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     let mut library = lib_thread.lock().unwrap();
 
                     library.add_tag_to_media(media_id, tag_id);
+                }
+
+
+                Ok(Command::AddPlaylist(name)) => {
+                    let mut library = lib_thread.lock().unwrap();
+
+                    library.create_playlist(&name);
+                }
+                Ok(Command::AddMediaToPlaylist(media_id, playlist_id)) => {
+                    let mut library = lib_thread.lock().unwrap();
+
+                    library.add_media_to_playlist(media_id, playlist_id);
+                }
+                Ok(Command::getPlaylistId(name)) => {
+                    let mut library = lib_thread.lock().unwrap();
+
+                    let playlist_id = library.get_playlist_id(&name);
+                    evt_tx.send(Event::Data(playlist_id.to_string())).unwrap();
                 }
 
                 Err(_) => break,

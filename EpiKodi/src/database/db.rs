@@ -65,16 +65,37 @@ impl DB {
             ",
             [],
         )?;
+        self.conn.execute(
+            "
+                CREATE TABLE IF NOT EXISTS playlists (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE COLLATE NOCASE
+                );
+            ",
+            [],
+        )?;
+        self.conn.execute(
+            "
+                CREATE TABLE IF NOT EXISTS playlist_items (
+                    playlist_id INTEGER NOT NULL,
+                    media_id INTEGER NOT NULL,
+                    PRIMARY KEY (playlist_id, media_id),
+                    FOREIGN KEY (playlist_id) REFERENCES playlists(id) ON DELETE CASCADE,
+                    FOREIGN KEY (media_id) REFERENCES media(id) ON DELETE CASCADE
+                );
+            ",
+            [],
+        )?;
         Ok(())
     }
 
     //========MEDIA TABLE METHODS========
 
-    pub fn insert_media(&mut self, path: &str,title: &str,duration: f32,media_type: &str) -> Result<()> {
+    pub fn insert_media(&mut self, path: &str, title: &str, duration: f32, media_type: &str) -> Result<()> {
         self.conn.execute(
             "
-            INSERT OR IGNORE INTO media (path, title, duration, media_type)
-            VALUES (?1, ?2, ?3, ?4)
+                INSERT OR IGNORE INTO media (path, title, duration, media_type)
+                VALUES (?1, ?2, ?3, ?4)
             ",
             (path, title, duration, media_type),
         )?;
@@ -219,6 +240,60 @@ impl DB {
 
         Ok(rows.filter_map(Result::ok).collect())
     }
+
+    //========= PLAYLIST TABLE METHODS========
+
+
+    pub fn create_playlist(&mut self, name: &str) -> rusqlite::Result<i64> {
+
+
+        self.conn.execute(
+            "INSERT OR IGNORE INTO playlists (name) VALUES (?1)",
+            [name],
+        )?;
+
+        self.conn.query_row(
+            "SELECT id FROM playlists WHERE name = ?1",
+            [name],
+            |row| row.get(0),
+        )
+    }
+
+    pub fn add_media_to_playlist(&mut self, media_id: i64, playlist_id: i64) -> rusqlite::Result<()> {
+        self.conn.execute(
+            "
+            INSERT OR REPLACE INTO playlist_items
+            (playlist_id, media_id)
+            VALUES (?1, ?2)
+            ",
+            (playlist_id, media_id),
+        )?;
+        Ok(())
+    }
+
+    pub fn get_media_from_playlist(&mut self, playlist_id: i64) -> rusqlite::Result<Vec<i64>> {
+        let mut stmt = self.conn.prepare(
+            "
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+            ",
+        )?;
+
+        let rows = stmt.query_map([playlist_id], |row| row.get(0))?;
+
+        Ok(rows.filter_map(Result::ok).collect())
+    }
+
+    pub fn get_playlist_id(&mut self, name: &str) -> rusqlite::Result<i64> {
+        self.conn.query_row(
+            "SELECT id FROM playlists WHERE name = ?1",
+            [name],
+            |row| row.get(0),
+        )
+    }
+
 
 
 
