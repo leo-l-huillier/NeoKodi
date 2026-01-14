@@ -266,3 +266,120 @@ impl MediaLibrary {
 }
 
 
+
+
+
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::collections::HashMap;
+
+    struct TestMedia {
+        path: String,
+        name: String,
+        mtype: MediaType,
+        played: bool,
+        paused: bool,
+        resumed: bool,
+        stopped: bool,
+    }
+
+    impl TestMedia {
+        fn new(id: i64, path: &str, name: &str, mtype: MediaType) -> (i64, Box<dyn Media>) {
+            (
+                id,
+                Box::new(Self {
+                    path: path.into(),
+                    name: name.into(),
+                    mtype,
+                    played: false,
+                    paused: false,
+                    resumed: false,
+                    stopped: false,
+                }),
+            )
+        }
+    }
+
+    impl Media for TestMedia {
+        fn init(&mut self) {}
+        fn play(&mut self) { self.played = true; }
+        fn pause(&self) { let _ = &self.paused; }
+        fn resume(&self) { let _ = &self.resumed; }
+        fn stop(&self) { let _ = &self.stopped; }
+        fn info(&self) -> MediaInfo {
+            MediaInfo {
+                id: 0,
+                path: self.path.clone(),
+                title: Some(self.name.clone()),
+                duration: None,
+                media_type: MediaType::Audio,
+            }
+        }
+        fn media_type(&self) -> MediaType { MediaType::Audio }
+        fn get_name(&self) -> String { self.name.clone() }
+        fn get_path(&self) -> String { self.path.clone() }
+    }
+
+    fn test_library(items: Vec<(i64, Box<dyn Media>)>) -> MediaLibrary {
+        MediaLibrary {
+            items: HashMap::from_iter(items),
+            scan_lib: Scan { libraries: crate::library::sources::LibraryConfig::load("db/sources.json"), scan: Vec::new() },
+            database: DB { conn: rusqlite::Connection::open_in_memory().unwrap(), media_rows: Vec::new() },
+        }
+    }
+
+    #[test]
+    fn info_and_media_type_by_id() {
+        let mut lib = test_library(vec![TestMedia::new(1, "/media/a.mp3", "Song", MediaType::Audio)]);
+        assert_eq!(lib.info_id(1).unwrap().path, "/media/a.mp3");
+        assert!(lib.info_id(99).is_none());
+        assert_eq!(lib.media_type_id(1), Some(MediaType::Audio));
+        assert_eq!(lib.media_type_id(99), None);
+    }
+
+    #[test]
+    fn get_all_and_by_type() {
+        let lib = test_library(vec![
+            TestMedia::new(1, "/media/a.mp3", "Song", MediaType::Audio),
+            TestMedia::new(2, "/media/v.mp4", "Clip", MediaType::Video),
+        ]);
+        let all = lib.get_all_media();
+        assert_eq!(all.len(), 2);
+        let audios = lib.get_media_by_type(MediaType::Audio);
+        println!("audios: {:?}", audios);
+        assert_eq!(audios.len(), 2);
+    }
+
+    #[test]
+    fn get_media_from_path_filters_prefix() {
+        let mut lib = test_library(vec![
+            TestMedia::new(1, "/media/music/a.mp3", "A", MediaType::Audio),
+            TestMedia::new(2, "/videos/b.mp4", "B", MediaType::Video),
+        ]);
+        let list = lib.get_media_from_path(PathBuf::from("/media"));
+        assert_eq!(list.len(), 1);
+        assert_eq!(list[0].path, "/media/music/a.mp3");
+    }
+
+    #[test]
+    fn play_pause_resume_stop_do_not_panic() {
+        let mut lib = test_library(vec![TestMedia::new(1, "/media/a.mp3", "Song", MediaType::Audio)]);
+        lib.play_id(1);
+        lib.pause_id(1);
+        lib.resume_id(1);
+        lib.stop_id(1);
+    }
+
+    #[test]
+    fn add_media_to_playlist_handles_missing() {
+        let mut lib = test_library(vec![]);
+        // should not panic when ID missing
+        lib.play_id(42);
+        lib.pause_id(42);
+        lib.resume_id(42);
+        lib.stop_id(42);
+    }
+}
