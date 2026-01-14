@@ -66,13 +66,7 @@ fn main() {
         // Simulate GUI
 
         //println!("GUI working...");
-        sleep(Duration::from_secs(1));
-        let id = 30;
-        if i==2 {
-            cmd_tx.send(Command::Play(id)).unwrap();
-            //cmd_tx.send(Command::Info(id)).unwrap();
-
-            if let Ok(event) = evt_rx.try_recv() {
+        if let Ok(event) = evt_rx.try_recv() {
                 match event {
                     Event::Finished(id) => println!("Media finished item {id}"),
                     Event::NowPlaying(msg) => println!("MEDIA says: {msg}"),
@@ -83,7 +77,19 @@ fn main() {
                     _ => {}
                     
                 }
-            }
+        }
+
+        sleep(Duration::from_secs(1));
+        let id = 30;
+        if i==2 {
+            cmd_tx.send(Command::AddMediaToPlaylist(33, 1)).unwrap();
+            cmd_tx.send(Command::GetMediaFromPlaylist(1)).unwrap();
+            cmd_tx.send(Command::AddTagToMedia(33, 1)).unwrap();
+            cmd_tx.send(Command::GetMediaFromTag("chill".to_string())).unwrap();
+            
+            //cmd_tx.send(Command::Info(id)).unwrap();
+
+           
         }
         if i==5 {
             cmd_tx.send(Command::Pause(id)).unwrap();
