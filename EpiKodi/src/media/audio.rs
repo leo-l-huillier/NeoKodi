@@ -44,7 +44,6 @@ impl Audio {
     pub fn new(path: &str, name: &str) -> Self {
 
 
-        //========= METADATA ========= 
         let tagged_file = read_from_path(path)
             .expect("Failed to read tags from file");
         let tag = match tagged_file.primary_tag() {
@@ -159,3 +158,47 @@ impl Media for Audio {
 }
 
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::path::Path;
+
+    // Helper: returns a sample file path; tests are ignored if missing.
+    fn sample_path() -> Option<String> {
+        let p = Path::new("tests/data/sample.mp3");
+        if p.exists() { Some(p.to_string_lossy().to_string()) } else { None }
+    }
+
+    #[test]
+    #[ignore] // Requires tests/data/sample.mp3 to exist with readable tags
+    fn new_reads_metadata() {
+        let path = sample_path().expect("missing test audio file");
+        let audio = Audio::new(&path, "Sample");
+        assert_eq!(audio.media_type(), MediaType::Audio);
+        assert_eq!(audio.get_path(), path);
+        assert_eq!(audio.get_name(), "Sample");
+    }
+
+    #[test]
+    #[ignore] // Requires tests/data/sample.mp3; also opens audio device
+    fn init_and_play_then_stop() {
+        let path = sample_path().expect("missing test audio file");
+        let mut audio = Audio::new(&path, "Sample");
+        audio.init();
+        audio.play(); // should not panic
+        audio.pause();
+        audio.resume();
+        audio.stop();
+    }
+
+    #[test]
+    #[ignore] // Requires tests/data/sample.mp3
+    fn info_returns_media_info() {
+        let path = sample_path().expect("missing test audio file");
+        let audio = Audio::new(&path, "Sample");
+        let info = audio.info();
+        assert_eq!(info.path, path);
+        assert_eq!(info.media_type, MediaType::Audio);
+        assert!(info.duration.unwrap_or(0.0) >= 0.0);
+    }
+}

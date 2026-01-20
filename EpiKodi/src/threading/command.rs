@@ -31,7 +31,7 @@ pub enum Command {
     //RemoveTag(String),
 
     AddPlaylist(String), // playlist name
-    getPlaylistId(String), // playlist name
+    GetPlaylistId(String), // playlist name
     AddMediaToPlaylist(i64, i64), // media_id, playlist_id
 
 }

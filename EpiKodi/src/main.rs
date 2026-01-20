@@ -1,101 +1,89 @@
-
-/*
-main.rs
-*/
-
+#![allow(non_snake_case)]
 
 mod threading;
 mod constants;
-
-//======== MEDIA THREADING ========
 mod media;
-use threading::media_thread::launch_media_thread;
-use threading::command::Command;
-use threading::command::Event;
-
-//======== DATABASE ========
 mod database;
-use database::db::DB;
-use rusqlite::{Connection};
-
 mod library;
 mod scan;
-
-//======== GUI ========
 mod gui;
+
+use threading::media_thread::launch_media_thread;
+use threading::command::{Command, Event};
 use gui::route::Route;
+use crate::media::data::MediaType;
 
-use std::time::Duration;
-use std::thread::sleep;
 use std::sync::mpsc;
-
-
+use std::time::Duration;
+use std::cell::RefCell;
+use std::rc::Rc;
 use dioxus::prelude::*;
 use dioxus::desktop::{Config, WindowBuilder};
 use dioxus_router::prelude::*;
-
-use crate::constants::constants::MEDIA_DB_FILE;
-
-
-
-use crate::media::image::Image;
+use crate::media::data::MediaInfo;
 
 fn main() {
+    let config = Config::new()
+        .with_window(WindowBuilder::new()
+            .with_title("NeoKodi")
+            .with_resizable(true)
+        );
 
-    // ========== MEDIA THREADING ===========
+    LaunchBuilder::desktop().with_cfg(config).launch(App);
+}
 
+struct Backend {
+    tx: mpsc::Sender<Command>,
+    rx: RefCell<Option<mpsc::Receiver<Event>>>,
+}
 
-    let (cmd_tx, cmd_rx) = mpsc::channel::<Command>();
-    let (evt_tx, evt_rx) = mpsc::channel::<Event>();
-    launch_media_thread(cmd_rx, evt_tx);
+fn App() -> Element {
+    
+    let backend_channels = use_hook(|| {
+        println!("--- Initialisation du Thread Média ---");
+        let (cmd_tx, cmd_rx) = mpsc::channel::<Command>();
+        let (evt_tx, evt_rx) = mpsc::channel::<Event>();
+        
+        launch_media_thread(cmd_rx, evt_tx);
 
-    // ========== GUI ===========
+        Rc::new(Backend {
+            tx: cmd_tx,
+            rx: RefCell::new(Some(evt_rx)),
+        })
+    });
 
+    use_context_provider(|| backend_channels.tx.clone());
+    let mut current_image = use_context_provider(|| Signal::new(Option::<String>::None));
+    let mut media_list = use_context_provider(|| Signal::new(Vec::<MediaInfo>::new()));
 
-    /*
-    let config = Config::new().with_window(WindowBuilder::new().with_title("NeoKodi").with_resizable(true));
-
-    // 2. Lancer l'application
-    LaunchBuilder::desktop().with_cfg(config).launch(|| rsx! { Router::<Route> {} });
-    */
-
-    // ========== GUI back test ===========
-     
-    let mut i = 0;
-    loop {
-        // Simulate GUI
-
-        //println!("GUI working...");
-        sleep(Duration::from_secs(1));
-        let id = 30;
-        if i==2 {
-            cmd_tx.send(Command::Play(id)).unwrap();
-            //cmd_tx.send(Command::Info(id)).unwrap();
-
-            if let Ok(event) = evt_rx.try_recv() {
-                match event {
-                    Event::Finished(id) => println!("Media finished item {id}"),
-                    Event::NowPlaying(msg) => println!("MEDIA says: {msg}"),
-                    Event::Data(info) => println!("MEDIA info: {info}"),
-                    Event::IDList(ids) => println!("MEDIA ID List: {:?}", ids),
-                    Event::Info(info) => println!("MEDIA Info: {:?}", info),
-                    //medialist
-                    _ => {}
-                    
+    use_coroutine(move |_: UnboundedReceiver<()>| {
+        let backend = backend_channels.clone();
+        
+        async move {
+            let mut rx_opt = backend.rx.borrow_mut();
+            if let Some(rx) = rx_opt.take() {
+                drop(rx_opt);
+                loop {
+                    if let Ok(msg) = rx.try_recv() {
+                        match msg {
+                            Event::MediaList(list) => {
+                                println!("GUI: Liste reçue avec {} éléments", list.len());
+                                media_list.set(list);
+                            }
+                            
+                            Event::Info(info) => {
+                                if info.media_type == MediaType::Image {
+                                    current_image.set(Some(info.path));
+                                }
+                            }
+                            _ => {}
+                        }
+                    }
+                    tokio::time::sleep(Duration::from_millis(50)).await;
                 }
             }
         }
-        if i==5 {
-            cmd_tx.send(Command::Pause(id)).unwrap();
-        }
-        if i==8 {
-            cmd_tx.send(Command::Resume(id)).unwrap();
-        }
-        if i==10 {
-            break;
-        }
-        i += 1;
-        
-    }
-}
+    });
 
+    rsx! { Router::<Route> {} }
+}

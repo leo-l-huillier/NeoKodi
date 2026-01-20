@@ -190,3 +190,90 @@ impl Scan {
     }
 
 }
+
+
+
+
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::fs;
+    use std::time::{SystemTime, UNIX_EPOCH};
+
+    // Creates a unique temp directory for each test.
+    fn temp_dir(label: &str) -> std::path::PathBuf {
+        let stamp = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .unwrap()
+            .as_millis();
+        let dir = std::env::temp_dir().join(format!("epikodi_scan_{label}_{stamp}"));
+        fs::create_dir_all(&dir).unwrap();
+        dir
+    }
+
+    #[test]
+    fn scan_audio_libraries_collects_audio_files() {
+        let dir = temp_dir("audio");
+        fs::write(dir.join("song.mp3"), b"").unwrap();
+        fs::write(dir.join("note.txt"), b"").unwrap();
+
+        let mut scan = Scan::new();
+        scan.scan_audio_libraries(&dir);
+
+        assert_eq!(scan.scan.len(), 1);
+        assert_eq!(scan.scan[0].media_type, MediaType::Audio);
+        assert!(scan.scan[0].path.ends_with("song.mp3"));
+
+        let _ = fs::remove_dir_all(dir);
+    }
+
+    #[test]
+    fn scan_video_libraries_collects_video_files() {
+        let dir = temp_dir("video");
+        fs::write(dir.join("movie.mp4"), b"").unwrap();
+        fs::write(dir.join("readme.md"), b"").unwrap();
+
+        let mut scan = Scan::new();
+        scan.scan_video_libraries(&dir);
+
+        assert_eq!(scan.scan.len(), 1);
+        assert_eq!(scan.scan[0].media_type, MediaType::Video);
+        assert!(scan.scan[0].path.ends_with("movie.mp4"));
+
+        let _ = fs::remove_dir_all(dir);
+    }
+
+    #[test]
+    fn scan_image_libraries_collects_image_files() {
+        let dir = temp_dir("image");
+        fs::write(dir.join("cover.jpg"), b"").unwrap();
+        fs::write(dir.join("doc.pdf"), b"").unwrap();
+
+        let mut scan = Scan::new();
+        scan.scan_image_libraries(&dir);
+
+        assert_eq!(scan.scan.len(), 1);
+        assert_eq!(scan.scan[0].media_type, MediaType::Image);
+        assert!(scan.scan[0].path.ends_with("cover.jpg"));
+
+        let _ = fs::remove_dir_all(dir);
+    }
+
+    #[test]
+    fn scan_audio_libraries_recurse_into_subdirs() {
+        let dir = temp_dir("audio_nested");
+        let sub = dir.join("sub");
+        fs::create_dir_all(&sub).unwrap();
+        fs::write(sub.join("nested.mp3"), b"").unwrap();
+
+        let mut scan = Scan::new();
+        scan.scan_audio_libraries(&dir);
+
+        assert_eq!(scan.scan.len(), 1);
+        assert!(scan.scan[0].path.ends_with("nested.mp3"));
+
+        let _ = fs::remove_dir_all(dir);
+    }
+}

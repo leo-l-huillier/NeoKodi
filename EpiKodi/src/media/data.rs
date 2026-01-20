@@ -8,7 +8,7 @@ pub enum MediaType {
     Image,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct MediaInfo {
     pub id: i64,
     pub path: String,

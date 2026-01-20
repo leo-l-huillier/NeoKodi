@@ -1,10 +1,3 @@
-
-/*
-This file manages the media thread, which handles media playback commands
-*/
-
-use gstreamer::glib::bitflags::iter::IterNames;
-
 use crate::library::media_library::MediaLibrary;
 
 use super::command::Command;
@@ -21,20 +14,14 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
     let library = Arc::new(Mutex::new(MediaLibrary::new()));
     let lib_thread = Arc::clone(&library);
 
-    // let media_thread =
     thread::spawn(move || {
         let mut library = lib_thread.lock().unwrap();
 
         library.init();
-        //library.play_id(3);
-
         drop(library);
 
         loop {
-            // TODO handle errors
-            match cmd_rx.recv() {
-                // le mutex se drop en sortant du scope
-                
+            match cmd_rx.recv() {                
                 Ok(Command::AddSource(path, media_type)) => {
                     let mut library = lib_thread.lock().unwrap();
 
@@ -65,14 +52,13 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     let mut library = lib_thread.lock().unwrap();
 
                     let media_list = library.get_media_from_tag(&tag_name);
-                    // For simplicity, we just send the count of media items found
                     evt_tx.send(Event::IDList(media_list)).unwrap();
                 }
                 Ok(Command::GetMediaFromPlaylist(playlist_id)) => {
                     let mut library = lib_thread.lock().unwrap();
 
                     let media_list = library.get_media_from_playlist(playlist_id);
-                    // For simplicity, we just send the count of media items found
+                    println!("in OK : Retrieved media from Playlist ID {}: {:?}", playlist_id, media_list);
                     evt_tx.send(Event::IDList(media_list)).unwrap();
                 }
 
@@ -136,7 +122,7 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
 
                     library.add_media_to_playlist(media_id, playlist_id);
                 }
-                Ok(Command::getPlaylistId(name)) => {
+                Ok(Command::GetPlaylistId(name)) => {
                     let mut library = lib_thread.lock().unwrap();
 
                     let playlist_id = library.get_playlist_id(&name);
@@ -147,4 +133,233 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
             }
         }
     });
+}
+
+
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::sync::mpsc;
+    use std::thread;
+    use std::time::Duration;
+
+    fn setup_thread() -> (mpsc::Sender<Command>, mpsc::Receiver<Event>) {
+        let (cmd_tx, cmd_rx) = mpsc::channel();
+        let (evt_tx, evt_rx) = mpsc::channel();
+
+        launch_media_thread(cmd_rx, evt_tx);
+
+        thread::sleep(Duration::from_millis(100));
+
+        (cmd_tx, evt_rx)
+    }
+
+    #[test]
+    fn test_add_source_command() {
+        let (cmd_tx, _evt_rx) = setup_thread();
+        let path = PathBuf::from("/test/music");
+        
+        cmd_tx.send(Command::AddSource(path, crate::media::data::MediaType::Audio)).unwrap();
+        thread::sleep(Duration::from_millis(50));
+        // Command processed without panic
+    }
+
+    #[test]
+    fn test_get_all_media_command() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::GetAllMedia()).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::MediaList(_)) => {},
+            _ => panic!("Expected MediaList event"),
+        }
+    }
+
+    #[test]
+    fn test_get_media_from_path_command() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        let path = PathBuf::from("/test");
+        
+        cmd_tx.send(Command::GetMediaFromPath(path)).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::MediaList(_)) => {},
+            _ => panic!("Expected MediaList event"),
+        }
+    }
+
+    #[test]
+    fn test_get_media_from_type_command() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::GetMediaFromType(crate::media::data::MediaType::Audio)).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::MediaList(_)) => {},
+            _ => panic!("Expected MediaList event"),
+        }
+    }
+
+    #[test]
+    fn test_get_media_from_tag_command() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::GetMediaFromTag("action".to_string())).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::IDList(_)) => {},
+            _ => panic!("Expected IDList event"),
+        }
+    }
+
+    #[test]
+    fn test_get_media_from_playlist_command() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::GetMediaFromPlaylist(1)).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::IDList(_)) => {},
+            _ => panic!("Expected IDList event"),
+        }
+    }
+
+    #[test]
+    fn test_play_command() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::Play(1)).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::NowPlaying(id)) => assert_eq!(id, 1),
+            _ => panic!("Expected NowPlaying event"),
+        }
+    }
+
+    #[test]
+    fn test_pause_command() {
+        let (cmd_tx, _evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::Pause(1)).unwrap();
+        thread::sleep(Duration::from_millis(50));
+        // Command processed without panic
+    }
+
+    #[test]
+    fn test_resume_command() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::Resume(1)).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::NowPlaying(id)) => assert_eq!(id, 1),
+            _ => panic!("Expected NowPlaying event"),
+        }
+    }
+
+    #[test]
+    fn test_stop_command() {
+        let (cmd_tx, _evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::Stop(1)).unwrap();
+        thread::sleep(Duration::from_millis(50));
+        // Command processed without panic
+    }
+
+    #[test]
+    #[ignore]
+    fn test_info_command() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::Info(1)).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::Info(_)) => {},
+            _ => panic!("Expected Info event"),
+        }
+    }
+
+    #[test]
+    fn test_add_tag_command() {
+        let (cmd_tx, _evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::AddTag("favorite".to_string())).unwrap();
+        thread::sleep(Duration::from_millis(50));
+        // Command processed without panic
+    }
+
+    #[test]
+    fn test_get_tag_id_command() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::GetTagId("action".to_string())).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::Data(_)) => {},
+            _ => panic!("Expected Data event"),
+        }
+    }
+
+    #[test]
+    fn test_add_tag_to_media_command() {
+        let (cmd_tx, _evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::AddTagToMedia(1, 1)).unwrap();
+        thread::sleep(Duration::from_millis(50));
+        // Command processed without panic
+    }
+
+    #[test]
+    fn test_add_playlist_command() {
+        let (cmd_tx, _evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::AddPlaylist("My Playlist".to_string())).unwrap();
+        thread::sleep(Duration::from_millis(50));
+        // Command processed without panic
+    }
+
+    #[test]
+    fn test_add_media_to_playlist_command() {
+        let (cmd_tx, _evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::AddMediaToPlaylist(1, 1)).unwrap();
+        thread::sleep(Duration::from_millis(50));
+        // Command processed without panic
+    }
+
+    #[test]
+    fn test_get_playlist_id_command() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::GetPlaylistId("My Playlist".to_string())).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::Data(_)) => {},
+            _ => panic!("Expected Data event"),
+        }
+    }
+
+    #[test]
+    fn test_thread_exits_on_channel_close() {
+        let (cmd_tx, _evt_rx) = setup_thread();
+        drop(cmd_tx);
+        thread::sleep(Duration::from_millis(100));
+        // Thread should exit gracefully
+    }
+
+    #[test]
+    fn test_multiple_sequential_commands() {
+        let (cmd_tx, evt_rx) = setup_thread();
+        
+        cmd_tx.send(Command::AddTag("action".to_string())).unwrap();
+        cmd_tx.send(Command::GetTagId("action".to_string())).unwrap();
+        
+        match evt_rx.recv_timeout(Duration::from_secs(1)) {
+            Ok(Event::Data(_)) => {},
+            _ => panic!("Expected Data event"),
+        }
+    }
 }

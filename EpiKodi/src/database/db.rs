@@ -285,7 +285,7 @@ impl DB {
 
         Ok(rows.filter_map(Result::ok).collect())
     }
-
+      //ORDER BY position ASC
     pub fn get_playlist_id(&mut self, name: &str) -> rusqlite::Result<i64> {
         self.conn.query_row(
             "SELECT id FROM playlists WHERE name = ?1",
@@ -326,5 +326,150 @@ impl DB {
 
 
 
+
+
+
+
+
+
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use rusqlite::Connection;
+
+    fn create_test_db() -> DB {
+        let conn = Connection::open_in_memory().unwrap();
+        let mut db = DB {
+            conn,
+            media_rows: Vec::new(),
+        };
+        db.init_db().unwrap();
+        db
+    }
+
+    #[test]
+    fn test_init_db() {
+        let mut db = create_test_db();
+
+        assert!(db.init_db().is_ok());
+    }
+
+    #[test]
+    fn test_insert_media() {
+        let mut db = create_test_db();
+
+        assert!(db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video").is_ok());
+    }
+
+    #[test]
+    fn test_get_all_media() {
+        let mut db = create_test_db();
+        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video").unwrap();
+        
+        let media = db.get_all_media().unwrap();
+
+        assert_eq!(media.len(), 1);
+        assert_eq!(media[0].path, "path/to/video.mp4");
+    }
+
+    #[test]
+    fn test_get_or_create_tag() {
+        let mut db = create_test_db();
+        let tag_id1 = db.get_or_create_tag("action").unwrap();
+        let tag_id2 = db.get_or_create_tag("action").unwrap();
+
+        assert_eq!(tag_id1, tag_id2);
+    }
+
+    #[test]
+    fn test_get_tag_id() {
+        let mut db = create_test_db();
+        db.get_or_create_tag("comedy").unwrap();
+
+        let tag_id = db.get_tag_id("comedy").unwrap();
+
+        assert!(tag_id > 0);
+    }
+
+    #[test]
+    fn test_add_tag_to_media() {
+        let mut db = create_test_db();
+        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video").unwrap();
+        
+        let tag_id = db.get_or_create_tag("action").unwrap();
+        
+        assert!(db.add_tag_to_media(1, tag_id).is_ok());
+    }
+
+    #[test]
+    fn test_get_media_by_tag() {
+        let mut db = create_test_db();
+        db.insert_media("path/to/video1.mp4", "Video 1", 120.0, "video").unwrap();
+        db.insert_media("path/to/video2.mp4", "Video 2", 150.0, "video").unwrap();
+        
+        let tag_id = db.get_or_create_tag("action").unwrap();
+        db.add_tag_to_media(1, tag_id).unwrap();
+        
+        let media = db.get_media_by_tag("action").unwrap();
+        
+        assert_eq!(media.len(), 1);
+        assert_eq!(media[0], 1);
+    }
+
+    #[test]
+    fn test_create_playlist() {
+        let mut db = create_test_db();
+        let playlist_id = db.create_playlist("My Playlist").unwrap();
+        
+        assert!(playlist_id > 0);
+    }
+
+    #[test]
+    fn test_add_media_to_playlist() {
+        let mut db = create_test_db();
+        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video").unwrap();
+        let playlist_id = db.create_playlist("My Playlist").unwrap();
+        
+        assert!(db.add_media_to_playlist(1, playlist_id).is_ok());
+    }
+
+    #[test]
+    #[ignore]
+    fn test_get_media_from_playlist() {
+        let mut db = create_test_db();
+        db.insert_media("path/to/video1.mp4", "Video 1", 120.0, "video").unwrap();
+        db.insert_media("path/to/video2.mp4", "Video 2", 150.0, "video").unwrap();
+        
+        let playlist_id = db.create_playlist("My Playlist").unwrap();
+        db.add_media_to_playlist(1, playlist_id).unwrap();
+        db.add_media_to_playlist(2, playlist_id).unwrap();
+        
+        let media = db.get_media_from_playlist(playlist_id).unwrap();
+        
+        assert_eq!(media.len(), 2);
+    }
+
+    #[test]
+    fn test_get_playlist_id() {
+        let mut db = create_test_db();
+        db.create_playlist("Test Playlist").unwrap();
+        let id = db.get_playlist_id("Test Playlist").unwrap();
+
+        assert!(id > 0);
+    }
+
+    #[test]
+    fn test_clear_media_table() {
+        let mut db = create_test_db();
+        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video").unwrap();
+        
+        assert!(db.clear_media_table().is_ok());
+        let media = db.get_all_media().unwrap();
+        
+        assert_eq!(media.len(), 0);
+    }
+}
 
 
