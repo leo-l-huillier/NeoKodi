@@ -1,9 +1,3 @@
-
-/*
-In this file we handle the media library, calling the scan functions for different sources,
-and store the found media in a data structure
-*/
-
 use crate::database::db::DB;
 
 use crate::media::data::Media;
@@ -51,15 +45,12 @@ impl MediaLibrary {
 
     pub fn init(&mut self) {
 
-        // scan the libraries
         self.database.init_db().unwrap();
         self.scan_lib.scan_libraries();
 
-        // update the database
-        self.database.upsert_media_from_scan(self.scan_lib.scan.clone()).unwrap(); //TODO: ce clone me fait chier, il faudrait qu'on utilise juste scan (ca serait meme mieux si on donne la valeur direct comme ca il se fait drop (on en a plus besoin ) et mm en terme de performance c'est pas terrible parce que c'est un gros object )
-        self.database.cleanup_missing_media(self.scan_lib.scan.clone()).unwrap(); // TODO to implement, shuld be called every scans
+        self.database.upsert_media_from_scan(self.scan_lib.scan.clone()).unwrap();
+        self.database.cleanup_missing_media(self.scan_lib.scan.clone()).unwrap();
         self.database.get_all_media().unwrap();
-        //self.database.print_media_rows();
     
         
         for row in self.database.media_rows.iter() {
@@ -67,18 +58,14 @@ impl MediaLibrary {
             let media: Box<dyn Media> = match row.media_type {
                 MediaType::Audio => Box::new(Audio::new(&row.path,&row.title.as_deref().unwrap_or(""))),
                 MediaType::Video => Box::new(Video::new(&row.path,&row.title.as_deref().unwrap_or(""))),
-                MediaType::Image => Box::new(Image::new(&row.path,&row.title.as_deref().unwrap_or(""))),
+                MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or("")
+        )),
             };
 
             self.items.insert(row.id, media);
         }
 
-    }
-
-
-
-    // =========== PLAYLISTS FUNCTIONS ===========
-    
+    }    
 
     pub fn create_playlist(&mut self, name: &str) {
 
@@ -119,11 +106,6 @@ impl MediaLibrary {
     }
 
 
-
-    // =========== TAGS FUNCTIONS ===========
-
-
-    // TODO; retuen result (tag id )
     pub fn add_tag(&mut self, tag_name: &str) {
 
         match self.database.get_or_create_tag(tag_name) {
@@ -150,11 +132,6 @@ impl MediaLibrary {
             }
         }
     }
-
-
-
-    //=========== SOURCES and SCAN FUNCTIONS ===========
-
 
     pub fn add_source(&mut self, path: PathBuf, media_type: MediaType) {
         match media_type {
@@ -205,9 +182,6 @@ impl MediaLibrary {
     }
 
    
-
-    //=========== MEDIA FUNCTIONS ===========
-
     pub fn play_id(&mut self, id: i64) {
         if let Some(item) = self.items.get_mut(&id) {
             println!("Playing media ID {id}: ");
@@ -239,7 +213,6 @@ impl MediaLibrary {
 
         pub fn stop_id(&mut self, id: i64) {
         if let Some(item) = self.items.get_mut(&id) {
-            //println!("Stopping media ID {id}: {}", item.info());
             item.stop();
         } else {
             println!("Error: media with ID {id} not found.");

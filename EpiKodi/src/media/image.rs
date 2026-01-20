@@ -1,107 +1,47 @@
-
-/*
-se fichier s'occupe de la gestion de la lecture d'images
-TODO: get metadata
-*/
-
 use super::data::Media;
 use super::data::MediaType;
 use super::data::MediaInfo;
 
-use gstreamer as gst;
-use gstreamer::prelude::*;
-use gstreamer::parse;
-
 pub struct Image {
+    pub id: i64,
     pub path: String,
     pub name: String,
-
-    pipeline: Option<gst::Pipeline>,
-
-    media_type: MediaType,
+    pub media_type: MediaType,
 }
 
 impl Image {
-    pub fn new(path: &str, name: &str) -> Self {
+    pub fn new(id: i64, path: &str, name: &str) -> Self {
         Self {
+            id,
             path: path.to_string(),
             name: name.to_string(),
-            pipeline: None,
             media_type: MediaType::Image,
         }
     }
 }
 
 impl Media for Image {
-    fn init(&mut self) {
-        gst::init().expect("Failed to initialize GStreamer");
-
-        // Use d3dvideosink (Windows) or xvimagesink (Linux) to force separate video window from playbin
-        let sink = if cfg!(windows) {
-            "d3dvideosink"
-        } else {
-            "xvimagesink"
-        };
-
-        let pipeline_description = format!(
-            "filesrc location=\"{}\" ! decodebin name=dec \
-             dec. ! queue ! imagefreeze ! videoconvert ! {}",
-            self.path, sink
-        );
-
-        let pipeline = parse::launch(&pipeline_description)
-            .expect("Failed to create pipeline")
-            .downcast::<gst::Pipeline>()
-            .expect("Failed to downcast to Pipeline");
-
-        self.pipeline = Some(pipeline);
-    }
+    fn init(&mut self) {}
 
     fn play(&mut self) {
-        if let Some(pipeline) = &self.pipeline {
-            pipeline
-                .set_state(gst::State::Playing)
-                .expect("Unable to set the pipeline to the Playing state");
-        }
+        println!("Displaying image (logic handled by frontend): {}", self.name);
     }
 
-    fn pause(&self) {
-        if let Some(pipeline) = &self.pipeline {
-            pipeline
-                .set_state(gst::State::Paused)
-                .expect("Unable to set the pipeline to the Paused state");
-        }
-    }
-
-    fn stop(&self) {
-        if let Some(pipeline) = &self.pipeline {
-            pipeline
-                .set_state(gst::State::Null)
-                .expect("Unable to set the pipeline to the Null state");
-        }
-    }
+    fn pause(&self) {}
+    fn resume(&self) {}
+    fn stop(&self) {}
 
     fn info(&self) -> MediaInfo {
-        //format!("🖼️ Image: {} ({})", self.name, self.path);
-
         MediaInfo {
-            id: 0,
+            id: self.id,
             path: self.path.clone(),
             title: Some(self.name.clone()),
             duration: None,
             media_type: MediaType::Image,
         }
-        
     }
 
-    fn media_type(&self) -> MediaType {
-        MediaType::Image
-    }
-
-    fn get_name(&self) -> String {
-        self.name.clone()
-    }
-    fn get_path(&self) -> String {
-        self.path.clone()
-    }
+    fn media_type(&self) -> MediaType { MediaType::Image }
+    fn get_name(&self) -> String { self.name.clone() }
+    fn get_path(&self) -> String { self.path.clone() }
 }

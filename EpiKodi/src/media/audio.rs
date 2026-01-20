@@ -44,7 +44,6 @@ impl Audio {
     pub fn new(path: &str, name: &str) -> Self {
 
 
-        //========= METADATA ========= 
         let tagged_file = read_from_path(path)
             .expect("Failed to read tags from file");
         let tag = match tagged_file.primary_tag() {
@@ -157,11 +156,6 @@ impl Media for Audio {
         self.path.clone()
     }
 }
-
-
-
-
-
 
 
 #[cfg(test)]
