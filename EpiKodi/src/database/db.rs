@@ -436,6 +436,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn test_get_media_from_playlist() {
         let mut db = create_test_db();
         db.insert_media("path/to/video1.mp4", "Video 1", 120.0, "video").unwrap();

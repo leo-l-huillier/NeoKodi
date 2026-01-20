@@ -170,7 +170,7 @@ mod tests {
     }
 
     #[test]
-   // #[ignore] // Requires tests/data/sample.mp3 to exist with readable tags
+    #[ignore] // Requires tests/data/sample.mp3 to exist with readable tags
     fn new_reads_metadata() {
         let path = sample_path().expect("missing test audio file");
         let audio = Audio::new(&path, "Sample");
@@ -180,7 +180,7 @@ mod tests {
     }
 
     #[test]
-    //#[ignore] // Requires tests/data/sample.mp3; also opens audio device
+    #[ignore] // Requires tests/data/sample.mp3; also opens audio device
     fn init_and_play_then_stop() {
         let path = sample_path().expect("missing test audio file");
         let mut audio = Audio::new(&path, "Sample");
@@ -192,7 +192,7 @@ mod tests {
     }
 
     #[test]
-    //#[ignore] // Requires tests/data/sample.mp3
+    #[ignore] // Requires tests/data/sample.mp3
     fn info_returns_media_info() {
         let path = sample_path().expect("missing test audio file");
         let audio = Audio::new(&path, "Sample");
