@@ -30,7 +30,8 @@ jobs:
             librsvg2-dev \
             patchelf \
             libsoup-3.0-dev \
-            libjavascriptcoregtk-4.1-dev
+            libjavascriptcoregtk-4.1-dev \
+            libasound2-dev
         working-directory: .
       
       - name: Set up Rust
@@ -46,7 +47,5 @@ jobs:
       - name: Generate coverage report
         continue-on-error: true
         run: |
-          cargo install cargo-llvm-cov --locked
-          cargo llvm-cov --summary-only
           cargo install cargo-llvm-cov --locked
           cargo llvm-cov --summary-only
