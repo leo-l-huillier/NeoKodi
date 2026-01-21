@@ -6,8 +6,7 @@ use crate::library::sources::LibraryConfig;
 use crate::library::media_library::ScannedMedia;
 use crate::media::data::MediaType;
 
-use crate::constants::constants::{SOURCE_FILE, AUDIO_EXTS, VIDEO_EXTS, IMAGE_EXTS};
-
+use crate::constants::{SOURCE_FILE, AUDIO_EXTS, VIDEO_EXTS, IMAGE_EXTS};
 
 use std::path::Path;
 use std::fs;

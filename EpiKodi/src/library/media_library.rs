@@ -15,7 +15,7 @@ use std::path::Path;
 use dioxus::html::p;
 use rusqlite::{Connection};
 
-use crate::constants::constants::MEDIA_DB_FILE;
+use crate::constants::MEDIA_DB_FILE;
 use crate::scan::scan::Scan;
 use std::path::PathBuf;
 
@@ -57,9 +57,8 @@ impl MediaLibrary {
 
             let media: Box<dyn Media> = match row.media_type {
                 MediaType::Audio => Box::new(Audio::new(&row.path,&row.title.as_deref().unwrap_or(""))),
-                MediaType::Video => Box::new(Video::new(&row.path,&row.title.as_deref().unwrap_or(""))),
-                MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or("")
-        )),
+                MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))),
+                MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))),
             };
 
             self.items.insert(row.id, media);

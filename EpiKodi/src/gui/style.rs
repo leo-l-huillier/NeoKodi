@@ -1,98 +1,128 @@
-
 pub const GLOBAL_STYLE: &str = r#"
-    body { margin: 0; font-family: sans-serif; background-color: #1a1a1a; color: white; }
-    .container { display: flex; height: 100vh; }
+    /* RESET */
+    html, body { 
+        margin: 0; 
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif; 
+        background-color: #121212; 
+        color: white; 
+        
+        /* 👇 ON UTILISE % AU LIEU DE VH */
+        height: 100%; 
+        width: 100%;
+        overflow: hidden; 
+    }
     
-    /* Sidebar */
-    .sidebar { 
-        width: 250px; 
-        background-color: #252525; 
+    * { box-sizing: border-box; }
+    a { text-decoration: none; color: inherit; }
+
+    /* CONTENEUR PRINCIPAL */
+    .container { 
         display: flex; 
-        flex-direction: column; 
+        flex-direction: column;
+        
+        /* Prend 100% de la fenêtre allouée par l'OS */
+        height: 100%;       
+        width: 100%;
+        overflow-y: auto;    
+        
         padding: 20px;
+        padding-bottom: 50px; /* Petit espace de sécurité en bas pour le scroll */
     }
-    .nav-item {
-        padding: 15px; 
-        text-decoration: none; 
-        color: #aaa; 
-        font-size: 1.2rem;
-        transition: 0.2s;
+
+    /* --- BARRE DU HAUT --- */
+    .top-bar {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #333;
+        min-height: 60px;
+        flex-shrink: 0;
+    }
+
+    .page-title {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .btn-nav {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #252525;
+        color: #aaa;
+        padding: 10px 20px;
         border-radius: 8px;
-        margin-bottom: 5px;
+        font-weight: bold;
+        transition: 0.2s;
+        border: 1px solid #333;
+        cursor: pointer;
+        display: flex; align-items: center; gap: 10px;
+        z-index: 10;
     }
-    .nav-item:hover, .nav-item.router-link-active {
+    .btn-nav:hover {
         background-color: #007acc;
         color: white;
+        border-color: #007acc;
     }
 
-    /* Content */
-    .content { flex: 1; padding: 40px; overflow-y: auto; }
-    
-    /* Grille médias */
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; margin-top: 20px; }
-    .media-card { background: #333; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+    /* --- GRILLE --- */
+    .media-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+        gap: 25px; 
+    }
 
-    /* --- STYLE AUDIO SPECIFIQUE --- */
-
-    /* Conteneur liste verticale */
-    .audio-list {
-        display: flex;
+    .media-card { 
+        background: #1e1e1e; 
+        border-radius: 12px; 
+        padding: 20px;
+        display: flex; 
         flex-direction: column;
-        gap: 8px; /* Espace entre les pistes */
-        margin-top: 20px;
-    }
-
-    /* Une ligne (une chanson) */
-    .audio-row {
-        display: flex;
-        align-items: center;
-        background-color: #2a2a2a;
-        padding: 10px 15px;
-        border-radius: 6px;
-        transition: background-color 0.2s, transform 0.1s;
+        align-items: center; 
+        justify-content: center; 
+        transition: transform 0.2s, background-color 0.2s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        border: 1px solid #333;
         cursor: pointer;
+        min-height: 180px; 
+        text-align: center;
     }
 
-    .audio-row:hover {
-        background-color: #333;
-        transform: translateX(5px); /* Petit effet de mouvement vers la droite */
+    .media-card:hover {
+        transform: translateY(-5px);
+        background-color: #2d2d2d;
+        border-color: #007acc;
     }
 
-    /* Carré pour l'icône ou la pochette à gauche */
-    .audio-icon {
-        width: 40px;
-        height: 40px;
-        background-color: #444; /* Gris par défaut */
-        border-radius: 4px;
-        margin-right: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-    }
+    .card-icon { font-size: 3rem; margin-bottom: 15px; }
+    .card-text { font-size: 1.1rem; font-weight: 600; }
 
-    /* Infos texte */
-    .audio-info {
-        flex: 1; /* Prend toute la place disponible */
-        display: flex;
-        flex-direction: column;
+    /* --- LISTE AUDIO --- */
+    .audio-list { display: flex; flex-direction: column; gap: 10px; }
+    
+    .audio-row {
+        display: flex; align-items: center;
+        background-color: #1e1e1e; padding: 12px 20px;
+        border-radius: 8px; cursor: pointer;
+        border: 1px solid transparent; transition: 0.2s;
     }
-
-    .audio-title {
-        font-weight: 600;
-        color: white;
-        font-size: 1rem;
+    .audio-row:hover { background-color: #2d2d2d; border-color: #444; transform: translateX(5px); }
+    
+    .audio-icon { 
+        width: 45px; height: 45px; 
+        background: #333; border-radius: 6px; 
+        margin-right: 20px; display: flex; align-items: center; justify-content: center; 
+        font-size: 1.5rem; 
     }
-
-    .audio-artist {
-        font-size: 0.85rem;
-        color: #aaa;
-        margin-top: 2px;
-    }
-
-    /* Durée à droite */
-    .audio-duration {
-        font-family: monospace;
-        color: #888;
-        font-size: 0.9rem;
+    .audio-info { flex: 1; }
+    .audio-title { font-weight: 600; }
+    .audio-artist { font-size: 0.85rem; color: #888; }
 "#;

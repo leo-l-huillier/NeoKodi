@@ -2,23 +2,17 @@
   "sources": [],
   "music_sources": [
     {
-      "path": "/music1"
-    },
-    {
-      "path": "/music2"
-    },
-    {
-      "path": "/test/music"
+      "path": "C:\\Users\\Pier-Alexandre\\OneDrive\\Bureau\\NeoKodi\\EpiKodi\\media"
     }
   ],
   "video_sources": [
     {
-      "path": "/videos1"
+      "path": "C:\\Users\\Pier-Alexandre\\OneDrive\\Bureau\\NeoKodi\\EpiKodi\\media"
     }
   ],
   "image_sources": [
     {
-      "path": "/images1"
+      "path": "C:\\Users\\Pier-Alexandre\\OneDrive\\Bureau\\NeoKodi\\EpiKodi\\media"
     }
   ]
 }
