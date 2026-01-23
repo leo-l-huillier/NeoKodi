@@ -30,6 +30,12 @@ impl DB {
         }
     }
 
+    pub fn clear_all_media(&self) -> Result<(), rusqlite::Error> {
+        self.conn.execute("DELETE FROM media", [])?;
+        println!("🗑️ BASE DE DONNÉES VIDÉE");
+        Ok(())
+    }
+
     //TODO: check if this is a corrct/clean way to do this
     pub fn init_db(&mut self) -> Result<()> {
         self.conn.execute(

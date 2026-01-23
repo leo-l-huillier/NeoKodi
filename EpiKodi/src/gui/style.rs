@@ -1,5 +1,5 @@
 pub const GLOBAL_STYLE: &str = r#"
-    /* RESET */
+    /* RESET GLOBAL */
     html, body { 
         margin: 0; 
         padding: 0;
@@ -7,10 +7,10 @@ pub const GLOBAL_STYLE: &str = r#"
         background-color: #121212; 
         color: white; 
         
-        /* 👇 ON UTILISE % AU LIEU DE VH */
-        height: 100%; 
-        width: 100%;
-        overflow: hidden; 
+        /* 👇 ON BLOQUE LE CORPS DE PAGE */
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden; /* C'est le container qui scrollera, pas le body */
     }
     
     * { box-sizing: border-box; }
@@ -21,26 +21,52 @@ pub const GLOBAL_STYLE: &str = r#"
         display: flex; 
         flex-direction: column;
         
-        /* Prend 100% de la fenêtre allouée par l'OS */
-        height: 100%;       
+        /* 👇 LA CORRECTION EST ICI : 100vh FORCE LA TAILLE DE L'ÉCRAN */
+        height: 100vh;
         width: 100%;
-        overflow-y: auto;    
         
-        padding: 20px;
-        padding-bottom: 50px; /* Petit espace de sécurité en bas pour le scroll */
+        /* C'est ici qu'on active le scroll */
+        overflow-y: auto;
+        overflow-x: hidden;
+        
+        padding: 0; 
     }
 
-    /* --- BARRE DU HAUT --- */
+    /* --- SCROLLBAR PERSONNALISÉE (Pour être sûr qu'on la voit) --- */
+    /* WebKit (Chrome, Edge, WebView2) */
+    ::-webkit-scrollbar {
+        width: 14px; /* Un peu plus large pour être visible */
+    }
+    ::-webkit-scrollbar-track {
+        background: #0a0a0a; 
+        border-left: 1px solid #333;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #444; 
+        border-radius: 7px;
+        border: 2px solid #0a0a0a; /* Petit bord pour faire joli */
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #007acc; /* Devient bleu au survol */
+    }
+
+    /* --- BARRE DU HAUT (STICKY) --- */
     .top-bar {
-        position: relative;
+        position: sticky; 
+        top: 0;
+        z-index: 100;
+        background-color: #121212; /* Opaque pour cacher le contenu qui passe dessous */
+        
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 30px;
-        padding-bottom: 15px;
+        
+        padding: 20px;
+        margin-bottom: 20px;
         border-bottom: 1px solid #333;
-        min-height: 60px;
+        min-height: 80px;
         flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.8);
     }
 
     .page-title {
@@ -49,11 +75,12 @@ pub const GLOBAL_STYLE: &str = r#"
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 2px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .btn-nav {
         position: absolute;
-        left: 0;
+        left: 20px;
         top: 50%;
         transform: translateY(-50%);
         background-color: #252525;
@@ -73,9 +100,16 @@ pub const GLOBAL_STYLE: &str = r#"
         border-color: #007acc;
     }
 
+    /* --- CONTENU --- */
+    .media-grid, .audio-list {
+        padding: 20px; 
+        padding-bottom: 100px; /* Grosse marge en bas pour scroller confortablement */
+    }
+
     /* --- GRILLE --- */
     .media-grid { 
         display: grid; 
+        /* Responsive intelligent */
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
         gap: 25px; 
     }
