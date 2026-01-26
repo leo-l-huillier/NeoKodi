@@ -15,9 +15,10 @@ use std::path::Path;
 use dioxus::html::p;
 use rusqlite::{Connection};
 
-use crate::constants::constants::MEDIA_DB_FILE;
+use crate::constants::MEDIA_DB_FILE;
 use crate::scan::scan::Scan;
 use std::path::PathBuf;
+use std::fs::File;
 
 
 #[derive(Debug, Clone)]
@@ -57,9 +58,8 @@ impl MediaLibrary {
 
             let media: Box<dyn Media> = match row.media_type {
                 MediaType::Audio => Box::new(Audio::new(&row.path,&row.title.as_deref().unwrap_or(""))),
-                MediaType::Video => Box::new(Video::new(&row.path,&row.title.as_deref().unwrap_or(""))),
-                MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or("")
-        )),
+                MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))),
+                MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))),
             };
 
             self.items.insert(row.id, media);
@@ -140,6 +140,7 @@ impl MediaLibrary {
             MediaType::Image => self.scan_lib.libraries.add_image_source(path),
         }
 
+        self.init();
     }
 
     pub fn get_media_from_path(&mut self, path: PathBuf) -> Vec<MediaInfo> {
@@ -236,11 +237,36 @@ impl MediaLibrary {
         }
     }
 
+    pub fn clear(&mut self) {
+        println!("🔥 GRAND NETTOYAGE EN COURS...");
+
+        // 1. On vide la mémoire RAM
+        self.items.clear();
+        
+        // 2. On vide la Base de Données
+        if let Err(e) = self.database.clear_all_media() {
+            println!("❌ Erreur lors du nettoyage de la DB : {}", e);
+        } else {
+            println!("✅ Base de données vidée.");
+        }
+
+        // 3. ON RÉINITIALISE LE SCANNER PROPREMENT
+        // Au lieu de supprimer le fichier (ce qui casse tout), on l'écrase avec un JSON vide valide.
+        // Cela permet au scanner de repartir sur une base saine.
+        let sources_path = Path::new("db/sources.json");
+        
+        // On écrit un objet JSON vide "{}" pour ne pas faire planter le parser JSON
+        if let Err(e) = fs::write(sources_path, "{}") {
+             println!("⚠️ Impossible de réinitialiser sources.json : {}", e);
+        } else {
+             println!("✅ Fichier sources.json réinitialisé (chemins oubliés).");
+        }
+
+        // On recharge un scanner tout neuf qui lira ce fichier vide
+        self.scan_lib = Scan::new();
+    }
+
 }
-
-
-
-
 
 
 

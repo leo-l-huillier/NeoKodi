@@ -7,7 +7,7 @@ use std::path::PathBuf;
 use crate::media::data::MediaInfo;
 
 pub enum Command {
-
+    ChangeLibraryPath(PathBuf),
     AddSource(PathBuf, MediaType), // path
     //ScanLibrary,        // allows the user to rescan the library
 

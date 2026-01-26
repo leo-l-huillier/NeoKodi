@@ -13,3 +13,9 @@ dioxus-desktop = "0.5"
 dioxus-router = "0.5"
 rusqlite = { version = "0.31", features = ["bundled"] }
 tokio = { version = "1", features = ["full"] }
+base64 = "0.21"
+warp = "0.3"
+rfd = "0.14"
+directories = "5.0"
+once_cell = "1.18"
+dirs = "5.0"

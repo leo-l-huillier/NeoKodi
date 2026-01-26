@@ -2,23 +2,17 @@
   "sources": [],
   "music_sources": [
     {
-      "path": "/music1"
-    },
-    {
-      "path": "/music2"
-    },
-    {
-      "path": "/test/music"
+      "path": "E:\\game\\Projet Pro\\NeoKodi"
     }
   ],
   "video_sources": [
     {
-      "path": "/videos1"
+      "path": "E:\\game\\Projet Pro\\NeoKodi"
     }
   ],
   "image_sources": [
     {
-      "path": "/images1"
+      "path": "E:\\game\\Projet Pro\\NeoKodi"
     }
   ]
 }
