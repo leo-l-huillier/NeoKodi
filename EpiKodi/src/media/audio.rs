@@ -32,7 +32,7 @@ pub struct Audio {
     pub name: String,
 
     media_type: MediaType,
-    metadata: Metadata,
+    metadata: Metadata, // make it a json
 
     stream: Option<rodio::OutputStream>,    
     sink: Option<Sink>,
@@ -44,6 +44,7 @@ impl Audio {
     pub fn new(path: &str, name: &str) -> Self {
 
 
+        //========= METADATA ========= 
         let tagged_file = read_from_path(path)
             .expect("Failed to read tags from file");
         let tag = match tagged_file.primary_tag() {
@@ -158,19 +159,22 @@ impl Media for Audio {
 }
 
 
+
+
+
+
+
 #[cfg(test)]
 mod tests {
     use super::*;
     use std::path::Path;
 
-    // Helper: returns a sample file path; tests are ignored if missing.
     fn sample_path() -> Option<String> {
         let p = Path::new("tests/data/sample.mp3");
         if p.exists() { Some(p.to_string_lossy().to_string()) } else { None }
     }
 
     #[test]
-    #[ignore] // Requires tests/data/sample.mp3 to exist with readable tags
     fn new_reads_metadata() {
         let path = sample_path().expect("missing test audio file");
         let audio = Audio::new(&path, "Sample");
@@ -180,7 +184,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore] // Requires tests/data/sample.mp3; also opens audio device
     fn init_and_play_then_stop() {
         let path = sample_path().expect("missing test audio file");
         let mut audio = Audio::new(&path, "Sample");
@@ -192,7 +195,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore] // Requires tests/data/sample.mp3
     fn info_returns_media_info() {
         let path = sample_path().expect("missing test audio file");
         let audio = Audio::new(&path, "Sample");

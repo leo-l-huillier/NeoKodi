@@ -1,3 +1,9 @@
+
+/*
+This file manages the media thread, which handles media playback commands
+*/
+
+
 use crate::library::media_library::MediaLibrary;
 use super::command::Command;
 use super::command::Event;
@@ -12,14 +18,21 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
     let library = Arc::new(Mutex::new(MediaLibrary::new()));
     let lib_thread = Arc::clone(&library);
 
+    // let media_thread =
     thread::spawn(move || {
         let mut library = lib_thread.lock().unwrap();
         library.init();
+        //library.play_id(3);
+
         drop(library);
 
         loop {
-            match cmd_rx.recv() {                
+            // TODO handle errors
+            match cmd_rx.recv() {
+                // le mutex se drop en sortant du scope
                 
+                //TODO - virer cette merde
+                // this thing is a heresy.... can't stay like this
                 Ok(Command::ChangeLibraryPath(path)) => {
                     println!("🔄 REÇU COTÉ BACKEND : CHANGEMENT DE RACINE vers {:?}", path);
                     let mut library = lib_thread.lock().unwrap();
@@ -33,6 +46,16 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     library.add_source(path, MediaType::Image);
 
                     evt_tx.send(Event::MediaList(library.get_all_media())).unwrap();
+                }
+
+                Ok(Command::AddSource(path, media_type)) => {
+                    let mut library = lib_thread.lock().unwrap();
+
+                    library.add_source(path, media_type);
+                }
+
+                Ok(Command::ChangeLibraryPath(path)) => {
+                    println!("🔄 REÇU COTÉ BACKEND : CHANGEMENT DE RACINE vers {:?}", path);
                 }
 
                 Ok(Command::AddSource(path, media_type)) => {
@@ -61,13 +84,14 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                 Ok(Command::GetMediaFromTag(tag_name)) => {
                     let mut library = lib_thread.lock().unwrap();
                     let media_list = library.get_media_from_tag(&tag_name);
+                    // For simplicity, we just send the count of media items found
                     evt_tx.send(Event::IDList(media_list)).unwrap();
                 }
 
                 Ok(Command::GetMediaFromPlaylist(playlist_id)) => {
                     let mut library = lib_thread.lock().unwrap();
                     let media_list = library.get_media_from_playlist(playlist_id);
-                    println!("in OK : Retrieved media from Playlist ID {}: {:?}", playlist_id, media_list);
+                    // For simplicity, we just send the count of media items found
                     evt_tx.send(Event::IDList(media_list)).unwrap();
                 }
 
@@ -136,6 +160,10 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
         }
     });
 }
+
+
+
+
 
 
 #[cfg(test)]
