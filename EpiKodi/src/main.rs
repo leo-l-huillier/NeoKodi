@@ -1,4 +1,4 @@
-#![allow(non_snake_case)]
+/*#![allow(non_snake_case)]
 
 mod constants;
 mod threading;
@@ -46,6 +46,7 @@ fn main() {
 
     let reload_tx_server = reload_tx.clone(); 
 
+    // SALBATAR: POURQUOI TA BESOIN D4UN SERVER?????????????????????
     // --- LE THREAD SERVEUR ROBUSTE ---
     thread::spawn(move || {
         let rt = tokio::runtime::Runtime::new().unwrap();
@@ -92,6 +93,7 @@ fn main() {
 
 fn App() -> Element {
     let backend_channels = use_hook(|| {
+
         let (cmd_tx, cmd_rx) = mpsc::channel::<Command>();
         let (evt_tx, evt_rx) = mpsc::channel::<Event>();
         
@@ -101,6 +103,8 @@ fn App() -> Element {
         let root_path = PathBuf::from(config.media_path);
         println!("🚀 UI : Démarrage sur {:?}", root_path);
         
+        // SALBATAR: POURQUOI T4ADD DES SOURCES ICI CA A AUCUNS INTERET, ET EN PLUS C'EST SENC2 ETRE FAIS DANS LE BACK
+        // SALBATAR: ET EN PLUS APPELER LE TRUC 3 FOIS C4EST TELLEMENT MOCHE ET CA MARCHE QUE PARCE QUE J4AI BIEN FAIS MON TRAVAIL
         // 👇 CHANGEMENT ICI :
         // On n'utilise PAS ChangeLibraryPath au démarrage (car ça vide la DB !).
         // On utilise AddSource pour s'assurer que le dossier est bien surveillé.
@@ -153,4 +157,321 @@ fn App() -> Element {
     });
 
     rsx! { Router::<Route> {} }
+}
+
+
+    */
+
+
+// All the above code is to be rechecked and clean..........
+
+
+/*
+main.rs
+*/
+
+
+
+mod constants;
+
+//======== MEDIA THREADING ========
+mod threading;
+
+use threading::media_thread::launch_media_thread;
+use threading::command::Command;
+use threading::command::Event;
+
+//======== DATABASE ========
+mod database;
+use database::db::DB;
+use rusqlite::{Connection};
+
+mod media;
+mod library;
+mod scan;
+
+//mod plugin;
+//use plugin::plugin_manager::PluginManager;
+
+//======== GUI ========
+//mod gui;
+//use gui::route::Route;
+
+use std::time::Duration;
+use std::thread::sleep;
+use std::sync::mpsc;
+
+
+use dioxus::prelude::*;
+use dioxus::desktop::{Config, WindowBuilder};
+use dioxus_router::prelude::*;
+
+use crate::constants::constants::MEDIA_DB_FILE;
+
+
+
+use crate::media::image::Image;
+/* 
+fn main() {
+
+    // ========== MEDIA THREADING ===========
+
+
+    let (cmd_tx, cmd_rx) = mpsc::channel::<Command>();
+    let (evt_tx, evt_rx) = mpsc::channel::<Event>();
+    launch_media_thread(cmd_rx, evt_tx);
+
+    // ========== GUI ===========
+
+
+    /*
+    let config = Config::new().with_window(WindowBuilder::new().with_title("NeoKodi").with_resizable(true));
+
+    // 2. Lancer l'application
+    LaunchBuilder::desktop().with_cfg(config).launch(|| rsx! { Router::<Route> {} });
+    */
+
+    // ========== GUI back test ===========
+     
+    let mut i = 0;
+    loop {
+        // Simulate GUI
+
+        //println!("GUI working...");
+        if let Ok(event) = evt_rx.try_recv() {
+                match event {
+                    Event::Finished(id) => println!("Media finished item {id}"),
+                    Event::NowPlaying(msg) => println!("MEDIA says: {msg}"),
+                    Event::Data(info) => println!("MEDIA info: {info}"),
+                    Event::IDList(ids) => println!("MEDIA ID List: {:?}", ids),
+                    Event::Info(info) => println!("MEDIA Info: {:?}", info),
+                    //medialist
+                    _ => {}
+                    
+                }
+        }
+
+        sleep(Duration::from_secs(1));
+        let id = 30;
+        if i==2 {
+            cmd_tx.send(Command::AddMediaToPlaylist(33, 1)).unwrap();
+            cmd_tx.send(Command::GetMediaFromPlaylist(1)).unwrap();
+            cmd_tx.send(Command::AddTagToMedia(33, 1)).unwrap();
+            cmd_tx.send(Command::GetMediaFromTag("chill".to_string())).unwrap();
+            
+            //cmd_tx.send(Command::Info(id)).unwrap();
+
+           
+        }
+        if i==5 {
+            cmd_tx.send(Command::Pause(id)).unwrap();
+        }
+        if i==8 {
+            cmd_tx.send(Command::Resume(id)).unwrap();
+        }
+        if i==10 {
+            break;
+        }
+        i += 1;
+        
+    }
+}
+
+*/
+
+/*
+use libloading::{Library, Symbol};
+use std::ffi::{CStr, CString};
+use std::os::raw::c_char;
+
+fn main() {
+    println!("=== Dynamic Library Loading Demo ===\n");
+
+    #[cfg(target_os = "windows")]
+    let lib_path = "plugins/hello_plugin.dll";
+    
+    #[cfg(target_os = "linux")]
+    let lib_path = "plugins/libhello_plugin.so";
+    
+    #[cfg(target_os = "macos")]
+    let lib_path = "plugins/libhello_plugin.dylib";
+
+    println!("Loading library from: {}", lib_path);
+    
+    // Load the dynamic library
+    let lib = match unsafe { Library::new(lib_path) } {
+        Ok(lib) => {
+            println!("✓ Library loaded successfully!\n");
+            lib
+        }
+        Err(e) => {
+            eprintln!("✗ Failed to load library: {}", e);
+            eprintln!("\nMake sure you've built the plugin first:");
+            eprintln!("  cd plugin_aaa");
+            eprintln!("  cargo build");
+            std::process::exit(1);
+        }
+    };
+
+    // Define the function signature
+    type GreetFunc = unsafe extern "C" fn(*const c_char) -> *mut c_char;
+    type FreeStringFunc = unsafe extern "C" fn(*mut c_char);
+
+    unsafe {
+        // Load the greet function
+        let greet: Symbol<GreetFunc> = match lib.get(b"greet\0") {
+            Ok(func) => func,
+            Err(e) => {
+                eprintln!("✗ Failed to load 'greet' function: {}", e);
+                std::process::exit(1);
+            }
+        };
+
+        // Load the free_string function
+        let free_string: Symbol<FreeStringFunc> = match lib.get(b"free_string\0") {
+            Ok(func) => func,
+            Err(e) => {
+                eprintln!("✗ Failed to load 'free_string' function: {}", e);
+                std::process::exit(1);
+            }
+        };
+
+        // Test the function with different names
+        let names = vec!["Alice", "Bob", "Rustacean"];
+        
+        for name in names {
+            println!("Calling plugin with name: {}", name);
+            
+            // Convert Rust string to C string
+            let c_name = CString::new(name).unwrap();
+            
+            // Call the plugin function
+            let result_ptr = greet(c_name.as_ptr());
+            
+            // Convert the result back to Rust string
+            let result = CStr::from_ptr(result_ptr)
+                .to_str()
+                .unwrap_or("Error: Invalid UTF-8");
+            
+            println!("  Plugin response: {}\n", result);
+            
+            // Free the string allocated by the plugin
+            free_string(result_ptr);
+        }
+    }
+
+    println!("=== Demo Complete ===");
+}
+
+*/
+
+use libloading::{Library, Symbol};
+use std::ffi::{CStr, CString};
+use std::os::raw::c_char;
+use std::env;
+
+fn main() {
+    println!("=== Dynamic Library Loading Demo ===\n");
+
+    // Check command line arguments to decide which plugin to load
+    let args: Vec<String> = env::args().collect();
+    let plugin_name = if args.len() > 1 {
+        args[1].as_str()
+    } else {
+        "musicbrainz"
+    };
+
+    let lib_path = match plugin_name {
+        "hello" => {
+            #[cfg(target_os = "windows")]
+            { "plugins/hello_plugin.dll" }
+            #[cfg(target_os = "linux")]
+            { "../hello-plugin/target/debug/libhello_plugin.so" }
+            #[cfg(target_os = "macos")]
+            { "../hello-plugin/target/debug/libhello_plugin.dylib" }
+        }
+        "musicbrainz" => {
+            #[cfg(target_os = "windows")]
+            { "plugins/musicbrainz_plugin.dll" }
+            #[cfg(target_os = "linux")]
+            { "../musicbrainz-plugin/target/debug/libmusicbrainz_plugin.so" }
+            #[cfg(target_os = "macos")]
+            { "../musicbrainz-plugin/target/debug/libmusicbrainz_plugin.dylib" }
+        }
+        _ => {
+            eprintln!("Unknown plugin: {}", plugin_name);
+            eprintln!("Available plugins: hello, musicbrainz");
+            std::process::exit(1);
+        }
+    };//TODO recuperer tous les fichiers qui sont dans le bon path
+
+    println!("Loading '{}' plugin from: {}", plugin_name, lib_path);
+    
+    // Load the dynamic library
+    let lib = match unsafe { Library::new(lib_path) } {
+        Ok(lib) => {
+            println!("✓ Library loaded successfully!\n");
+            lib
+        }
+        Err(e) => {
+            eprintln!("✗ Failed to load library: {}", e);
+            eprintln!("\nMake sure you've built the plugin first:");
+            eprintln!("  cd hello-plugin");
+            eprintln!("  cargo build");
+            std::process::exit(1);
+        }
+    };
+
+    // Define the function signature
+    type GreetFunc = unsafe extern "C" fn(*const c_char) -> *mut c_char;
+    type FreeStringFunc = unsafe extern "C" fn(*mut c_char);
+
+    unsafe {
+        // Load the greet function
+        let greet: Symbol<GreetFunc> = match lib.get(b"greet\0") {
+            Ok(func) => func,
+            Err(e) => {
+                eprintln!("✗ Failed to load 'greet' function: {}", e);
+                std::process::exit(1);
+            }
+        };
+
+        // Load the free_string function
+        let free_string: Symbol<FreeStringFunc> = match lib.get(b"free_string\0") {
+            Ok(func) => func,
+            Err(e) => {
+                eprintln!("✗ Failed to load 'free_string' function: {}", e);
+                std::process::exit(1);
+            }
+        };
+
+        // Test the function with different inputs based on plugin type
+        let test_inputs = if plugin_name == "musicbrainz" {
+            vec!["The Beatles", "Nirvana", "Metallica"]
+        } else {
+            vec!["Alice", "Bob", "Rustacean"]
+        };
+        
+        for input in test_inputs {
+            println!("Calling plugin with input: {}", input);
+            
+            // Convert Rust string to C string
+            let c_input = CString::new(input).unwrap();
+            
+            // Call the plugin function
+            let result_ptr = greet(c_input.as_ptr());
+            
+            // Convert the result back to Rust string
+            let result = CStr::from_ptr(result_ptr)
+                .to_str()
+                .unwrap_or("Error: Invalid UTF-8");
+            
+            println!("  Plugin response: {}\n", result);
+            
+            // Free the string allocated by the plugin
+            free_string(result_ptr);
+        }
+    }
+
+    println!("=== Demo Complete ===");
 }
