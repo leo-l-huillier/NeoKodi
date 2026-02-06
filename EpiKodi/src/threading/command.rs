@@ -8,7 +8,7 @@ use crate::media::data::MediaInfo;
 
 pub enum Command {
     ChangeLibraryPath(PathBuf),
-    AddSource(PathBuf, MediaType), // path
+    AddSource(PathBuf, MediaType),
     /*
     TODO
 
@@ -58,6 +58,8 @@ pub enum Command {
     AddPlaylist(String), // playlist name
     GetPlaylistId(String), // playlist name
     AddMediaToPlaylist(i64, i64), // media_id, playlist_id
+    GetArtistInfo(String),
+    LoadM3U(String),
     /*
     TODO:
     delete playlist
@@ -72,4 +74,6 @@ pub enum Event {
     Info(MediaInfo),
     IDList(Vec<i64>),
     MediaList(Vec<MediaInfo>),
+    ArtistInfoReceived(String),
+    M3UList(Vec<crate::iptv::parser::TVChannel>),
 }

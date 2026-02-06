@@ -159,4 +159,30 @@ pub const GLOBAL_STYLE: &str = r#"
     .audio-info { flex: 1; }
     .audio-title { font-weight: 600; }
     .audio-artist { font-size: 0.85rem; color: #888; }
+    
+    .loading-container {
+        width: 100%;
+        max-width: 500px;
+        background-color: #333;
+        border-radius: 4px;
+        height: 6px;
+        overflow: hidden;
+        margin-top: 20px;
+        position: relative;
+    }
+
+    .loading-bar {
+        height: 100%;
+        background-color: #007acc;
+        width: 50%;
+        position: absolute;
+        animation: loading 1.5s infinite ease-in-out;
+        border-radius: 4px;
+    }
+
+    @keyframes loading {
+        0% { left: -50%; width: 30%; }
+        50% { width: 60%; }
+        100% { left: 100%; width: 30%; }
+    }
 "#;

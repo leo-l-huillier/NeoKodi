@@ -10,12 +10,12 @@ pub fn AppLayout() -> Element {
             // -------- MENU LATERAL --------
             nav { class: "sidebar",
                 Link { to: Route::Home {}, class: "nav-item", "Accueil" }
-                Link { to: Route::TV {}, class: "nav-item", "TV" }
-                Link { to: Route::Films {}, class: "nav-item", "Films" }
+                Link { to: Route::Iptv {}, class: "nav-item", "Iptv" }
+                Link { to: Route::Videos {}, class: "nav-item", "Vidéos" }
                 Link { to: Route::Series {}, class: "nav-item", "Séries" }
                 Link { to: Route::Music {}, class: "nav-item", "Musique" }
                 Link { to: Route::Images {}, class: "nav-item", "Images" }
-                Link { to: Route::Addons {}, class: "nav-item", "Add-ons" }
+                Link { to: Route::Plugins {}, class: "nav-item", "Add-ons" }
                 Link { to: Route::Settings {}, class: "nav-item", "Paramètres" }
             }
 

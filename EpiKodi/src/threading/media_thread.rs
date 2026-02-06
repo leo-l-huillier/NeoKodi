@@ -3,166 +3,240 @@
 This file manages the media thread, which handles media playback commands
 */
 
-
 use crate::library::media_library::MediaLibrary;
-use super::command::Command;
-use super::command::Event;
+use super::command::{Command, Event};
 use crate::media::data::MediaType;
+use crate::iptv::parser::parse_m3u;
 
 use std::thread;
 use std::sync::{Arc, Mutex, mpsc};
 use std::path::PathBuf;
+
+// 👇 IMPORTS POUR LES PLUGINS (DLL)
+use libloading::{Library, Symbol};
+use std::ffi::{CString, CStr};
+use std::os::raw::c_char;
 
 pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender<Event>) {
 
     let library = Arc::new(Mutex::new(MediaLibrary::new()));
     let lib_thread = Arc::clone(&library);
 
-    // let media_thread =
+    // 👇 DÉFINITION DES SIGNATURES C POUR LES PLUGINS
+    type GreetFunc = unsafe extern "C" fn(*const c_char) -> *mut c_char;
+    type FreeStringFunc = unsafe extern "C" fn(*mut c_char);
+
     thread::spawn(move || {
         let mut library = lib_thread.lock().unwrap();
         library.init();
-        //library.play_id(3);
-
         drop(library);
 
         loop {
-            // TODO handle errors
-            match cmd_rx.recv() {
-                // le mutex se drop en sortant du scope
-                
-                //TODO - virer cette merde
-                // this thing is a heresy.... can't stay like this
-                Ok(Command::ChangeLibraryPath(path)) => {
-                    println!("🔄 REÇU COTÉ BACKEND : CHANGEMENT DE RACINE vers {:?}", path);
-                    let mut library = lib_thread.lock().unwrap();
+            // On attend une commande...
+            if let Ok(command) = cmd_rx.recv() {
+                match command {
+                    
+                    // ========================================================
+                    // 👇 GESTION DES PLUGINS (MODE BRUT / EFFICACE)
+                    // ========================================================
+                    Command::GetArtistInfo(artist_name) => {
+                        println!("🔌 THREAD: Appel plugin pour '{}'", artist_name);
 
-                    library.clear();
+                        // 1. Détection de l'extension selon l'OS (Windows/Linux/Mac)
+                        #[cfg(target_os = "windows")]
+                        let lib_path = "plugins/musicbrainz_plugin.dll";
+                        #[cfg(target_os = "linux")]
+                        let lib_path = "plugins/libmusicbrainz_plugin.so";
+                        #[cfg(target_os = "macos")]
+                        let lib_path = "plugins/libmusicbrainz_plugin.dylib";
 
-                    evt_tx.send(Event::MediaList(Vec::new())).unwrap();
+                        unsafe {
+                            // 2. Chargement du fichier DLL
+                            match Library::new(lib_path) {
+                                Ok(lib) => {
+                                    // 3. Récupération des fonctions "greet" et "free_string"
+                                    if let Ok(greet) = lib.get::<GreetFunc>(b"greet\0") {
+                                        if let Ok(free_string) = lib.get::<FreeStringFunc>(b"free_string\0") {
+                                            
+                                            // 4. Appel de la fonction C
+                                            let c_input = CString::new(artist_name).unwrap();
+                                            let result_ptr = greet(c_input.as_ptr());
+                                            
+                                            // 5. Conversion du résultat en String Rust
+                                            let result = CStr::from_ptr(result_ptr).to_string_lossy().to_string();
+                                            
+                                            // 6. Nettoyage mémoire (Côté C)
+                                            free_string(result_ptr);
 
-                    library.add_source(path.clone(), MediaType::Video);
-                    library.add_source(path.clone(), MediaType::Audio);
-                    library.add_source(path, MediaType::Image);
+                                            // 7. Envoi du résultat à l'interface
+                                            println!("✅ THREAD: Résultat reçu -> {}", result);
+                                            evt_tx.send(Event::ArtistInfoReceived(result)).unwrap();
+                                        }
+                                    }
+                                }
+                                Err(e) => {
+                                    let err_msg = format!("Erreur chargement DLL ({}): {}", lib_path, e);
+                                    println!("❌ {}", err_msg);
+                                    evt_tx.send(Event::ArtistInfoReceived(err_msg)).unwrap();
+                                }
+                            }
+                        }
+                    }
 
-                    evt_tx.send(Event::MediaList(library.get_all_media())).unwrap();
+                    // ========================================================
+                    // 👇 GESTION DE LA BIBLIOTHÈQUE
+                    // ========================================================
+
+                    Command::ChangeLibraryPath(path) => {
+                        println!("🔄 REÇU COTÉ BACKEND : CHANGEMENT DE RACINE vers {:?}", path);
+                        let mut library = lib_thread.lock().unwrap();
+
+                        // 1. On vide tout
+                        library.clear();
+                        evt_tx.send(Event::MediaList(Vec::new())).unwrap();
+
+                        // 2. On scanne les 3 types de médias
+                        library.add_source(path.clone(), MediaType::Video);
+                        library.add_source(path.clone(), MediaType::Audio);
+                        library.add_source(path, MediaType::Image);
+
+                        // 3. On renvoie la liste mise à jour
+                        evt_tx.send(Event::MediaList(library.get_all_media())).unwrap();
+                    }
+
+                    Command::AddSource(path, media_type) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        library.add_source(path, media_type);
+                    }
+
+                    Command::GetAllMedia() => {
+                        let library = lib_thread.lock().unwrap();
+                        let media_list = library.get_all_media();
+                        evt_tx.send(Event::MediaList(media_list)).unwrap();
+                    }
+
+                    Command::GetMediaFromPath(path) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        let media_list = library.get_media_from_path(path);
+                        evt_tx.send(Event::MediaList(media_list)).unwrap();
+                    }
+
+                    Command::GetMediaFromType(media_type) => {
+                        let library = lib_thread.lock().unwrap();
+                        let media_list = library.get_media_by_type(media_type);
+                        evt_tx.send(Event::MediaList(media_list)).unwrap();
+                    }
+
+                    // ========================================================
+                    // 👇 GESTION TAGS / PLAYLISTS
+                    // ========================================================
+
+                    Command::GetMediaFromTag(tag_name) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        let media_list = library.get_media_from_tag(&tag_name);
+                        evt_tx.send(Event::IDList(media_list)).unwrap();
+                    }
+
+                    Command::GetMediaFromPlaylist(playlist_id) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        let media_list = library.get_media_from_playlist(playlist_id);
+                        evt_tx.send(Event::IDList(media_list)).unwrap();
+                    }
+
+                    Command::LoadM3U(url) => {
+                        println!("📡 Téléchargement de la playlist : {}", url);
+                        
+                        // On télécharge le contenu (opération bloquante, acceptable ici)
+                        match reqwest::blocking::get(&url) {
+                            Ok(resp) => {
+                                if let Ok(content) = resp.text() {
+                                    println!("✅ Playlist téléchargée, analyse en cours...");
+                                    let channels = parse_m3u(&content);
+                                    println!("📺 {} chaînes trouvées !", channels.len());
+                                    
+                                    // On envoie la liste au Front
+                                    evt_tx.send(Event::M3UList(channels)).unwrap();
+                                }
+                            },
+                            Err(e) => println!("❌ Erreur téléchargement M3U : {}", e),
+                        }
+                    }
+
+                    // ========================================================
+                    // 👇 GESTION LECTURE (PLAYER)
+                    // ========================================================
+
+                    Command::Play(id) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        library.play_id(id);
+                        evt_tx.send(Event::NowPlaying(id)).unwrap();
+                    }
+
+                    Command::Pause(id) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        library.pause_id(id);
+                    }
+
+                    Command::Resume(id) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        library.resume_id(id);
+                        evt_tx.send(Event::NowPlaying(id)).unwrap();
+                    }
+
+                    Command::Stop(id) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        library.stop_id(id);
+                    }
+
+                    Command::Info(id) => {
+                        let library = lib_thread.lock().unwrap();
+                        let info = library.info_id(id).unwrap();
+                        evt_tx.send(Event::Info(info)).unwrap();
+                    }
+
+                    // ========================================================
+                    // 👇 GESTION MODIFICATIONS (TAGS, PLAYLISTS)
+                    // ========================================================
+
+                    Command::AddTag(tag_name) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        library.add_tag(&tag_name);
+                    }
+
+                    Command::GetTagId(tag_name) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        let tag_id = library.get_tag_id(&tag_name);
+                        evt_tx.send(Event::Data(tag_id.to_string())).unwrap();
+                    }
+
+                    Command::AddTagToMedia(media_id, tag_id) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        library.add_tag_to_media(media_id, tag_id);
+                    }
+
+                    Command::AddPlaylist(name) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        library.create_playlist(&name);
+                    }
+
+                    Command::AddMediaToPlaylist(media_id, playlist_id) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        library.add_media_to_playlist(media_id, playlist_id);
+                    }
+
+                    Command::GetPlaylistId(name) => {
+                        let mut library = lib_thread.lock().unwrap();
+                        let playlist_id = library.get_playlist_id(&name);
+                        evt_tx.send(Event::Data(playlist_id.to_string())).unwrap();
+                    }
                 }
-
-                Ok(Command::AddSource(path, media_type)) => {
-                    let mut library = lib_thread.lock().unwrap();
-
-                    library.add_source(path, media_type);
-                }
-
-                Ok(Command::ChangeLibraryPath(path)) => {
-                    println!("🔄 REÇU COTÉ BACKEND : CHANGEMENT DE RACINE vers {:?}", path);
-                }
-
-                Ok(Command::AddSource(path, media_type)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    library.add_source(path, media_type);
-                }
-
-                Ok(Command::GetAllMedia()) => {
-                    let library = lib_thread.lock().unwrap();
-                    let media_list = library.get_all_media();
-                    evt_tx.send(Event::MediaList(media_list)).unwrap();
-                }
-
-                Ok(Command::GetMediaFromPath(path)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    let media_list = library.get_media_from_path(path);
-                    evt_tx.send(Event::MediaList(media_list)).unwrap();
-                }
-
-                Ok(Command::GetMediaFromType(media_type)) => {
-                    let library = lib_thread.lock().unwrap();
-                    let media_list = library.get_media_by_type(media_type);
-                    evt_tx.send(Event::MediaList(media_list)).unwrap();
-                }
-
-                Ok(Command::GetMediaFromTag(tag_name)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    let media_list = library.get_media_from_tag(&tag_name);
-                    // For simplicity, we just send the count of media items found
-                    evt_tx.send(Event::IDList(media_list)).unwrap();
-                }
-
-                Ok(Command::GetMediaFromPlaylist(playlist_id)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    let media_list = library.get_media_from_playlist(playlist_id);
-                    // For simplicity, we just send the count of media items found
-                    evt_tx.send(Event::IDList(media_list)).unwrap();
-                }
-
-                Ok(Command::Play(id)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    library.play_id(id);
-                    evt_tx.send(Event::NowPlaying(id)).unwrap();
-                }
-
-                Ok(Command::Pause(id)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    library.pause_id(id);
-                }
-
-                Ok(Command::Resume(id)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    library.resume_id(id);
-                    evt_tx.send(Event::NowPlaying(id)).unwrap();
-                }
-
-                Ok(Command::Stop(id)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    library.stop_id(id);
-                }
-
-                Ok(Command::Info(id)) => {
-                    let library = lib_thread.lock().unwrap();
-                    let info = library.info_id(id).unwrap();
-                    evt_tx.send(Event::Info(info)).unwrap();
-                }
-
-                Ok(Command::AddTag(tag_name)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    library.add_tag(&tag_name);
-                }
-
-                Ok(Command::GetTagId(tag_name)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    let tag_id = library.get_tag_id(&tag_name);
-                    evt_tx.send(Event::Data(tag_id.to_string())).unwrap();
-                }
-
-                Ok(Command::AddTagToMedia(media_id, tag_id)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    library.add_tag_to_media(media_id, tag_id);
-                }
-
-                Ok(Command::AddPlaylist(name)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    library.create_playlist(&name);
-                }
-
-                Ok(Command::AddMediaToPlaylist(media_id, playlist_id)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    library.add_media_to_playlist(media_id, playlist_id);
-                }
-
-                Ok(Command::GetPlaylistId(name)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    let playlist_id = library.get_playlist_id(&name);
-                    evt_tx.send(Event::Data(playlist_id.to_string())).unwrap();
-                }
-
-                Err(_) => break,
+            } else {
+                // Si le canal est fermé (l'application quitte), on arrête le thread
+                break;
             }
         }
     });
 }
-
-
-
 
 
 
