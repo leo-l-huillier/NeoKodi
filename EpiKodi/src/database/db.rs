@@ -45,12 +45,14 @@ impl DB {
                     path TEXT UNIQUE NOT NULL,
                     title TEXT,
                     duration REAL,
-                    media_type TEXT
+                    media_type TEXT,
+                    status INTEGER DEFAULT 0,
+                    time_stop FLOAT DEFAULT 0.0
                 )
             ",
             [],
         )?;
-         self.conn.execute(
+        self.conn.execute(
             "
                 CREATE TABLE IF NOT EXISTS tags (
                     id INTEGER PRIMARY KEY,
@@ -59,7 +61,7 @@ impl DB {
             ",
             [],
         )?;
-         self.conn.execute(
+        self.conn.execute(
             "
                 CREATE TABLE IF NOT EXISTS media_tags (
                     media_id INTEGER NOT NULL,
@@ -95,6 +97,18 @@ impl DB {
         Ok(())
     }
 
+    //status : 0 = not started, 1 = playing, 2 = finished
+    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64) -> Result<()> {
+        self.conn.execute(
+            "
+                UPDATE media
+                SET status = ?1, time_stop = ?2
+                WHERE id = ?3
+            ",
+            (status, time_stop, media_id),
+        )?;
+        Ok(())
+    }
     //========MEDIA TABLE METHODS========
 
     pub fn insert_media(&mut self, path: &str, title: &str, duration: f32, media_type: &str) -> Result<()> {
