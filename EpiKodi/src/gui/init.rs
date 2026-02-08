@@ -88,7 +88,7 @@ pub fn App() -> Element {
                             Event::NowPlaying(id) => println!("▶️ Lecture ID: {}", id),
                             Event::Info(info) => println!("ℹ️ Info: {:?}", info.title),
                             Event::M3UList(channels) => {
-                                println!("📺 UI : Reçu {} chaînes !", channels.len());
+                                //println!("📺 UI : Reçu {} chaînes !", channels.len());
                                 iptv_channels.set(channels);
                                 iptv_loading.set(false);
                             },

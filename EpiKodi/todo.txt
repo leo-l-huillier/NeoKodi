@@ -14,12 +14,6 @@ GUI  : implement
 
 
 
-TODO: add logs system
-BACK : implement Tous les événements critiques loggés, Rotation automatique des logs (taille max 50MB) ,Niveaux : ERROR, WARN, INFO, DEBUG, TRACE
-
-
-
-
 
 
 
@@ -32,7 +26,7 @@ TODO: Plugins -> #63
 GUI  : add m3u Plugins (#63), add metadata call if plugin
 
 TODO: advanced audio control -> #34 #35
-Back : add queue, reapeat, shuffle
+Back : add queue, repeat, shuffle
 Gui  : implement
 
 

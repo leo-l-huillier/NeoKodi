@@ -139,6 +139,7 @@ impl DB {
         })?;
 
         for r in rows {
+            //println!("id: {}", r.as_ref().unwrap().id);
            self.media_rows.push(r?);
         }
         Ok(&self.media_rows)
@@ -146,7 +147,7 @@ impl DB {
 
 
     pub fn print_media_rows(&mut self) {
-        println!("{:#?}", self.media_rows);
+        //println!("{:#?}", self.media_rows);
     }
 
     pub fn upsert_media(&mut self, media: &ScannedMedia) -> rusqlite::Result<()> {

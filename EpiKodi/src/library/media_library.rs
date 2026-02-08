@@ -1,6 +1,7 @@
 use crate::database::db::DB;
 
 
+use crate::media;
 use crate::media::data::Media;
 use crate::media::data::MediaType;
 use crate::media::audio::Audio;
@@ -22,6 +23,8 @@ use std::path::PathBuf;
 use std::fs::File;
 
 use crate::logger::logger::Logger;
+
+use crate::media::audio::Queue;
 
 
 #[derive(Debug, Clone)]
@@ -49,6 +52,8 @@ impl MediaLibrary {
 
     pub fn init(&mut self) {
 
+
+
         // scan the libraries
         self.database.init_db().unwrap();
         self.scan_lib.scan_libraries();
@@ -58,6 +63,26 @@ impl MediaLibrary {
         self.database.cleanup_missing_media(self.scan_lib.scan.clone()).unwrap(); // TODO to implement, shuld be called every scans
         self.database.get_all_media().unwrap();
         //self.database.print_media_rows();
+
+        let mut queue = Queue::new();
+
+        let media_list = self.database.get_all_media().unwrap();
+
+        for media in media_list.iter() {
+            println!("Media ID: {}, Path: {}, Type: {:?}", media.id, media.path, media.media_type);
+        }
+
+        for media in  media_list.iter() {
+            // if audio
+            if media.media_type == MediaType::Audio {
+                queue.add_to_queue(media.id);
+            }
+            //println!("Media ID: {}, Path: {}, Type: {:?}", media.id, media.path, media.media_type);
+        }
+        println!("queue current nb {:?}", queue.get_current());
+        queue.next();
+        println!("queue current nb after next {:?}", queue.get_current());
+        queue.toggle_shuffle();
     
         
         for row in self.database.media_rows.iter() {
@@ -264,7 +289,6 @@ impl MediaLibrary {
         let logger = Logger::new(LOG_FILE);
 
         if let Some(item) = self.items.get_mut(&id) {
-            println!("Playing media ID {id}: ");
             logger.debug(&format!("Playing media ID {id}: {}", item.get_name()));
             item.init();
             item.play();
@@ -433,7 +457,7 @@ mod tests {
         let all = lib.get_all_media();
         assert_eq!(all.len(), 2);
         let audios = lib.get_media_by_type(MediaType::Audio);
-        println!("audios: {:?}", audios);
+        //println!("audios: {:?}", audios);
         assert_eq!(audios.len(), 2);
     }
 
