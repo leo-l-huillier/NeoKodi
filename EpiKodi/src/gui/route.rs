@@ -8,8 +8,8 @@ pub enum Route {
     #[route("/")]
     Home {},
 
-    #[route("/films")]
-    Films {},
+    #[route("/Videos")]
+    Videos {},
 
     #[route("/images")]
     Images {},
@@ -20,12 +20,12 @@ pub enum Route {
     #[route("/series")]
     Series {},
 
-    #[route("/tv")]
-    TV {},
+    #[route("/iptv")]
+    Iptv {},
 
     // 👇 VOILÀ CELUI QUI MANQUAIT
-    #[route("/addons")]
-    Addons {},
+    #[route("/Plugins")]
+    Plugins {},
 
     #[route("/settings")]
     Settings {},
