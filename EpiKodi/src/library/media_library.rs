@@ -160,7 +160,6 @@ impl MediaLibrary {
         self.reload();
     }
 
-    //TODO: should only remove for a specific media type, not all of them
     pub fn remove_source(&mut self, path: PathBuf, media_type: MediaType) {
         match media_type {
             MediaType::Audio => self.scan_lib.libraries.remove_audio_source(path),

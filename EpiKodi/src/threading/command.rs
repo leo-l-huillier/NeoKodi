@@ -8,7 +8,8 @@ use crate::media::data::MediaInfo;
 
 pub enum Command {
     ChangeLibraryPath(PathBuf),
-    AddSource(PathBuf, MediaType), // path
+    AddSource(PathBuf, MediaType), // path, media type
+    RemoveSource(PathBuf, MediaType), // path, media type
     Reload(),
     /*
     TODO
@@ -24,8 +25,8 @@ pub enum Command {
     GetMediaFromPath(PathBuf), // path
     GetAllMedia(),
     GetMediaFromType(MediaType), // media type
-    GetMediaFromTag(String),
-    GetMediaFromPlaylist(i64),
+    GetMediaFromTag(String), // tag name
+    GetMediaFromPlaylist(i64), // playlist id
     UpdateMediaState(i64, i32, f64), // media id, status, time_stop
     /*
     TODO:

@@ -70,6 +70,12 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     library.add_source(path, media_type);
                 }
 
+                Ok(Command::RemoveSource(path, media_type)) => {
+                    let mut library = lib_thread.lock().unwrap();
+                    
+                    library.remove_source(path, media_type);
+                }
+
                 Ok(Command::GetAllMedia()) => {
                     let library = lib_thread.lock().unwrap();
                     let media_list = library.get_all_media();

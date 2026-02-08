@@ -1,4 +1,12 @@
 
+TODO: add multiple media states #28
+Gui  : implement
+
+TODO: remove source
+Gui  : implement
+
+
+
 
 TODO: playlists -> #36
 BACK : delete playlists, remove audio from playlist
@@ -15,9 +23,7 @@ TODO: advanced audio control -> #34 #35
 Back : add queue, reapeat, shuffle
 Gui  : implement
 
-TODO: add multiple media states #28
-Back : implement
-Gui  : implement
+
 
 TODO: ajouter des commentaire dans tous les fichier (en haut)
 
