@@ -1,5 +1,4 @@
 use dioxus::prelude::*;
-use dioxus_router::prelude::*;
 
 use std::sync::{mpsc, OnceLock};
 use tokio::sync::broadcast;
@@ -16,7 +15,6 @@ use std::cell::RefCell;
 use std::rc::Rc;
 use std::path::PathBuf;
 use std::time::Duration;
-use std::collections::HashMap;
 use crate::iptv::parser::TVChannel;
 
 

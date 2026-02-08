@@ -5,10 +5,7 @@
 
 
 use libloading::{Library, Symbol};
-use plugin_api::Plugin;
-use std::os::raw::c_char;
 use std::fs;
-use std::path::Path;
 use std::ffi::{CStr, CString};
 use crate::constants::{PLUGIN_DIR, PLUGIN_EXT};
 

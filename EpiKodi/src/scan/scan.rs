@@ -4,7 +4,6 @@
 
 use crate::library::sources::LibraryConfig;
 use crate::library::media_library::ScannedMedia;
-use crate::logger;
 use crate::media::data::MediaType;
 
 use crate::constants::{SOURCE_FILE, AUDIO_EXTS, VIDEO_EXTS, IMAGE_EXTS};

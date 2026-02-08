@@ -1,5 +1,4 @@
 use dioxus::prelude::*;
-use dioxus_router::prelude::*;
 use super::pages::*;
 
 #[derive(Routable, Clone)]

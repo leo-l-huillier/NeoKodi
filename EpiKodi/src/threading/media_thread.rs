@@ -4,8 +4,6 @@ This file manages the media thread, which handles media playback commands
 */
 
 
-use rodio::queue;
-
 use crate::library::media_library::MediaLibrary;
 use super::command::Command;
 use super::command::Event;
@@ -13,10 +11,8 @@ use crate::media::data::MediaType;
 
 use crate::plugin::plugin_manager::PluginManager;
 
-use crate::media::audio::Queue;
 
 
-use crate::constants::constants::{PLAYING};
 
 use std::thread;
 use std::sync::{Arc, Mutex, mpsc};

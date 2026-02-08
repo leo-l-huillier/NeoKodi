@@ -14,17 +14,13 @@ use std::fs;
 use std::collections::HashMap;
 use std::path::Path;
 
-use dioxus::html::p;
-use rusqlite::{Connection};
 
 use crate::constants::LOG_FILE;
 use crate::scan::scan::Scan;
 use std::path::PathBuf;
-use std::fs::File;
 
 use crate::logger::logger::Logger;
 
-use crate::media::audio::Queue;
 
 
 #[derive(Debug, Clone)]
@@ -64,25 +60,7 @@ impl MediaLibrary {
         self.database.get_all_media().unwrap();
         //self.database.print_media_rows();
 
-        let mut queue = Queue::new();
 
-        let media_list = self.database.get_all_media().unwrap();
-
-        for media in media_list.iter() {
-            println!("Media ID: {}, Path: {}, Type: {:?}", media.id, media.path, media.media_type);
-        }
-
-        for media in  media_list.iter() {
-            // if audio
-            if media.media_type == MediaType::Audio {
-                queue.add_to_queue(media.id);
-            }
-            //println!("Media ID: {}, Path: {}, Type: {:?}", media.id, media.path, media.media_type);
-        }
-        println!("queue current nb {:?}", queue.get_current());
-        queue.next();
-        println!("queue current nb after next {:?}", queue.get_current());
-        queue.toggle_shuffle();
     
         
         for row in self.database.media_rows.iter() {

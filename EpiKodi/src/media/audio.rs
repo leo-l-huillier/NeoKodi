@@ -12,7 +12,6 @@ use crate::logger::logger::Logger;
 use crate::constants::LOG_FILE;
 
 
-use reqwest::get;
 use rodio::{Decoder, OutputStreamBuilder, Sink};
 use std::fs::File;
 use std::io::BufReader;
