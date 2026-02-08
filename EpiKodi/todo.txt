@@ -1,6 +1,6 @@
 
 TODO: add multiple media states #28
-Gui  : implement
+Gui  : Done
 
 TODO: remove source
 Gui  : Done

@@ -58,7 +58,6 @@ pub fn Home() -> Element {
     }
 }
 
-// --- MUSIQUE ---
 #[component]
 pub fn Music() -> Element {
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
@@ -68,60 +67,105 @@ pub fn Music() -> Element {
     let plugin_result = use_context::<Signal<PluginSearchResult>>();
     
     let mut current_audio = use_signal(|| Option::<String>::None);
-    let tx_init = cmd_tx.clone();
     
+    // 👇 1. LE SIGNAL DE RECHERCHE
+    let mut search_text = use_signal(|| String::new());
+
+    let tx_init = cmd_tx.clone();
     use_hook(move || { if list_signal().is_empty() { tx_init.send(Command::GetAllMedia()).unwrap(); } });
 
     rsx! {
         div { class: "container",
+            // ==========================
+            // LECTEUR AUDIO (PLEIN ÉCRAN)
+            // ==========================
             if let Some(path) = current_audio() {
                 div { style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #121212; z-index: 999; display: flex; flex-direction: column;",
                     div { style: "flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;",
                         div { style: "font-size: 5rem; margin-bottom: 20px;", "🎵" }
                         h2 { "Lecture en cours" }
+                        
                         audio { controls: true, autoplay: true, style: "width: 80%; max-width: 600px;",
                             onended: move |_| current_audio.set(None),
                             src: "{make_url(&path, &root_path)}"
                         }
+                        
                         button { 
                             class: "btn-nav", 
-                            style: "position: relative; transform: none; top: auto; left: auto; background-color: #d32f2f; border-color: #b71c1c; font-size: 1.2rem; padding: 15px 40px;", 
+                            style: "position: relative; transform: none; top: auto; left: auto; background-color: #d32f2f; border-color: #b71c1c; font-size: 1.2rem; padding: 15px 40px; margin-top: 20px;", 
                             onclick: move |_| current_audio.set(None), 
                             "⏹️ Arrêter la lecture" 
                         }
+                        
                         div { 
-                            style: "color: #4caf50; font-size: 1.5rem; font-weight: bold; text-align: center; max-width: 600px; padding: 10px; border: 1px dashed #333; border-radius: 8px;",
+                            style: "color: #4caf50; font-size: 1.5rem; font-weight: bold; text-align: center; max-width: 600px; padding: 10px; border: 1px dashed #333; border-radius: 8px; margin-top: 20px;",
                             "{plugin_result.read().text}" 
                         }
                     }
                 }
-            } else {
+            } 
+            // ==========================
+            // LISTE + RECHERCHE
+            // ==========================
+            else {
+                // 👇 2. TOP BAR (Centrage parfait + Input)
                 div { class: "top-bar", 
-                    Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, 
-                    div { class: "page-title", "Musique" } 
+                    style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
+
+                    // Bouton Accueil
+                    div { style: "z-index: 2;",
+                        Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }
+                    }
+
+                    // Titre Centré
+                    div { 
+                        class: "page-title", 
+                        style: "position: absolute; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;",
+                        "Musique" 
+                    } 
+
+                    // Barre de Recherche
+                    div { style: "z-index: 2;",
+                        input {
+                            r#type: "text",
+                            placeholder: "🔍 Titre...",
+                            style: "padding: 8px; border-radius: 5px; border: none; background: #333; color: white; width: 250px;",
+                            oninput: move |evt| search_text.set(evt.value()),
+                        }
+                    }
                 }
+                
                 div { class: "audio-list",
-                    for item in list_signal().iter().filter(|i| i.media_type == MediaType::Audio) {
+                    // 👇 3. BOUCLE FILTRÉE
+                    for item in list_signal().iter()
+                        .filter(|i| i.media_type == MediaType::Audio)
+                        .filter(|i| {
+                            let query = search_text().to_lowercase();
+                            if query.is_empty() { return true; }
+                            let name = i.title.as_deref().unwrap_or(&i.path).to_lowercase();
+                            name.contains(&query)
+                        })
+                    {
                         div { class: "audio-row",
                             onclick: { 
                                 let p = item.path.clone(); 
                                 let i = item.id; 
                                 let tx = cmd_tx.clone();
-                                
                                 let mut res = plugin_result.clone(); 
 
                                 move |_| { 
+                                    // Reset du résultat plugin et lancement
                                     res.set(PluginSearchResult { text: String::from("🔎 Recherche MusicBrainz en cours...") });
-
                                     current_audio.set(Some(p.clone())); 
-                                    
                                     tx.send(Command::Play(i)).unwrap(); 
-                                    
                                     tx.send(Command::GetArtistMetadataFromPlugin(p.clone())).unwrap();
                                 } 
                             },
                             div { class: "audio-icon", "🎵" }
-                            div { class: "audio-info", div { class: "audio-title", "{item.title.as_deref().unwrap_or(&item.path)}" } div { class: "audio-artist", "Artiste inconnu" } }
+                            div { class: "audio-info", 
+                                div { class: "audio-title", "{item.title.as_deref().unwrap_or(&item.path)}" } 
+                                div { class: "audio-artist", "Artiste inconnu" } 
+                            }
                         }
                     }
                 }
@@ -139,6 +183,7 @@ pub fn Videos() -> Element {
     let root_path = root_path_signal();
     
     let mut current_video = use_signal(|| Option::<String>::None);
+    let mut search_text = use_signal(|| String::new());
     
     let tx_init = cmd_tx.clone(); 
     use_hook(move || { 
@@ -149,9 +194,6 @@ pub fn Videos() -> Element {
 
     rsx! {
         div { class: "container",
-            // ==========================
-            // LECTEUR VIDÉO
-            // ==========================
             if let Some(path) = current_video() {
                 div { 
                     style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
@@ -232,26 +274,50 @@ pub fn Videos() -> Element {
             } 
             else {
                 div { class: "top-bar", 
-                    Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, 
-                    div { class: "page-title", "Vidéos" } 
+                    style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
+
+                    div { style: "z-index: 2;",
+                        Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }
+                    }
+
+                    div { 
+                        class: "page-title", 
+                        style: "position: absolute; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;",
+                        "Vidéos" 
+                    }
+
+                    input {
+                        r#type: "text",
+                        placeholder: "🔍 Rechercher un film...",
+                        style: "padding: 8px; border-radius: 5px; border: none; background: #333; color: white; width: 250px;",
+                        oninput: move |evt| search_text.set(evt.value()),
+                    }
                 }
                 
                 div { class: "media-grid",
-                    for item in list_signal().iter().filter(|i| i.media_type == MediaType::Video) {
+                    for item in list_signal().iter()
+                        .filter(|i| i.media_type == MediaType::Video) // 1. On garde que les vidéos
+                        .filter(|i| { // 2. On filtre selon le texte de recherche
+                            let query = search_text().to_lowercase(); // On met la recherche en minuscule
+                            if query.is_empty() {
+                                return true; // Si la barre est vide, on affiche tout
+                            }
+                            // On récupère le titre (ou le chemin), on le met en minuscule et on compare
+                            let name = i.title.as_deref().unwrap_or(&i.path).to_lowercase();
+                            name.contains(&query)
+                        }) 
+                    {
                         {
-                            // Calcul sécurisé
                             let (progress_percent, has_started) = match item.duration {
                                 Some(total) if total > 0.0 => ((item.last_position / total) * 100.0, item.last_position > 5.0),
-                                _ => (0.0, item.last_position > 5.0), // Si pas de durée, on sait juste qu'on a commencé
+                                _ => (0.0, item.last_position > 5.0),
                             };
-                            
-                            // Debug silencieux dans la console terminal si besoin
-                            if has_started { println!("Position: {:.0}s / Durée: {:?}", item.last_position, item.duration); }
 
                             rsx! {
                                 div { 
                                     class: "media-card",
                                     style: "position: relative; overflow: hidden;", 
+                                    
                                     onclick: { 
                                         let p=item.path.clone(); 
                                         let i=item.id; 
@@ -261,18 +327,15 @@ pub fn Videos() -> Element {
 
                                     div { class: "card-icon", "🎬" }
 
-                                    // LOGIQUE D'AFFICHAGE DE LA BARRE
                                     if progress_percent > 0.0 {
-                                        // Cas 1 : On connait la durée (Barre rouge normale)
                                         div { 
                                             style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: rgba(0,0,0,0.6); z-index: 10;",
                                             div { style: "height: 100%; background: #e50914; width: {progress_percent}%; transition: width 0.3s;" }
                                         }
                                     } else if has_started {
-                                        // Cas 2 : On ne connait PAS la durée mais on a commencé (Barre bleue de secours)
                                         div { 
                                             style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: rgba(0,0,0,0.6); z-index: 10;",
-                                            div { style: "height: 100%; background: #3498db; width: 100%;" } // Tout bleu pour dire "En cours"
+                                            div { style: "height: 100%; background: #3498db; width: 100%;" } 
                                         }
                                     }
 
@@ -295,6 +358,9 @@ pub fn Images() -> Element {
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
     let list_signal = use_context::<Signal<Vec<MediaInfo>>>();
     let mut current_image = use_signal(|| Option::<String>::None);
+    
+    let mut search_text = use_signal(|| String::new());
+
     let tx_init = cmd_tx.clone();
     use_hook(move || { if list_signal().is_empty() { tx_init.send(Command::GetAllMedia()).unwrap(); } });
 
@@ -309,13 +375,41 @@ pub fn Images() -> Element {
                          img { src: "{data}", style: "max-width: 100%; max-height: 100%; object-fit: contain;" }
                     }
                 }
-            } else {
+            } 
+            else {
                 div { class: "top-bar", 
-                    Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, 
-                    div { class: "page-title", "Images" } 
+                    style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
+
+                    div { style: "z-index: 2;",
+                        Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }
+                    }
+
+                    div { 
+                        class: "page-title", 
+                        style: "position: absolute; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;",
+                        "Images" 
+                    } 
+
+                    div { style: "z-index: 2;",
+                        input {
+                            r#type: "text",
+                            placeholder: "🔍 Rechercher...",
+                            style: "padding: 8px; border-radius: 5px; border: none; background: #333; color: white; width: 250px;",
+                            oninput: move |evt| search_text.set(evt.value()),
+                        }
+                    }
                 }
+
                 div { class: "media-grid",
-                    for item in list_signal().iter().filter(|i| i.media_type == MediaType::Image) {
+                    for item in list_signal().iter()
+                        .filter(|i| i.media_type == MediaType::Image)
+                        .filter(|i| {
+                            let query = search_text().to_lowercase();
+                            if query.is_empty() { return true; }
+                            let name = i.title.as_deref().unwrap_or(&i.path).to_lowercase();
+                            name.contains(&query)
+                        })
+                    {
                         div { class: "media-card",
                             onclick: {
                                 let p=item.path.clone(); let i=item.id; let tx=cmd_tx.clone();
