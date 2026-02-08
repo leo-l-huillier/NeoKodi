@@ -23,17 +23,6 @@ use std::fs::File;
 
 use crate::logger::logger::Logger;
 
-/* 
-    let logger = Logger::new(LOG_FILE);
-
-    // Log some messages
-    logger.info("Application started");
-    logger.debug("This is a debug message");
-    logger.warning("This is a warning message");
-    logger.error("This is an error message");
-    logger.info("Application finished");
-
-*/
 
 #[derive(Debug, Clone)]
 pub struct ScannedMedia {

@@ -13,7 +13,7 @@ mod logger;
 mod plugin;
 
 use crate::logger::logger::Logger;
-
+use crate::constants::LOG_FILE;
 
 use crate::gui::style::GLOBAL_STYLE;
 use crate::config::AppConfig;
@@ -30,6 +30,9 @@ use warp::Filter;
 use tokio::sync::broadcast;
 
 fn main() {
+
+    let logger = Logger::new(LOG_FILE);
+
     unsafe {
         std::env::set_var("RUST_LOG", "warp=info");
         std::env::set_var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--disable-web-security --allow-file-access-from-files --allow-running-insecure-content --autoplay-policy=no-user-gesture-required");
@@ -46,7 +49,7 @@ fn main() {
             loop {
                 let app_config = AppConfig::load();
                 let server_root = app_config.media_path.clone();
-                println!("🌍 SERVEUR : Démarrage sur {}", server_root);
+                logger.info(&format!("🌍 SERVEUR : Démarrage sur {}", server_root));
 
                 let mut rx = reload_tx_server.subscribe();
                 let media_route = warp::path("media").and(warp::fs::dir(server_root));

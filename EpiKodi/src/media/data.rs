@@ -49,21 +49,13 @@ impl fmt::Display for MediaType {
 
 //TODO: implement finished event handling
 pub trait Media: Send + Sync {
-    fn init(&mut self) {
-        println!("Media initialized");
-    }
-    fn play(&mut self) {
-        println!("Playing media");
-    }
-    fn pause(&self) {
-        println!("Pausing media");
-    }
-    fn resume(&self) {
-        println!("Resuming media");
-    }
-    fn stop(&self) {
-        println!("Stopping media");
-    }
+    fn init(&mut self);
+    
+    fn play(&mut self);
+    fn pause(&self);
+    fn resume(&self);
+    fn stop(&self);
+
     fn info(&self) -> MediaInfo;
     fn media_type(&self) -> MediaType;
 

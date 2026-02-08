@@ -16,3 +16,4 @@ Cargo.lock
 # Contains mutation testing data
 **/mutants.out*/
 
+*.log

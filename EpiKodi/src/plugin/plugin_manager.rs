@@ -16,6 +16,9 @@ use crate::constants::{PLUGIN_DIR, PLUGIN_EXT};
 use super::functions::PluginTypeFunc;
 use super::functions::GetArtistMetadataFunc;
 
+use crate::logger::logger::Logger;
+use crate::constants::LOG_FILE;
+
 pub struct PluginManager {
     pub metadata_libs: Vec<Library>,
 }
@@ -30,6 +33,9 @@ impl PluginManager {
 
     pub fn load_plugins(&mut self) {
 
+        let logger = Logger::new(LOG_FILE);
+        logger.debug("Loading plugins...");
+
         if let Ok(paths) = fs::read_dir(PLUGIN_DIR) {
             for entry in paths.flatten() {
                 let path = entry.path();
@@ -40,18 +46,16 @@ impl PluginManager {
                     .and_then(|ext| ext.to_str())
                     .map(|ext| PLUGIN_EXT.contains(&ext.to_ascii_lowercase().as_str()))
                     .unwrap_or(false);
-                println!("Checking plugin file: {:?}", path);
+                logger.debug(&format!("Checking plugin file: {:?}", path));
 
                 if is_plugin {
                     let lib = match unsafe { Library::new(path) } {
                         Ok(lib) => {
-                            //println!("✓ Library loaded successfully!\n");
+                            logger.debug("✓ Library loaded successfully: {:?}");
                             lib
                         }
                         Err(e) => {
-                            //eprintln!("✗ Failed to load library: {}", e);
-                            //eprintln!("\nMake sure you've built the plugin first:");
-                            //eprintln!("\nMake sure every file is a valid plugin ({})", PLUGIN_EXT);
+                            logger.error(&format!("✗ Failed to load library: {} \nMake sure you've built the plugin first:", e));
                             continue;
                         }
                     };
@@ -61,7 +65,7 @@ impl PluginManager {
                         let get_plugin_type: Symbol<PluginTypeFunc> = match lib.get(b"plugin_type\0") {
                             Ok(func) => func,
                             Err(e) => {
-                                //eprintln!("✗ Failed to load 'plugin_type' function: {} for", e);
+                                logger.error(&format!("✗ Failed to load 'plugin_type' function: {} ", e));
                                 continue;
                             }
                         };
@@ -73,7 +77,7 @@ impl PluginManager {
 
                         if result == "metadata" {
                             self.metadata_libs.push(lib);
-                            println!("Loaded metadata plugin.");
+                            logger.info("Loaded metadata plugin.");
                         }
                     }
 
@@ -84,6 +88,9 @@ impl PluginManager {
 
 
     pub fn get_metadata(&mut self, artist: &str) -> &str {
+
+        let logger = Logger::new(LOG_FILE);
+
         let c_artist = CString::new(artist).unwrap();
 
         for lib in &self.metadata_libs {
@@ -92,7 +99,7 @@ impl PluginManager {
                 let get_artist_metadata: Symbol<GetArtistMetadataFunc> = match lib.get(b"metadata\0") {
                     Ok(func) => func,
                     Err(e) => {
-                        //eprintln!("✗ Failed to load 'get_artist_metadata' function: {}", e);
+                        logger.error(&format!("✗ Failed to load 'get_artist_metadata' function: {}", e));
                         continue;
                     }
                 };
@@ -103,10 +110,9 @@ impl PluginManager {
                     .unwrap_or("Error: Invalid UTF-8");
 
                     if result == "artist not found" {
-                        //println!("Artist not found in this plugin, trying next if available...");
+                        logger.error(&format!("Artist ({}) not found in this plugin, trying next if available... ", artist));
                         continue;
                     }
-                    //println!("Metadata found: {}", result);
                     return result;
 
             }

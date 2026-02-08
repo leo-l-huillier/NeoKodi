@@ -3,11 +3,21 @@ logger.rs - A simple logging utility for EpiKodi
 */
 
 
+/* 
+    let logger = Logger::new(LOG_FILE);
+
+    // Log some messages
+    logger.info("Application started");
+    logger.debug("This is a debug message");
+    logger.warning("This is a warning message");
+    logger.error("This is an error message");
+*/
+
 use std::fs::OpenOptions;
 use std::io::Write;
 use chrono::Local;
 
-use crate::constants::constants::DEBUG;
+use crate::constants::constants::{DEBUG, LOG_IN_CONSOLE};
 
 // Define the different log levels
 #[derive(Debug, Clone, Copy)]
@@ -52,7 +62,7 @@ impl Logger {
         let log_entry = format!("[{}] [{}] {}\n", timestamp, level.as_str(), message);
         
         // Print to console
-        print!("{}", log_entry);
+        if LOG_IN_CONSOLE {print!("{}", log_entry);}
         
         // Write to file
         let mut file = OpenOptions::new()
