@@ -44,6 +44,7 @@ impl Media for Image {
             title: Some(self.name.clone()),
             duration: None,
             media_type: MediaType::Image,
+            last_position: 0.0,
         }
     }
 

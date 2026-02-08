@@ -12,6 +12,7 @@ dependencies = [
  "dioxus-desktop",
  "directories",
  "dirs",
+ "lazy_static",
  "libloading",
  "lofty",
  "once_cell",

@@ -44,3 +44,59 @@
 [2026-02-08 23:39:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
 [2026-02-08 23:39:43] [INFO] Scanning sources end
 [2026-02-08 23:39:43] [INFO] ✅ Media library reloaded with 0 items.
+[2026-02-08 23:51:26] [INFO] 🌍 SERVEUR : Démarrage sur E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:27] [DEBUG] Loading plugins...
+[2026-02-08 23:51:27] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-08 23:51:27] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-08 23:51:27] [INFO] Loaded metadata plugin.
+[2026-02-08 23:51:27] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-08 23:51:27] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-08 23:51:27] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-08 23:51:27] [INFO] Scanning sources ...
+[2026-02-08 23:51:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:27] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:27] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:28] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:28] [INFO] Scanning sources end
+[2026-02-08 23:51:28] [INFO] 🔄 Reloading media library...
+[2026-02-08 23:51:28] [INFO] Scanning sources ...
+[2026-02-08 23:51:28] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:28] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:28] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:28] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:28] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:29] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:29] [INFO] Scanning sources end
+[2026-02-08 23:51:29] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-08 23:51:29] [INFO] 🔄 Reloading media library...
+[2026-02-08 23:51:29] [INFO] Scanning sources ...
+[2026-02-08 23:51:29] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:29] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:29] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:29] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:29] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:29] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:29] [INFO] Scanning sources end
+[2026-02-08 23:51:29] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-08 23:51:29] [INFO] 🔄 Reloading media library...
+[2026-02-08 23:51:29] [INFO] Scanning sources ...
+[2026-02-08 23:51:29] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:30] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:30] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:30] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:30] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-08 23:51:30] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-08 23:51:30] [INFO] Scanning sources end
+[2026-02-08 23:51:30] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-08 23:51:34] [DEBUG] Playing media ID 55: VID20240209113824.mp4
+[2026-02-08 23:51:34] [DEBUG] Playing video: VID20240209113824.mp4
+[2026-02-08 23:51:41] [DEBUG] Playing media ID 55: VID20240209113824.mp4
+[2026-02-08 23:51:41] [DEBUG] Playing video: VID20240209113824.mp4
+[2026-02-08 23:51:47] [DEBUG] Playing media ID 55: VID20240209113824.mp4
+[2026-02-08 23:51:47] [DEBUG] Playing video: VID20240209113824.mp4
+[2026-02-08 23:51:50] [DEBUG] Playing media ID 77: Overwatch 2_10-06-2023_20-30-14-446.mp4
+[2026-02-08 23:51:50] [DEBUG] Playing video: Overwatch 2_10-06-2023_20-30-14-446.mp4
+[2026-02-08 23:52:04] [DEBUG] Playing media ID 77: Overwatch 2_10-06-2023_20-30-14-446.mp4
+[2026-02-08 23:52:04] [DEBUG] Playing video: Overwatch 2_10-06-2023_20-30-14-446.mp4

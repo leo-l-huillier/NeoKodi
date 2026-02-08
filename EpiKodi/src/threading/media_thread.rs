@@ -221,6 +221,22 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     evt_tx.send(Event::Data(response.to_string())).unwrap();
                 }
 
+                Ok(Command::UpdateProgress(id, pos, total_duration)) => {
+                    if let Ok(mut lib) = crate::library::media_library::MEDIA_LIBRARY.write() {
+                        if let Some(media) = lib.iter_mut().find(|m| m.id == id) {
+                            // 1. Sauvegarde la position
+                            media.last_position = pos;
+                            
+                            // 2. 👇 Sauvegarde la durée (AUTO-RÉPARATION)
+                            // Si la durée stockée est 0 ou différente de la réalité, on la corrige !
+                            if media.duration.unwrap_or(0.0) != total_duration && total_duration > 0.0 {
+                                media.duration = Some(total_duration);
+                                println!("🔧 Durée corrigée pour '{}': {:.0}s", media.title.as_deref().unwrap_or("?"), total_duration);
+                            }
+                        }
+                    }
+                },
+
                 Err(_) => break,
             }
         }

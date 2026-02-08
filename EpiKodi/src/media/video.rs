@@ -53,6 +53,7 @@ impl Media for Video {
             title: Some(self.name.clone()),
             duration: Some(self.metadata.duration),
             media_type: MediaType::Video,
+            last_position: 0.0,
         }
     }
 

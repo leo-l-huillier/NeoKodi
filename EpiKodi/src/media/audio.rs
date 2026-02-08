@@ -233,6 +233,7 @@ impl Media for Audio {
             title: Some(self.name.clone()),
             duration: Some(self.metadata.duration),
             media_type: MediaType::Audio,
+            last_position: 0.0,
         }
 
 

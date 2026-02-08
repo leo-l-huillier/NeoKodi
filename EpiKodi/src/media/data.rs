@@ -15,6 +15,7 @@ pub struct MediaInfo {
     pub title: Option<String>,
     pub duration: Option<f32>,
     pub media_type: MediaType,
+    pub last_position: f32,
 }
 
 impl MediaType {

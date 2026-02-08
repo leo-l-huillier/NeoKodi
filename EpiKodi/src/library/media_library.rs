@@ -18,10 +18,16 @@ use std::path::Path;
 use crate::constants::LOG_FILE;
 use crate::scan::scan::Scan;
 use std::path::PathBuf;
+use std::fs::File;
+use lazy_static::lazy_static;
+use std::sync::RwLock;
 
 use crate::logger::logger::Logger;
 
-
+lazy_static! {
+    // Une liste de MediaInfo, protégée par un verrou (RwLock) pour que les threads ne se marchent pas dessus.
+    pub static ref MEDIA_LIBRARY: RwLock<Vec<MediaInfo>> = RwLock::new(Vec::new());
+}
 
 #[derive(Debug, Clone)]
 pub struct ScannedMedia {

@@ -134,54 +134,153 @@ pub fn Music() -> Element {
 #[component]
 pub fn Videos() -> Element {
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
-    let list_signal = use_context::<Signal<Vec<MediaInfo>>>();
+    let mut list_signal = use_context::<Signal<Vec<MediaInfo>>>();
     let root_path_signal = use_context::<Signal<String>>();
     let root_path = root_path_signal();
     
     let mut current_video = use_signal(|| Option::<String>::None);
+    
     let tx_init = cmd_tx.clone(); 
-    use_hook(move || { if list_signal().is_empty() { tx_init.send(Command::GetAllMedia()).unwrap(); } });
+    use_hook(move || { 
+        if list_signal().is_empty() { 
+            tx_init.send(Command::GetAllMedia()).unwrap(); 
+        } 
+    });
 
     rsx! {
         div { class: "container",
+            // ==========================
+            // LECTEUR VIDÉO
+            // ==========================
             if let Some(path) = current_video() {
-                div { style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
+                div { 
+                    style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
+                    
                     div { style: "height: 60px; padding: 10px;",
-                        button { class: "btn-nav", style: "position: relative; top: 0; left: 0; transform: none;", onclick: move |_| current_video.set(None), "⬅ Retour" }
+                        button { class: "btn-nav", onclick: move |_| current_video.set(None), "⬅ Retour" }
                     }
-                    // ...
+
                     div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;",
                         {
-                            // 1. On génère l'URL
                             let url = make_url(&path, &root_path);
-                            
-                            // 2. ON L'AFFICHE DANS LE TERMINAL (Pour débugger sans crasher)
-                            println!("🚀 TENTATIVE DE LECTURE : {}", url);
+                            let current_media = list_signal().iter().find(|m| m.path == path).cloned();
+                            let start_time = current_media.as_ref().map(|m| m.last_position).unwrap_or(0.0);
+                            let media_id = current_media.as_ref().map(|m| m.id).unwrap_or(0);
+                            let tx = cmd_tx.clone();
 
-                            // 3. Le lecteur (SANS le bloc onerror qui fait planter)
-                            rsx! { 
+                            rsx! {
+                                // INPUT CACHÉ (Espion)
+                                input {
+                                    id: "spy-input",
+                                    r#type: "hidden", // Remets-le en hidden si tu veux, ou garde text pour debug
+                                    value: "", // Chaine vide au départ
+                                    
+                                    oninput: move |evt| {
+                                        let val = evt.value();
+                                        // On attend un format "POSITION|DUREE" (ex: "12.5|5400.0")
+                                        let parts: Vec<&str> = val.split('|').collect();
+
+                                        if parts.len() == 2 {
+                                            if let (Ok(time), Ok(duration)) = (parts[0].parse::<f32>(), parts[1].parse::<f32>()) {
+                                                
+                                                // 1. Backend : On envoie tout (Position + Vraie Durée)
+                                                if media_id > 0 {
+                                                    tx.send(Command::UpdateProgress(media_id, time, duration)).unwrap();
+                                                }
+
+                                                // 2. Frontend : Mise à jour immédiate
+                                                list_signal.write().iter_mut().find(|m| m.id == media_id).map(|m| {
+                                                    m.last_position = time;
+                                                    m.duration = Some(duration); // On met à jour la durée visuelle aussi !
+                                                });
+                                            }
+                                        }
+                                    }
+                                }
+
                                 video { 
+                                    id: "main-player", 
                                     key: "{url}", 
                                     src: "{url}", 
                                     controls: true, 
                                     autoplay: true, 
-                                    style: "max-width: 100%; max-height: 100%; width: 100%;"
-                                } 
+                                    style: "max-width: 100%; max-height: 100%; width: 100%;",
+                                }
+                                
+                                script { "
+                                    var v = document.getElementById('main-player');
+                                    var spy = document.getElementById('spy-input');
+                                    
+                                    // Reprise
+                                    if (v && {start_time} > 0) {{ v.currentTime = {start_time}; }}
+
+                                    if (v && spy) {{
+                                        v.ontimeupdate = function() {{
+                                            // 👇 L'ASTUCE : On concatène le temps et la durée avec une barre '|'
+                                            // v.duration est donné par le navigateur (c'est la vérité absolue)
+                                            var total = v.duration || 0; 
+                                            spy.value = v.currentTime + '|' + total;
+                                            
+                                            spy.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                                        }};
+                                    }}
+                                " }
                             }
                         }
                     }
                 }
-            } else {
+            } 
+            else {
                 div { class: "top-bar", 
                     Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, 
                     div { class: "page-title", "Vidéos" } 
                 }
+                
                 div { class: "media-grid",
                     for item in list_signal().iter().filter(|i| i.media_type == MediaType::Video) {
-                        div { class: "media-card",
-                            onclick: { let p=item.path.clone(); let i=item.id; let tx=cmd_tx.clone(); move |_| { current_video.set(Some(p.clone())); tx.send(Command::Play(i)).unwrap(); } },
-                            div { class: "card-icon", "🎬" }
-                            div { class: "card-text", style: "overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;", "{item.title.as_deref().unwrap_or(&item.path)}" }
+                        {
+                            // Calcul sécurisé
+                            let (progress_percent, has_started) = match item.duration {
+                                Some(total) if total > 0.0 => ((item.last_position / total) * 100.0, item.last_position > 5.0),
+                                _ => (0.0, item.last_position > 5.0), // Si pas de durée, on sait juste qu'on a commencé
+                            };
+                            
+                            // Debug silencieux dans la console terminal si besoin
+                            if has_started { println!("Position: {:.0}s / Durée: {:?}", item.last_position, item.duration); }
+
+                            rsx! {
+                                div { 
+                                    class: "media-card",
+                                    style: "position: relative; overflow: hidden;", 
+                                    onclick: { 
+                                        let p=item.path.clone(); 
+                                        let i=item.id; 
+                                        let tx=cmd_tx.clone(); 
+                                        move |_| { current_video.set(Some(p.clone())); tx.send(Command::Play(i)).unwrap(); } 
+                                    },
+
+                                    div { class: "card-icon", "🎬" }
+
+                                    // LOGIQUE D'AFFICHAGE DE LA BARRE
+                                    if progress_percent > 0.0 {
+                                        // Cas 1 : On connait la durée (Barre rouge normale)
+                                        div { 
+                                            style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: rgba(0,0,0,0.6); z-index: 10;",
+                                            div { style: "height: 100%; background: #e50914; width: {progress_percent}%; transition: width 0.3s;" }
+                                        }
+                                    } else if has_started {
+                                        // Cas 2 : On ne connait PAS la durée mais on a commencé (Barre bleue de secours)
+                                        div { 
+                                            style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: rgba(0,0,0,0.6); z-index: 10;",
+                                            div { style: "height: 100%; background: #3498db; width: 100%;" } // Tout bleu pour dire "En cours"
+                                        }
+                                    }
+
+                                    div { class: "card-text", style: "overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;", 
+                                        "{item.title.as_deref().unwrap_or(&item.path)}" 
+                                    }
+                                }
+                            }
                         }
                     }
                 }

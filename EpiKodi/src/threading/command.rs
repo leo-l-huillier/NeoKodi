@@ -39,6 +39,7 @@ pub enum Command {
     Resume(i64), // media id
     Stop(i64), // media id
     Info(i64), // media id
+    UpdateProgress(i64, f32, f32),
     /*
     TODO:
     Avance rapide / Retour rapide (±10 secondes)
