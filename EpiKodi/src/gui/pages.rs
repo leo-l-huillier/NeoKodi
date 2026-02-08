@@ -7,7 +7,6 @@ use std::fs;
 use base64::{Engine as _, engine::general_purpose};
 use std::path::{Path, PathBuf};
 use tokio::sync::broadcast;
-use dioxus::desktop::use_eval;
 // 👇 IMPORT NECESSAIRE POUR LA TV (Tri et Structures)
 use crate::iptv::parser::{TVChannel, ContentType};
 
@@ -47,7 +46,6 @@ pub fn Home() -> Element {
                     Link { to: Route::Images {}, class: "media-card", div { class: "card-icon", "🖼️" } div { class: "card-text", "Images" } }
                     Link { to: Route::Music {}, class: "media-card", div { class: "card-icon", "🎵" } div { class: "card-text", "Musique" } }
                     Link { to: Route::Plugins {}, class: "media-card", div { class: "card-icon", "🧩" } div { class: "card-text", "Plugins" } }
-                    Link { to: Route::Iptv {}, class: "media-card", div { class: "card-icon", "📺" } div { class: "card-text", "TV & VOD" } }
                     Link { to: Route::Settings {}, class: "media-card", div { class: "card-icon", "⚙️" } div { class: "card-text", "Paramètres" } }
                 }
             }
@@ -62,6 +60,7 @@ pub fn Music() -> Element {
     let list_signal = use_context::<Signal<Vec<MediaInfo>>>();
     let root_path_signal = use_context::<Signal<String>>();
     let root_path = root_path_signal();
+    let plugin_result = use_context::<Signal<PluginSearchResult>>();
     
     let mut current_audio = use_signal(|| Option::<String>::None);
     let tx_init = cmd_tx.clone();
@@ -85,6 +84,10 @@ pub fn Music() -> Element {
                             onclick: move |_| current_audio.set(None), 
                             "⏹️ Arrêter la lecture" 
                         }
+                        div { 
+                            style: "color: #4caf50; font-size: 1.5rem; font-weight: bold; text-align: center; max-width: 600px; padding: 10px; border: 1px dashed #333; border-radius: 8px;",
+                            "{plugin_result.read().text}" 
+                        }
                     }
                 }
             } else {
@@ -95,7 +98,23 @@ pub fn Music() -> Element {
                 div { class: "audio-list",
                     for item in list_signal().iter().filter(|i| i.media_type == MediaType::Audio) {
                         div { class: "audio-row",
-                            onclick: { let p=item.path.clone(); let i=item.id; let tx=cmd_tx.clone(); move |_| { current_audio.set(Some(p.clone())); tx.send(Command::Play(i)).unwrap(); } },
+                            onclick: { 
+                                let p = item.path.clone(); 
+                                let i = item.id; 
+                                let tx = cmd_tx.clone();
+                                
+                                let mut res = plugin_result.clone(); 
+
+                                move |_| { 
+                                    res.set(PluginSearchResult { text: String::from("🔎 Recherche MusicBrainz en cours...") });
+
+                                    current_audio.set(Some(p.clone())); 
+                                    
+                                    tx.send(Command::Play(i)).unwrap(); 
+                                    
+                                    tx.send(Command::GetArtistInfo(p.clone())).unwrap();
+                                } 
+                            },
                             div { class: "audio-icon", "🎵" }
                             div { class: "audio-info", div { class: "audio-title", "{item.title.as_deref().unwrap_or(&item.path)}" } div { class: "audio-artist", "Artiste inconnu" } }
                         }
@@ -243,164 +262,8 @@ pub fn Plugins() -> Element {
     } 
 }
 
-// --- IPTV (LIVE TV & VOD) ---
-#[component]
-pub fn Iptv() -> Element {
-    let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
-    let channels = use_context::<Signal<Vec<TVChannel>>>();
-    let mut is_loading = use_context::<Signal<bool>>();
-    let mut m3u_url = use_signal(|| String::from("https://iptv-org.github.io/iptv/countries/fr.m3u"));
-    
-    let mut current_stream = use_signal(|| Option::<String>::None);
-    let mut active_tab = use_signal(|| ContentType::Live);
-    
-    // 👇 Utilise le use_eval du prélude (standard dans les versions récentes)
-    let eval = use_eval();
-
-    use_effect(move || {
-        if let Some(url) = current_stream() {
-            // 👇 CORRECTION : On utilise {0} pour injecter 'url' proprement sans duplication d'argument
-            let js_code = format!(r#"
-                console.log("🚀 Lecture: " + "{0}");
-                setTimeout(() => {{
-                    var video = document.getElementById('iptv-player');
-                    
-                    if (!video) {{
-                        console.error("❌ ERREUR : Balise vidéo introuvable !");
-                        return;
-                    }}
-
-                    var url = "{0}"; 
-
-                    if (Hls.isSupported()) {{
-                        console.log("✅ HLS détecté");
-                        var hls = new Hls();
-                        hls.loadSource(url);
-                        hls.attachMedia(video);
-                        
-                        hls.on(Hls.Events.MANIFEST_PARSED, function() {{
-                            video.play().catch(e => console.error("❌ Err Play:", e));
-                        }});
-                        
-                        hls.on(Hls.Events.ERROR, function (event, data) {{
-                             if (data.fatal) {{ console.error("⚠️ HLS Fatal Error:", data); }}
-                        }});
-                    }}
-                    else if (video.canPlayType('application/vnd.apple.mpegurl')) {{
-                        console.log("🍎 Natif");
-                        video.src = url;
-                        video.addEventListener('loadedmetadata', function() {{
-                            video.play().catch(e => console.error("❌ Err Play:", e));
-                        }});
-                    }}
-                }}, 500);
-            "#, url); 
-
-            let _ = eval(&js_code);
-        }
-    });
-
-    rsx! {
-        div { class: "container",
-            if let Some(_) = current_stream() {
-                // --- LECTEUR VIDÉO ---
-                div { style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
-                    div { style: "height: 60px; padding: 10px; background: rgba(0,0,0,0.5); display: flex; align-items: center;",
-                        button { 
-                            class: "btn-nav", 
-                            style: "position: relative; transform: none;", 
-                            onclick: move |_| current_stream.set(None), 
-                            "⬅ Retour aux chaînes" 
-                        }
-                    }
-                    div { style: "flex: 1; display: flex; align-items: center; justify-content: center;",
-                        // 👇 Muted + Autoplay pour garantir le lancement
-                        video { 
-                            id: "iptv-player", 
-                            controls: true, 
-                            autoplay: true, 
-                            "muted": "true",       
-                            "playsinline": "true", 
-                            style: "width: 100%; height: 100%; object-fit: contain;" 
-                        }
-                    }
-                }
-            } else {
-                // --- Interface Principale ---
-                div { class: "top-bar",
-                    Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" },
-                    div { class: "page-title", "TV & VOD" }
-                }
-
-                div { style: "padding: 20px; display: flex; flex-direction: column; gap: 20px;",
-                    
-                    if is_loading() {
-                         div { style: "margin-top: 100px; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center;",
-                            h2 { "Téléchargement..." }
-                            div { class: "loading-container", div { class: "loading-bar" } }
-                        }
-                    } else if channels().is_empty() {
-                         div { style: "text-align: center;",
-                            input { 
-                                style: "padding: 10px; width: 300px; margin-right: 10px;", 
-                                value: "{m3u_url}", 
-                                oninput: move |e| m3u_url.set(e.value()) 
-                            }
-                            button { 
-                                onclick: move |_| { is_loading.set(true); cmd_tx.send(Command::LoadM3U(m3u_url())).unwrap(); },
-                                "Charger"
-                            }
-                         }
-                    } else {
-                        // Onglets
-                        div { style: "display: flex; gap: 10px; justify-content: center; margin-bottom: 20px;",
-                            button {
-                                style: if *active_tab.read() == ContentType::Live { "background: #007acc; color: white; padding: 10px 20px; border: none; border-radius: 4px;" } else { "background: #333; color: #aaa; padding: 10px 20px; border: none; border-radius: 4px;" },
-                                onclick: move |_| active_tab.set(ContentType::Live),
-                                "📺 Chaînes TV"
-                            }
-                            button {
-                                style: if *active_tab.read() == ContentType::Movie { "background: #007acc; color: white; padding: 10px 20px; border: none; border-radius: 4px;" } else { "background: #333; color: #aaa; padding: 10px 20px; border: none; border-radius: 4px;" },
-                                onclick: move |_| active_tab.set(ContentType::Movie),
-                                "🎬 Films"
-                            }
-                            button {
-                                style: if *active_tab.read() == ContentType::Series { "background: #007acc; color: white; padding: 10px 20px; border: none; border-radius: 4px;" } else { "background: #333; color: #aaa; padding: 10px 20px; border: none; border-radius: 4px;" },
-                                onclick: move |_| active_tab.set(ContentType::Series),
-                                "🍿 Séries"
-                            }
-                        }
-
-                        // Grille
-                        div { class: "media-grid",
-                            for channel in channels().iter().filter(|c| c.content_type == *active_tab.read()) {
-                                div { class: "media-card",
-                                    onclick: { 
-                                        let url = channel.url.clone();
-                                        move |_| current_stream.set(Some(url.clone())) 
-                                    },
-                                    div { class: "card-icon", 
-                                        match channel.content_type {
-                                            ContentType::Live => "📺",
-                                            ContentType::Movie => "🎬",
-                                            ContentType::Series => "🍿",
-                                        }
-                                    }
-                                    div { class: "card-text", "{channel.title}" }
-                                    if let Some(g) = &channel.group {
-                                        div { style: "font-size: 0.7rem; color: #666;", "{g}" }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
 // --- AUTRES PAGES ---
+#[component] pub fn Iptv() -> Element { rsx! { div { class: "container", div { class: "top-bar", Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, div { class: "page-title", "Séries" } } } } }
 #[component] pub fn Series() -> Element { rsx! { div { class: "container", div { class: "top-bar", Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, div { class: "page-title", "Séries" } } } } }
 #[component] pub fn PageNotFound(route: Vec<String>) -> Element { rsx! { div { class: "container", h1 { "404 - Page non trouvée" }, Link { to: Route::Home {}, class: "btn-nav", "Retour Accueil" } } } }
 
