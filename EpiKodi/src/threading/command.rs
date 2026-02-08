@@ -61,6 +61,9 @@ pub enum Command {
     AddPlaylist(String), // playlist name
     GetPlaylistId(String), // playlist name
     AddMediaToPlaylist(i64, i64), // media_id, playlist_id
+    RemoveMediaFromPlaylist(i64, i64), // media_id, playlist_id
+    DeletePlaylist(i64), // playlist_id
+    GetAllPlaylists(), // returns Vec<(playlist_id, playlist_name)>
     /*
     TODO:
     delete playlist
@@ -77,4 +80,5 @@ pub enum Event {
     Info(MediaInfo),
     IDList(Vec<i64>),
     MediaList(Vec<MediaInfo>),
+    PlaylistList(Vec<(i64, String)>),
 }

@@ -5,12 +5,14 @@ Gui  : implement
 TODO: remove source
 Gui  : implement
 
-
-
-
 TODO: playlists -> #36
-BACK : delete playlists, remove audio from playlist
 GUI  : add playlists management (add audio to playlist, remove audio from playlist, create playlist, delete playlist) to GUI
+
+TODO: research system
+GUI  : implement
+
+
+
 
 TODO: Tags -> #357
 Back : delete tags, remove media from tags
@@ -29,14 +31,11 @@ TODO: ajouter des commentaire dans tous les fichier (en haut)
 
 TODO: make sure tests cover more than 70% of the code
 
-TODO: research system
-Back : add research system for media
-GUI  : implement
 
 TODO: add a button for rescan library
 GUI  : implement
 
-TODO: add logs
+TODO: add logs system
 BACK : implement Tous les événements critiques loggés, Rotation automatique des logs (taille max 50MB) ,Niveaux : ERROR, WARN, INFO, DEBUG, TRACE
 
 TODO: avance rapide (+10s, -10s)

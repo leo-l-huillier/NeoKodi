@@ -191,6 +191,9 @@ mod media;
 mod library;
 mod scan;
 
+pub mod logger;
+use logger::logger::Logger;
+
 //======== GUI ========
 //mod gui;
 //use gui::route::Route;
@@ -213,7 +216,6 @@ use crate::media::image::Image;
 fn main() {
 
     // ========== MEDIA THREADING ===========
-
 
     let (cmd_tx, cmd_rx) = mpsc::channel::<Command>();
     let (evt_tx, evt_rx) = mpsc::channel::<Event>();

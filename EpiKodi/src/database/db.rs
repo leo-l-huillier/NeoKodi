@@ -266,7 +266,6 @@ impl DB {
 
     pub fn create_playlist(&mut self, name: &str) -> rusqlite::Result<i64> {
 
-
         self.conn.execute(
             "INSERT OR IGNORE INTO playlists (name) VALUES (?1)",
             [name],
@@ -279,12 +278,36 @@ impl DB {
         )
     }
 
+    pub fn delete_playlist(&mut self, playlist_id: i64) -> rusqlite::Result<()> {
+
+        self.conn.execute(
+            "DELETE FROM playlist_items WHERE playlist_id = ?1",
+            [playlist_id],
+        )?;
+        self.conn.execute(
+            "DELETE FROM playlists WHERE id = ?1",
+            [playlist_id],
+        )?;
+        Ok(())
+    }
+
     pub fn add_media_to_playlist(&mut self, media_id: i64, playlist_id: i64) -> rusqlite::Result<()> {
         self.conn.execute(
             "
             INSERT OR REPLACE INTO playlist_items
             (playlist_id, media_id)
             VALUES (?1, ?2)
+            ",
+            (playlist_id, media_id),
+        )?;
+        Ok(())
+    }
+
+    pub fn remove_media_from_playlist(&mut self, media_id: i64, playlist_id: i64) -> rusqlite::Result<()> {
+        self.conn.execute(
+            "
+            DELETE FROM playlist_items
+            WHERE playlist_id = ?1 AND media_id = ?2
             ",
             (playlist_id, media_id),
         )?;
@@ -305,13 +328,30 @@ impl DB {
 
         Ok(rows.filter_map(Result::ok).collect())
     }
-      //ORDER BY position ASC
+    
+    //ORDER BY position ASC
     pub fn get_playlist_id(&mut self, name: &str) -> rusqlite::Result<i64> {
         self.conn.query_row(
             "SELECT id FROM playlists WHERE name = ?1",
             [name],
             |row| row.get(0),
         )
+    }
+
+    pub fn get_all_playlists(&mut self) -> rusqlite::Result<Vec<(i64, String)>> {
+        let mut stmt = self.conn.prepare(
+            "
+                SELECT id, name
+                FROM playlists
+                ORDER BY name COLLATE NOCASE ASC
+            ",
+        )?;
+
+        let rows = stmt.query_map([], |row| {
+            Ok((row.get(0)?, row.get(1)?))
+        })?;
+
+        Ok(rows.filter_map(Result::ok).collect())
     }
 
 

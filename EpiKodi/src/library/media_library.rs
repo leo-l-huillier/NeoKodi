@@ -92,11 +92,27 @@ impl MediaLibrary {
         }
     }
 
+    pub fn delete_playlist(&mut self, playlist_id: i64) {
+
+        match self.database.delete_playlist(playlist_id) {
+            Ok(_) => println!("Deleted playlist with ID {}", playlist_id),
+            Err(e) => println!("Error deleting playlist ID {}: {}", playlist_id, e),
+        }
+    }
+
     pub fn add_media_to_playlist(&mut self, media_id: i64, playlist_id: i64) {
 
         match self.database.add_media_to_playlist(media_id, playlist_id) {
             Ok(_) => println!("Media ID {} added to Playlist ID {}", media_id, playlist_id),
             Err(e) => println!("Error adding Media ID {} to Playlist ID {}: {}", media_id, playlist_id, e),
+        }
+    }
+    
+    pub fn remove_media_from_playlist(&mut self, media_id: i64, playlist_id: i64) {
+
+        match self.database.remove_media_from_playlist(media_id, playlist_id) {
+            Ok(_) => println!("Media ID {} removed from Playlist ID {}", media_id, playlist_id),
+            Err(e) => println!("Error removing Media ID {} from Playlist ID {}: {}", media_id, playlist_id, e),
         }
     }
 
@@ -122,6 +138,16 @@ impl MediaLibrary {
         }
     }
 
+    pub fn get_all_playlists(&mut self) -> Vec<(i64, String)> {
+        
+        match self.database.get_all_playlists() {
+            Ok(playlists) => playlists,
+            Err(e) => {
+                println!("Error retrieving playlists: {}", e);
+                Vec::new()
+            }
+        }
+    }
 
     pub fn add_tag(&mut self, tag_name: &str) {
 

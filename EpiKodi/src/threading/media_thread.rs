@@ -60,9 +60,7 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     evt_tx.send(Event::MediaList(library.get_all_media())).unwrap();
                 }
 
-                Ok(Command::ChangeLibraryPath(path)) => {
-                    println!("🔄 REÇU COTÉ BACKEND : CHANGEMENT DE RACINE vers {:?}", path);
-                }
+
 
                 Ok(Command::AddSource(path, media_type)) => {
                     let mut library = lib_thread.lock().unwrap();
@@ -174,10 +172,27 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     library.add_media_to_playlist(media_id, playlist_id);
                 }
 
+                Ok(Command::DeletePlaylist(playlist_id)) => {
+                    let mut library = lib_thread.lock().unwrap();
+                    library.delete_playlist(playlist_id);
+                }
+
+                Ok(Command::RemoveMediaFromPlaylist(media_id, playlist_id)) => {
+                    let mut library = lib_thread.lock().unwrap();
+                    library.remove_media_from_playlist(media_id, playlist_id);
+                }
+
                 Ok(Command::GetPlaylistId(name)) => {
                     let mut library = lib_thread.lock().unwrap();
                     let playlist_id = library.get_playlist_id(&name);
                     evt_tx.send(Event::Data(playlist_id.to_string())).unwrap();
+                }
+
+                Ok(Command::GetAllPlaylists()) => {
+                    let mut library = lib_thread.lock().unwrap();
+                    let playlists = library.get_all_playlists();
+                    // For simplicity, we just send the count of playlists found
+                    evt_tx.send(Event::PlaylistList(playlists)).unwrap();
                 }
 
                 Ok(Command::GetArtistMetadataFromPlugin(name)) => {

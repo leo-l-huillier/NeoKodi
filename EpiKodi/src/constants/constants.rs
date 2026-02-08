@@ -4,6 +4,7 @@ This file contains constant values used throughout the application
 TODO: check the if there is a correct way to do that and good practices
 */
 
+pub const DEBUG: bool = true;
 
 pub const SOURCE_FILE: &str = "db/sources.json";
 pub const MEDIA_DB_FILE: &str = "db/library.db";
