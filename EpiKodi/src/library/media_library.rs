@@ -46,12 +46,15 @@ impl MediaLibrary {
 
     pub fn init(&mut self) {
 
+        // scan the libraries
         self.database.init_db().unwrap();
         self.scan_lib.scan_libraries();
 
-        self.database.upsert_media_from_scan(self.scan_lib.scan.clone()).unwrap();
-        self.database.cleanup_missing_media(self.scan_lib.scan.clone()).unwrap();
+        // update the database
+        self.database.upsert_media_from_scan(self.scan_lib.scan.clone()).unwrap(); //TODO: ce clone me fait chier, il faudrait qu'on utilise juste scan (ca serait meme mieux si on donne la valeur direct comme ca il se fait drop (on en a plus besoin ) et mm en terme de performance c'est pas terrible parce que c'est un gros object )
+        self.database.cleanup_missing_media(self.scan_lib.scan.clone()).unwrap(); // TODO to implement, shuld be called every scans
         self.database.get_all_media().unwrap();
+        //self.database.print_media_rows();
     
         
         for row in self.database.media_rows.iter() {
@@ -59,13 +62,27 @@ impl MediaLibrary {
             let media: Box<dyn Media> = match row.media_type {
                 MediaType::Audio => Box::new(Audio::new(&row.path,&row.title.as_deref().unwrap_or(""))),
                 MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))),
-                MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))),
-            };
+                MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))), };
 
             self.items.insert(row.id, media);
         }
 
     }    
+
+    pub fn reload(&mut self) {
+        
+        println!("🔄 Reloading media library...");
+        self.init();
+        println!("✅ Media library reloaded with {} items.", self.items.len());
+    }
+
+    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64) {
+        
+        match self.database.update_media_status_and_time(media_id, status, time_stop) {
+            Ok(_) => println!("Updated media ID {} with status {} and time_stop {}", media_id, status, time_stop),
+            Err(e) => println!("Error updating media ID {}: {}", media_id, e),
+        }
+    }
 
     pub fn create_playlist(&mut self, name: &str) {
 
@@ -75,11 +92,27 @@ impl MediaLibrary {
         }
     }
 
+    pub fn delete_playlist(&mut self, playlist_id: i64) {
+
+        match self.database.delete_playlist(playlist_id) {
+            Ok(_) => println!("Deleted playlist with ID {}", playlist_id),
+            Err(e) => println!("Error deleting playlist ID {}: {}", playlist_id, e),
+        }
+    }
+
     pub fn add_media_to_playlist(&mut self, media_id: i64, playlist_id: i64) {
 
         match self.database.add_media_to_playlist(media_id, playlist_id) {
             Ok(_) => println!("Media ID {} added to Playlist ID {}", media_id, playlist_id),
             Err(e) => println!("Error adding Media ID {} to Playlist ID {}: {}", media_id, playlist_id, e),
+        }
+    }
+    
+    pub fn remove_media_from_playlist(&mut self, media_id: i64, playlist_id: i64) {
+
+        match self.database.remove_media_from_playlist(media_id, playlist_id) {
+            Ok(_) => println!("Media ID {} removed from Playlist ID {}", media_id, playlist_id),
+            Err(e) => println!("Error removing Media ID {} from Playlist ID {}: {}", media_id, playlist_id, e),
         }
     }
 
@@ -105,6 +138,16 @@ impl MediaLibrary {
         }
     }
 
+    pub fn get_all_playlists(&mut self) -> Vec<(i64, String)> {
+        
+        match self.database.get_all_playlists() {
+            Ok(playlists) => playlists,
+            Err(e) => {
+                println!("Error retrieving playlists: {}", e);
+                Vec::new()
+            }
+        }
+    }
 
     pub fn add_tag(&mut self, tag_name: &str) {
 
@@ -140,7 +183,17 @@ impl MediaLibrary {
             MediaType::Image => self.scan_lib.libraries.add_image_source(path),
         }
 
-        self.init();
+        self.reload();
+    }
+
+    pub fn remove_source(&mut self, path: PathBuf, media_type: MediaType) {
+        match media_type {
+            MediaType::Audio => self.scan_lib.libraries.remove_audio_source(path),
+            MediaType::Video => self.scan_lib.libraries.remove_video_source(path),
+            MediaType::Image => self.scan_lib.libraries.remove_image_source(path),
+        }
+
+        self.reload();
     }
 
     pub fn get_media_from_path(&mut self, path: PathBuf) -> Vec<MediaInfo> {

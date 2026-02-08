@@ -24,6 +24,7 @@ pub struct LibraryConfig {
 }
 
 impl LibraryConfig {
+    //TODO a refaire... ca c'est la version de pa - recuperer la vesion d'avant
     pub fn load(path: &str) -> Self {
         if let Ok(data) = fs::read_to_string(path) {
            // println!("Fichier chargé : {}", data);
@@ -65,6 +66,27 @@ impl LibraryConfig {
         if !self.image_sources.iter().any(|s| s.path == folder) {
             self.image_sources.push(MediaSource { path: folder });
         }
+        self.save(SOURCE_FILE);
+    }
+
+        pub fn remove_source(&mut self, folder: PathBuf) {
+        self.sources.retain(|s| s.path != folder);
+        self.save(SOURCE_FILE);
+    }
+
+
+    pub fn remove_audio_source(&mut self, folder: PathBuf) {
+        self.music_sources.retain(|s| s.path != folder);
+        self.save(SOURCE_FILE);
+    }
+
+    pub fn remove_video_source(&mut self, folder: PathBuf) {
+        self.video_sources.retain(|s| s.path != folder);
+        self.save(SOURCE_FILE);
+    }
+
+    pub fn remove_image_source(&mut self, folder: PathBuf) {
+        self.image_sources.retain(|s| s.path != folder);
         self.save(SOURCE_FILE);
     }
 
