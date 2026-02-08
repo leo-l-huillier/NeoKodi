@@ -170,6 +170,23 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     library.add_tag_to_media(media_id, tag_id);
                 }
 
+                Ok(Command::RemoveTagFromMedia(media_id, tag_id)) => {
+                    let mut library = lib_thread.lock().unwrap();
+                    library.remove_tag_from_media(media_id, tag_id);
+                }
+
+                Ok(Command::DeleteTag(tag_id)) => {
+                    let mut library = lib_thread.lock().unwrap();
+                    library.remove_tag(tag_id);
+                }
+
+                Ok(Command::GetAllTags()) => {
+                    let mut library = lib_thread.lock().unwrap();
+                    let tags = library.get_all_tags();
+                    // For simplicity, we just send the count of tags found
+                    evt_tx.send(Event::IDList(tags.into_iter().map(|(id, _)| id).collect())).unwrap();
+                }
+
                 Ok(Command::AddPlaylist(name)) => {
                     let mut library = lib_thread.lock().unwrap();
                     library.create_playlist(&name);

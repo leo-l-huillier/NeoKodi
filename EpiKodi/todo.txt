@@ -8,39 +8,36 @@ Gui  : Done
 TODO: playlists -> #36
 GUI  : add playlists management (add audio to playlist, remove audio from playlist, create playlist, delete playlist) to GUI
 
+TODO: Tags -> #357
+GUI  : add tags management (add audio to tags, remove audio from tags, create tags, delete tags) to GUI
+
 TODO: research system
+GUI  : implement
+
+TODO: advanced audio control -> #34 #35
+Gui  : implement
+
+TODO: add a button for rescan library
+GUI  : implement
+
+TODO: avance rapide (+10s, -10s)
 GUI  : implement
 
 
 
 
 
-
-
-
-TODO: Tags -> #357
-Back : delete tags, remove media from tags
-GUI  : add tags management (add audio to tags, remove audio from tags, create tags, delete tags) to GUI
-
 TODO: Plugins -> #63
 GUI  : add m3u Plugins (#63), add metadata call if plugin
 
-TODO: advanced audio control -> #34 #35
-Back : add queue, repeat, shuffle
-Gui  : implement
+
+
+
 
 
 TODO: ajouter des commentaire dans tous les fichier (en haut)
 
 TODO: make sure tests cover more than 70% of the code
-
-
-TODO: add a button for rescan library
-GUI  : implement
-
-
-TODO: avance rapide (+10s, -10s)
-GUI  : implement
 
 TODO: get more metadata informations with plugin
 music : album, année, genre, pochette

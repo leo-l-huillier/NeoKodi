@@ -53,6 +53,9 @@ pub enum Command {
     AddTag(String), // tag name
     GetTagId(String), // tag name
     AddTagToMedia(i64, i64), // media_id, tag_id
+    RemoveTagFromMedia(i64, i64), // media_id, tag_id
+    DeleteTag(i64), // tag_id
+    GetAllTags(), // returns Vec<(tag_id, tag_name)>
     /*
     TODO:
 

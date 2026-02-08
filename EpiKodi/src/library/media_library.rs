@@ -201,6 +201,38 @@ impl MediaLibrary {
         }
     }
 
+    pub fn get_all_tags(&mut self) -> Vec<(i64, String)> {
+
+        let logger = Logger::new(LOG_FILE);
+
+        match self.database.get_all_tags() {
+            Ok(tags) => tags,
+            Err(e) => {
+                logger.error(&format!("Error retrieving tags: {}", e));
+                Vec::new()
+            }
+        }
+    }
+
+    pub fn remove_tag(&mut self, tag_id: i64) {
+
+        let logger = Logger::new(LOG_FILE);
+
+        match self.database.remove_tag(tag_id) {
+            Ok(_) => logger.debug(&format!("Removed tag with ID {}", tag_id)),
+            Err(e) => logger.error(&format!("Error removing tag ID {}: {}", tag_id, e)),
+        }
+    }
+
+    pub fn remove_tag_from_media(&mut self, media_id: i64, tag_id: i64) {
+        let logger = Logger::new(LOG_FILE);
+
+        match self.database.remove_tag_from_media(media_id, tag_id) {
+            Ok(_) => logger.debug(&format!("Tag ID {} removed from Media ID {}", tag_id, media_id)),
+            Err(e) => logger.error(&format!("Error removing Tag ID {} from Media ID {}: {}", tag_id, media_id, e)),
+        }
+    }
+
     pub fn add_tag_to_media(&mut self, media_id: i64, tag_id: i64) {
 
         let logger = Logger::new(LOG_FILE);

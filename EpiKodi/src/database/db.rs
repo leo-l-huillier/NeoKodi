@@ -233,6 +233,22 @@ impl DB {
         )
     }
 
+    pub fn get_all_tags(&mut self) -> rusqlite::Result<Vec<(i64, String)>> {
+        let mut stmt = self.conn.prepare(
+            "
+                SELECT id, name
+                FROM tags
+                ORDER BY name COLLATE NOCASE ASC
+            ",
+        )?;
+
+        let rows = stmt.query_map([], |row| {
+            Ok((row.get(0)?, row.get(1)?))
+        })?;
+
+        Ok(rows.filter_map(Result::ok).collect())
+    }
+
 
     pub fn add_tag_to_media(&mut self, media_id: i64, tag_id: i64) -> rusqlite::Result<()> {
         self.conn.execute(
@@ -241,6 +257,35 @@ impl DB {
                 VALUES (?1, ?2)
             ",
             (media_id, tag_id),
+        )?;
+        Ok(())
+    }
+
+    pub fn remove_tag_from_media(&mut self, media_id: i64, tag_id: i64) -> rusqlite::Result<()> {
+        self.conn.execute(
+            "
+                DELETE FROM media_tags
+                WHERE media_id = ?1 AND tag_id = ?2
+            ",
+            (media_id, tag_id),
+        )?;
+        Ok(())
+    }
+
+    pub fn remove_tag(&mut self, tag_id: i64) -> rusqlite::Result<()> {
+        self.conn.execute(
+            "
+                DELETE FROM media_tags
+                WHERE tag_id = ?1
+            ",
+            [tag_id],
+        )?;
+        self.conn.execute(
+            "
+                DELETE FROM tags
+                WHERE id = ?1
+            ",
+            [tag_id],
         )?;
         Ok(())
     }
