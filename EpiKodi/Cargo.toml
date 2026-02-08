@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2021" # 👈 C'EST LA CLÉ ! (2024 n'existe pas encore stable)
 
 [dependencies]
-# On garde Dioxus simple et robuste
 dioxus = { version = "0.5", features = ["desktop", "router", "hooks"] }
 dioxus-desktop = "0.5"
 
@@ -25,3 +24,4 @@ once_cell = "1.18"
 dirs = "5.0"
 reqwest = { version = "0.11", features = ["blocking"] }
 chrono = "0.4.43"
+urlencoding = "2.1"

@@ -7,8 +7,10 @@ use std::fs;
 use base64::{Engine as _, engine::general_purpose};
 use std::path::{Path, PathBuf};
 use tokio::sync::broadcast;
-// 👇 IMPORT NECESSAIRE POUR LA TV (Tri et Structures)
 use crate::iptv::parser::{TVChannel, ContentType};
+use crate::library::sources::LibraryConfig;
+use crate::constants::SOURCE_FILE;
+use urlencoding::encode;
 
 // 👇 STRUCTURE POUR LES PLUGINS
 #[derive(Clone, PartialEq)]
@@ -16,23 +18,29 @@ pub struct PluginSearchResult {
     pub text: String,
 }
 
-// --- FONCTION UTILITAIRE URL ---
-fn make_url(full_path: &str, root_path: &str) -> String {
-    let path_obj = Path::new(full_path);
-    let root_obj = Path::new(root_path);
+fn make_url(full_path: &str, _root_path: &str) -> String {
+    // 1. On nettoie les slashs
+    let clean_path = full_path.replace("\\", "/");
+    
+    // 2. Si c'est un chemin avec un lecteur (Ex: "E:/...")
+    if let Some(colon_idx) = clean_path.find(':') {
+        if colon_idx == 1 { 
+            let drive_letter = &clean_path[0..1].to_lowercase(); // "e"
+            let path_after_drive = &clean_path[3..]; // Tout après "E:/"
 
-    match path_obj.strip_prefix(root_obj) {
-        Ok(relative) => {
-            let relative_str = relative.to_string_lossy().replace("\\", "/");
-            let clean_url = relative_str.replace(" ", "%20").replace("#", "%23");
-            format!("http://127.0.0.1:3030/media/{}", clean_url)
-        },
-        Err(_) => {
-            format!("http://127.0.0.1:3030/media/{}", full_path.replace("\\", "/").replace(" ", "%20"))
+            // On encode proprement les espaces et accents pour le WEB
+            let encoded_parts: Vec<_> = path_after_drive.split('/')
+                .map(|part| encode(part))
+                .collect();
+            
+            // Résultat : http://127.0.0.1:3030/drives/e/Dossier/Film%20Cool.mp4
+            return format!("http://127.0.0.1:3030/drives/{}/{}", drive_letter, encoded_parts.join("/"));
         }
     }
-}
 
+    // 3. Fallback (cas rare)
+    format!("http://127.0.0.1:3030/media/{}", encode(&clean_path))
+}
 // --- ACCUEIL ---
 #[component]
 pub fn Home() -> Element {
@@ -144,10 +152,25 @@ pub fn Videos() -> Element {
                     div { style: "height: 60px; padding: 10px;",
                         button { class: "btn-nav", style: "position: relative; top: 0; left: 0; transform: none;", onclick: move |_| current_video.set(None), "⬅ Retour" }
                     }
+                    // ...
                     div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;",
                         {
+                            // 1. On génère l'URL
                             let url = make_url(&path, &root_path);
-                            rsx! { video { key: "{url}", src: "{url}", controls: true, autoplay: true, style: "max-width: 100%; max-height: 100%; width: 100%;" } }
+                            
+                            // 2. ON L'AFFICHE DANS LE TERMINAL (Pour débugger sans crasher)
+                            println!("🚀 TENTATIVE DE LECTURE : {}", url);
+
+                            // 3. Le lecteur (SANS le bloc onerror qui fait planter)
+                            rsx! { 
+                                video { 
+                                    key: "{url}", 
+                                    src: "{url}", 
+                                    controls: true, 
+                                    autoplay: true, 
+                                    style: "max-width: 100%; max-height: 100%; width: 100%;"
+                                } 
+                            }
                         }
                     }
                 }
@@ -270,9 +293,23 @@ pub fn Plugins() -> Element {
 // --- PARAMÈTRES ---
 #[component] 
 pub fn Settings() -> Element { 
-    let mut root_path_signal = use_context::<Signal<String>>();
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
-    let reload_tx = use_context::<broadcast::Sender<()>>();
+    
+    // 👇 CHARGEMENT DIRECT : On lit le fichier sources.json dès l'init
+    let mut sources_signal = use_signal(|| {
+        let config = LibraryConfig::load(SOURCE_FILE);
+        let mut paths = Vec::new();
+        
+        // On récupère tout ce qu'il y a dans le fichier
+        for s in config.video_sources { paths.push(s.path.to_string_lossy().to_string()); }
+        for s in config.music_sources { paths.push(s.path.to_string_lossy().to_string()); }
+        for s in config.image_sources { paths.push(s.path.to_string_lossy().to_string()); }
+        
+        // Petit nettoyage (tri + suppression doublons)
+        paths.sort();
+        paths.dedup();
+        paths
+    });
 
     rsx! { 
         div { class: "container", 
@@ -280,30 +317,78 @@ pub fn Settings() -> Element {
                 Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, 
                 div { class: "page-title", "Paramètres" } 
             }
-            div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px;",
-                div { style: "text-align: center;",
-                    h2 { "Dossier Média Actuel" }
-                    div { style: "background: #1e1e1e; padding: 20px; border-radius: 8px; font-family: monospace; color: #007acc; border: 1px solid #333; margin-top: 10px;",
-                        "{root_path_signal}"
+  
+            div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px; max-width: 800px; margin-left: auto; margin-right: auto;",
+                
+                // --- TITRE ---
+                div { style: "text-align: center; width: 100%;",
+                    h2 { "Gestion des Sources" }
+                    p { style: "color: #aaa; margin-bottom: 20px;", "Gérez ici les dossiers que NeoKodi doit scanner." }
+                }
+
+                // --- LISTE DES DOSSIERS ---
+                div { style: "width: 100%; display: flex; flex-direction: column; gap: 10px;",
+                    if sources_signal().is_empty() {
+                        div { style: "text-align: center; font-style: italic; color: #666; padding: 20px;", "Aucune source configurée." }
+                    }
+
+                    for path in sources_signal().iter() {
+                        div { 
+                            style: "background: #1e1e1e; padding: 15px; border-radius: 8px; border: 1px solid #333; display: flex; justify-content: space-between; align-items: center;",
+                            
+                            // Le chemin du dossier
+                            div { style: "font-family: monospace; color: #007acc; font-size: 1.1rem;", "📂 {path}" }
+                            
+                            // Bouton Supprimer
+                            button {
+                                class: "btn-nav",
+                                style: "position: relative; transform: none; top: auto; left: auto; background: #c0392b; padding: 8px 15px; font-size: 0.9rem;",
+                                onclick: {
+                                    let p = path.clone();
+                                    let tx = cmd_tx.clone();
+                                    move |_| {
+                                        let path_buf = PathBuf::from(&p);
+                                        
+                                        // 1. On prévient le Backend (pour qu'il arrête de scanner ce dossier)
+                                        tx.send(Command::RemoveSource(path_buf.clone(), MediaType::Video)).unwrap();
+                                        tx.send(Command::RemoveSource(path_buf.clone(), MediaType::Audio)).unwrap();
+                                        tx.send(Command::RemoveSource(path_buf.clone(), MediaType::Image)).unwrap();
+                                        tx.send(Command::GetAllMedia()).unwrap();
+                                        
+                                        // 2. On met à jour l'affichage localement (sans attendre)
+                                        sources_signal.write().retain(|x| x != &p);
+                                    }
+                                },
+                                "🗑️"
+                            }
+                        }
                     }
                 }
+
+                // --- BOUTON AJOUTER ---
                 button { 
                     class: "btn-nav", 
-                    style: "position: relative; transform: none; top: auto; left: auto; font-size: 1.2rem; padding: 15px 30px;",
+                    style: "position: relative; transform: none; top: auto; left: auto; font-size: 1.1rem; padding: 15px 30px; background-color: #27ae60;",
                     onclick: move |_| {
                         if let Some(path) = rfd::FileDialog::new().pick_folder() {
                             let path_str = path.to_string_lossy().to_string();
-                            let mut config = AppConfig::load();
-                            config.media_path = path_str.clone();
-                            config.save();
-                            root_path_signal.set(path_str.clone());
-                            let p = PathBuf::from(path_str);
-                            let _ = cmd_tx.send(Command::ChangeLibraryPath(p));
-                            println!("⚡ SIGNAL DE REDÉMARRAGE SERVEUR ENVOYÉ !");
-                            let _ = reload_tx.send(()); 
+                            
+                            // Évite les doublons visuels
+                            if !sources_signal().contains(&path_str) {
+                                let tx = cmd_tx.clone();
+                                
+                                // 1. On envoie au Backend (qui va mettre à jour sources.json et scanner)
+                                tx.send(Command::AddSource(path.clone(), MediaType::Video)).unwrap();
+                                tx.send(Command::AddSource(path.clone(), MediaType::Audio)).unwrap();
+                                tx.send(Command::AddSource(path.clone(), MediaType::Image)).unwrap();
+                                tx.send(Command::GetAllMedia()).unwrap();
+
+                                // 2. On met à jour l'affichage direct
+                                sources_signal.write().push(path_str);
+                            }
                         }
                     },
-                    "📂 Changer le dossier racine"
+                    "➕ Ajouter un dossier"
                 }
             }
         } 
