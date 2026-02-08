@@ -14,6 +14,16 @@ GUI  : implement
 
 
 
+TODO: add logs system
+BACK : implement Tous les événements critiques loggés, Rotation automatique des logs (taille max 50MB) ,Niveaux : ERROR, WARN, INFO, DEBUG, TRACE
+
+
+
+
+
+
+
+
 TODO: Tags -> #357
 Back : delete tags, remove media from tags
 GUI  : add tags management (add audio to tags, remove audio from tags, create tags, delete tags) to GUI
@@ -26,7 +36,6 @@ Back : add queue, reapeat, shuffle
 Gui  : implement
 
 
-
 TODO: ajouter des commentaire dans tous les fichier (en haut)
 
 TODO: make sure tests cover more than 70% of the code
@@ -35,8 +44,6 @@ TODO: make sure tests cover more than 70% of the code
 TODO: add a button for rescan library
 GUI  : implement
 
-TODO: add logs system
-BACK : implement Tous les événements critiques loggés, Rotation automatique des logs (taille max 50MB) ,Niveaux : ERROR, WARN, INFO, DEBUG, TRACE
 
 TODO: avance rapide (+10s, -10s)
 GUI  : implement
