@@ -7,6 +7,8 @@ use std::fs::OpenOptions;
 use std::io::Write;
 use chrono::Local;
 
+use crate::constants::constants::DEBUG;
+
 // Define the different log levels
 #[derive(Debug, Clone, Copy)]
 pub enum LogLevel {
@@ -77,6 +79,8 @@ impl Logger {
     }
 
     pub fn debug(&self, message: &str) {
-        self.log(LogLevel::Debug, message);
+        if DEBUG {
+            self.log(LogLevel::Debug, message);
+        }
     }
 }

@@ -112,7 +112,7 @@ pub fn Music() -> Element {
                                     
                                     tx.send(Command::Play(i)).unwrap(); 
                                     
-                                    tx.send(Command::GetArtistInfo(p.clone())).unwrap();
+                                    tx.send(Command::GetArtistMetadataFromPlugin(p.clone())).unwrap();
                                 } 
                             },
                             div { class: "audio-icon", "🎵" }
@@ -245,7 +245,7 @@ pub fn Plugins() -> Element {
                         class: "btn-nav", 
                         style: "position: relative; transform: none; top: auto; left: auto;",
                         onclick: move |_| {
-                            cmd_tx.send(Command::GetArtistInfo(search_text())).unwrap();
+                            cmd_tx.send(Command::GetArtistMetadataFromPlugin(search_text())).unwrap();
                         },
                         "🔍 Rechercher"
                     }

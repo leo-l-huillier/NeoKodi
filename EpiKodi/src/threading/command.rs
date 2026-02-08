@@ -62,8 +62,7 @@ pub enum Command {
     AddPlaylist(String), // playlist name
     GetPlaylistId(String), // playlist name
     AddMediaToPlaylist(i64, i64), // media_id, playlist_id
-    GetArtistInfo(String),
-    LoadM3U(String),
+    //LoadM3U(String),
     RemoveMediaFromPlaylist(i64, i64), // media_id, playlist_id
     DeletePlaylist(i64), // playlist_id
     GetAllPlaylists(), // returns Vec<(playlist_id, playlist_name)>

@@ -24,7 +24,6 @@ pub struct LibraryConfig {
 }
 
 impl LibraryConfig {
-    //TODO a refaire... ca c'est la version de pa - recuperer la vesion d'avant
     pub fn load(path: &str) -> Self {
         if let Ok(data) = fs::read_to_string(path) {
            // println!("Fichier chargé : {}", data);

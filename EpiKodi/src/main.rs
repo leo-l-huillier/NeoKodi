@@ -9,6 +9,11 @@ mod scan;
 mod config;
 mod gui;
 mod iptv;
+mod logger;
+mod plugin;
+
+use crate::logger::logger::Logger;
+
 
 use crate::gui::style::GLOBAL_STYLE;
 use crate::config::AppConfig;

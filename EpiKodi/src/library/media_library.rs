@@ -1,5 +1,6 @@
 use crate::database::db::DB;
 
+
 use crate::media::data::Media;
 use crate::media::data::MediaType;
 use crate::media::audio::Audio;
@@ -15,11 +16,24 @@ use std::path::Path;
 use dioxus::html::p;
 use rusqlite::{Connection};
 
-use crate::constants::MEDIA_DB_FILE;
+use crate::constants::LOG_FILE;
 use crate::scan::scan::Scan;
 use std::path::PathBuf;
 use std::fs::File;
 
+use crate::logger::logger::Logger;
+
+/* 
+    let logger = Logger::new(LOG_FILE);
+
+    // Log some messages
+    logger.info("Application started");
+    logger.debug("This is a debug message");
+    logger.warning("This is a warning message");
+    logger.error("This is an error message");
+    logger.info("Application finished");
+
+*/
 
 #[derive(Debug, Clone)]
 pub struct ScannedMedia {
@@ -70,58 +84,68 @@ impl MediaLibrary {
     }    
 
     pub fn reload(&mut self) {
-        
-        println!("🔄 Reloading media library...");
+        let logger = Logger::new(LOG_FILE);
+        logger.info("🔄 Reloading media library...");
         self.init();
-        println!("✅ Media library reloaded with {} items.", self.items.len());
+        logger.info(&format!("✅ Media library reloaded with {} items.", self.items.len()));
     }
 
     pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64) {
+        let logger = Logger::new(LOG_FILE);
         
         match self.database.update_media_status_and_time(media_id, status, time_stop) {
-            Ok(_) => println!("Updated media ID {} with status {} and time_stop {}", media_id, status, time_stop),
-            Err(e) => println!("Error updating media ID {}: {}", media_id, e),
+            Ok(_) => logger.debug(&format!("Updated media ID {} with status {} and time_stop {}", media_id, status, time_stop)),
+            Err(e) => logger.error(&format!("Error updating media ID {}: {}", media_id, e)),
         }
     }
 
     pub fn create_playlist(&mut self, name: &str) {
 
+        let logger = Logger::new(LOG_FILE);
+
         match self.database.create_playlist(name) {
-            Ok(playlist_id) => println!("Created playlist '{}' with ID {}", name, playlist_id),
-            Err(e) => println!("Playlist '{}' already exists: {}", name, e),
+            Ok(playlist_id) => logger.debug(&format!("Created playlist '{}' with ID {}", name, playlist_id)),
+            Err(e) => logger.error(&format!("Playlist '{}' already exists: {}", name, e)),
         }
     }
 
     pub fn delete_playlist(&mut self, playlist_id: i64) {
 
+        let logger = Logger::new(LOG_FILE);
         match self.database.delete_playlist(playlist_id) {
-            Ok(_) => println!("Deleted playlist with ID {}", playlist_id),
-            Err(e) => println!("Error deleting playlist ID {}: {}", playlist_id, e),
+            Ok(_) => logger.debug(&format!("Deleted playlist with ID {}", playlist_id)),
+            Err(e) => logger.error(&format!("Error deleting playlist ID {}: {}", playlist_id, e)),
         }
     }
 
     pub fn add_media_to_playlist(&mut self, media_id: i64, playlist_id: i64) {
 
+        let logger = Logger::new(LOG_FILE);
+
         match self.database.add_media_to_playlist(media_id, playlist_id) {
-            Ok(_) => println!("Media ID {} added to Playlist ID {}", media_id, playlist_id),
-            Err(e) => println!("Error adding Media ID {} to Playlist ID {}: {}", media_id, playlist_id, e),
+            Ok(_) => logger.debug(&format!("Media ID {} added to Playlist ID {}", media_id, playlist_id)),
+            Err(e) => logger.error(&format!("Error adding Media ID {} to Playlist ID {}: {}", media_id, playlist_id, e)),
         }
     }
     
     pub fn remove_media_from_playlist(&mut self, media_id: i64, playlist_id: i64) {
 
+        let logger = Logger::new(LOG_FILE);
+
         match self.database.remove_media_from_playlist(media_id, playlist_id) {
-            Ok(_) => println!("Media ID {} removed from Playlist ID {}", media_id, playlist_id),
-            Err(e) => println!("Error removing Media ID {} from Playlist ID {}: {}", media_id, playlist_id, e),
+            Ok(_) => logger.debug(&format!("Media ID {} removed from Playlist ID {}", media_id, playlist_id)),
+            Err(e) => logger.error(&format!("Error removing Media ID {} from Playlist ID {}: {}", media_id, playlist_id, e)),
         }
     }
 
     pub fn get_media_from_playlist(&mut self, playlist_id: i64) -> Vec<i64> {
 
+        let logger = Logger::new(LOG_FILE);
+
         match self.database.get_media_from_playlist(playlist_id) {
             Ok(media_list) => media_list,
             Err(e) => {
-                println!("Error retrieving media from Playlist ID {}: {}", playlist_id, e);
+                logger.error(&format!("Error retrieving media from Playlist ID {}: {}", playlist_id, e));
                 Vec::new()
             }
         }
@@ -129,21 +153,25 @@ impl MediaLibrary {
 
     pub fn get_playlist_id(&mut self, name: &str) -> i64 {
         
+        let logger = Logger::new(LOG_FILE);
+
         match self.database.get_playlist_id(name) {
             Ok(playlist_id) => playlist_id,
             Err(e) => {
-                println!("Error retrieving playlist ID for '{}': {}", name, e);
+                logger.error(&format!("Error retrieving playlist ID for '{}': {}", name, e));
                 -1
             }
         }
     }
 
     pub fn get_all_playlists(&mut self) -> Vec<(i64, String)> {
+
+        let logger = Logger::new(LOG_FILE);
         
         match self.database.get_all_playlists() {
             Ok(playlists) => playlists,
             Err(e) => {
-                println!("Error retrieving playlists: {}", e);
+                logger.error(&format!("Error retrieving playlists: {}", e));
                 Vec::new()
             }
         }
@@ -151,26 +179,32 @@ impl MediaLibrary {
 
     pub fn add_tag(&mut self, tag_name: &str) {
 
+        let logger = Logger::new(LOG_FILE);
+
         match self.database.get_or_create_tag(tag_name) {
-            Ok(tag_id) => println!("Tag '{}' has ID {}", tag_name, tag_id),
-            Err(e) => println!("Error adding tag '{}': {}", tag_name, e),
+            Ok(tag_id) => logger.debug(&format!("Tag '{}' has ID {}", tag_name, tag_id)),
+            Err(e) => logger.error(&format!("Error adding tag '{}': {}", tag_name, e)),
         }
     }
 
     pub fn add_tag_to_media(&mut self, media_id: i64, tag_id: i64) {
 
+        let logger = Logger::new(LOG_FILE);
+
         match self.database.add_tag_to_media(media_id, tag_id) {
-            Ok(_) => println!("Tag ID {} added to Media ID {}", tag_id, media_id),
-            Err(e) => println!("Error adding Tag ID {} to Media ID {}: {}", tag_id, media_id, e),
+            Ok(_) => logger.debug(&format!("Tag ID {} added to Media ID {}", tag_id, media_id)),
+            Err(e) => logger.error(&format!("Error adding Tag ID {} to Media ID {}: {}", tag_id, media_id, e)),
         }
     }
 
     pub fn get_tag_id(&mut self, tag_name: &str) -> i64 {
         
+        let logger = Logger::new(LOG_FILE);
+
         match self.database.get_tag_id(tag_name) {
             Ok(tag_id) => tag_id,
             Err(e) => {
-                println!("Error retrieving tag ID for '{}': {}", tag_name, e);
+                logger.error(&format!("Error retrieving tag ID for '{}': {}", tag_name, e));
                 -1
             }
         }
@@ -237,39 +271,48 @@ impl MediaLibrary {
 
    
     pub fn play_id(&mut self, id: i64) {
+
+        let logger = Logger::new(LOG_FILE);
+
         if let Some(item) = self.items.get_mut(&id) {
             println!("Playing media ID {id}: ");
+            logger.debug(&format!("Playing media ID {id}: {}", item.get_name()));
             item.init();
             item.play();
         } else {
-            println!("Error: media with ID {id} not found.");
+            logger.error(&format!("Error: media with ID {id} not found."));
         }
     }
 
     pub fn pause_id(&mut self, id: i64) {
-        println!("in library pause");
+
+        let logger = Logger::new(LOG_FILE);
+
+        logger.debug(&format!("Pausing media ID {id}"));
         if let Some(item) = self.items.get_mut(&id) {
-            println!("in library pause");
             item.pause();
         } else {
-            println!("in library pause error");
-            println!("Error: media with ID {id} not found.");
+            logger.error(&format!("Error: media with ID {id} not found."));
         }
     }
 
     pub fn resume_id(&mut self, id: i64) {
+        let logger = Logger::new(LOG_FILE);
+
         if let Some(item) = self.items.get_mut(&id) {
             item.resume();
         } else {
-            println!("Error: media with ID {id} not found.");
+            logger.error(&format!("Error: media with ID {id} not found."));
         }
     }
 
-        pub fn stop_id(&mut self, id: i64) {
+    pub fn stop_id(&mut self, id: i64) {
+        let logger = Logger::new(LOG_FILE);
+
         if let Some(item) = self.items.get_mut(&id) {
             item.stop();
         } else {
-            println!("Error: media with ID {id} not found.");
+            logger.error(&format!("Error: media with ID {id} not found."));
         }
     }
 
