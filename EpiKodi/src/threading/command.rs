@@ -9,6 +9,7 @@ use crate::media::data::MediaInfo;
 pub enum Command {
     ChangeLibraryPath(PathBuf),
     AddSource(PathBuf, MediaType), // path
+    Reload(),
     /*
     TODO
 
@@ -25,6 +26,7 @@ pub enum Command {
     GetMediaFromType(MediaType), // media type
     GetMediaFromTag(String),
     GetMediaFromPlaylist(i64),
+    UpdateMediaState(i64, i32, f64), // media id, status, time_stop
     /*
     TODO:
     Récupération automatique d'informations supplémentaires sur les médias (affiches, synopsis, note, casting) depuis des bases de données en ligne.

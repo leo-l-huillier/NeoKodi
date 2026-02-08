@@ -11,6 +11,8 @@ use crate::media::data::MediaType;
 
 use crate::plugin::plugin_manager::PluginManager;
 
+use crate::constants::constants::{PLAYING};
+
 use std::thread;
 use std::sync::{Arc, Mutex, mpsc};
 use std::path::PathBuf;
@@ -26,7 +28,13 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
     thread::spawn(move || {
         let mut library = lib_thread.lock().unwrap();
         library.init();
+
+
+        // ----TESTS----
         //library.play_id(3);
+        //library.update_media_status_and_time(1, PLAYING, 100.0);
+
+
 
         drop(library);
 
@@ -52,18 +60,13 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     evt_tx.send(Event::MediaList(library.get_all_media())).unwrap();
                 }
 
-                Ok(Command::AddSource(path, media_type)) => {
-                    let mut library = lib_thread.lock().unwrap();
-
-                    library.add_source(path, media_type);
-                }
-
                 Ok(Command::ChangeLibraryPath(path)) => {
                     println!("🔄 REÇU COTÉ BACKEND : CHANGEMENT DE RACINE vers {:?}", path);
                 }
 
                 Ok(Command::AddSource(path, media_type)) => {
                     let mut library = lib_thread.lock().unwrap();
+                    
                     library.add_source(path, media_type);
                 }
 
@@ -97,6 +100,18 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     let media_list = library.get_media_from_playlist(playlist_id);
                     // For simplicity, we just send the count of media items found
                     evt_tx.send(Event::IDList(media_list)).unwrap();
+                }
+
+                Ok(Command::UpdateMediaState(media_id, status, time_stop)) => {
+                    let mut library = lib_thread.lock().unwrap();
+                    library.update_media_status_and_time(media_id, status, time_stop);
+                }
+
+                Ok(Command::Reload()) => {
+                    let mut library = lib_thread.lock().unwrap();
+                    library.reload();
+                    let media_list = library.get_all_media();
+                    evt_tx.send(Event::MediaList(media_list)).unwrap();
                 }
 
                 Ok(Command::Play(id)) => {

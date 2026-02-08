@@ -20,3 +20,8 @@ pub const PLUGIN_EXT: &str = if cfg!(target_os = "windows") {
 } else {
     "so"
 };
+
+// Media status constants
+pub const NOT_STARTED: i32 = 0;
+pub const PLAYING: i32 = 1;
+pub const FINISHED: i32 = 2;
