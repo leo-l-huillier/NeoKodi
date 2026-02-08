@@ -68,6 +68,27 @@ impl LibraryConfig {
         self.save(SOURCE_FILE);
     }
 
+        pub fn remove_source(&mut self, folder: PathBuf) {
+        self.sources.retain(|s| s.path != folder);
+        self.save(SOURCE_FILE);
+    }
+
+
+    pub fn remove_audio_source(&mut self, folder: PathBuf) {
+        self.music_sources.retain(|s| s.path != folder);
+        self.save(SOURCE_FILE);
+    }
+
+    pub fn remove_video_source(&mut self, folder: PathBuf) {
+        self.video_sources.retain(|s| s.path != folder);
+        self.save(SOURCE_FILE);
+    }
+
+    pub fn remove_image_source(&mut self, folder: PathBuf) {
+        self.image_sources.retain(|s| s.path != folder);
+        self.save(SOURCE_FILE);
+    }
+
     
 }
 

@@ -2,6 +2,9 @@ use super::data::Media;
 use super::data::MediaType;
 use super::data::MediaInfo;
 
+use crate::logger::logger::Logger;
+use crate::constants::LOG_FILE;
+
 pub struct Image {
     pub id: i64,
     pub path: String,
@@ -24,7 +27,10 @@ impl Media for Image {
     fn init(&mut self) {}
 
     fn play(&mut self) {
-        println!("Displaying image (logic handled by frontend): {}", self.name);
+
+        let logger = Logger::new(LOG_FILE);
+
+        logger.debug(&format!("Playing image: {}", self.name));
     }
 
     fn pause(&self) {}

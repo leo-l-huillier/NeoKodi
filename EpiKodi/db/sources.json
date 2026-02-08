@@ -2,23 +2,26 @@
   "sources": [],
   "music_sources": [
     {
-      "path": "/music1"
+      "path": "E:\\game\\Projet Pro\\NeoKodi\\EpiKodi"
     },
     {
-      "path": "/music2"
-    },
-    {
-      "path": "/test/music"
+      "path": "E:\\_record\\Outplayed\\Overwatch 2"
     }
   ],
   "video_sources": [
     {
-      "path": "/videos1"
+      "path": "E:\\game\\Projet Pro\\NeoKodi\\EpiKodi"
+    },
+    {
+      "path": "E:\\_record\\Outplayed\\Overwatch 2"
     }
   ],
   "image_sources": [
     {
-      "path": "/images1"
+      "path": "E:\\game\\Projet Pro\\NeoKodi\\EpiKodi"
+    },
+    {
+      "path": "E:\\_record\\Outplayed\\Overwatch 2"
     }
   ]
 }

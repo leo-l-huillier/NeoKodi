@@ -8,6 +8,9 @@ use super::data::Media;
 use super::data::MediaType;
 use super::data::MediaInfo;
 
+use crate::logger::logger::Logger;
+use crate::constants::LOG_FILE;
+
 
 use rodio::{Decoder, OutputStreamBuilder, Sink};
 use std::fs::File;
@@ -16,6 +19,12 @@ use std::io::BufReader;
 
 use lofty::prelude::*;
 use lofty::{read_from_path};
+
+use rand::seq::SliceRandom;
+//use rand::rng::thread_rng;
+use rand::thread_rng;
+
+
 
 
 struct Metadata {
@@ -27,12 +36,97 @@ struct Metadata {
     duration: f32,
 }
 
+pub struct Queue {
+    audio_queue: Vec<i64>,
+    original_queue: Vec<i64>,
+    repeat: bool,
+}
+
+impl Queue {
+    pub fn new() -> Self {
+        Queue {
+            audio_queue: Vec::new(),
+            original_queue: Vec::new(),
+            repeat: false,
+        }
+    }
+
+    pub fn add_to_queue(&mut self, media: i64) {
+        let logger = Logger::new(LOG_FILE);
+
+        self.audio_queue.push(media);
+        self.original_queue.push(media);
+
+        logger.debug(&format!("Added to queue: {}", media));
+    }
+
+    pub fn get_current(&mut self) -> Option<i64> {
+
+        let logger = Logger::new(LOG_FILE);
+
+        if let Some(current) = self.audio_queue.first() {
+            logger.info(&format!("Current media in queue: {}", current));
+            Some(*current)
+        } else {
+            logger.info("Trying to get current media but queue is empty");
+            None
+        }
+
+    }
+
+    pub fn next(&mut self) -> Option<i64> {
+       
+        let logger = Logger::new(LOG_FILE);
+       
+        if !self.audio_queue.is_empty() {
+            let next_media = self.audio_queue.remove(0);
+            logger.info(&format!("Next media in queue: {}", next_media));
+            Some(next_media)
+        } else {
+
+            if self.repeat {
+                self.audio_queue = self.original_queue.clone();
+                logger.info("Queue is empty, repeating original queue");
+                Some(self.get_current());
+            }
+
+            logger.info("Trying to get next media but queue is empty");
+            None
+        }
+    }
+
+    pub fn toggle_shuffle(&mut self) {
+
+        let logger = Logger::new(LOG_FILE);
+
+        if self.audio_queue.is_empty() {
+            logger.debug("Trying to shuffle queue but it's empty");
+            return;
+        }
+
+        let mut rng = thread_rng();
+        self.audio_queue.shuffle(&mut rng);
+
+        logger.info("Queue shuffled");
+    }
+
+    pub fn toggle_repeat(&mut self) {
+        self.repeat = !self.repeat;
+    }
+
+    pub fn clear_queue(&mut self) {
+        self.audio_queue.clear();
+        self.original_queue.clear();
+    }
+
+}
+
 pub struct Audio {
     pub path: String,
     pub name: String,
 
     media_type: MediaType,
-    metadata: Metadata,
+    metadata: Metadata, // make it a json
 
     stream: Option<rodio::OutputStream>,    
     sink: Option<Sink>,
@@ -44,6 +138,7 @@ impl Audio {
     pub fn new(path: &str, name: &str) -> Self {
 
 
+        //========= METADATA ========= 
         let tagged_file = read_from_path(path)
             .expect("Failed to read tags from file");
         let tag = match tagged_file.primary_tag() {
@@ -120,7 +215,7 @@ impl Media for Audio {
 
 
         //print metadata info
-        println!("{}", format!(
+        /*println!("{}", format!(
             "Audio: {} ({})\nTitle: {}\nArtist: {}\nAlbum: {}\nYear: {}\nGenre: {}\nDuration: {:.2} seconds",
             self.name,
             self.path,
@@ -130,7 +225,7 @@ impl Media for Audio {
             self.metadata.year,
             self.metadata.genre,
             self.metadata.duration
-        ));
+        ));*/
 
         MediaInfo {
             id: 0,
@@ -158,19 +253,22 @@ impl Media for Audio {
 }
 
 
+
+
+
+
+
 #[cfg(test)]
 mod tests {
     use super::*;
     use std::path::Path;
 
-    // Helper: returns a sample file path; tests are ignored if missing.
     fn sample_path() -> Option<String> {
         let p = Path::new("tests/data/sample.mp3");
         if p.exists() { Some(p.to_string_lossy().to_string()) } else { None }
     }
 
     #[test]
-    #[ignore] // Requires tests/data/sample.mp3 to exist with readable tags
     fn new_reads_metadata() {
         let path = sample_path().expect("missing test audio file");
         let audio = Audio::new(&path, "Sample");
@@ -180,7 +278,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore] // Requires tests/data/sample.mp3; also opens audio device
     fn init_and_play_then_stop() {
         let path = sample_path().expect("missing test audio file");
         let mut audio = Audio::new(&path, "Sample");
@@ -192,7 +289,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore] // Requires tests/data/sample.mp3
     fn info_returns_media_info() {
         let path = sample_path().expect("missing test audio file");
         let audio = Audio::new(&path, "Sample");

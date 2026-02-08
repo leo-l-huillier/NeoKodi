@@ -1,89 +1,101 @@
 #![allow(non_snake_case)]
 
-mod threading;
 mod constants;
-mod media;
+mod threading;
 mod database;
+mod media;
 mod library;
 mod scan;
+mod config;
 mod gui;
+mod iptv;
+mod logger; 
+mod plugin;
 
-use threading::media_thread::launch_media_thread;
-use threading::command::{Command, Event};
-use gui::route::Route;
-use crate::media::data::MediaType;
+use crate::logger::logger::Logger;
+use crate::constants::LOG_FILE;
 
-use std::sync::mpsc;
+use crate::gui::style::GLOBAL_STYLE;
+use crate::config::AppConfig;
+use crate::gui::init::{App, RELOAD_SIGNAL}; 
+
+use std::thread;
 use std::time::Duration;
-use std::cell::RefCell;
-use std::rc::Rc;
+use std::path::Path;
+
 use dioxus::prelude::*;
 use dioxus::desktop::{Config, WindowBuilder};
-use dioxus_router::prelude::*;
-use crate::media::data::MediaInfo;
+
+use warp::Filter;
+use tokio::sync::broadcast;
 
 fn main() {
-    let config = Config::new()
-        .with_window(WindowBuilder::new()
-            .with_title("NeoKodi")
-            .with_resizable(true)
-        );
 
-    LaunchBuilder::desktop().with_cfg(config).launch(App);
-}
+    let logger = Logger::new(LOG_FILE);
 
-struct Backend {
-    tx: mpsc::Sender<Command>,
-    rx: RefCell<Option<mpsc::Receiver<Event>>>,
-}
+    unsafe {
+        std::env::set_var("RUST_LOG", "warp=info");
+        std::env::set_var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--disable-web-security --allow-file-access-from-files --allow-running-insecure-content --autoplay-policy=no-user-gesture-required");
+    }
 
-fn App() -> Element {
-    
-    let backend_channels = use_hook(|| {
-        println!("--- Initialisation du Thread Média ---");
-        let (cmd_tx, cmd_rx) = mpsc::channel::<Command>();
-        let (evt_tx, evt_rx) = mpsc::channel::<Event>();
-        
-        launch_media_thread(cmd_rx, evt_tx);
+    let (reload_tx, _) = broadcast::channel::<()>(16);
+    let _ = RELOAD_SIGNAL.set(reload_tx.clone());
+    let reload_tx_server = reload_tx.clone(); 
 
-        Rc::new(Backend {
-            tx: cmd_tx,
-            rx: RefCell::new(Some(evt_rx)),
-        })
-    });
+    // --- THREAD SERVEUR ---
+    thread::spawn(move || {
+        let rt = tokio::runtime::Runtime::new().unwrap();
+        rt.block_on(async move {
+            loop {
+                let app_config = AppConfig::load();
+                let server_root = app_config.media_path.clone();
+                logger.info(&format!("🌍 SERVEUR : Démarrage sur {}", server_root));
 
-    use_context_provider(|| backend_channels.tx.clone());
-    let mut current_image = use_context_provider(|| Signal::new(Option::<String>::None));
-    let mut media_list = use_context_provider(|| Signal::new(Vec::<MediaInfo>::new()));
+                let mut rx = reload_tx_server.subscribe();
+                let base_route = warp::path("media")
+                    .and(warp::fs::dir(app_config.media_path.clone()));
+                let mut drives_filter: Option<warp::filters::BoxedFilter<(warp::fs::File,)>> = None;
 
-    use_coroutine(move |_: UnboundedReceiver<()>| {
-        let backend = backend_channels.clone();
-        
-        async move {
-            let mut rx_opt = backend.rx.borrow_mut();
-            if let Some(rx) = rx_opt.take() {
-                drop(rx_opt);
-                loop {
-                    if let Ok(msg) = rx.try_recv() {
-                        match msg {
-                            Event::MediaList(list) => {
-                                println!("GUI: Liste reçue avec {} éléments", list.len());
-                                media_list.set(list);
-                            }
-                            
-                            Event::Info(info) => {
-                                if info.media_type == MediaType::Image {
-                                    current_image.set(Some(info.path));
-                                }
-                            }
-                            _ => {}
-                        }
+                for letter in b'a'..=b'z' {
+                    let char_letter = letter as char;
+                    let drive_path = format!("{}:\\", char_letter);
+
+                    if Path::new(&drive_path).exists() {
+                        let this_drive = warp::path("drives")
+                            .and(warp::path(char_letter.to_string()))
+                            .and(warp::fs::dir(drive_path));
+
+                        drives_filter = match drives_filter {
+                            Some(prev) => Some(prev.or(this_drive).unify().boxed()),
+                            None => Some(this_drive.boxed()),
+                        };
                     }
-                    tokio::time::sleep(Duration::from_millis(50)).await;
                 }
+
+                let final_drives_route = drives_filter.unwrap_or_else(|| {
+                    warp::path("impossible_fallback_route")
+                        .and(warp::fs::dir("."))
+                        .boxed()
+                });
+                let cors = warp::cors().allow_any_origin().allow_methods(vec!["GET", "HEAD"]);
+                let routes = base_route
+                    .or(final_drives_route)
+                    .unify() 
+                    .with(cors);
+                let (_addr, server) = warp::serve(routes)
+                    .bind_with_graceful_shutdown(([127, 0, 0, 1], 3030), async move {
+                        let _ = rx.recv().await;
+                    });
+
+                server.await;
+                tokio::time::sleep(Duration::from_millis(1000)).await;
             }
-        }
+        });
     });
 
-    rsx! { Router::<Route> {} }
+    // --- FENÊTRE ---
+    let window = WindowBuilder::new().with_title("NeoKodi").with_resizable(true).with_maximized(true);
+    let config_dioxus = Config::new().with_window(window).with_custom_head(format!("<style>{}</style>", GLOBAL_STYLE));
+
+    LaunchBuilder::new().with_cfg(config_dioxus).launch(App);
 }
