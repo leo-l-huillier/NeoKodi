@@ -12,11 +12,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build-and-test:
+  build-and-release:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: EpiKodi
     
     steps:
       - name: Checkout repository
@@ -33,9 +30,15 @@ jobs:
             patchelf \
             libsoup-3.0-dev \
             libjavascriptcoregtk-4.1-dev \
-            libasound2-dev\
+            libasound2-dev \
             libxdo-dev
-        working-directory: .
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build release binary
+        run: cargo build --release
+        working-directory: EpiKodi
 
       - name: Create or update "latest" release
         uses: softprops/action-gh-release@v2
@@ -45,6 +48,6 @@ jobs:
           body: |
             Automated release from push to main.
             Commit: ${{ github.sha }}
-          files: target/release/kodi-rust
+          files: EpiKodi/target/release/kodi-rust
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
