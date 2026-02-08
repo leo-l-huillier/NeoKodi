@@ -4,6 +4,9 @@ use super::data::Media;
 use super::data::MediaType;
 use super::data::MediaInfo;
 
+use crate::logger::logger::Logger;
+use crate::constants::LOG_FILE;
+
 // On garde une structure simple pour les métadonnées (optionnel pour l'instant)
 #[derive(Clone)]
 pub struct VideoMetadata {
@@ -35,7 +38,8 @@ impl Media for Video {
     fn init(&mut self) {}
 
     fn play(&mut self) {
-        println!("GUI will play video: {}", self.name);
+        let logger = Logger::new(LOG_FILE);
+        logger.debug(&format!("Playing video: {}", self.name));
     }
 
     fn pause(&self) {}

@@ -4,9 +4,13 @@
 
 use crate::library::sources::LibraryConfig;
 use crate::library::media_library::ScannedMedia;
+use crate::logger;
 use crate::media::data::MediaType;
 
 use crate::constants::{SOURCE_FILE, AUDIO_EXTS, VIDEO_EXTS, IMAGE_EXTS};
+
+use crate::logger::logger::Logger;
+use crate::constants::{LOG_FILE, LOG_FILE_MEDIA_ITEMS};
 
 use std::path::Path;
 use std::fs;
@@ -27,26 +31,30 @@ impl Scan {
 
     pub fn scan_libraries(&mut self) {
 
+        let logger = Logger::new(LOG_FILE);
+
         //=========== SCAN SOURCES ===========
 
         let music_source_paths: Vec<_> = self.libraries.music_sources.iter().map(|source| source.path.clone()).collect();
         let video_source_paths: Vec<_> = self.libraries.video_sources.iter().map(|source| source.path.clone()).collect();
         let image_source_paths: Vec<_> = self.libraries.image_sources.iter().map(|source| source.path.clone()).collect();
 
-        println!("Scanning sources ...");
+        logger.info("Scanning sources ...");
         for path in music_source_paths {
-            println!("Scanning: {}", path.display());
+            logger.info(&format!("Scanning: {}", path.display()));
             self.scan_audio_libraries(&path);
         }
         for path in video_source_paths {
-            println!("Scanning: {}", path.display());
+            logger.info(&format!("Scanning: {}", path.display()));
             self.scan_video_libraries(&path);
         }
         for path in image_source_paths {
-            println!("Scanning: {}", path.display());
+            logger.info(&format!("Scanning: {}", path.display()));
             self.scan_image_libraries(&path);
         }
-        println!("Scanning  sources end");
+        logger.info("Scanning sources end");
+
+        self.debug_print_items();
     }
     
     fn scan_audio_libraries(&mut self, folder: &Path) {
@@ -68,14 +76,6 @@ impl Scan {
                     .unwrap_or(false);
 
                 if is_audio {
-                    /*println!("audio file: {}", path.display());
-                    self.items.insert(
-                        self.items.len() as i64,
-                        Box::new(Audio::new(
-                            path.to_str().unwrap_or_default(),
-                            path.file_name().unwrap().to_str().unwrap_or_default(),
-                        )),
-                    );*/
                     self.scan.push(ScannedMedia {
                         path: path.to_string_lossy().to_string(),
                         name: path
@@ -110,15 +110,6 @@ impl Scan {
                     .unwrap_or(false);
 
                 if is_video {
-                    /*  
-                    println!("video file: {}", path.display());
-                    self.items.insert(
-                        self.items.len() as i64,
-                        Box::new(Video::new(
-                            path.to_str().unwrap_or_default(),
-                            path.file_name().unwrap().to_str().unwrap_or_default(),
-                        )),
-                    */
                     self.scan.push(ScannedMedia {
                         path: path.to_string_lossy().to_string(),
                         name: path
@@ -153,14 +144,6 @@ impl Scan {
                     .unwrap_or(false);
 
                 if is_image {
-                    /*println!("image file: {}", path.display());
-                    self.items.insert(
-                        self.items.len() as i64,
-                        Box::new(Image::new(
-                            path.to_str().unwrap_or_default(),
-                            path.file_name().unwrap().to_str().unwrap_or_default(),
-                        )),
-                    );*/
                     self.scan.push(ScannedMedia {
                         path: path.to_string_lossy().to_string(),
                         name: path
@@ -179,16 +162,27 @@ impl Scan {
     // pour afficher la liste des items dans la bibliotheque
     //TODO : a enlever plus tard, c'est juste pour debug
     pub fn debug_print_items(&self) {
-        println!("=== Library Content start ===");
+
+        let logger = Logger::new(LOG_FILE_MEDIA_ITEMS);
+        logger.debug("=== Library Content start ===");
 
         for item in &self.scan {
-            println!("{} - {} ({})", item.media_type.to_string(), item.name, item.path);
+            logger.debug(&format!("{} - {} ({})", item.media_type.to_string(), item.name, item.path));
         }
 
-        println!("=== Library Content end ===");
+        logger.debug("=== Library Content end ===");
     }
 
 }
+
+
+
+
+
+
+
+
+
 
 
 
