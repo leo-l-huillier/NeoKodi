@@ -63,6 +63,8 @@ pub enum Command {
     delete playlist
     */
 
+    GetArtistMetadataFromPlugin(String), // artist name
+
 }
 
 pub enum Event {

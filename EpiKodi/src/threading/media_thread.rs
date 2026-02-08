@@ -9,6 +9,8 @@ use super::command::Command;
 use super::command::Event;
 use crate::media::data::MediaType;
 
+use crate::plugin::plugin_manager::PluginManager;
+
 use std::thread;
 use std::sync::{Arc, Mutex, mpsc};
 use std::path::PathBuf;
@@ -17,7 +19,9 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
 
     let library = Arc::new(Mutex::new(MediaLibrary::new()));
     let lib_thread = Arc::clone(&library);
-
+    let mut plugin_manager = PluginManager::new();
+    plugin_manager.load_plugins();
+    
     // let media_thread =
     thread::spawn(move || {
         let mut library = lib_thread.lock().unwrap();
@@ -153,6 +157,11 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     let mut library = lib_thread.lock().unwrap();
                     let playlist_id = library.get_playlist_id(&name);
                     evt_tx.send(Event::Data(playlist_id.to_string())).unwrap();
+                }
+
+                Ok(Command::GetArtistMetadataFromPlugin(name)) => {
+                    let response = plugin_manager.get_metadata(name.as_str());
+                    evt_tx.send(Event::Data(response.to_string())).unwrap();
                 }
 
                 Err(_) => break,

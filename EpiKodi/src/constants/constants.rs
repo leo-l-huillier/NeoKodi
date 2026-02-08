@@ -11,3 +11,12 @@ pub const MEDIA_DB_FILE: &str = "db/library.db";
 pub const AUDIO_EXTS: [&str; 5] = ["mp3", "wav", "flac", "ogg", "mp4"];
 pub const VIDEO_EXTS: [&str; 4] = ["mp4", "mkv", "avi", "mov"];
 pub const IMAGE_EXTS: [&str; 4] = ["jpg", "png", "bmp", "gif"];
+
+pub const PLUGIN_DIR: &str = "./plugins/";
+pub const PLUGIN_EXT: &str = if cfg!(target_os = "windows") {
+    "dll"
+} else if cfg!(target_os = "macos") {
+    "dylib"
+} else {
+    "so"
+};
