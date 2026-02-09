@@ -107,6 +107,9 @@ pub fn Music() -> Element {
     
     let mut queue = use_signal(|| Vec::<MediaInfo>::new());
 
+    // 👇 NOUVEAU SIGNAL : Pour afficher/cacher la liste
+    let mut show_queue_popup = use_signal(|| false);
+
     let tx_init = cmd_tx.clone();
     use_hook(move || { if list_signal().is_empty() { tx_init.send(Command::GetAllMedia()).unwrap(); } });
 
@@ -115,9 +118,13 @@ pub fn Music() -> Element {
         .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
         .marquee-text { display: inline-block; animation: scroll-text 15s linear infinite; padding-left: 100%; }
         .audio-row:active { background-color: #333 !important; transform: scale(0.99); transition: transform 0.1s; }
-        /* Style pour le bouton d'ajout */
         .add-queue-btn { opacity: 0.5; transition: opacity 0.2s; }
         .add-queue-btn:hover { opacity: 1; transform: scale(1.1); }
+        
+        /* Style pour la scrollbar de la popup */
+        .queue-popup::-webkit-scrollbar { width: 6px; }
+        .queue-popup::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
+        .queue-popup::-webkit-scrollbar-track { background: #222; }
     ";
 
     rsx! {
@@ -125,6 +132,7 @@ pub fn Music() -> Element {
         
         div { class: "container", style: "padding-bottom: 100px;",
             
+            // TOP BAR
             div { class: "top-bar", 
                 style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
                 div { style: "z-index: 2;", Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" } }
@@ -138,6 +146,7 @@ pub fn Music() -> Element {
                 }
             }
             
+            // LISTE PRINCIPALE
             div { class: "audio-list",
                 for item in list_signal().iter()
                     .filter(|i| i.media_type == MediaType::Audio)
@@ -181,7 +190,6 @@ pub fn Music() -> Element {
                             class: "add-queue-btn",
                             style: "background: transparent; border: 1px solid #555; color: white; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;",
                             title: "Ajouter à la file d'attente",
-                            
                             onclick: {
                                 let track = item.clone();
                                 move |evt: Event<MouseData>| {
@@ -195,34 +203,80 @@ pub fn Music() -> Element {
                 }
             }
 
+            // MINI PLAYER EN BAS
             if let Some(track) = current_audio() {
                 div { 
                     style: "position: fixed; bottom: 0; left: 0; width: 100%; height: 90px; background: #181818; border-top: 1px solid #282828; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.5);",
                     
-                    div { style: "width: 25%; overflow: hidden;",
+                    // INFO GAUCHE (Modifié pour la popup)
+                    div { style: "width: 25%; position: relative;", // ⚠️ overflow hidden retiré ici pour laisser dépasser la popup
+                        
+                        // Titre défilant (Lui il garde l'overflow hidden)
                         div { class: "marquee-container",
                             div { class: "marquee-text", style: "font-weight: bold; font-size: 1.1rem;",
                                 "{track.title.as_deref().unwrap_or(&track.path)}"
                             }
                         }
+
+                        // Indicateur de Queue (AVEC SURVOL)
                         if !queue().is_empty() {
-                            div { style: "color: #3498db; font-size: 0.8rem; margin-top: 4px; font-weight: bold;", 
-                                "⏭️ En attente : {queue().len()} titre(s)" 
+                            div { 
+                                style: "display: inline-block; cursor: help; position: relative;", // Position relative pour ancrer la popup
+                                
+                                // Événements de survol
+                                onmouseenter: move |_| show_queue_popup.set(true),
+                                onmouseleave: move |_| show_queue_popup.set(false),
+
+                                // Le texte
+                                div { 
+                                    style: "color: #3498db; font-size: 0.8rem; margin-top: 4px; font-weight: bold;", 
+                                    "⏭️ En attente : {queue().len()} titre(s)" 
+                                }
+
+                                // 👇 LA POPUP DE LISTE
+                                if show_queue_popup() {
+                                    div {
+                                        class: "queue-popup",
+                                        style: "
+                                            position: absolute;
+                                            bottom: 130%; /* Juste au dessus du texte */
+                                            left: 0;
+                                            width: 300px;
+                                            max-height: 400px;
+                                            overflow-y: auto;
+                                            background: #282828;
+                                            border: 1px solid #444;
+                                            border-radius: 8px;
+                                            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+                                            padding: 10px;
+                                            z-index: 2000;
+                                        ",
+                                        h4 { style: "margin: 0 0 10px 0; color: #fff; border-bottom: 1px solid #444; padding-bottom: 5px;", "File d'attente" }
+                                        
+                                        // Liste des chansons dans la queue
+                                        for (idx, song) in queue().iter().enumerate() {
+                                            div { 
+                                                style: "padding: 8px; border-bottom: 1px solid #333; font-size: 0.9rem; color: #ccc; display: flex; gap: 10px;",
+                                                span { style: "color: #888; font-family: monospace;", "{idx + 1}." }
+                                                span { style: "white-space: nowrap; overflow: hidden; text-overflow: ellipsis;", "{song.title.as_deref().unwrap_or(&song.path)}" }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         } else {
                             div { style: "color: #b3b3b3; font-size: 0.9rem; margin-top: 4px;", "{plugin_result.read().text}" }
                         }
                     },
 
+                    // LECTEUR CENTRAL
                     div { style: "flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;",
                         audio { 
                             controls: true, 
                             autoplay: true, 
                             style: "width: 100%; max-width: 500px; height: 40px; outline: none;",
                             src: "{make_url(&track.path, &root_path)}",
-                            
                             r#loop: play_mode() == PlayMode::Loop,
-                            
                             onended: move |_| {
                                 if !queue().is_empty() {
                                     let next_song = queue.write().remove(0);
@@ -238,9 +292,7 @@ pub fn Music() -> Element {
                                 
                                 match mode {
                                     PlayMode::StopAtEnd => current_audio.set(None),
-                                    
                                     PlayMode::Loop => {},
-                                    
                                     PlayMode::Sequential => {
                                         if let Some(idx) = audios.iter().position(|x| x.id == track.id) {
                                             if idx + 1 < audios.len() {
@@ -268,6 +320,7 @@ pub fn Music() -> Element {
                         }
                     },
 
+                    // BOUTONS DROITE
                     div { style: "width: 25%; display: flex; justify-content: flex-end; align-items: center; gap: 10px;",
                         if !queue().is_empty() {
                             button {

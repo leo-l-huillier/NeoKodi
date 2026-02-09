@@ -1091,3 +1091,150 @@
 [2026-02-09 09:20:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
 [2026-02-09 09:20:04] [INFO] Scanning sources end
 [2026-02-09 09:20:04] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-09 09:21:04] [INFO] 🌍 SERVEUR : Démarrage sur E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:04] [DEBUG] Loading plugins...
+[2026-02-09 09:21:04] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 09:21:04] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 09:21:04] [INFO] Loaded metadata plugin.
+[2026-02-09 09:21:04] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 09:21:04] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 09:21:04] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 09:21:04] [INFO] Scanning sources ...
+[2026-02-09 09:21:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:05] [INFO] Scanning sources end
+[2026-02-09 09:21:05] [INFO] 🔄 Reloading media library...
+[2026-02-09 09:21:05] [INFO] Scanning sources ...
+[2026-02-09 09:21:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:06] [INFO] Scanning sources end
+[2026-02-09 09:21:06] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-09 09:21:06] [INFO] 🔄 Reloading media library...
+[2026-02-09 09:21:06] [INFO] Scanning sources ...
+[2026-02-09 09:21:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:07] [INFO] Scanning sources end
+[2026-02-09 09:21:07] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-09 09:21:07] [INFO] 🔄 Reloading media library...
+[2026-02-09 09:21:07] [INFO] Scanning sources ...
+[2026-02-09 09:21:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:21:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:21:07] [INFO] Scanning sources end
+[2026-02-09 09:21:07] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-09 09:21:15] [ERROR] Error: media with ID 0 not found.
+[2026-02-09 09:24:30] [INFO] 🌍 SERVEUR : Démarrage sur E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:31] [DEBUG] Loading plugins...
+[2026-02-09 09:24:31] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 09:24:31] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 09:24:31] [INFO] Loaded metadata plugin.
+[2026-02-09 09:24:31] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 09:24:31] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 09:24:31] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 09:24:31] [INFO] Scanning sources ...
+[2026-02-09 09:24:31] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:31] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:31] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:31] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:31] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:32] [INFO] Scanning sources end
+[2026-02-09 09:24:32] [INFO] 🔄 Reloading media library...
+[2026-02-09 09:24:32] [INFO] Scanning sources ...
+[2026-02-09 09:24:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:32] [INFO] Scanning sources end
+[2026-02-09 09:24:32] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-09 09:24:32] [INFO] 🔄 Reloading media library...
+[2026-02-09 09:24:32] [INFO] Scanning sources ...
+[2026-02-09 09:24:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:33] [INFO] Scanning sources end
+[2026-02-09 09:24:33] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-09 09:24:33] [INFO] 🔄 Reloading media library...
+[2026-02-09 09:24:33] [INFO] Scanning sources ...
+[2026-02-09 09:24:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:24:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:24:34] [INFO] Scanning sources end
+[2026-02-09 09:24:34] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-09 09:24:38] [ERROR] Error: media with ID 0 not found.
+[2026-02-09 09:24:49] [DEBUG] Playing media ID 85: Overwatch 2_10-06-2023_20-55-52-436.mp4
+[2026-02-09 09:24:49] [DEBUG] Playing video: Overwatch 2_10-06-2023_20-55-52-436.mp4
+[2026-02-09 09:24:55] [DEBUG] Playing media ID 85: Overwatch 2_10-06-2023_20-55-52-436.mp4
+[2026-02-09 09:24:55] [DEBUG] Playing video: Overwatch 2_10-06-2023_20-55-52-436.mp4
+[2026-02-09 09:25:04] [DEBUG] Playing media ID 115: ganda03.png
+[2026-02-09 09:25:04] [DEBUG] Playing image: ganda03.png
+[2026-02-09 09:26:11] [INFO] 🌍 SERVEUR : Démarrage sur E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:12] [DEBUG] Loading plugins...
+[2026-02-09 09:26:12] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 09:26:12] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 09:26:12] [INFO] Loaded metadata plugin.
+[2026-02-09 09:26:12] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 09:26:12] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 09:26:12] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 09:26:12] [INFO] Scanning sources ...
+[2026-02-09 09:26:12] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:12] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:12] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:12] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:12] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:13] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:13] [INFO] Scanning sources end
+[2026-02-09 09:26:13] [INFO] 🔄 Reloading media library...
+[2026-02-09 09:26:13] [INFO] Scanning sources ...
+[2026-02-09 09:26:13] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:13] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:13] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:13] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:13] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:13] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:13] [INFO] Scanning sources end
+[2026-02-09 09:26:13] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-09 09:26:13] [INFO] 🔄 Reloading media library...
+[2026-02-09 09:26:13] [INFO] Scanning sources ...
+[2026-02-09 09:26:13] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:14] [INFO] Scanning sources end
+[2026-02-09 09:26:14] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-09 09:26:14] [INFO] 🔄 Reloading media library...
+[2026-02-09 09:26:14] [INFO] Scanning sources ...
+[2026-02-09 09:26:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 09:26:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 09:26:15] [INFO] Scanning sources end
+[2026-02-09 09:26:15] [INFO] ✅ Media library reloaded with 128 items.
+[2026-02-09 09:26:32] [ERROR] Error: media with ID 0 not found.
