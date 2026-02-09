@@ -3,23 +3,30 @@ name: Auto Release
 on:
   push:
     branches:
-      - main  # runs each time you push to main
+      - main   # runs each time you push to main
+  workflow_dispatch:  # Allows manual trigger
 
 permissions:
-  contents: write  # allows creating/updating releases
+  contents: write
 
 env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build-and-release:
-    runs-on: ubuntu-latest
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    
+    runs-on: ${{ matrix.os }}
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Install system dependencies
+      # Linux dependencies
+      - name: Install system dependencies (Linux)
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -36,18 +43,121 @@ jobs:
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Build release binary
-        run: cargo build --release
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/registry
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo index
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/git
+          key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo build
+        uses: actions/cache@v4
+        with:
+          path: EpiKodi/target
+          key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Build EpiKodi (Release)
+        run: cargo build --release --verbose
         working-directory: EpiKodi
 
-      - name: Create or update "latest" release
+      - name: Run tests
+        run: cargo test --release --verbose
+        working-directory: EpiKodi
+
+      # Package binary for Linux
+      - name: Package binary (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          mkdir -p artifacts
+          cp EpiKodi/target/release/epikodi artifacts/epikodi-linux-x86_64
+          chmod +x artifacts/epikodi-linux-x86_64
+          cd artifacts
+          tar -czf epikodi-linux-x86_64.tar.gz epikodi-linux-x86_64
+
+      # Package binary for Windows
+      - name: Package binary (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          mkdir artifacts
+          copy EpiKodi\target\release\epikodi.exe artifacts\epikodi-windows-x86_64.exe
+          cd artifacts
+          7z a epikodi-windows-x86_64.zip epikodi-windows-x86_64.exe
+
+
+      # Upload artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: epikodi-${{ runner.os }}-build
+          path: artifacts/*
+
+  create-source-archive:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Create source code archive
+        run: |
+          mkdir -p source-archive
+          # Create archive excluding unnecessary files
+          tar --exclude='.git' \
+              --exclude='target' \
+              --exclude='node_modules' \
+              --exclude='.github' \
+              --exclude='*.log' \
+              -czf source-archive/epikodi-source.tar.gz .
+          
+          # Also create a zip for Windows users
+          zip -r source-archive/epikodi-source.zip . \
+            -x ".git/*" "*/target/*" "node_modules/*" ".github/*" "*.log"
+      
+      - name: Upload source code artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: epikodi-source-code
+          path: source-archive/*
+
+  release:
+    needs: [build, create-source-archive]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: all-artifacts
+
+      - name: Display structure of downloaded files
+        run: ls -R all-artifacts
+
+      - name: Create or update release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
           name: Latest Build
           body: |
-            Automated release from push to main.
-            Commit: ${{ github.sha }}
-          files: EpiKodi/target/release/
+            Automated build from commit ${{ github.sha }}
+            
+            **Binaries:**
+            - Linux: `epikodi-linux-x86_64.tar.gz`
+            - Windows: `epikodi-windows-x86_64.zip`
+            
+            **Source Code:**
+            - TAR.GZ: `epikodi-source.tar.gz`
+            - ZIP: `epikodi-source.zip`
+            
+            Build Date: ${{ github.event.head_commit.timestamp }}
+          files: |
+            all-artifacts/epikodi-Linux-build/*
+            all-artifacts/epikodi-Windows-build/*
+            all-artifacts/epikodi-source-code/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
