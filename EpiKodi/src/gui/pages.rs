@@ -351,7 +351,7 @@ pub fn Videos() -> Element {
                 div { 
                     style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
                     
-                    div { style: "height: 60px; padding: 10px;",
+                    div { style: "height: 60px; padding: 10px; z-index: 1000; position: relative;",
                         button { class: "btn-nav", onclick: move |_| current_video.set(None), "⬅ Retour" }
                     }
 
