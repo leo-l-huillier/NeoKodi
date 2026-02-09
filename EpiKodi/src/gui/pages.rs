@@ -54,23 +54,36 @@ impl PlayMode {
     }
 }
 
-fn make_url(full_path: &str, _root_path: &str) -> String {
-    let clean_path = full_path.replace("\\", "/");
-    
-    if let Some(colon_idx) = clean_path.find(':') {
+fn make_url(full_path: &str, root_path: &str) -> String {
+    let clean_full = full_path.replace("\\", "/");
+    let clean_root = root_path.replace("\\", "/");
+
+    if let Some(colon_idx) = clean_full.find(':') {
         if colon_idx == 1 { 
-            let drive_letter = &clean_path[0..1].to_lowercase();
-            let path_after_drive = &clean_path[3..];
+            let drive_letter = &clean_full[0..1].to_lowercase();
+            let path_after_drive = &clean_full[3..];
 
             let encoded_parts: Vec<_> = path_after_drive.split('/')
                 .map(|part| encode(part))
                 .collect();
             
-            return format!("http://127.0.0.1:3030/drives/{}/{}", drive_letter, encoded_parts.join("/"));
+            let url = format!("http://127.0.0.1:3030/drives/{}/{}", drive_letter, encoded_parts.join("/"));
+            return url;
         }
     }
 
-    format!("http://127.0.0.1:3030/media/{}", encode(&clean_path))
+    let relative_path = if clean_full.starts_with(&clean_root) {
+        clean_full.replace(&clean_root, "").trim_start_matches('/').to_string()
+    } else {
+        clean_full.clone()
+    };
+
+    let encoded_parts: Vec<_> = relative_path.split('/')
+        .map(|part| encode(part))
+        .collect();
+
+    let url = format!("http://127.0.0.1:3030/media/{}", encoded_parts.join("/"));
+    url
 }
 
 // --- ACCUEIL ---
@@ -494,7 +507,19 @@ pub fn Videos() -> Element {
                                 script { "
                                     var v = document.getElementById('main-player');
                                     var spy = document.getElementById('spy-input');
-                                    if (v && {start_time} > 0) {{ v.currentTime = {start_time}; }}
+                                    
+                                    // 👇 CORRECTION : On attend que les métadonnées soient chargées
+                                    if (v && {start_time} > 0) {{
+                                        // Tentative immédiate
+                                        v.currentTime = {start_time};
+                                        
+                                        // Assurance vie : dès que la vidéo sait quelle durée elle fait, on saute
+                                        v.onloadedmetadata = function() {{
+                                            console.log('Reprise à : ' + {start_time});
+                                            v.currentTime = {start_time};
+                                        }};
+                                    }}
+
                                     if (v && spy) {{
                                         v.ontimeupdate = function() {{
                                             var total = v.duration || 0; 

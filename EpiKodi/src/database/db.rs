@@ -99,14 +99,14 @@ impl DB {
     }
 
     //status : 0 = not started, 1 = playing, 2 = finished
-    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64) -> Result<()> {
+    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64, duration: f32) -> Result<()> {
         self.conn.execute(
             "
                 UPDATE media
-                SET status = ?1, time_stop = ?2
-                WHERE id = ?3
+                SET status = ?1, time_stop = ?2, duration = ?3
+                WHERE id = ?4
             ",
-            (status, time_stop, media_id),
+            (status, time_stop, duration, media_id),
         )?;
         Ok(())
     }
@@ -164,7 +164,7 @@ impl DB {
             VALUES (?1, ?2, ?3, ?4)
             ON CONFLICT(path) DO UPDATE SET
                 title = excluded.title,
-                duration = excluded.duration,
+                duration = CASE WHEN excluded.duration > 0 THEN excluded.duration ELSE media.duration END,
                 media_type = excluded.media_type
             ",
             (
@@ -186,7 +186,7 @@ impl DB {
                 VALUES (?1, ?2, ?3, ?4)
                 ON CONFLICT(path) DO UPDATE SET
                     title = excluded.title,
-                    duration = excluded.duration,
+                    duration = CASE WHEN excluded.duration > 0 THEN excluded.duration ELSE media.duration END,
                     media_type = excluded.media_type
                 ",
             )?;

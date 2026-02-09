@@ -64,7 +64,7 @@ impl MediaLibrary {
         self.database.upsert_media_from_scan(self.scan_lib.scan.clone()).unwrap(); //TODO: ce clone me fait chier, il faudrait qu'on utilise juste scan (ca serait meme mieux si on donne la valeur direct comme ca il se fait drop (on en a plus besoin ) et mm en terme de performance c'est pas terrible parce que c'est un gros object )
         self.database.cleanup_missing_media(self.scan_lib.scan.clone()).unwrap(); // TODO to implement, shuld be called every scans
         self.database.get_all_media().unwrap();
-        self.database.print_media_rows();
+        //self.database.print_media_rows();
 
 
     
@@ -73,7 +73,7 @@ impl MediaLibrary {
 
             let media: Box<dyn Media> = match row.media_type {
                 MediaType::Audio => Box::new(Audio::new(&row.path,&row.title.as_deref().unwrap_or(""))),
-                MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""), row.last_position as f32)),
+                MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""), row.last_position as f32, row.duration.unwrap_or(0.0))),
                 MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))), };
 
             self.items.insert(row.id, media);
@@ -83,17 +83,15 @@ impl MediaLibrary {
 
     pub fn reload(&mut self) {
         let logger = Logger::new(LOG_FILE);
-        logger.info("🔄 Reloading media library...");
         self.init();
-        logger.info(&format!("✅ Media library reloaded with {} items.", self.items.len()));
     }
 
-    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64) {
+    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64, duration: f32) {
         let logger = Logger::new(LOG_FILE);
-        
-        match self.database.update_media_status_and_time(media_id, status, time_stop) {
-            Ok(_) => logger.debug(&format!("Updated media ID {} with status {} and time_stop {}", media_id, status, time_stop)),
-            Err(e) => logger.error(&format!("Error updating media ID {}: {}", media_id, e)),
+        // On appelle la nouvelle fonction DB (qu'on va créer juste après)
+        match self.database.update_media_status_and_time(media_id, status, time_stop, duration) {
+            Ok(_) => {}, // logger.debug(...),
+            Err(e) => logger.error(&format!("Error updating progress ID {}: {}", media_id, e)),
         }
     }
 

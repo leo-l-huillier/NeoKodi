@@ -23,14 +23,14 @@ pub struct Video {
 }
 
 impl Video {
-    pub fn new(id: i64, path: &str, name: &str, last_position: f32) -> Self {
+    pub fn new(id: i64, path: &str, name: &str, last_position: f32, duration: f32) -> Self {
         Self {
             id,
             last_position,
             path: path.to_string(),
             name: name.to_string(),
             metadata: VideoMetadata {
-            duration: 0.0, // On laisse à 0 pour l'instant
+            duration: duration, // On utilise la durée passée en paramètre
             }
         }
     }
