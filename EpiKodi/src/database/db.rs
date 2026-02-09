@@ -14,6 +14,7 @@ pub struct MediaRow {
     pub title: Option<String>,
     pub duration: Option<f32>,
     pub media_type: MediaType,
+    pub last_position: f32,
 }
 
 pub struct DB {
@@ -125,7 +126,7 @@ impl DB {
     pub fn get_all_media(&mut self) -> Result<&Vec<MediaRow>> {
 
         let mut stmt = self.conn.prepare(
-            "SELECT id, path, title, duration, media_type FROM media"
+            "SELECT id, path, title, duration, media_type, time_stop FROM media"
         )?;
 
         let rows = stmt.query_map([], |row| {
@@ -135,6 +136,7 @@ impl DB {
                 title: row.get(2)?,
                 duration: row.get(3)?,
                 media_type: MediaType::from_db(&row.get::<_, String>(4)?).unwrap(),
+                last_position: row.get(5)?,
             })
         })?;
 
@@ -148,6 +150,11 @@ impl DB {
 
     pub fn print_media_rows(&mut self) {
         //println!("{:#?}", self.media_rows);
+
+        for media in &self.media_rows {
+            println!("ID: {}, Path: {}, Title: {:?}, Duration: {:?}, Type: {:?}, Last Position: {}",
+                media.id, media.path, media.title, media.duration, media.media_type, media.last_position);
+        }
     }
 
     pub fn upsert_media(&mut self, media: &ScannedMedia) -> rusqlite::Result<()> {

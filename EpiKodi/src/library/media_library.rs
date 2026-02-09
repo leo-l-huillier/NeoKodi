@@ -64,7 +64,7 @@ impl MediaLibrary {
         self.database.upsert_media_from_scan(self.scan_lib.scan.clone()).unwrap(); //TODO: ce clone me fait chier, il faudrait qu'on utilise juste scan (ca serait meme mieux si on donne la valeur direct comme ca il se fait drop (on en a plus besoin ) et mm en terme de performance c'est pas terrible parce que c'est un gros object )
         self.database.cleanup_missing_media(self.scan_lib.scan.clone()).unwrap(); // TODO to implement, shuld be called every scans
         self.database.get_all_media().unwrap();
-        //self.database.print_media_rows();
+        self.database.print_media_rows();
 
 
     
@@ -73,7 +73,7 @@ impl MediaLibrary {
 
             let media: Box<dyn Media> = match row.media_type {
                 MediaType::Audio => Box::new(Audio::new(&row.path,&row.title.as_deref().unwrap_or(""))),
-                MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))),
+                MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""), row.last_position as f32)),
                 MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))), };
 
             self.items.insert(row.id, media);
@@ -440,6 +440,7 @@ mod tests {
                 title: Some(self.name.clone()),
                 duration: None,
                 media_type: MediaType::Audio,
+                last_position: 0.0,
             }
         }
         fn media_type(&self) -> MediaType { MediaType::Audio }
