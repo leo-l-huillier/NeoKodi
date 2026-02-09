@@ -340,13 +340,9 @@ pub fn Videos() -> Element {
     ";
 
     rsx! {
-        // Injection du CSS
         style { "{css_anim}" }
 
         div { class: "container",
-            // ==========================
-            // LECTEUR VIDÉO
-            // ==========================
             if let Some(path) = current_video() {
                 div { 
                     style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
@@ -628,11 +624,11 @@ pub fn Plugins() -> Element {
         div { class: "container", 
             div { class: "top-bar", 
                 Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, 
-                div { class: "page-title", "Add-ons" } 
+                div { class: "page-title", "PLUGINS" } 
             }
             
             div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px;",
-                h2 { "Test Plugin MusicBrainz" }
+                h2 { "MusicBrainz" }
 
                 div { style: "display: flex; gap: 10px;",
                     input {
