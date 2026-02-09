@@ -8,11 +8,49 @@ use std::path::PathBuf;
 use crate::library::sources::LibraryConfig;
 use crate::constants::SOURCE_FILE;
 use urlencoding::encode;
+use rand::Rng;
 
 // 👇 STRUCTURE POUR LES PLUGINS
 #[derive(Clone, PartialEq)]
 pub struct PluginSearchResult {
     pub text: String,
+}
+
+#[derive(PartialEq, Clone, Copy, Debug)]
+enum PlayMode {
+    StopAtEnd,
+    Sequential,
+    Random,
+    Loop,
+}
+
+impl PlayMode {
+    fn next(&self) -> Self {
+        match self {
+            PlayMode::StopAtEnd => PlayMode::Sequential,
+            PlayMode::Sequential => PlayMode::Random,
+            PlayMode::Random => PlayMode::Loop,
+            PlayMode::Loop => PlayMode::StopAtEnd,
+        }
+    }
+
+    fn icon(&self) -> &'static str {
+        match self {
+            PlayMode::StopAtEnd => "🛑 Stop",
+            PlayMode::Sequential => "➡️ Suite",
+            PlayMode::Random => "🔀 Hasard",
+            PlayMode::Loop => "🔁 Boucle",
+        }
+    }
+    
+    fn color(&self) -> &'static str {
+        match self {
+            PlayMode::StopAtEnd => "#7f8c8d",
+            PlayMode::Sequential => "#3498db",
+            PlayMode::Random => "#9b59b6",
+            PlayMode::Loop => "#e67e22",
+        }
+    }
 }
 
 fn make_url(full_path: &str, _root_path: &str) -> String {
@@ -38,6 +76,7 @@ fn make_url(full_path: &str, _root_path: &str) -> String {
     // 3. Fallback (cas rare)
     format!("http://127.0.0.1:3030/media/{}", encode(&clean_path))
 }
+
 // --- ACCUEIL ---
 #[component]
 pub fn Home() -> Element {
@@ -66,106 +105,212 @@ pub fn Music() -> Element {
     let root_path = root_path_signal();
     let plugin_result = use_context::<Signal<PluginSearchResult>>();
     
-    let mut current_audio = use_signal(|| Option::<String>::None);
-    
-    // 👇 1. LE SIGNAL DE RECHERCHE
+    let mut current_audio = use_signal(|| Option::<MediaInfo>::None);
+    let mut play_mode = use_signal(|| PlayMode::Sequential);
     let mut search_text = use_signal(|| String::new());
+    
+    // 👇 1. RETOUR DE LA QUEUE
+    let mut queue = use_signal(|| Vec::<MediaInfo>::new());
 
     let tx_init = cmd_tx.clone();
     use_hook(move || { if list_signal().is_empty() { tx_init.send(Command::GetAllMedia()).unwrap(); } });
 
+    let css_marquee = "
+        @keyframes scroll-text { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-text { display: inline-block; animation: scroll-text 15s linear infinite; padding-left: 100%; }
+        .audio-row:active { background-color: #333 !important; transform: scale(0.99); transition: transform 0.1s; }
+        /* Style pour le bouton d'ajout */
+        .add-queue-btn { opacity: 0.5; transition: opacity 0.2s; }
+        .add-queue-btn:hover { opacity: 1; transform: scale(1.1); }
+    ";
+
     rsx! {
-        div { class: "container",
-            // ==========================
-            // LECTEUR AUDIO (PLEIN ÉCRAN)
-            // ==========================
-            if let Some(path) = current_audio() {
-                div { style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #121212; z-index: 999; display: flex; flex-direction: column;",
-                    div { style: "flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;",
-                        div { style: "font-size: 5rem; margin-bottom: 20px;", "🎵" }
-                        h2 { "Lecture en cours" }
-                        
-                        audio { controls: true, autoplay: true, style: "width: 80%; max-width: 600px;",
-                            onended: move |_| current_audio.set(None),
-                            src: "{make_url(&path, &root_path)}"
-                        }
-                        
-                        button { 
-                            class: "btn-nav", 
-                            style: "position: relative; transform: none; top: auto; left: auto; background-color: #d32f2f; border-color: #b71c1c; font-size: 1.2rem; padding: 15px 40px; margin-top: 20px;", 
-                            onclick: move |_| current_audio.set(None), 
-                            "⏹️ Arrêter la lecture" 
-                        }
-                        
-                        div { 
-                            style: "color: #4caf50; font-size: 1.5rem; font-weight: bold; text-align: center; max-width: 600px; padding: 10px; border: 1px dashed #333; border-radius: 8px; margin-top: 20px;",
-                            "{plugin_result.read().text}" 
-                        }
+        style { "{css_marquee}" }
+        
+        div { class: "container", style: "padding-bottom: 100px;",
+            
+            // TOP BAR
+            div { class: "top-bar", 
+                style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
+                div { style: "z-index: 2;", Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" } }
+                div { class: "page-title", style: "position: absolute; left: 50%; transform: translateX(-50%);", "Musique" } 
+                div { style: "z-index: 2;",
+                    input {
+                        r#type: "text", placeholder: "🔍 Titre...",
+                        style: "padding: 8px; border-radius: 5px; border: none; background: #333; color: white; width: 250px;",
+                        oninput: move |evt| search_text.set(evt.value()),
                     }
                 }
-            } 
-            // ==========================
-            // LISTE + RECHERCHE
-            // ==========================
-            else {
-                // 👇 2. TOP BAR (Centrage parfait + Input)
-                div { class: "top-bar", 
-                    style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
-
-                    // Bouton Accueil
-                    div { style: "z-index: 2;",
-                        Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }
-                    }
-
-                    // Titre Centré
-                    div { 
-                        class: "page-title", 
-                        style: "position: absolute; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;",
-                        "Musique" 
-                    } 
-
-                    // Barre de Recherche
-                    div { style: "z-index: 2;",
-                        input {
-                            r#type: "text",
-                            placeholder: "🔍 Titre...",
-                            style: "padding: 8px; border-radius: 5px; border: none; background: #333; color: white; width: 250px;",
-                            oninput: move |evt| search_text.set(evt.value()),
-                        }
-                    }
-                }
-                
-                div { class: "audio-list",
-                    // 👇 3. BOUCLE FILTRÉE
-                    for item in list_signal().iter()
-                        .filter(|i| i.media_type == MediaType::Audio)
-                        .filter(|i| {
-                            let query = search_text().to_lowercase();
-                            if query.is_empty() { return true; }
-                            let name = i.title.as_deref().unwrap_or(&i.path).to_lowercase();
-                            name.contains(&query)
-                        })
-                    {
-                        div { class: "audio-row",
-                            onclick: { 
-                                let p = item.path.clone(); 
-                                let i = item.id; 
-                                let tx = cmd_tx.clone();
-                                let mut res = plugin_result.clone(); 
-
-                                move |_| { 
-                                    // Reset du résultat plugin et lancement
-                                    res.set(PluginSearchResult { text: String::from("🔎 Recherche MusicBrainz en cours...") });
-                                    current_audio.set(Some(p.clone())); 
-                                    tx.send(Command::Play(i)).unwrap(); 
-                                    tx.send(Command::GetArtistMetadataFromPlugin(p.clone())).unwrap();
-                                } 
-                            },
-                            div { class: "audio-icon", "🎵" }
+            }
+            
+            // LISTE
+            div { class: "audio-list",
+                for item in list_signal().iter()
+                    .filter(|i| i.media_type == MediaType::Audio)
+                    .filter(|i| {
+                        let query = search_text().to_lowercase();
+                        if query.is_empty() { return true; }
+                        i.title.as_deref().unwrap_or(&i.path).to_lowercase().contains(&query)
+                    })
+                {
+                    div { class: "audio-row",
+                        style: "cursor: pointer; transition: background 0.2s; user-select: none; display: flex; align-items: center; justify-content: space-between; padding-right: 15px;",
+                        
+                        // Clic principal : Joue immédiatement
+                        onclick: { 
+                            let track = item.clone(); 
+                            let i = item.id; 
+                            let tx = cmd_tx.clone();
+                            let mut res = plugin_result.clone(); 
+                            move |_| { 
+                                res.set(PluginSearchResult { text: String::from("...") });
+                                current_audio.set(Some(track.clone())); 
+                                tx.send(Command::Play(i)).unwrap(); 
+                                tx.send(Command::GetArtistMetadataFromPlugin(track.path.clone())).unwrap();
+                            } 
+                        },
+                        
+                        // INFO GAUCHE
+                        div { style: "display: flex; align-items: center; flex: 1;",
+                            div { class: "audio-icon", 
+                                if current_audio().as_ref().map(|c| c.id) == Some(item.id) { "🔊" } else { "🎵" }
+                            }
                             div { class: "audio-info", 
-                                div { class: "audio-title", "{item.title.as_deref().unwrap_or(&item.path)}" } 
+                                div { 
+                                    class: "audio-title", 
+                                    style: if current_audio().as_ref().map(|c| c.id) == Some(item.id) { "color: #1db954; font-weight: bold;" } else { "" },
+                                    "{item.title.as_deref().unwrap_or(&item.path)}" 
+                                } 
                                 div { class: "audio-artist", "Artiste inconnu" } 
                             }
+                        },
+
+                        // 👇 2. LE BOUTON AJOUT (REMIS EN PLACE)
+                        button {
+                            class: "add-queue-btn",
+                            style: "background: transparent; border: 1px solid #555; color: white; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;",
+                            title: "Ajouter à la file d'attente",
+                            
+                            onclick: {
+                                let track = item.clone();
+                                move |evt: Event<MouseData>| {
+                                    evt.stop_propagation(); // Empêche de lancer le son
+                                    queue.write().push(track.clone());
+                                }
+                            },
+                            "➕"
+                        }
+                    }
+                }
+            }
+
+            // MINI PLAYER
+            if let Some(track) = current_audio() {
+                div { 
+                    style: "position: fixed; bottom: 0; left: 0; width: 100%; height: 90px; background: #181818; border-top: 1px solid #282828; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.5);",
+                    
+                    // INFO GAUCHE
+                    div { style: "width: 25%; overflow: hidden;",
+                        div { class: "marquee-container",
+                            div { class: "marquee-text", style: "font-weight: bold; font-size: 1.1rem;",
+                                "{track.title.as_deref().unwrap_or(&track.path)}"
+                            }
+                        }
+                        // Petit indicateur de file d'attente
+                        if !queue().is_empty() {
+                            div { style: "color: #3498db; font-size: 0.8rem; margin-top: 4px; font-weight: bold;", 
+                                "⏭️ En attente : {queue().len()} titre(s)" 
+                            }
+                        } else {
+                            div { style: "color: #b3b3b3; font-size: 0.9rem; margin-top: 4px;", "{plugin_result.read().text}" }
+                        }
+                    },
+
+                    // LECTEUR CENTRAL
+                    div { style: "flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;",
+                        audio { 
+                            controls: true, 
+                            autoplay: true, 
+                            style: "width: 100%; max-width: 500px; height: 40px; outline: none;",
+                            src: "{make_url(&track.path, &root_path)}",
+                            
+                            // 👇 1. LE NAVIGATEUR GÈRE LA BOUCLE ICI
+                            // "r#loop" permet d'utiliser le mot clé réservé "loop" comme attribut
+                            r#loop: play_mode() == PlayMode::Loop,
+                            
+                            onended: move |_| {
+                                // A. PRIORITÉ À LA QUEUE
+                                if !queue().is_empty() {
+                                    let next_song = queue.write().remove(0);
+                                    current_audio.set(Some(next_song.clone()));
+                                    cmd_tx.send(Command::Play(next_song.id)).unwrap();
+                                    cmd_tx.send(Command::GetArtistMetadataFromPlugin(next_song.path)).unwrap();
+                                    return;
+                                }
+
+                                // B. SINON LES MODES
+                                let mode = play_mode();
+                                let list = list_signal();
+                                let audios: Vec<&MediaInfo> = list.iter().filter(|i| i.media_type == MediaType::Audio).collect();
+                                
+                                match mode {
+                                    PlayMode::StopAtEnd => current_audio.set(None),
+                                    
+                                    // 👇 2. LE CAS BOUCLE EST VIDE OU SIMPLIFIÉ
+                                    // (Car si loop=true dans le HTML, onended n'est jamais appelé par le navigateur)
+                                    PlayMode::Loop => {
+                                        // On ne fait rien, le navigateur a déjà relancé le son
+                                    },
+                                    
+                                    PlayMode::Sequential => {
+                                        if let Some(idx) = audios.iter().position(|x| x.id == track.id) {
+                                            if idx + 1 < audios.len() {
+                                                let next = audios[idx + 1].clone();
+                                                current_audio.set(Some(next.clone()));
+                                                cmd_tx.send(Command::Play(next.id)).unwrap();
+                                                cmd_tx.send(Command::GetArtistMetadataFromPlugin(next.path)).unwrap();
+                                            } else {
+                                                current_audio.set(None);
+                                            }
+                                        }
+                                    },
+                                    PlayMode::Random => {
+                                        if !audios.is_empty() {
+                                            let mut rng = rand::thread_rng();
+                                            let random_idx = rng.gen_range(0..audios.len());
+                                            let next = audios[random_idx].clone();
+                                            current_audio.set(Some(next.clone()));
+                                            cmd_tx.send(Command::Play(next.id)).unwrap();
+                                            cmd_tx.send(Command::GetArtistMetadataFromPlugin(next.path)).unwrap();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+
+                    // BOUTONS DROITE
+                    div { style: "width: 25%; display: flex; justify-content: flex-end; align-items: center; gap: 10px;",
+                        // Bouton pour vider la queue si elle est pleine
+                        if !queue().is_empty() {
+                            button {
+                                style: "background: transparent; border: 1px solid #e74c3c; color: #e74c3c; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;",
+                                onclick: move |_| queue.write().clear(),
+                                "🗑️"
+                            }
+                        }
+
+                        button {
+                            style: "background: transparent; border: 1px solid {play_mode().color()}; color: {play_mode().color()}; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.2s;",
+                            onclick: move |_| play_mode.set(play_mode().next()),
+                            "{play_mode().icon()}"
+                        }
+
+                        button {
+                            style: "background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; margin-left: 10px;",
+                            onclick: move |_| current_audio.set(None),
+                            "❌"
                         }
                     }
                 }

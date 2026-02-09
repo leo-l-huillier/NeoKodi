@@ -1,21 +1,5 @@
-
-TODO: add multiple media states #28
-Gui  : Done
-
-TODO: remove source
-Gui  : Done
-
-TODO: playlists -> #36
-GUI  : add playlists management (add audio to playlist, remove audio from playlist, create playlist, delete playlist) to GUI
-
 TODO: Tags -> #357
 GUI  : add tags management (add audio to tags, remove audio from tags, create tags, delete tags) to GUI
-
-TODO: research system
-GUI  : implement
-
-TODO: advanced audio control (add queue, repeat, shuffle) -> #34 #35
-Gui  : implement
 
 use crate::media::audio::Queue;
 
