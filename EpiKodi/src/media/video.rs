@@ -15,20 +15,22 @@ pub struct VideoMetadata {
 }
 
 pub struct Video {
-    pub id: i64,          // <--- L'ID est là
+    pub id: i64,
+    pub last_position: f32,
     pub path: String,
     pub name: String,
     pub metadata: VideoMetadata,
 }
 
 impl Video {
-    pub fn new(id: i64, path: &str, name: &str) -> Self {
+    pub fn new(id: i64, path: &str, name: &str, last_position: f32, duration: f32) -> Self {
         Self {
             id,
+            last_position,
             path: path.to_string(),
             name: name.to_string(),
             metadata: VideoMetadata {
-            duration: 0.0, // On laisse à 0 pour l'instant
+            duration: duration, // On utilise la durée passée en paramètre
             }
         }
     }
@@ -53,6 +55,7 @@ impl Media for Video {
             title: Some(self.name.clone()),
             duration: Some(self.metadata.duration),
             media_type: MediaType::Video,
+            last_position: self.last_position,
         }
     }
 

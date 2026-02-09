@@ -8,6 +8,8 @@ use std::path::PathBuf;
 use crate::library::sources::LibraryConfig;
 use crate::constants::SOURCE_FILE;
 use urlencoding::encode;
+use rand::Rng;
+use std::time::Duration;
 
 // 👇 STRUCTURE POUR LES PLUGINS
 #[derive(Clone, PartialEq)]
@@ -15,29 +17,75 @@ pub struct PluginSearchResult {
     pub text: String,
 }
 
-fn make_url(full_path: &str, _root_path: &str) -> String {
-    // 1. On nettoie les slashs
-    let clean_path = full_path.replace("\\", "/");
-    
-    // 2. Si c'est un chemin avec un lecteur (Ex: "E:/...")
-    if let Some(colon_idx) = clean_path.find(':') {
-        if colon_idx == 1 { 
-            let drive_letter = &clean_path[0..1].to_lowercase(); // "e"
-            let path_after_drive = &clean_path[3..]; // Tout après "E:/"
+#[derive(PartialEq, Clone, Copy, Debug)]
+enum PlayMode {
+    StopAtEnd,
+    Sequential,
+    Random,
+    Loop,
+}
 
-            // On encode proprement les espaces et accents pour le WEB
+impl PlayMode {
+    fn next(&self) -> Self {
+        match self {
+            PlayMode::StopAtEnd => PlayMode::Sequential,
+            PlayMode::Sequential => PlayMode::Random,
+            PlayMode::Random => PlayMode::Loop,
+            PlayMode::Loop => PlayMode::StopAtEnd,
+        }
+    }
+
+    fn icon(&self) -> &'static str {
+        match self {
+            PlayMode::StopAtEnd => "🛑 Stop",
+            PlayMode::Sequential => "➡️ Suite",
+            PlayMode::Random => "🔀 Hasard",
+            PlayMode::Loop => "🔁 Boucle",
+        }
+    }
+    
+    fn color(&self) -> &'static str {
+        match self {
+            PlayMode::StopAtEnd => "#7f8c8d",
+            PlayMode::Sequential => "#3498db",
+            PlayMode::Random => "#9b59b6",
+            PlayMode::Loop => "#e67e22",
+        }
+    }
+}
+
+fn make_url(full_path: &str, root_path: &str) -> String {
+    let clean_full = full_path.replace("\\", "/");
+    let clean_root = root_path.replace("\\", "/");
+
+    if let Some(colon_idx) = clean_full.find(':') {
+        if colon_idx == 1 { 
+            let drive_letter = &clean_full[0..1].to_lowercase();
+            let path_after_drive = &clean_full[3..];
+
             let encoded_parts: Vec<_> = path_after_drive.split('/')
                 .map(|part| encode(part))
                 .collect();
             
-            // Résultat : http://127.0.0.1:3030/drives/e/Dossier/Film%20Cool.mp4
-            return format!("http://127.0.0.1:3030/drives/{}/{}", drive_letter, encoded_parts.join("/"));
+            let url = format!("http://127.0.0.1:3030/drives/{}/{}", drive_letter, encoded_parts.join("/"));
+            return url;
         }
     }
 
-    // 3. Fallback (cas rare)
-    format!("http://127.0.0.1:3030/media/{}", encode(&clean_path))
+    let relative_path = if clean_full.starts_with(&clean_root) {
+        clean_full.replace(&clean_root, "").trim_start_matches('/').to_string()
+    } else {
+        clean_full.clone()
+    };
+
+    let encoded_parts: Vec<_> = relative_path.split('/')
+        .map(|part| encode(part))
+        .collect();
+
+    let url = format!("http://127.0.0.1:3030/media/{}", encoded_parts.join("/"));
+    url
 }
+
 // --- ACCUEIL ---
 #[component]
 pub fn Home() -> Element {
@@ -58,7 +106,6 @@ pub fn Home() -> Element {
     }
 }
 
-// --- MUSIQUE ---
 #[component]
 pub fn Music() -> Element {
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
@@ -67,61 +114,245 @@ pub fn Music() -> Element {
     let root_path = root_path_signal();
     let plugin_result = use_context::<Signal<PluginSearchResult>>();
     
-    let mut current_audio = use_signal(|| Option::<String>::None);
-    let tx_init = cmd_tx.clone();
+    let mut current_audio = use_signal(|| Option::<MediaInfo>::None);
+    let mut play_mode = use_signal(|| PlayMode::Sequential);
+    let mut search_text = use_signal(|| String::new());
     
+    let mut queue = use_signal(|| Vec::<MediaInfo>::new());
+
+    // 👇 NOUVEAU SIGNAL : Pour afficher/cacher la liste
+    let mut show_queue_popup = use_signal(|| false);
+
+    let tx_init = cmd_tx.clone();
     use_hook(move || { if list_signal().is_empty() { tx_init.send(Command::GetAllMedia()).unwrap(); } });
 
+    let css_marquee = "
+        @keyframes scroll-text { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
+        .marquee-text { display: inline-block; animation: scroll-text 15s linear infinite; padding-left: 100%; }
+        .audio-row:active { background-color: #333 !important; transform: scale(0.99); transition: transform 0.1s; }
+        .add-queue-btn { opacity: 0.5; transition: opacity 0.2s; }
+        .add-queue-btn:hover { opacity: 1; transform: scale(1.1); }
+        
+        /* Style pour la scrollbar de la popup */
+        .queue-popup::-webkit-scrollbar { width: 6px; }
+        .queue-popup::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
+        .queue-popup::-webkit-scrollbar-track { background: #222; }
+    ";
+
     rsx! {
-        div { class: "container",
-            if let Some(path) = current_audio() {
-                div { style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #121212; z-index: 999; display: flex; flex-direction: column;",
-                    div { style: "flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;",
-                        div { style: "font-size: 5rem; margin-bottom: 20px;", "🎵" }
-                        h2 { "Lecture en cours" }
-                        audio { controls: true, autoplay: true, style: "width: 80%; max-width: 600px;",
-                            onended: move |_| current_audio.set(None),
-                            src: "{make_url(&path, &root_path)}"
-                        }
-                        button { 
-                            class: "btn-nav", 
-                            style: "position: relative; transform: none; top: auto; left: auto; background-color: #d32f2f; border-color: #b71c1c; font-size: 1.2rem; padding: 15px 40px;", 
-                            onclick: move |_| current_audio.set(None), 
-                            "⏹️ Arrêter la lecture" 
-                        }
-                        div { 
-                            style: "color: #4caf50; font-size: 1.5rem; font-weight: bold; text-align: center; max-width: 600px; padding: 10px; border: 1px dashed #333; border-radius: 8px;",
-                            "{plugin_result.read().text}" 
+        style { "{css_marquee}" }
+        
+        div { class: "container", style: "padding-bottom: 100px;",
+            
+            // TOP BAR
+            div { class: "top-bar", 
+                style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
+                div { style: "z-index: 2;", Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" } }
+                div { class: "page-title", style: "position: absolute; left: 50%; transform: translateX(-50%);", "Musique" } 
+                div { style: "z-index: 2;",
+                    input {
+                        r#type: "text", placeholder: "🔍 Titre...",
+                        style: "padding: 8px; border-radius: 5px; border: none; background: #333; color: white; width: 250px;",
+                        oninput: move |evt| search_text.set(evt.value()),
+                    }
+                }
+            }
+            
+            // LISTE PRINCIPALE
+            div { class: "audio-list",
+                for item in list_signal().iter()
+                    .filter(|i| i.media_type == MediaType::Audio)
+                    .filter(|i| {
+                        let query = search_text().to_lowercase();
+                        if query.is_empty() { return true; }
+                        i.title.as_deref().unwrap_or(&i.path).to_lowercase().contains(&query)
+                    })
+                {
+                    div { class: "audio-row",
+                        style: "cursor: pointer; transition: background 0.2s; user-select: none; display: flex; align-items: center; justify-content: space-between; padding-right: 15px;",
+                        
+                        onclick: { 
+                            let track = item.clone(); 
+                            let i = item.id; 
+                            let tx = cmd_tx.clone();
+                            let mut res = plugin_result.clone(); 
+                            move |_| { 
+                                res.set(PluginSearchResult { text: String::from("...") });
+                                current_audio.set(Some(track.clone())); 
+                                tx.send(Command::Play(i)).unwrap(); 
+                                tx.send(Command::GetArtistMetadataFromPlugin(track.path.clone())).unwrap();
+                            } 
+                        },
+                        
+                        div { style: "display: flex; align-items: center; flex: 1;",
+                            div { class: "audio-icon", 
+                                if current_audio().as_ref().map(|c| c.id) == Some(item.id) { "🔊" } else { "🎵" }
+                            }
+                            div { class: "audio-info", 
+                                div { 
+                                    class: "audio-title", 
+                                    style: if current_audio().as_ref().map(|c| c.id) == Some(item.id) { "color: #1db954; font-weight: bold;" } else { "" },
+                                    "{item.title.as_deref().unwrap_or(&item.path)}" 
+                                } 
+                                div { class: "audio-artist", "Artiste inconnu" } 
+                            }
+                        },
+
+                        button {
+                            class: "add-queue-btn",
+                            style: "background: transparent; border: 1px solid #555; color: white; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;",
+                            title: "Ajouter à la file d'attente",
+                            onclick: {
+                                let track = item.clone();
+                                move |evt: Event<MouseData>| {
+                                    evt.stop_propagation();
+                                    queue.write().push(track.clone());
+                                }
+                            },
+                            "➕"
                         }
                     }
                 }
-            } else {
-                div { class: "top-bar", 
-                    Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, 
-                    div { class: "page-title", "Musique" } 
-                }
-                div { class: "audio-list",
-                    for item in list_signal().iter().filter(|i| i.media_type == MediaType::Audio) {
-                        div { class: "audio-row",
-                            onclick: { 
-                                let p = item.path.clone(); 
-                                let i = item.id; 
-                                let tx = cmd_tx.clone();
+            }
+
+            // MINI PLAYER EN BAS
+            if let Some(track) = current_audio() {
+                div { 
+                    style: "position: fixed; bottom: 0; left: 0; width: 100%; height: 90px; background: #181818; border-top: 1px solid #282828; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.5);",
+                    
+                    // INFO GAUCHE (Modifié pour la popup)
+                    div { style: "width: 25%; position: relative;", // ⚠️ overflow hidden retiré ici pour laisser dépasser la popup
+                        
+                        // Titre défilant (Lui il garde l'overflow hidden)
+                        div { class: "marquee-container",
+                            div { class: "marquee-text", style: "font-weight: bold; font-size: 1.1rem;",
+                                "{track.title.as_deref().unwrap_or(&track.path)}"
+                            }
+                        }
+
+                        // Indicateur de Queue (AVEC SURVOL)
+                        if !queue().is_empty() {
+                            div { 
+                                style: "display: inline-block; cursor: help; position: relative;", // Position relative pour ancrer la popup
                                 
-                                let mut res = plugin_result.clone(); 
+                                // Événements de survol
+                                onmouseenter: move |_| show_queue_popup.set(true),
+                                onmouseleave: move |_| show_queue_popup.set(false),
 
-                                move |_| { 
-                                    res.set(PluginSearchResult { text: String::from("🔎 Recherche MusicBrainz en cours...") });
+                                // Le texte
+                                div { 
+                                    style: "color: #3498db; font-size: 0.8rem; margin-top: 4px; font-weight: bold;", 
+                                    "⏭️ En attente : {queue().len()} titre(s)" 
+                                }
 
-                                    current_audio.set(Some(p.clone())); 
-                                    
-                                    tx.send(Command::Play(i)).unwrap(); 
-                                    
-                                    tx.send(Command::GetArtistMetadataFromPlugin(p.clone())).unwrap();
-                                } 
-                            },
-                            div { class: "audio-icon", "🎵" }
-                            div { class: "audio-info", div { class: "audio-title", "{item.title.as_deref().unwrap_or(&item.path)}" } div { class: "audio-artist", "Artiste inconnu" } }
+                                // 👇 LA POPUP DE LISTE
+                                if show_queue_popup() {
+                                    div {
+                                        class: "queue-popup",
+                                        style: "
+                                            position: absolute;
+                                            bottom: 130%; /* Juste au dessus du texte */
+                                            left: 0;
+                                            width: 300px;
+                                            max-height: 400px;
+                                            overflow-y: auto;
+                                            background: #282828;
+                                            border: 1px solid #444;
+                                            border-radius: 8px;
+                                            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+                                            padding: 10px;
+                                            z-index: 2000;
+                                        ",
+                                        h4 { style: "margin: 0 0 10px 0; color: #fff; border-bottom: 1px solid #444; padding-bottom: 5px;", "File d'attente" }
+                                        
+                                        // Liste des chansons dans la queue
+                                        for (idx, song) in queue().iter().enumerate() {
+                                            div { 
+                                                style: "padding: 8px; border-bottom: 1px solid #333; font-size: 0.9rem; color: #ccc; display: flex; gap: 10px;",
+                                                span { style: "color: #888; font-family: monospace;", "{idx + 1}." }
+                                                span { style: "white-space: nowrap; overflow: hidden; text-overflow: ellipsis;", "{song.title.as_deref().unwrap_or(&song.path)}" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            div { style: "color: #b3b3b3; font-size: 0.9rem; margin-top: 4px;", "{plugin_result.read().text}" }
+                        }
+                    },
+
+                    // LECTEUR CENTRAL
+                    div { style: "flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;",
+                        audio { 
+                            controls: true, 
+                            autoplay: true, 
+                            style: "width: 100%; max-width: 500px; height: 40px; outline: none;",
+                            src: "{make_url(&track.path, &root_path)}",
+                            r#loop: play_mode() == PlayMode::Loop,
+                            onended: move |_| {
+                                if !queue().is_empty() {
+                                    let next_song = queue.write().remove(0);
+                                    current_audio.set(Some(next_song.clone()));
+                                    cmd_tx.send(Command::Play(next_song.id)).unwrap();
+                                    cmd_tx.send(Command::GetArtistMetadataFromPlugin(next_song.path)).unwrap();
+                                    return;
+                                }
+
+                                let mode = play_mode();
+                                let list = list_signal();
+                                let audios: Vec<&MediaInfo> = list.iter().filter(|i| i.media_type == MediaType::Audio).collect();
+                                
+                                match mode {
+                                    PlayMode::StopAtEnd => current_audio.set(None),
+                                    PlayMode::Loop => {},
+                                    PlayMode::Sequential => {
+                                        if let Some(idx) = audios.iter().position(|x| x.id == track.id) {
+                                            if idx + 1 < audios.len() {
+                                                let next = audios[idx + 1].clone();
+                                                current_audio.set(Some(next.clone()));
+                                                cmd_tx.send(Command::Play(next.id)).unwrap();
+                                                cmd_tx.send(Command::GetArtistMetadataFromPlugin(next.path)).unwrap();
+                                            } else {
+                                                current_audio.set(None);
+                                            }
+                                        }
+                                    },
+                                    PlayMode::Random => {
+                                        if !audios.is_empty() {
+                                            let mut rng = rand::thread_rng();
+                                            let random_idx = rng.gen_range(0..audios.len());
+                                            let next = audios[random_idx].clone();
+                                            current_audio.set(Some(next.clone()));
+                                            cmd_tx.send(Command::Play(next.id)).unwrap();
+                                            cmd_tx.send(Command::GetArtistMetadataFromPlugin(next.path)).unwrap();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+
+                    // BOUTONS DROITE
+                    div { style: "width: 25%; display: flex; justify-content: flex-end; align-items: center; gap: 10px;",
+                        if !queue().is_empty() {
+                            button {
+                                style: "background: transparent; border: 1px solid #e74c3c; color: #e74c3c; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;",
+                                onclick: move |_| queue.write().clear(),
+                                "🗑️"
+                            }
+                        }
+
+                        button {
+                            style: "background: transparent; border: 1px solid {play_mode().color()}; color: {play_mode().color()}; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.2s;",
+                            onclick: move |_| play_mode.set(play_mode().next()),
+                            "{play_mode().icon()}"
+                        }
+
+                        button {
+                            style: "background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; margin-left: 10px;",
+                            onclick: move |_| current_audio.set(None),
+                            "❌"
                         }
                     }
                 }
@@ -134,54 +365,245 @@ pub fn Music() -> Element {
 #[component]
 pub fn Videos() -> Element {
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
-    let list_signal = use_context::<Signal<Vec<MediaInfo>>>();
+    let mut list_signal = use_context::<Signal<Vec<MediaInfo>>>();
     let root_path_signal = use_context::<Signal<String>>();
     let root_path = root_path_signal();
     
     let mut current_video = use_signal(|| Option::<String>::None);
+    let mut search_text = use_signal(|| String::new());
+    
+    // États pour le feedback visuel (Netflix style)
+    let mut show_seek_back = use_signal(|| false);
+    let mut show_seek_forward = use_signal(|| false);
+    
     let tx_init = cmd_tx.clone(); 
-    use_hook(move || { if list_signal().is_empty() { tx_init.send(Command::GetAllMedia()).unwrap(); } });
+    use_hook(move || { 
+        if list_signal().is_empty() { 
+            tx_init.send(Command::GetAllMedia()).unwrap(); 
+        } 
+    });
+
+    // CSS pour l'animation d'apparition/disparition du feedback
+    let css_anim = "
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+        .seek-feedback {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 30;
+            animation: fadeOut 0.8s forwards;
+        }
+    ";
 
     rsx! {
+        style { "{css_anim}" }
+
         div { class: "container",
             if let Some(path) = current_video() {
-                div { style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
-                    div { style: "height: 60px; padding: 10px;",
-                        button { class: "btn-nav", style: "position: relative; top: 0; left: 0; transform: none;", onclick: move |_| current_video.set(None), "⬅ Retour" }
+                div { 
+                    style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
+                    
+                    div { style: "height: 60px; padding: 10px; z-index: 1000; position: relative;",
+                        button { class: "btn-nav", onclick: move |_| current_video.set(None), "⬅ Retour" }
                     }
-                    // ...
-                    div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;",
-                        {
-                            // 1. On génère l'URL
-                            let url = make_url(&path, &root_path);
-                            
-                            // 2. ON L'AFFICHE DANS LE TERMINAL (Pour débugger sans crasher)
-                            println!("🚀 TENTATIVE DE LECTURE : {}", url);
 
-                            // 3. Le lecteur (SANS le bloc onerror qui fait planter)
-                            rsx! { 
+                    div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; position: relative; background: black;",
+                        {
+                            let url = make_url(&path, &root_path);
+                            let current_media = list_signal().iter().find(|m| m.path == path).cloned();
+                            let start_time = current_media.as_ref().map(|m| m.last_position).unwrap_or(0.0);
+                            let media_id = current_media.as_ref().map(|m| m.id).unwrap_or(0);
+                            let tx = cmd_tx.clone();
+
+                            rsx! {
+                                input {
+                                    id: "spy-input",
+                                    r#type: "hidden",
+                                    value: "",
+                                    oninput: move |evt| {
+                                        let val = evt.value();
+                                        let parts: Vec<&str> = val.split('|').collect();
+                                        if parts.len() == 2 {
+                                            if let (Ok(time), Ok(duration)) = (parts[0].parse::<f32>(), parts[1].parse::<f32>()) {
+                                                if media_id > 0 { tx.send(Command::UpdateProgress(media_id, time, duration)).unwrap(); }
+                                                list_signal.write().iter_mut().find(|m| m.id == media_id).map(|m| {
+                                                    m.last_position = time;
+                                                    m.duration = Some(duration);
+                                                });
+                                            }
+                                        }
+                                    }
+                                }
+
                                 video { 
+                                    id: "main-player", 
                                     key: "{url}", 
                                     src: "{url}", 
                                     controls: true, 
                                     autoplay: true, 
-                                    style: "max-width: 100%; max-height: 100%; width: 100%;"
-                                } 
+                                    style: "max-width: 100%; max-height: 100%; width: 100%;",
+                                }
+                                
+                                // === ZONES TACTILES INVISIBLES ===
+
+                                // ZONE GAUCHE (-10s)
+                                div {
+                                    style: "position: absolute; top: 0; left: 0; width: 30%; height: 80%; z-index: 10; cursor: pointer;",
+                                    ondblclick: move |_| {
+                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) v.currentTime -= 10;"#);
+                                        spawn(async move { eval.recv().await; });
+                                        show_seek_back.set(false);
+                                        spawn(async move { show_seek_back.set(true); });
+                                    },
+                                    onclick: move |_| {
+                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) { if(v.paused) v.play(); else v.pause(); }"#);
+                                        spawn(async move { eval.recv().await; });
+                                    }
+                                }
+
+                                // ZONE DROITE (+10s)
+                                div {
+                                    style: "position: absolute; top: 0; right: 0; width: 30%; height: 80%; z-index: 10; cursor: pointer;",
+                                    ondblclick: move |_| {
+                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) v.currentTime += 10;"#);
+                                        spawn(async move { eval.recv().await; });
+                                        show_seek_forward.set(false);
+                                        spawn(async move { show_seek_forward.set(true); });
+                                    },
+                                    onclick: move |_| {
+                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) { if(v.paused) v.play(); else v.pause(); }"#);
+                                        spawn(async move { eval.recv().await; });
+                                    }
+                                }
+
+                                // === FEEDBACK VISUEL ===
+                                if show_seek_back() {
+                                    div { 
+                                        class: "seek-feedback", 
+                                        style: "left: 15%;", 
+                                        onanimationend: move |_| show_seek_back.set(false), 
+                                        "⏪ -10s" 
+                                    }
+                                }
+                                if show_seek_forward() {
+                                    div { 
+                                        class: "seek-feedback", 
+                                        style: "right: 15%;", 
+                                        onanimationend: move |_| show_seek_forward.set(false),
+                                        "+10s ⏩" 
+                                    }
+                                }
+
+                                script { "
+                                    var v = document.getElementById('main-player');
+                                    var spy = document.getElementById('spy-input');
+                                    
+                                    // 👇 CORRECTION : On attend que les métadonnées soient chargées
+                                    if (v && {start_time} > 0) {{
+                                        // Tentative immédiate
+                                        v.currentTime = {start_time};
+                                        
+                                        // Assurance vie : dès que la vidéo sait quelle durée elle fait, on saute
+                                        v.onloadedmetadata = function() {{
+                                            console.log('Reprise à : ' + {start_time});
+                                            v.currentTime = {start_time};
+                                        }};
+                                    }}
+
+                                    if (v && spy) {{
+                                        v.ontimeupdate = function() {{
+                                            var total = v.duration || 0; 
+                                            spy.value = v.currentTime + '|' + total;
+                                            spy.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                                        }};
+                                    }}
+                                " }
                             }
                         }
                     }
                 }
-            } else {
+            } 
+            // ==========================
+            // GRILLE DES VIDÉOS (LISTE)
+            // ==========================
+            else {
                 div { class: "top-bar", 
-                    Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, 
-                    div { class: "page-title", "Vidéos" } 
+                    style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
+
+                    div { style: "z-index: 2;",
+                        Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }
+                    }
+
+                    div { 
+                        class: "page-title", 
+                        style: "position: absolute; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;",
+                        "Vidéos" 
+                    }
+
+                    input {
+                        r#type: "text",
+                        placeholder: "🔍 Rechercher un film...",
+                        style: "padding: 8px; border-radius: 5px; border: none; background: #333; color: white; width: 250px;",
+                        oninput: move |evt| search_text.set(evt.value()),
+                    }
                 }
+                
                 div { class: "media-grid",
-                    for item in list_signal().iter().filter(|i| i.media_type == MediaType::Video) {
-                        div { class: "media-card",
-                            onclick: { let p=item.path.clone(); let i=item.id; let tx=cmd_tx.clone(); move |_| { current_video.set(Some(p.clone())); tx.send(Command::Play(i)).unwrap(); } },
-                            div { class: "card-icon", "🎬" }
-                            div { class: "card-text", style: "overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;", "{item.title.as_deref().unwrap_or(&item.path)}" }
+                    for item in list_signal().iter()
+                        .filter(|i| i.media_type == MediaType::Video)
+                        .filter(|i| {
+                            let query = search_text().to_lowercase();
+                            if query.is_empty() { return true; }
+                            let name = i.title.as_deref().unwrap_or(&i.path).to_lowercase();
+                            name.contains(&query)
+                        }) 
+                    {
+                        {
+                            let (progress_percent, has_started) = match item.duration {
+                                Some(total) if total > 0.0 => ((item.last_position / total) * 100.0, item.last_position > 5.0),
+                                _ => (0.0, item.last_position > 5.0),
+                            };
+
+                            rsx! {
+                                div { 
+                                    class: "media-card",
+                                    style: "position: relative; overflow: hidden;", 
+                                    onclick: { 
+                                        let p=item.path.clone(); 
+                                        let i=item.id; 
+                                        let tx=cmd_tx.clone(); 
+                                        move |_| { current_video.set(Some(p.clone())); tx.send(Command::Play(i)).unwrap(); } 
+                                    },
+
+                                    div { class: "card-icon", "🎬" }
+
+                                    if progress_percent > 0.0 {
+                                        div { 
+                                            style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: rgba(0,0,0,0.6); z-index: 10;",
+                                            div { style: "height: 100%; background: #e50914; width: {progress_percent}%; transition: width 0.3s;" }
+                                        }
+                                    } else if has_started {
+                                        div { 
+                                            style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: rgba(0,0,0,0.6); z-index: 10;",
+                                            div { style: "height: 100%; background: #3498db; width: 100%;" } 
+                                        }
+                                    }
+
+                                    div { class: "card-text", style: "overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;", 
+                                        "{item.title.as_deref().unwrap_or(&item.path)}" 
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -196,6 +618,9 @@ pub fn Images() -> Element {
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
     let list_signal = use_context::<Signal<Vec<MediaInfo>>>();
     let mut current_image = use_signal(|| Option::<String>::None);
+    
+    let mut search_text = use_signal(|| String::new());
+
     let tx_init = cmd_tx.clone();
     use_hook(move || { if list_signal().is_empty() { tx_init.send(Command::GetAllMedia()).unwrap(); } });
 
@@ -210,13 +635,41 @@ pub fn Images() -> Element {
                          img { src: "{data}", style: "max-width: 100%; max-height: 100%; object-fit: contain;" }
                     }
                 }
-            } else {
+            } 
+            else {
                 div { class: "top-bar", 
-                    Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, 
-                    div { class: "page-title", "Images" } 
+                    style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
+
+                    div { style: "z-index: 2;",
+                        Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }
+                    }
+
+                    div { 
+                        class: "page-title", 
+                        style: "position: absolute; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;",
+                        "Images" 
+                    } 
+
+                    div { style: "z-index: 2;",
+                        input {
+                            r#type: "text",
+                            placeholder: "🔍 Rechercher...",
+                            style: "padding: 8px; border-radius: 5px; border: none; background: #333; color: white; width: 250px;",
+                            oninput: move |evt| search_text.set(evt.value()),
+                        }
+                    }
                 }
+
                 div { class: "media-grid",
-                    for item in list_signal().iter().filter(|i| i.media_type == MediaType::Image) {
+                    for item in list_signal().iter()
+                        .filter(|i| i.media_type == MediaType::Image)
+                        .filter(|i| {
+                            let query = search_text().to_lowercase();
+                            if query.is_empty() { return true; }
+                            let name = i.title.as_deref().unwrap_or(&i.path).to_lowercase();
+                            name.contains(&query)
+                        })
+                    {
                         div { class: "media-card",
                             onclick: {
                                 let p=item.path.clone(); let i=item.id; let tx=cmd_tx.clone();
@@ -249,11 +702,11 @@ pub fn Plugins() -> Element {
         div { class: "container", 
             div { class: "top-bar", 
                 Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }, 
-                div { class: "page-title", "Add-ons" } 
+                div { class: "page-title", "PLUGINS" } 
             }
             
             div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px;",
-                h2 { "Test Plugin MusicBrainz" }
+                h2 { "MusicBrainz" }
 
                 div { style: "display: flex; gap: 10px;",
                     input {
@@ -292,17 +745,14 @@ pub fn Plugins() -> Element {
 pub fn Settings() -> Element { 
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
     
-    // 👇 CHARGEMENT DIRECT : On lit le fichier sources.json dès l'init
+    let mut scan_message = use_signal(|| String::new());
+
     let mut sources_signal = use_signal(|| {
         let config = LibraryConfig::load(SOURCE_FILE);
         let mut paths = Vec::new();
-        
-        // On récupère tout ce qu'il y a dans le fichier
         for s in config.video_sources { paths.push(s.path.to_string_lossy().to_string()); }
         for s in config.music_sources { paths.push(s.path.to_string_lossy().to_string()); }
         for s in config.image_sources { paths.push(s.path.to_string_lossy().to_string()); }
-        
-        // Petit nettoyage (tri + suppression doublons)
         paths.sort();
         paths.dedup();
         paths
@@ -315,15 +765,13 @@ pub fn Settings() -> Element {
                 div { class: "page-title", "Paramètres" } 
             }
   
-            div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px; max-width: 800px; margin-left: auto; margin-right: auto;",
+            div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px; max-width: 800px; margin-left: auto; margin-right: auto; padding-bottom: 50px;",
                 
-                // --- TITRE ---
                 div { style: "text-align: center; width: 100%;",
                     h2 { "Gestion des Sources" }
                     p { style: "color: #aaa; margin-bottom: 20px;", "Gérez ici les dossiers que NeoKodi doit scanner." }
                 }
 
-                // --- LISTE DES DOSSIERS ---
                 div { style: "width: 100%; display: flex; flex-direction: column; gap: 10px;",
                     if sources_signal().is_empty() {
                         div { style: "text-align: center; font-style: italic; color: #666; padding: 20px;", "Aucune source configurée." }
@@ -333,10 +781,8 @@ pub fn Settings() -> Element {
                         div { 
                             style: "background: #1e1e1e; padding: 15px; border-radius: 8px; border: 1px solid #333; display: flex; justify-content: space-between; align-items: center;",
                             
-                            // Le chemin du dossier
                             div { style: "font-family: monospace; color: #007acc; font-size: 1.1rem;", "📂 {path}" }
                             
-                            // Bouton Supprimer
                             button {
                                 class: "btn-nav",
                                 style: "position: relative; transform: none; top: auto; left: auto; background: #c0392b; padding: 8px 15px; font-size: 0.9rem;",
@@ -345,14 +791,10 @@ pub fn Settings() -> Element {
                                     let tx = cmd_tx.clone();
                                     move |_| {
                                         let path_buf = PathBuf::from(&p);
-                                        
-                                        // 1. On prévient le Backend (pour qu'il arrête de scanner ce dossier)
                                         tx.send(Command::RemoveSource(path_buf.clone(), MediaType::Video)).unwrap();
                                         tx.send(Command::RemoveSource(path_buf.clone(), MediaType::Audio)).unwrap();
                                         tx.send(Command::RemoveSource(path_buf.clone(), MediaType::Image)).unwrap();
-                                        tx.send(Command::GetAllMedia()).unwrap();
                                         
-                                        // 2. On met à jour l'affichage localement (sans attendre)
                                         sources_signal.write().retain(|x| x != &p);
                                     }
                                 },
@@ -362,30 +804,54 @@ pub fn Settings() -> Element {
                     }
                 }
 
-                // --- BOUTON AJOUTER ---
                 button { 
                     class: "btn-nav", 
                     style: "position: relative; transform: none; top: auto; left: auto; font-size: 1.1rem; padding: 15px 30px; background-color: #27ae60;",
-                    onclick: move |_| {
-                        if let Some(path) = rfd::FileDialog::new().pick_folder() {
-                            let path_str = path.to_string_lossy().to_string();
-                            
-                            // Évite les doublons visuels
-                            if !sources_signal().contains(&path_str) {
-                                let tx = cmd_tx.clone();
-                                
-                                // 1. On envoie au Backend (qui va mettre à jour sources.json et scanner)
-                                tx.send(Command::AddSource(path.clone(), MediaType::Video)).unwrap();
-                                tx.send(Command::AddSource(path.clone(), MediaType::Audio)).unwrap();
-                                tx.send(Command::AddSource(path.clone(), MediaType::Image)).unwrap();
-                                tx.send(Command::GetAllMedia()).unwrap();
-
-                                // 2. On met à jour l'affichage direct
-                                sources_signal.write().push(path_str);
+                    onclick: {
+                        let tx = cmd_tx.clone(); 
+                            move |_| {
+                            if let Some(path) = rfd::FileDialog::new().pick_folder() {
+                                let path_str = path.to_string_lossy().to_string();
+                                if !sources_signal().contains(&path_str) {
+                                    tx.send(Command::AddSource(path.clone(), MediaType::Video)).unwrap();
+                                    tx.send(Command::AddSource(path.clone(), MediaType::Audio)).unwrap();
+                                    tx.send(Command::AddSource(path.clone(), MediaType::Image)).unwrap();
+                                    tx.send(Command::Reload()).unwrap(); 
+                                    sources_signal.write().push(path_str);
+                                }
                             }
                         }
                     },
                     "➕ Ajouter un dossier"
+                }
+
+                div { style: "width: 100%; height: 1px; background: #333; margin: 20px 0;" }
+
+                div { style: "text-align: center; width: 100%;",
+                    h2 { "Maintenance" }
+                    p { style: "color: #aaa; margin-bottom: 20px;", "Si vos fichiers n'apparaissent pas, forcez une relecture complète." }
+                    div { style: "display: flex; flex-direction: column; align-items: center; gap: 10px;",
+                        button {
+                            class: "btn-nav",
+                            style: "position: relative; transform: none; top: auto; left: auto; font-size: 1.1rem; padding: 15px 30px; background-color: #2980b9;",
+                            onclick: {
+                                let tx = cmd_tx.clone();
+                                move |_| {
+                                    scan_message.set("⏳ Analyse des fichiers en cours...".to_string());
+                                    tx.send(Command::Reload()).unwrap();
+                                    spawn(async move {
+                                        tokio::time::sleep(Duration::from_secs(3)).await;
+                                        scan_message.set(String::new());
+                                    });
+                                }
+                            },
+                            "🔄 Forcer le re-scan complet"
+                        }
+                        // Message de confirmation
+                        if !scan_message().is_empty() {
+                            div { style: "color: #2ecc71; font-weight: bold; margin-top: 10px;", "{scan_message}" }
+                        }
+                    }
                 }
             }
         } 

@@ -14,6 +14,7 @@ pub struct MediaRow {
     pub title: Option<String>,
     pub duration: Option<f32>,
     pub media_type: MediaType,
+    pub last_position: f32,
 }
 
 pub struct DB {
@@ -98,14 +99,14 @@ impl DB {
     }
 
     //status : 0 = not started, 1 = playing, 2 = finished
-    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64) -> Result<()> {
+    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64, duration: f32) -> Result<()> {
         self.conn.execute(
             "
                 UPDATE media
-                SET status = ?1, time_stop = ?2
-                WHERE id = ?3
+                SET status = ?1, time_stop = ?2, duration = ?3
+                WHERE id = ?4
             ",
-            (status, time_stop, media_id),
+            (status, time_stop, duration, media_id),
         )?;
         Ok(())
     }
@@ -125,7 +126,7 @@ impl DB {
     pub fn get_all_media(&mut self) -> Result<&Vec<MediaRow>> {
 
         let mut stmt = self.conn.prepare(
-            "SELECT id, path, title, duration, media_type FROM media"
+            "SELECT id, path, title, duration, media_type, time_stop FROM media"
         )?;
 
         let rows = stmt.query_map([], |row| {
@@ -135,6 +136,7 @@ impl DB {
                 title: row.get(2)?,
                 duration: row.get(3)?,
                 media_type: MediaType::from_db(&row.get::<_, String>(4)?).unwrap(),
+                last_position: row.get(5)?,
             })
         })?;
 
@@ -148,6 +150,11 @@ impl DB {
 
     pub fn print_media_rows(&mut self) {
         //println!("{:#?}", self.media_rows);
+
+        for media in &self.media_rows {
+            println!("ID: {}, Path: {}, Title: {:?}, Duration: {:?}, Type: {:?}, Last Position: {}",
+                media.id, media.path, media.title, media.duration, media.media_type, media.last_position);
+        }
     }
 
     pub fn upsert_media(&mut self, media: &ScannedMedia) -> rusqlite::Result<()> {
@@ -157,7 +164,7 @@ impl DB {
             VALUES (?1, ?2, ?3, ?4)
             ON CONFLICT(path) DO UPDATE SET
                 title = excluded.title,
-                duration = excluded.duration,
+                duration = CASE WHEN excluded.duration > 0 THEN excluded.duration ELSE media.duration END,
                 media_type = excluded.media_type
             ",
             (
@@ -179,7 +186,7 @@ impl DB {
                 VALUES (?1, ?2, ?3, ?4)
                 ON CONFLICT(path) DO UPDATE SET
                     title = excluded.title,
-                    duration = excluded.duration,
+                    duration = CASE WHEN excluded.duration > 0 THEN excluded.duration ELSE media.duration END,
                     media_type = excluded.media_type
                 ",
             )?;

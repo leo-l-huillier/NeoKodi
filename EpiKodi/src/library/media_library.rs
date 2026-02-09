@@ -18,10 +18,16 @@ use std::path::Path;
 use crate::constants::LOG_FILE;
 use crate::scan::scan::Scan;
 use std::path::PathBuf;
+use std::fs::File;
+use lazy_static::lazy_static;
+use std::sync::RwLock;
 
 use crate::logger::logger::Logger;
 
-
+lazy_static! {
+    // Une liste de MediaInfo, protégée par un verrou (RwLock) pour que les threads ne se marchent pas dessus.
+    pub static ref MEDIA_LIBRARY: RwLock<Vec<MediaInfo>> = RwLock::new(Vec::new());
+}
 
 #[derive(Debug, Clone)]
 pub struct ScannedMedia {
@@ -67,7 +73,7 @@ impl MediaLibrary {
 
             let media: Box<dyn Media> = match row.media_type {
                 MediaType::Audio => Box::new(Audio::new(&row.path,&row.title.as_deref().unwrap_or(""))),
-                MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))),
+                MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""), row.last_position as f32, row.duration.unwrap_or(0.0))),
                 MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))), };
 
             self.items.insert(row.id, media);
@@ -77,17 +83,15 @@ impl MediaLibrary {
 
     pub fn reload(&mut self) {
         let logger = Logger::new(LOG_FILE);
-        logger.info("🔄 Reloading media library...");
         self.init();
-        logger.info(&format!("✅ Media library reloaded with {} items.", self.items.len()));
     }
 
-    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64) {
+    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64, duration: f32) {
         let logger = Logger::new(LOG_FILE);
-        
-        match self.database.update_media_status_and_time(media_id, status, time_stop) {
-            Ok(_) => logger.debug(&format!("Updated media ID {} with status {} and time_stop {}", media_id, status, time_stop)),
-            Err(e) => logger.error(&format!("Error updating media ID {}: {}", media_id, e)),
+        // On appelle la nouvelle fonction DB (qu'on va créer juste après)
+        match self.database.update_media_status_and_time(media_id, status, time_stop, duration) {
+            Ok(_) => {}, // logger.debug(...),
+            Err(e) => logger.error(&format!("Error updating progress ID {}: {}", media_id, e)),
         }
     }
 
@@ -434,6 +438,7 @@ mod tests {
                 title: Some(self.name.clone()),
                 duration: None,
                 media_type: MediaType::Audio,
+                last_position: 0.0,
             }
         }
         fn media_type(&self) -> MediaType { MediaType::Audio }

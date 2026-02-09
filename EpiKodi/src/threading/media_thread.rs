@@ -112,7 +112,7 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
 
                 Ok(Command::UpdateMediaState(media_id, status, time_stop)) => {
                     let mut library = lib_thread.lock().unwrap();
-                    library.update_media_status_and_time(media_id, status, time_stop);
+                    library.update_media_status_and_time(media_id, status, time_stop, 0.0);
                 }
 
                 Ok(Command::Reload()) => {
@@ -220,6 +220,18 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     let response = plugin_manager.get_metadata(name.as_str());
                     evt_tx.send(Event::Data(response.to_string())).unwrap();
                 }
+
+                Ok(Command::UpdateProgress(id, pos, total_duration)) => {
+                    if let Ok(mut lib) = crate::library::media_library::MEDIA_LIBRARY.write() {
+                        if let Some(media) = lib.iter_mut().find(|m| m.id == id) {
+                            media.last_position = pos;
+                            if total_duration > 0.0 { media.duration = Some(total_duration); }
+                        }
+                    }
+
+                    let mut library = lib_thread.lock().unwrap();
+                    library.update_media_status_and_time(id, 1, pos as f64, total_duration); 
+                },
 
                 Err(_) => break,
             }

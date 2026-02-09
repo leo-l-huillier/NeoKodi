@@ -30,9 +30,8 @@ use warp::Filter;
 use tokio::sync::broadcast;
 
 fn main() {
-
     let logger = Logger::new(LOG_FILE);
-
+    
     unsafe {
         std::env::set_var("RUST_LOG", "warp=info");
         std::env::set_var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--disable-web-security --allow-file-access-from-files --allow-running-insecure-content --autoplay-policy=no-user-gesture-required");
@@ -40,29 +39,32 @@ fn main() {
 
     let (reload_tx, _) = broadcast::channel::<()>(16);
     let _ = RELOAD_SIGNAL.set(reload_tx.clone());
-    let reload_tx_server = reload_tx.clone(); 
+    let reload_tx_server = reload_tx.clone();
 
-    // --- THREAD SERVEUR ---
     thread::spawn(move || {
         let rt = tokio::runtime::Runtime::new().unwrap();
         rt.block_on(async move {
             loop {
                 let app_config = AppConfig::load();
                 let server_root = app_config.media_path.clone();
-                logger.info(&format!("🌍 SERVEUR : Démarrage sur {}", server_root));
+                println!("\n🌍 SERVEUR : Initialisation...");
 
                 let mut rx = reload_tx_server.subscribe();
+                
                 let base_route = warp::path("media")
-                    .and(warp::fs::dir(app_config.media_path.clone()));
+                    .and(warp::fs::dir(server_root));
+
                 let mut drives_filter: Option<warp::filters::BoxedFilter<(warp::fs::File,)>> = None;
 
-                for letter in b'a'..=b'z' {
+                for letter in b'A'..=b'Z' {
                     let char_letter = letter as char;
                     let drive_path = format!("{}:\\", char_letter);
 
                     if Path::new(&drive_path).exists() {
+                        println!("✅ Disque détecté et monté : {} (Route: /drives/{})", drive_path, char_letter.to_lowercase());
+                        
                         let this_drive = warp::path("drives")
-                            .and(warp::path(char_letter.to_string()))
+                            .and(warp::path(char_letter.to_lowercase().to_string())) // "e"
                             .and(warp::fs::dir(drive_path));
 
                         drives_filter = match drives_filter {
@@ -77,23 +79,31 @@ fn main() {
                         .and(warp::fs::dir("."))
                         .boxed()
                 });
+
                 let cors = warp::cors().allow_any_origin().allow_methods(vec!["GET", "HEAD"]);
+                
+                let log = warp::log("warp::server");
+
                 let routes = base_route
                     .or(final_drives_route)
-                    .unify() 
-                    .with(cors);
+                    .unify()
+                    .with(cors)
+                    .with(log);
+
+                println!("🚀 SERVEUR PRÊT sur http://127.0.0.1:3030");
+
                 let (_addr, server) = warp::serve(routes)
                     .bind_with_graceful_shutdown(([127, 0, 0, 1], 3030), async move {
                         let _ = rx.recv().await;
                     });
 
                 server.await;
+                println!("🔄 SERVEUR : Redémarrage...");
                 tokio::time::sleep(Duration::from_millis(1000)).await;
             }
         });
     });
 
-    // --- FENÊTRE ---
     let window = WindowBuilder::new().with_title("NeoKodi").with_resizable(true).with_maximized(true);
     let config_dioxus = Config::new().with_window(window).with_custom_head(format!("<style>{}</style>", GLOBAL_STYLE));
 
