@@ -1,9 +1,6 @@
 TODO: Tags -> #357
 GUI  : add tags management (add audio to tags, remove audio from tags, create tags, delete tags) to GUI
 
-TODO: avance rapide (+10s, -10s)
-GUI  : implement
-
 TODO: Interface dans l'application pour activer/désactiver des plugins
 Gui  :implement (c'est un bool)
 

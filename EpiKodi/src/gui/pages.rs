@@ -306,6 +306,10 @@ pub fn Videos() -> Element {
     let mut current_video = use_signal(|| Option::<String>::None);
     let mut search_text = use_signal(|| String::new());
     
+    // États pour le feedback visuel (Netflix style)
+    let mut show_seek_back = use_signal(|| false);
+    let mut show_seek_forward = use_signal(|| false);
+    
     let tx_init = cmd_tx.clone(); 
     use_hook(move || { 
         if list_signal().is_empty() { 
@@ -313,8 +317,36 @@ pub fn Videos() -> Element {
         } 
     });
 
+    // CSS pour l'animation d'apparition/disparition du feedback
+    let css_anim = "
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+        .seek-feedback {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 30;
+            animation: fadeOut 0.8s forwards;
+        }
+    ";
+
     rsx! {
+        // Injection du CSS
+        style { "{css_anim}" }
+
         div { class: "container",
+            // ==========================
+            // LECTEUR VIDÉO
+            // ==========================
             if let Some(path) = current_video() {
                 div { 
                     style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
@@ -323,7 +355,7 @@ pub fn Videos() -> Element {
                         button { class: "btn-nav", onclick: move |_| current_video.set(None), "⬅ Retour" }
                     }
 
-                    div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;",
+                    div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; position: relative; background: black;",
                         {
                             let url = make_url(&path, &root_path);
                             let current_media = list_signal().iter().find(|m| m.path == path).cloned();
@@ -336,18 +368,12 @@ pub fn Videos() -> Element {
                                     id: "spy-input",
                                     r#type: "hidden",
                                     value: "",
-                                    
                                     oninput: move |evt| {
                                         let val = evt.value();
                                         let parts: Vec<&str> = val.split('|').collect();
-
                                         if parts.len() == 2 {
                                             if let (Ok(time), Ok(duration)) = (parts[0].parse::<f32>(), parts[1].parse::<f32>()) {
-                                                
-                                                if media_id > 0 {
-                                                    tx.send(Command::UpdateProgress(media_id, time, duration)).unwrap();
-                                                }
-
+                                                if media_id > 0 { tx.send(Command::UpdateProgress(media_id, time, duration)).unwrap(); }
                                                 list_signal.write().iter_mut().find(|m| m.id == media_id).map(|m| {
                                                     m.last_position = time;
                                                     m.duration = Some(duration);
@@ -366,20 +392,64 @@ pub fn Videos() -> Element {
                                     style: "max-width: 100%; max-height: 100%; width: 100%;",
                                 }
                                 
+                                // === ZONES TACTILES INVISIBLES ===
+
+                                // ZONE GAUCHE (-10s)
+                                div {
+                                    style: "position: absolute; top: 0; left: 0; width: 30%; height: 80%; z-index: 10; cursor: pointer;",
+                                    ondblclick: move |_| {
+                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) v.currentTime -= 10;"#);
+                                        spawn(async move { eval.recv().await; });
+                                        show_seek_back.set(false);
+                                        spawn(async move { show_seek_back.set(true); });
+                                    },
+                                    onclick: move |_| {
+                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) { if(v.paused) v.play(); else v.pause(); }"#);
+                                        spawn(async move { eval.recv().await; });
+                                    }
+                                }
+
+                                // ZONE DROITE (+10s)
+                                div {
+                                    style: "position: absolute; top: 0; right: 0; width: 30%; height: 80%; z-index: 10; cursor: pointer;",
+                                    ondblclick: move |_| {
+                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) v.currentTime += 10;"#);
+                                        spawn(async move { eval.recv().await; });
+                                        show_seek_forward.set(false);
+                                        spawn(async move { show_seek_forward.set(true); });
+                                    },
+                                    onclick: move |_| {
+                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) { if(v.paused) v.play(); else v.pause(); }"#);
+                                        spawn(async move { eval.recv().await; });
+                                    }
+                                }
+
+                                // === FEEDBACK VISUEL ===
+                                if show_seek_back() {
+                                    div { 
+                                        class: "seek-feedback", 
+                                        style: "left: 15%;", 
+                                        onanimationend: move |_| show_seek_back.set(false), 
+                                        "⏪ -10s" 
+                                    }
+                                }
+                                if show_seek_forward() {
+                                    div { 
+                                        class: "seek-feedback", 
+                                        style: "right: 15%;", 
+                                        onanimationend: move |_| show_seek_forward.set(false),
+                                        "+10s ⏩" 
+                                    }
+                                }
+
                                 script { "
                                     var v = document.getElementById('main-player');
                                     var spy = document.getElementById('spy-input');
-                                    
-                                    // Reprise
                                     if (v && {start_time} > 0) {{ v.currentTime = {start_time}; }}
-
                                     if (v && spy) {{
                                         v.ontimeupdate = function() {{
-                                            // 👇 L'ASTUCE : On concatène le temps et la durée avec une barre '|'
-                                            // v.duration est donné par le navigateur (c'est la vérité absolue)
                                             var total = v.duration || 0; 
                                             spy.value = v.currentTime + '|' + total;
-                                            
                                             spy.dispatchEvent(new Event('input', {{ bubbles: true }}));
                                         }};
                                     }}
@@ -389,6 +459,9 @@ pub fn Videos() -> Element {
                     }
                 }
             } 
+            // ==========================
+            // GRILLE DES VIDÉOS (LISTE)
+            // ==========================
             else {
                 div { class: "top-bar", 
                     style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
@@ -413,13 +486,10 @@ pub fn Videos() -> Element {
                 
                 div { class: "media-grid",
                     for item in list_signal().iter()
-                        .filter(|i| i.media_type == MediaType::Video) // 1. On garde que les vidéos
-                        .filter(|i| { // 2. On filtre selon le texte de recherche
-                            let query = search_text().to_lowercase(); // On met la recherche en minuscule
-                            if query.is_empty() {
-                                return true; // Si la barre est vide, on affiche tout
-                            }
-                            // On récupère le titre (ou le chemin), on le met en minuscule et on compare
+                        .filter(|i| i.media_type == MediaType::Video)
+                        .filter(|i| {
+                            let query = search_text().to_lowercase();
+                            if query.is_empty() { return true; }
                             let name = i.title.as_deref().unwrap_or(&i.path).to_lowercase();
                             name.contains(&query)
                         }) 
@@ -434,7 +504,6 @@ pub fn Videos() -> Element {
                                 div { 
                                     class: "media-card",
                                     style: "position: relative; overflow: hidden;", 
-                                    
                                     onclick: { 
                                         let p=item.path.clone(); 
                                         let i=item.id; 
