@@ -71,7 +71,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           mkdir -p artifacts
-          cp EpiKodi/target/release/ artifacts/epikodi-linux-x86_64
+          cp EpiKodi/target/release artifacts/epikodi-linux-x86_64
           chmod +x artifacts/epikodi-linux-x86_64
           cd artifacts
           tar -czf epikodi-linux-x86_64.tar.gz epikodi-linux-x86_64
