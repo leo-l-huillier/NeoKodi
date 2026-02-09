@@ -48,6 +48,6 @@ jobs:
           body: |
             Automated release from push to main.
             Commit: ${{ github.sha }}
-          files: EpiKodi/target/release/EpiKodi
+          files: EpiKodi/target/release/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
