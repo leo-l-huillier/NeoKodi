@@ -120,7 +120,7 @@ jobs:
           
 
   release:
-    needs: [build, create-source-archive]
+    needs: [build]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     
