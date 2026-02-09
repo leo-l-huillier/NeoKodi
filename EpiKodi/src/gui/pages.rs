@@ -9,6 +9,7 @@ use crate::library::sources::LibraryConfig;
 use crate::constants::SOURCE_FILE;
 use urlencoding::encode;
 use rand::Rng;
+use std::time::Duration;
 
 // 👇 STRUCTURE POUR LES PLUGINS
 #[derive(Clone, PartialEq)]
@@ -54,26 +55,21 @@ impl PlayMode {
 }
 
 fn make_url(full_path: &str, _root_path: &str) -> String {
-    // 1. On nettoie les slashs
     let clean_path = full_path.replace("\\", "/");
     
-    // 2. Si c'est un chemin avec un lecteur (Ex: "E:/...")
     if let Some(colon_idx) = clean_path.find(':') {
         if colon_idx == 1 { 
-            let drive_letter = &clean_path[0..1].to_lowercase(); // "e"
-            let path_after_drive = &clean_path[3..]; // Tout après "E:/"
+            let drive_letter = &clean_path[0..1].to_lowercase();
+            let path_after_drive = &clean_path[3..];
 
-            // On encode proprement les espaces et accents pour le WEB
             let encoded_parts: Vec<_> = path_after_drive.split('/')
                 .map(|part| encode(part))
                 .collect();
             
-            // Résultat : http://127.0.0.1:3030/drives/e/Dossier/Film%20Cool.mp4
             return format!("http://127.0.0.1:3030/drives/{}/{}", drive_letter, encoded_parts.join("/"));
         }
     }
 
-    // 3. Fallback (cas rare)
     format!("http://127.0.0.1:3030/media/{}", encode(&clean_path))
 }
 
@@ -109,7 +105,6 @@ pub fn Music() -> Element {
     let mut play_mode = use_signal(|| PlayMode::Sequential);
     let mut search_text = use_signal(|| String::new());
     
-    // 👇 1. RETOUR DE LA QUEUE
     let mut queue = use_signal(|| Vec::<MediaInfo>::new());
 
     let tx_init = cmd_tx.clone();
@@ -130,7 +125,6 @@ pub fn Music() -> Element {
         
         div { class: "container", style: "padding-bottom: 100px;",
             
-            // TOP BAR
             div { class: "top-bar", 
                 style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
                 div { style: "z-index: 2;", Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" } }
@@ -144,7 +138,6 @@ pub fn Music() -> Element {
                 }
             }
             
-            // LISTE
             div { class: "audio-list",
                 for item in list_signal().iter()
                     .filter(|i| i.media_type == MediaType::Audio)
@@ -157,7 +150,6 @@ pub fn Music() -> Element {
                     div { class: "audio-row",
                         style: "cursor: pointer; transition: background 0.2s; user-select: none; display: flex; align-items: center; justify-content: space-between; padding-right: 15px;",
                         
-                        // Clic principal : Joue immédiatement
                         onclick: { 
                             let track = item.clone(); 
                             let i = item.id; 
@@ -171,7 +163,6 @@ pub fn Music() -> Element {
                             } 
                         },
                         
-                        // INFO GAUCHE
                         div { style: "display: flex; align-items: center; flex: 1;",
                             div { class: "audio-icon", 
                                 if current_audio().as_ref().map(|c| c.id) == Some(item.id) { "🔊" } else { "🎵" }
@@ -186,7 +177,6 @@ pub fn Music() -> Element {
                             }
                         },
 
-                        // 👇 2. LE BOUTON AJOUT (REMIS EN PLACE)
                         button {
                             class: "add-queue-btn",
                             style: "background: transparent; border: 1px solid #555; color: white; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;",
@@ -195,7 +185,7 @@ pub fn Music() -> Element {
                             onclick: {
                                 let track = item.clone();
                                 move |evt: Event<MouseData>| {
-                                    evt.stop_propagation(); // Empêche de lancer le son
+                                    evt.stop_propagation();
                                     queue.write().push(track.clone());
                                 }
                             },
@@ -205,19 +195,16 @@ pub fn Music() -> Element {
                 }
             }
 
-            // MINI PLAYER
             if let Some(track) = current_audio() {
                 div { 
                     style: "position: fixed; bottom: 0; left: 0; width: 100%; height: 90px; background: #181818; border-top: 1px solid #282828; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.5);",
                     
-                    // INFO GAUCHE
                     div { style: "width: 25%; overflow: hidden;",
                         div { class: "marquee-container",
                             div { class: "marquee-text", style: "font-weight: bold; font-size: 1.1rem;",
                                 "{track.title.as_deref().unwrap_or(&track.path)}"
                             }
                         }
-                        // Petit indicateur de file d'attente
                         if !queue().is_empty() {
                             div { style: "color: #3498db; font-size: 0.8rem; margin-top: 4px; font-weight: bold;", 
                                 "⏭️ En attente : {queue().len()} titre(s)" 
@@ -227,7 +214,6 @@ pub fn Music() -> Element {
                         }
                     },
 
-                    // LECTEUR CENTRAL
                     div { style: "flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;",
                         audio { 
                             controls: true, 
@@ -235,12 +221,9 @@ pub fn Music() -> Element {
                             style: "width: 100%; max-width: 500px; height: 40px; outline: none;",
                             src: "{make_url(&track.path, &root_path)}",
                             
-                            // 👇 1. LE NAVIGATEUR GÈRE LA BOUCLE ICI
-                            // "r#loop" permet d'utiliser le mot clé réservé "loop" comme attribut
                             r#loop: play_mode() == PlayMode::Loop,
                             
                             onended: move |_| {
-                                // A. PRIORITÉ À LA QUEUE
                                 if !queue().is_empty() {
                                     let next_song = queue.write().remove(0);
                                     current_audio.set(Some(next_song.clone()));
@@ -249,7 +232,6 @@ pub fn Music() -> Element {
                                     return;
                                 }
 
-                                // B. SINON LES MODES
                                 let mode = play_mode();
                                 let list = list_signal();
                                 let audios: Vec<&MediaInfo> = list.iter().filter(|i| i.media_type == MediaType::Audio).collect();
@@ -257,11 +239,7 @@ pub fn Music() -> Element {
                                 match mode {
                                     PlayMode::StopAtEnd => current_audio.set(None),
                                     
-                                    // 👇 2. LE CAS BOUCLE EST VIDE OU SIMPLIFIÉ
-                                    // (Car si loop=true dans le HTML, onended n'est jamais appelé par le navigateur)
-                                    PlayMode::Loop => {
-                                        // On ne fait rien, le navigateur a déjà relancé le son
-                                    },
+                                    PlayMode::Loop => {},
                                     
                                     PlayMode::Sequential => {
                                         if let Some(idx) = audios.iter().position(|x| x.id == track.id) {
@@ -290,9 +268,7 @@ pub fn Music() -> Element {
                         }
                     },
 
-                    // BOUTONS DROITE
                     div { style: "width: 25%; display: flex; justify-content: flex-end; align-items: center; gap: 10px;",
-                        // Bouton pour vider la queue si elle est pleine
                         if !queue().is_empty() {
                             button {
                                 style: "background: transparent; border: 1px solid #e74c3c; color: #e74c3c; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;",
@@ -356,29 +332,25 @@ pub fn Videos() -> Element {
                             let tx = cmd_tx.clone();
 
                             rsx! {
-                                // INPUT CACHÉ (Espion)
                                 input {
                                     id: "spy-input",
-                                    r#type: "hidden", // Remets-le en hidden si tu veux, ou garde text pour debug
-                                    value: "", // Chaine vide au départ
+                                    r#type: "hidden",
+                                    value: "",
                                     
                                     oninput: move |evt| {
                                         let val = evt.value();
-                                        // On attend un format "POSITION|DUREE" (ex: "12.5|5400.0")
                                         let parts: Vec<&str> = val.split('|').collect();
 
                                         if parts.len() == 2 {
                                             if let (Ok(time), Ok(duration)) = (parts[0].parse::<f32>(), parts[1].parse::<f32>()) {
                                                 
-                                                // 1. Backend : On envoie tout (Position + Vraie Durée)
                                                 if media_id > 0 {
                                                     tx.send(Command::UpdateProgress(media_id, time, duration)).unwrap();
                                                 }
 
-                                                // 2. Frontend : Mise à jour immédiate
                                                 list_signal.write().iter_mut().find(|m| m.id == media_id).map(|m| {
                                                     m.last_position = time;
-                                                    m.duration = Some(duration); // On met à jour la durée visuelle aussi !
+                                                    m.duration = Some(duration);
                                                 });
                                             }
                                         }
@@ -630,17 +602,14 @@ pub fn Plugins() -> Element {
 pub fn Settings() -> Element { 
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
     
-    // 👇 CHARGEMENT DIRECT : On lit le fichier sources.json dès l'init
+    let mut scan_message = use_signal(|| String::new());
+
     let mut sources_signal = use_signal(|| {
         let config = LibraryConfig::load(SOURCE_FILE);
         let mut paths = Vec::new();
-        
-        // On récupère tout ce qu'il y a dans le fichier
         for s in config.video_sources { paths.push(s.path.to_string_lossy().to_string()); }
         for s in config.music_sources { paths.push(s.path.to_string_lossy().to_string()); }
         for s in config.image_sources { paths.push(s.path.to_string_lossy().to_string()); }
-        
-        // Petit nettoyage (tri + suppression doublons)
         paths.sort();
         paths.dedup();
         paths
@@ -653,15 +622,13 @@ pub fn Settings() -> Element {
                 div { class: "page-title", "Paramètres" } 
             }
   
-            div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px; max-width: 800px; margin-left: auto; margin-right: auto;",
+            div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px; max-width: 800px; margin-left: auto; margin-right: auto; padding-bottom: 50px;",
                 
-                // --- TITRE ---
                 div { style: "text-align: center; width: 100%;",
                     h2 { "Gestion des Sources" }
                     p { style: "color: #aaa; margin-bottom: 20px;", "Gérez ici les dossiers que NeoKodi doit scanner." }
                 }
 
-                // --- LISTE DES DOSSIERS ---
                 div { style: "width: 100%; display: flex; flex-direction: column; gap: 10px;",
                     if sources_signal().is_empty() {
                         div { style: "text-align: center; font-style: italic; color: #666; padding: 20px;", "Aucune source configurée." }
@@ -671,10 +638,8 @@ pub fn Settings() -> Element {
                         div { 
                             style: "background: #1e1e1e; padding: 15px; border-radius: 8px; border: 1px solid #333; display: flex; justify-content: space-between; align-items: center;",
                             
-                            // Le chemin du dossier
                             div { style: "font-family: monospace; color: #007acc; font-size: 1.1rem;", "📂 {path}" }
                             
-                            // Bouton Supprimer
                             button {
                                 class: "btn-nav",
                                 style: "position: relative; transform: none; top: auto; left: auto; background: #c0392b; padding: 8px 15px; font-size: 0.9rem;",
@@ -683,14 +648,10 @@ pub fn Settings() -> Element {
                                     let tx = cmd_tx.clone();
                                     move |_| {
                                         let path_buf = PathBuf::from(&p);
-                                        
-                                        // 1. On prévient le Backend (pour qu'il arrête de scanner ce dossier)
                                         tx.send(Command::RemoveSource(path_buf.clone(), MediaType::Video)).unwrap();
                                         tx.send(Command::RemoveSource(path_buf.clone(), MediaType::Audio)).unwrap();
                                         tx.send(Command::RemoveSource(path_buf.clone(), MediaType::Image)).unwrap();
-                                        tx.send(Command::GetAllMedia()).unwrap();
                                         
-                                        // 2. On met à jour l'affichage localement (sans attendre)
                                         sources_signal.write().retain(|x| x != &p);
                                     }
                                 },
@@ -700,30 +661,54 @@ pub fn Settings() -> Element {
                     }
                 }
 
-                // --- BOUTON AJOUTER ---
                 button { 
                     class: "btn-nav", 
                     style: "position: relative; transform: none; top: auto; left: auto; font-size: 1.1rem; padding: 15px 30px; background-color: #27ae60;",
-                    onclick: move |_| {
-                        if let Some(path) = rfd::FileDialog::new().pick_folder() {
-                            let path_str = path.to_string_lossy().to_string();
-                            
-                            // Évite les doublons visuels
-                            if !sources_signal().contains(&path_str) {
-                                let tx = cmd_tx.clone();
-                                
-                                // 1. On envoie au Backend (qui va mettre à jour sources.json et scanner)
-                                tx.send(Command::AddSource(path.clone(), MediaType::Video)).unwrap();
-                                tx.send(Command::AddSource(path.clone(), MediaType::Audio)).unwrap();
-                                tx.send(Command::AddSource(path.clone(), MediaType::Image)).unwrap();
-                                tx.send(Command::GetAllMedia()).unwrap();
-
-                                // 2. On met à jour l'affichage direct
-                                sources_signal.write().push(path_str);
+                    onclick: {
+                        let tx = cmd_tx.clone(); 
+                            move |_| {
+                            if let Some(path) = rfd::FileDialog::new().pick_folder() {
+                                let path_str = path.to_string_lossy().to_string();
+                                if !sources_signal().contains(&path_str) {
+                                    tx.send(Command::AddSource(path.clone(), MediaType::Video)).unwrap();
+                                    tx.send(Command::AddSource(path.clone(), MediaType::Audio)).unwrap();
+                                    tx.send(Command::AddSource(path.clone(), MediaType::Image)).unwrap();
+                                    tx.send(Command::Reload()).unwrap(); 
+                                    sources_signal.write().push(path_str);
+                                }
                             }
                         }
                     },
                     "➕ Ajouter un dossier"
+                }
+
+                div { style: "width: 100%; height: 1px; background: #333; margin: 20px 0;" }
+
+                div { style: "text-align: center; width: 100%;",
+                    h2 { "Maintenance" }
+                    p { style: "color: #aaa; margin-bottom: 20px;", "Si vos fichiers n'apparaissent pas, forcez une relecture complète." }
+                    div { style: "display: flex; flex-direction: column; align-items: center; gap: 10px;",
+                        button {
+                            class: "btn-nav",
+                            style: "position: relative; transform: none; top: auto; left: auto; font-size: 1.1rem; padding: 15px 30px; background-color: #2980b9;",
+                            onclick: {
+                                let tx = cmd_tx.clone();
+                                move |_| {
+                                    scan_message.set("⏳ Analyse des fichiers en cours...".to_string());
+                                    tx.send(Command::Reload()).unwrap();
+                                    spawn(async move {
+                                        tokio::time::sleep(Duration::from_secs(3)).await;
+                                        scan_message.set(String::new());
+                                    });
+                                }
+                            },
+                            "🔄 Forcer le re-scan complet"
+                        }
+                        // Message de confirmation
+                        if !scan_message().is_empty() {
+                            div { style: "color: #2ecc71; font-weight: bold; margin-top: 10px;", "{scan_message}" }
+                        }
+                    }
                 }
             }
         } 

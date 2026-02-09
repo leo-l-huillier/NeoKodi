@@ -1,29 +1,6 @@
 TODO: Tags -> #357
 GUI  : add tags management (add audio to tags, remove audio from tags, create tags, delete tags) to GUI
 
-use crate::media::audio::Queue;
-
-        let mut queue = Queue::new();
-
-        let media_list = self.database.get_all_media().unwrap();
-
-        for media in  media_list.iter() {
-            // if audio
-            if media.media_type == MediaType::Audio {
-                queue.add_to_queue(media.id);
-            }
-            //println!("Media ID: {}, Path: {}, Type: {:?}", media.id, media.path, media.media_type);
-        }
-        println!("queue current nb {:?}", queue.get_current());
-        queue.next();
-        println!("queue current nb after next {:?}", queue.get_current());
-        queue.toggle_shuffle();
-
-
-
-TODO: add a button for rescan library
-GUI  : implement
-
 TODO: avance rapide (+10s, -10s)
 GUI  : implement
 
