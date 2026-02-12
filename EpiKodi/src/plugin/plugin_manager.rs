@@ -12,18 +12,21 @@ use crate::constants::{PLUGIN_DIR, PLUGIN_EXT};
 
 use super::functions::PluginTypeFunc;
 use super::functions::GetArtistMetadataFunc;
+use super::functions::GetFilmMetadataFunc;
 
 use crate::logger::logger::Logger;
 use crate::constants::LOG_FILE;
 
 pub struct PluginManager {
     pub metadata_libs: Vec<Library>,
+    pub film_metadata_libs: Vec<Library>,
 }
 
 impl PluginManager {
     pub fn new() -> Self {
         PluginManager {
             metadata_libs: Vec::new(),
+            film_metadata_libs: Vec::new(),
         }
     }
 
@@ -72,9 +75,16 @@ impl PluginManager {
                             .to_str()
                             .unwrap_or("Error: Invalid UTF-8");
 
-                        if result == "metadata" {
-                            self.metadata_libs.push(lib);
-                            logger.info("Loaded metadata plugin.");
+                        match result {
+                             "metadata" => {
+                                self.metadata_libs.push(lib);
+                                logger.info("Loaded metadata plugin.");
+                                }, 
+                             "film_metadata" => {
+                                self.film_metadata_libs.push(lib);
+                                logger.info("Loaded film metadata plugin.");
+                             },
+                            _ => logger.error(&format!("✗ Unknown plugin type: {}", result)),
                         }
                     }
 
@@ -115,6 +125,39 @@ impl PluginManager {
             }
         }
         return "artist not found";
+    }
+
+    pub fn get_film_metadata(&mut self, film: &str) -> &str {
+
+        let logger = Logger::new(LOG_FILE);
+
+        let c_film = CString::new(film).unwrap();
+
+        for lib in &self.film_metadata_libs {
+
+            unsafe {
+                let get_film_metadata: Symbol<GetFilmMetadataFunc> = match lib.get(b"metadata\0") {
+                    Ok(func) => func,
+                    Err(e) => {
+                        logger.error(&format!("✗ Failed to load 'get_film_metadata' function: {}", e));
+                        continue;
+                    }
+                };
+
+                let metadata_ptr = get_film_metadata(c_film.as_ptr());
+                let result = CStr::from_ptr(metadata_ptr)
+                    .to_str()
+                    .unwrap_or("Error: Invalid UTF-8");
+
+                    if result == "film not found" {
+                        logger.error(&format!("Film ({}) not found in this plugin, trying next if available... ", film));
+                        continue;
+                    }
+                    return result;
+
+            }
+        }
+        return "film not found";
     }
 
 

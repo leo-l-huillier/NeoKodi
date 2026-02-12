@@ -221,6 +221,11 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     evt_tx.send(Event::Data(response.to_string())).unwrap();
                 }
 
+                Ok(Command::GetfilmMetadataFromPlugin(name)) =>{
+                    let response = plugin_manager.get_film_metadata(name.as_str()); 
+                    evt_tx.send(Event::Data(response.to_string())).unwrap();
+                }
+
                 Ok(Command::UpdateProgress(id, pos, total_duration)) => {
                     if let Ok(mut lib) = crate::library::media_library::MEDIA_LIBRARY.write() {
                         if let Some(media) = lib.iter_mut().find(|m| m.id == id) {
