@@ -47,6 +47,7 @@ jobs:
         run: |
           mkdir dist
           mkdir dist\plugins
+          mkdir dist\db
           
           # 1. On copie l'exécutable qu'on vient de compiler
           copy EpiKodi\target\release\EpiKodi.exe dist\
@@ -69,6 +70,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           mkdir -p dist/plugins
+          mkdir -p dist/db
           cp EpiKodi/target/release/EpiKodi dist/
           # Pas de copie de DLL ici (inutile sur Linux)
           tar -czf ${{ matrix.asset_name }} -C dist .
