@@ -50,8 +50,10 @@ jobs:
         run: |
           mkdir dist
           mkdir dist\plugins
+          # On prend l'exe qui vient d'être build
           copy EpiKodi\target\release\EpiKodi.exe dist\
-          copy plugin_music\target\release\musicbrainz_plugin.dll dist\plugins\
+          # On prend la DLL qui est déjà dans ton repo (vérifie bien le chemin)
+          copy plugins\musicbrainz_plugin.dll dist\plugins\
           7z a ${{ matrix.asset_name }} ./dist/*
 
       # 📦 PACKAGING LINUX
@@ -60,7 +62,8 @@ jobs:
         run: |
           mkdir -p dist/plugins
           cp EpiKodi/target/release/EpiKodi dist/
-          cp plugin_music/target/release/libmusicbrainz_plugin.so dist/plugins/
+          # ⚠️ ATTENTION : Ici ça va foirer car tu n'as pas de .so dans ton repo
+          # Il est fortement conseillé de garder l'étape de build pour Linux.
           tar -czf ${{ matrix.asset_name }} -C dist .
 
       - name: Upload Artifact
