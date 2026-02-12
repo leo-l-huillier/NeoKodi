@@ -6,6 +6,8 @@ use rusqlite::{Connection, Result};
 
 use crate::library::media_library::ScannedMedia;
 use crate::media::data::MediaType;
+use std::fs;
+use std::path::Path;
 
 #[derive(Debug)]
 pub struct MediaRow {
@@ -25,6 +27,11 @@ pub struct DB {
 
 impl DB {
     pub fn new() -> Self {
+        if !Path::new("db").exists() {
+            println!("📁 Dossier 'db' introuvable, création automatique...");
+            fs::create_dir("db").expect("Impossible de créer le dossier 'db'");
+        }
+        
         DB {
             conn: Connection::open("db/library.db").unwrap(),
             media_rows: Vec::new(),
