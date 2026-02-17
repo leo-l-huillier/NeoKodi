@@ -1,9 +1,11 @@
-use plugin_api::Greeter;
 use plugin_api::Plugin;
 use std::ffi::{CStr, CString};
 use std::os::raw::c_char;
 use serde::Deserialize;
+use std::panic;
+use std::time::Duration;
 
+// --- STRUCTURES JSON (Pour lire la réponse de MusicBrainz) ---
 #[derive(Deserialize, Debug)]
 struct ArtistSearchResult {
     artists: Vec<Artist>,
@@ -25,184 +27,125 @@ struct LifeSpan {
     end: Option<String>,
 }
 
-// Our implementation that searches MusicBrainz
-struct MusicBrainzGreeter;
-
-impl Greeter for MusicBrainzGreeter {
-    fn greet(&self, artist_name: &str) -> String {
-        // Search for the artist on MusicBrainz
-        match search_artist(artist_name) {
-            Ok(info) => info,
-            Err(e) => format!("Error searching for '{}': {}", artist_name, e),
-        }
-    }
-}
-
+// --- COEUR DU PLUGIN ---
 struct MusicBrainzMetadata;
 
 impl Plugin for MusicBrainzMetadata {
-    fn name(&self) -> String {
-        "MusicBrainz".to_string()
-    }
-
-    fn version(&self) -> String {
-        "1.0.0".to_string()
-    }
-
-    fn plugin_type(&self) -> String {
-        "metadata".to_string()
-    }
+    fn name(&self) -> String { "MusicBrainz".to_string() }
+    fn version(&self) -> String { "1.0.0".to_string() }
+    fn plugin_type(&self) -> String { "metadata".to_string() }
 
     fn metadata(&self, artist_name: &str) -> String {
+        // Mouchard interne pour voir si ça marche
+        println!("DLL [INTERNAL]: Appel metadata() reçu pour '{}'", artist_name);
+        
         match search_artist(artist_name) {
-            Ok(info) => info,
-            Err(e) => format!("Error searching for '{}': {}", artist_name, e),
+            Ok(info) => {
+                println!("DLL [INTERNAL]: Succès ! Données récupérées.");
+                info
+            },
+            Err(e) => {
+                println!("DLL [INTERNAL]: Erreur -> {}", e);
+                format!("Erreur plugin : {}", e)
+            },
         }
     }
 }
 
+// --- FONCTION DE RECHERCHE HTTP (Version stable avec UREQ) ---
 fn search_artist(name: &str) -> Result<String, Box<dyn std::error::Error>> {
-    // MusicBrainz API endpoint
+    println!("DLL [INTERNAL]: Préparation requête...");
+
     let url = format!(
         "https://musicbrainz.org/ws/2/artist/?query=artist:{}&fmt=json&limit=1",
         urlencoding::encode(name)
     );
 
-    // Create a client with proper User-Agent (MusicBrainz requires this)
-    let client = reqwest::blocking::Client::builder()
-        .user_agent("RustLibloadingExample/0.1.0 (educational-purpose)")
-        .build()?;
+    // Timeout de 5s pour éviter que l'application ne gèle si internet plante
+    let agent = ureq::AgentBuilder::new()
+        .timeout_read(Duration::from_secs(5))
+        .timeout_write(Duration::from_secs(5))
+        .build();
 
-    // Make the API request
-    let response = client.get(&url).send()?;
-    
-    if !response.status().is_success() {
-        return Err(format!("API returned status: {}", response.status()).into());
-    }
+    let response = agent.get(&url)
+        .set("User-Agent", "NeoKodiPlugin/1.0 (educational-purpose)")
+        .call();
 
-    let result: ArtistSearchResult = response.json()?;
+    match response {
+        Ok(resp) => {
+            println!("DLL [INTERNAL]: Réponse reçue ! Traitement JSON...");
+            let result: ArtistSearchResult = resp.into_json()?;
 
-    if let Some(artist) = result.artists.first() {
-        let mut info = format!("🎵 Artist: {}", artist.name);
-
-        if let Some(artist_type) = &artist.artist_type {
-            info.push_str(&format!("\n   Type: {}", artist_type));
-        }
-        
-        if let Some(country) = &artist.country {
-            info.push_str(&format!("\n   Country: {}", country));
-        }
-        
-        if let Some(life_span) = &artist.life_span {
-            if let Some(begin) = &life_span.begin {
-                info.push_str(&format!("\n   Active from: {}", begin));
+            if let Some(artist) = result.artists.first() {
+                // Construction du texte affiché dans l'appli
+                let mut info = format!("🎵 Artiste : {}", artist.name);
+                if let Some(t) = &artist.artist_type { info.push_str(&format!("\nType : {}", t)); }
+                if let Some(c) = &artist.country { info.push_str(&format!("\nPays : {}", c)); }
+                
+                if let Some(ls) = &artist.life_span {
+                    if let Some(b) = &ls.begin { info.push_str(&format!("\nDébut : {}", b)); }
+                    if let Some(e) = &ls.end { info.push_str(&format!(" - Fin : {}", e)); }
+                }
+                
+                Ok(info)
+            } else {
+                Ok("Aucun artiste trouvé sur MusicBrainz.".to_string())
             }
-            if let Some(end) = &life_span.end {
-                info.push_str(&format!(" to {}", end));
-            } else if life_span.begin.is_some() {
-                info.push_str(" to present");
-            }
+        },
+        Err(e) => {
+            println!("DLL [INTERNAL]: Echec HTTP -> {:?}", e);
+            // On renvoie l'erreur sous forme de texte pour qu'elle s'affiche dans l'appli
+            Ok(format!("Erreur de connexion : {:?}", e)) 
         }
-        
-        Ok(info)
-    } else {
-        Ok(format!("artist not found"))
     }
 }
 
-// We need this for URL encoding
-mod urlencoding {
-    pub fn encode(s: &str) -> String {
-        s.chars()
-            .map(|c| match c {
-                'A'..='Z' | 'a'..='z' | '0'..='9' | '-' | '_' | '.' | '~' => c.to_string(),
-                ' ' => "+".to_string(),
-                _ => format!("%{:02X}", c as u8),
-            })
-            .collect()
-    }
+// --- FONCTIONS EXPORTÉES (Le pont vers l'application) ---
+// C'est ce que l'EXE charge. J'ai ajouté name/version pour être complet.
+
+fn to_c_string(s: String) -> *mut c_char {
+    CString::new(s).unwrap_or_default().into_raw()
 }
 
-
-
-
-
-// exported functions
-
-
-
-
-
-// Export a C-compatible function that can be called via libloading
 #[unsafe(no_mangle)]
-pub extern "C" fn greet(name_ptr: *const c_char) -> *mut c_char {
-    // Safety: We assume the caller passes a valid C string
-    let artist_name = unsafe {
-        if name_ptr.is_null() {
-            "The Beatles"
-        } else {
-            CStr::from_ptr(name_ptr).to_str().unwrap_or("The Beatles")
-        }
-    };
-    
-    let greeter = MusicBrainzGreeter;
-    let result = greeter.greet(artist_name);
-    
-    // Convert result to C string
-    CString::new(result).unwrap().into_raw()
-}
+pub extern "C" fn name() -> *mut c_char { to_c_string("MusicBrainz".to_string()) }
 
-
-// Export a C-compatible function that can be called via libloading
 #[unsafe(no_mangle)]
-pub extern "C" fn name() -> *mut c_char {
+pub extern "C" fn version() -> *mut c_char { to_c_string("1.0.0".to_string()) }
 
-    let metadata = MusicBrainzMetadata;
-    let name = metadata.name();
-    
-    CString::new(name).unwrap().into_raw()
-}
-
-// Export a C-compatible function that can be called via libloading
-#[unsafe(no_mangle)]
-pub extern "C" fn version() -> *mut c_char {
-
-    let metadata = MusicBrainzMetadata;
-    let version = metadata.version();
-    
-    CString::new(version).unwrap().into_raw()
-}
-
-// Export a C-compatible function that can be called via libloading
 #[unsafe(no_mangle)]
 pub extern "C" fn plugin_type() -> *mut c_char {
-
-    let metadata = MusicBrainzMetadata;
-    let plugin_type = metadata.plugin_type();
-    
-   CString::new(plugin_type).unwrap().into_raw()
+    // Sécurité anti-crash
+    let result = panic::catch_unwind(|| {
+        let p = MusicBrainzMetadata;
+        p.plugin_type()
+    });
+    match result {
+        Ok(s) => to_c_string(s),
+        Err(_) => to_c_string("error".to_string()),
+    }
 }
 
-// Export a C-compatible function that can be called via libloading
 #[unsafe(no_mangle)]
 pub extern "C" fn metadata(name_ptr: *const c_char) -> *mut c_char {
-    // Safety: We assume the caller passes a valid C string
-    let artist_name = unsafe {
-        if name_ptr.is_null() {
-            "The Beatles"
-        } else {
-            CStr::from_ptr(name_ptr).to_str().unwrap_or("The Beatles")
-        }
-    };
-    
-    let metadata = MusicBrainzMetadata;
-    let result = metadata.metadata(artist_name);
-    
-    // Convert result to C string
-    CString::new(result).unwrap().into_raw()
+    // 🛡️ FILET DE SÉCURITÉ CRITIQUE
+    // Empêche le plugin de faire crasher toute l'application en cas de panique
+    let result = panic::catch_unwind(|| {
+        let artist_name = unsafe {
+            if name_ptr.is_null() { "Inconnu" } 
+            else { CStr::from_ptr(name_ptr).to_str().unwrap_or("Inconnu") }
+        };
+
+        let plugin = MusicBrainzMetadata;
+        plugin.metadata(artist_name)
+    });
+
+    match result {
+        Ok(s) => to_c_string(s),
+        Err(_) => to_c_string("💥 ERREUR INTERNE DU PLUGIN".to_string()),
+    }
 }
 
-// Helper function to free strings allocated by the plugin
 #[unsafe(no_mangle)]
 pub extern "C" fn free_string(s: *mut c_char) {
     unsafe {
@@ -210,9 +153,4 @@ pub extern "C" fn free_string(s: *mut c_char) {
             let _ = CString::from_raw(s);
         }
     }
-}
-
-#[unsafe(no_mangle)]
-pub extern "C" fn debug() -> *mut c_char {
-    CString::new("debug").unwrap().into_raw()
 }

@@ -30,7 +30,7 @@ impl Video {
             path: path.to_string(),
             name: name.to_string(),
             metadata: VideoMetadata {
-            duration: duration, // On utilise la durée passée en paramètre
+            duration: duration,
             }
         }
     }
@@ -53,9 +53,11 @@ impl Media for Video {
             id: self.id,
             path: self.path.clone(),
             title: Some(self.name.clone()),
+            artist: None,
             duration: Some(self.metadata.duration),
             media_type: MediaType::Video,
             last_position: self.last_position,
+            tags: Vec::new(),
         }
     }
 

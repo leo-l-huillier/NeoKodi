@@ -42,9 +42,11 @@ impl Media for Image {
             id: self.id,
             path: self.path.clone(),
             title: Some(self.name.clone()),
+            artist: None,
             duration: None,
             media_type: MediaType::Image,
             last_position: 0.0,
+            tags: Vec::new(), 
         }
     }
 

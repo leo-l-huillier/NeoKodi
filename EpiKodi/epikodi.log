@@ -2443,3 +2443,1982 @@
 [2026-02-09 10:44:30] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
 [2026-02-09 10:44:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
 [2026-02-09 10:44:30] [INFO] Scanning sources end
+[2026-02-09 10:55:48] [DEBUG] Loading plugins...
+[2026-02-09 10:55:48] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 10:55:48] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 10:55:48] [INFO] Loaded metadata plugin.
+[2026-02-09 10:55:48] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 10:55:48] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 10:55:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 10:55:48] [INFO] Scanning sources ...
+[2026-02-09 10:55:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:48] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:48] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:49] [INFO] Scanning sources end
+[2026-02-09 10:55:49] [INFO] Scanning sources ...
+[2026-02-09 10:55:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:50] [INFO] Scanning sources end
+[2026-02-09 10:55:50] [INFO] Scanning sources ...
+[2026-02-09 10:55:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:50] [INFO] Scanning sources end
+[2026-02-09 10:55:51] [INFO] Scanning sources ...
+[2026-02-09 10:55:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 10:55:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 10:55:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 10:55:51] [INFO] Scanning sources end
+[2026-02-09 11:27:16] [DEBUG] Loading plugins...
+[2026-02-09 11:27:16] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 11:27:16] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:27:16] [INFO] Loaded metadata plugin.
+[2026-02-09 11:27:16] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 11:27:17] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:27:17] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 11:27:17] [INFO] Scanning sources ...
+[2026-02-09 11:27:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:17] [INFO] Scanning sources end
+[2026-02-09 11:27:18] [INFO] Scanning sources ...
+[2026-02-09 11:27:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:19] [INFO] Scanning sources end
+[2026-02-09 11:27:19] [INFO] Scanning sources ...
+[2026-02-09 11:27:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:19] [INFO] Scanning sources end
+[2026-02-09 11:27:19] [INFO] Scanning sources ...
+[2026-02-09 11:27:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:27:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:27:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:27:20] [INFO] Scanning sources end
+[2026-02-09 11:27:37] [DEBUG] Created playlist 'test' with ID 1
+[2026-02-09 11:27:44] [DEBUG] Media ID 100 added to Playlist ID 1
+[2026-02-09 11:28:56] [DEBUG] Loading plugins...
+[2026-02-09 11:28:56] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 11:28:56] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:28:56] [INFO] Loaded metadata plugin.
+[2026-02-09 11:28:56] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 11:28:56] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:28:56] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 11:28:56] [INFO] Scanning sources ...
+[2026-02-09 11:28:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:28:57] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:28:57] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:28:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:28:57] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:28:57] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:28:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:28:57] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:28:57] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:28:57] [INFO] Scanning sources end
+[2026-02-09 11:28:57] [INFO] Scanning sources ...
+[2026-02-09 11:28:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:28:57] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:28:57] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:28:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:28:58] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:28:58] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:28:58] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:28:58] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:28:58] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:28:58] [INFO] Scanning sources end
+[2026-02-09 11:28:58] [INFO] Scanning sources ...
+[2026-02-09 11:28:58] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:28:58] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:28:58] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:28:58] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:28:59] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:28:59] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:28:59] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:28:59] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:28:59] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:28:59] [INFO] Scanning sources end
+[2026-02-09 11:28:59] [INFO] Scanning sources ...
+[2026-02-09 11:28:59] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:28:59] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:28:59] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:28:59] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:29:00] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:29:00] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:29:00] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:29:00] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:29:00] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:29:00] [INFO] Scanning sources end
+[2026-02-09 11:33:15] [DEBUG] Loading plugins...
+[2026-02-09 11:33:15] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 11:33:15] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:33:15] [INFO] Loaded metadata plugin.
+[2026-02-09 11:33:15] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 11:33:15] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:33:15] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 11:33:15] [INFO] Scanning sources ...
+[2026-02-09 11:33:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:16] [INFO] Scanning sources end
+[2026-02-09 11:33:16] [INFO] Scanning sources ...
+[2026-02-09 11:33:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:17] [INFO] Scanning sources end
+[2026-02-09 11:33:17] [INFO] Scanning sources ...
+[2026-02-09 11:33:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:18] [INFO] Scanning sources end
+[2026-02-09 11:33:18] [INFO] Scanning sources ...
+[2026-02-09 11:33:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:33:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:33:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:33:19] [INFO] Scanning sources end
+[2026-02-09 11:33:22] [DEBUG] Media ID 112 added to Playlist ID 1
+[2026-02-09 11:33:29] [DEBUG] Playing media ID 112: Tesselation - Mild High Club.mp3
+[2026-02-09 11:33:48] [DEBUG] Playing media ID 101: LE SSERAFIM - Perfect Night (City Pop Remix).mp3
+[2026-02-09 11:33:58] [DEBUG] Playing media ID 104: MEGALOBOX OST mabanua feat COMA CHI - Slum City (Extended) (1).mp3
+[2026-02-09 11:37:07] [DEBUG] Loading plugins...
+[2026-02-09 11:37:07] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 11:37:07] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:37:07] [INFO] Loaded metadata plugin.
+[2026-02-09 11:37:07] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 11:37:07] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:37:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 11:37:07] [INFO] Scanning sources ...
+[2026-02-09 11:37:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:07] [INFO] Scanning sources end
+[2026-02-09 11:37:07] [INFO] Scanning sources ...
+[2026-02-09 11:37:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:08] [INFO] Scanning sources end
+[2026-02-09 11:37:08] [INFO] Scanning sources ...
+[2026-02-09 11:37:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:09] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:09] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:09] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:09] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:09] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:09] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:09] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:09] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:09] [INFO] Scanning sources end
+[2026-02-09 11:37:09] [INFO] Scanning sources ...
+[2026-02-09 11:37:09] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:09] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:09] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:09] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:10] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:10] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:10] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:37:10] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:37:10] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:37:10] [INFO] Scanning sources end
+[2026-02-09 11:37:12] [DEBUG] Playing media ID 98: From the Slums to the Cities - Yuki Hayashi.mp3
+[2026-02-09 11:37:23] [DEBUG] Playing media ID 90: fresco01_piece03_simple.mp3
+[2026-02-09 11:37:25] [DEBUG] Playing media ID 89: fresco01_piece03_detailed.mp3
+[2026-02-09 11:37:35] [DEBUG] Media ID 98 added to Playlist ID 1
+[2026-02-09 11:41:06] [DEBUG] Loading plugins...
+[2026-02-09 11:41:06] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 11:41:06] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:41:06] [INFO] Loaded metadata plugin.
+[2026-02-09 11:41:06] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 11:41:06] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:41:06] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 11:41:06] [INFO] Scanning sources ...
+[2026-02-09 11:41:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:06] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:06] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:07] [INFO] Scanning sources end
+[2026-02-09 11:41:07] [INFO] Scanning sources ...
+[2026-02-09 11:41:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:07] [INFO] Scanning sources end
+[2026-02-09 11:41:07] [INFO] Scanning sources ...
+[2026-02-09 11:41:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:08] [INFO] Scanning sources end
+[2026-02-09 11:41:08] [INFO] Scanning sources ...
+[2026-02-09 11:41:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:09] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:09] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:09] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:09] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:09] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:09] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:41:09] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:41:09] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:41:09] [INFO] Scanning sources end
+[2026-02-09 11:41:13] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-09 11:41:22] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-09 11:48:41] [DEBUG] Loading plugins...
+[2026-02-09 11:48:41] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 11:48:41] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:48:41] [INFO] Loaded metadata plugin.
+[2026-02-09 11:48:41] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 11:48:41] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 11:48:41] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 11:48:41] [INFO] Scanning sources ...
+[2026-02-09 11:48:41] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:41] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:41] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:42] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:42] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:42] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:42] [INFO] Scanning sources end
+[2026-02-09 11:48:42] [INFO] Scanning sources ...
+[2026-02-09 11:48:42] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:42] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:42] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:42] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:42] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:43] [INFO] Scanning sources end
+[2026-02-09 11:48:43] [INFO] Scanning sources ...
+[2026-02-09 11:48:43] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:43] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:43] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:43] [INFO] Scanning sources end
+[2026-02-09 11:48:44] [INFO] Scanning sources ...
+[2026-02-09 11:48:44] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:44] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:44] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:44] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:44] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 11:48:44] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 11:48:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 11:48:44] [INFO] Scanning sources end
+[2026-02-09 11:48:48] [DEBUG] Media ID 114 added to Playlist ID 1
+[2026-02-09 11:48:50] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-09 11:49:05] [DEBUG] Media ID 114 added to Playlist ID 1
+[2026-02-09 11:49:08] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-09 12:06:19] [DEBUG] Loading plugins...
+[2026-02-09 12:06:19] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-09 12:06:19] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 12:06:19] [INFO] Loaded metadata plugin.
+[2026-02-09 12:06:19] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-09 12:06:19] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-09 12:06:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-09 12:06:19] [INFO] Scanning sources ...
+[2026-02-09 12:06:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:20] [INFO] Scanning sources end
+[2026-02-09 12:06:20] [INFO] Scanning sources ...
+[2026-02-09 12:06:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:20] [INFO] Scanning sources end
+[2026-02-09 12:06:21] [INFO] Scanning sources ...
+[2026-02-09 12:06:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:21] [INFO] Scanning sources end
+[2026-02-09 12:06:21] [INFO] Scanning sources ...
+[2026-02-09 12:06:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-09 12:06:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-09 12:06:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-09 12:06:22] [INFO] Scanning sources end
+[2026-02-09 12:07:31] [DEBUG] Playing media ID 135: Overwatch 2_10-06-2023_17-58-5-603.mp4
+[2026-02-09 12:07:31] [DEBUG] Playing video: Overwatch 2_10-06-2023_17-58-5-603.mp4
+[2026-02-09 12:07:39] [DEBUG] Playing media ID 135: Overwatch 2_10-06-2023_17-58-5-603.mp4
+[2026-02-09 12:07:39] [DEBUG] Playing video: Overwatch 2_10-06-2023_17-58-5-603.mp4
+[2026-02-09 12:07:48] [DEBUG] Playing media ID 190: p4.png
+[2026-02-09 12:07:48] [DEBUG] Playing image: p4.png
+[2026-02-09 12:07:52] [DEBUG] Playing media ID 194: 000012840018.jpg
+[2026-02-09 12:07:52] [DEBUG] Playing image: 000012840018.jpg
+[2026-02-09 12:07:55] [DEBUG] Playing media ID 193: p7.png
+[2026-02-09 12:07:55] [DEBUG] Playing image: p7.png
+[2026-02-09 12:08:43] [DEBUG] Playing media ID 119: セピア色の九月.mp3
+[2026-02-09 12:08:53] [DEBUG] Playing media ID 94: fresco02_piece02_detailed.mp3
+[2026-02-09 12:08:56] [DEBUG] Playing media ID 119: セピア色の九月.mp3
+[2026-02-09 12:08:59] [DEBUG] Playing media ID 94: fresco02_piece02_detailed.mp3
+[2026-02-09 12:09:00] [DEBUG] Playing media ID 102: LE SSERAFIM Reveals Uncomfortable Truths in the Hot Seat  Vanity Fair.wav
+[2026-02-09 12:09:02] [DEBUG] Playing media ID 119: セピア色の九月.mp3
+[2026-02-09 12:09:07] [DEBUG] Playing media ID 102: LE SSERAFIM Reveals Uncomfortable Truths in the Hot Seat  Vanity Fair.wav
+[2026-02-09 12:09:08] [DEBUG] Playing media ID 119: セピア色の九月.mp3
+[2026-02-09 12:09:24] [DEBUG] Playing media ID 119: セピア色の九月.mp3
+[2026-02-11 15:39:41] [DEBUG] Loading plugins...
+[2026-02-11 15:39:41] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 15:39:41] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 15:39:41] [INFO] Loaded metadata plugin.
+[2026-02-11 15:39:41] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 15:39:42] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 15:39:42] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 15:39:42] [INFO] Scanning sources ...
+[2026-02-11 15:39:42] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:42] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:42] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:42] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:42] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:43] [INFO] Scanning sources end
+[2026-02-11 15:39:43] [INFO] Scanning sources ...
+[2026-02-11 15:39:43] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:43] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:44] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:44] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:44] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:44] [INFO] Scanning sources end
+[2026-02-11 15:39:44] [INFO] Scanning sources ...
+[2026-02-11 15:39:44] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:44] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:44] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:45] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:45] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:45] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:45] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:45] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:45] [INFO] Scanning sources end
+[2026-02-11 15:39:45] [INFO] Scanning sources ...
+[2026-02-11 15:39:45] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:45] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:45] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:45] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:46] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:46] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:46] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:39:46] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:39:46] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:39:46] [INFO] Scanning sources end
+[2026-02-11 15:39:49] [DEBUG] Playing media ID 135: Overwatch 2_10-06-2023_17-58-5-603.mp4
+[2026-02-11 15:39:49] [DEBUG] Playing video: Overwatch 2_10-06-2023_17-58-5-603.mp4
+[2026-02-11 15:43:36] [DEBUG] Loading plugins...
+[2026-02-11 15:43:36] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 15:43:36] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 15:43:36] [INFO] Loaded metadata plugin.
+[2026-02-11 15:43:36] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 15:43:36] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 15:43:36] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 15:43:36] [INFO] Scanning sources ...
+[2026-02-11 15:43:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:37] [INFO] Scanning sources end
+[2026-02-11 15:43:37] [INFO] Scanning sources ...
+[2026-02-11 15:43:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:38] [INFO] Scanning sources end
+[2026-02-11 15:43:38] [INFO] Scanning sources ...
+[2026-02-11 15:43:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:39] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:39] [INFO] Scanning sources end
+[2026-02-11 15:43:39] [INFO] Scanning sources ...
+[2026-02-11 15:43:39] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:39] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:40] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:40] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 15:43:40] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 15:43:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 15:43:40] [INFO] Scanning sources end
+[2026-02-11 15:43:42] [DEBUG] Deleted playlist with ID 1
+[2026-02-11 15:43:53] [DEBUG] Created playlist 'test' with ID 1
+[2026-02-11 15:43:54] [DEBUG] Media ID 112 added to Playlist ID 1
+[2026-02-11 15:43:56] [DEBUG] Media ID 112 added to Playlist ID 1
+[2026-02-11 15:43:59] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 15:44:04] [DEBUG] Playing media ID 112: Tesselation - Mild High Club.mp3
+[2026-02-11 15:44:32] [DEBUG] Playing media ID 84: fresco01_intro.mp3
+[2026-02-11 15:44:51] [DEBUG] Playing media ID 94: fresco02_piece02_detailed.mp3
+[2026-02-11 15:44:52] [DEBUG] Playing media ID 94: fresco02_piece02_detailed.mp3
+[2026-02-11 15:45:02] [DEBUG] Playing media ID 94: fresco02_piece02_detailed.mp3
+[2026-02-11 15:45:08] [DEBUG] Playing media ID 94: fresco02_piece02_detailed.mp3
+[2026-02-11 15:45:18] [DEBUG] Playing media ID 94: fresco02_piece02_detailed.mp3
+[2026-02-11 15:45:24] [DEBUG] Playing media ID 94: fresco02_piece02_detailed.mp3
+[2026-02-11 16:06:51] [DEBUG] Loading plugins...
+[2026-02-11 16:06:51] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:06:51] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:06:51] [INFO] Loaded metadata plugin.
+[2026-02-11 16:06:51] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:06:51] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:06:51] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:06:51] [INFO] Scanning sources ...
+[2026-02-11 16:06:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:52] [INFO] Scanning sources end
+[2026-02-11 16:06:52] [INFO] Scanning sources ...
+[2026-02-11 16:06:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:53] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:53] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:53] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:53] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:53] [INFO] Scanning sources end
+[2026-02-11 16:06:53] [INFO] Scanning sources ...
+[2026-02-11 16:06:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:53] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:53] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:53] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:53] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:54] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:54] [INFO] Scanning sources end
+[2026-02-11 16:06:54] [INFO] Scanning sources ...
+[2026-02-11 16:06:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:54] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:54] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:06:55] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:06:55] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:06:55] [INFO] Scanning sources end
+[2026-02-11 16:06:57] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:07:05] [DEBUG] Media ID 92 added to Playlist ID 1
+[2026-02-11 16:07:07] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:07:13] [DEBUG] Deleted playlist with ID 1
+[2026-02-11 16:07:21] [DEBUG] Created playlist 'test' with ID 1
+[2026-02-11 16:07:22] [DEBUG] Media ID 92 added to Playlist ID 1
+[2026-02-11 16:07:24] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:10:48] [DEBUG] Loading plugins...
+[2026-02-11 16:10:48] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:10:48] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:10:48] [INFO] Loaded metadata plugin.
+[2026-02-11 16:10:48] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:10:48] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:10:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:10:48] [INFO] Scanning sources ...
+[2026-02-11 16:10:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:49] [INFO] Scanning sources end
+[2026-02-11 16:10:49] [INFO] Scanning sources ...
+[2026-02-11 16:10:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:50] [INFO] Scanning sources end
+[2026-02-11 16:10:50] [INFO] Scanning sources ...
+[2026-02-11 16:10:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:51] [INFO] Scanning sources end
+[2026-02-11 16:10:51] [INFO] Scanning sources ...
+[2026-02-11 16:10:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:10:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:10:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:10:52] [INFO] Scanning sources end
+[2026-02-11 16:10:56] [DEBUG] Media ID 88 added to Playlist ID 1
+[2026-02-11 16:14:18] [DEBUG] Loading plugins...
+[2026-02-11 16:14:18] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:14:18] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:14:18] [INFO] Loaded metadata plugin.
+[2026-02-11 16:14:18] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:14:18] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:14:18] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:14:18] [INFO] Scanning sources ...
+[2026-02-11 16:14:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:19] [INFO] Scanning sources end
+[2026-02-11 16:14:19] [INFO] Scanning sources ...
+[2026-02-11 16:14:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:20] [INFO] Scanning sources end
+[2026-02-11 16:14:20] [INFO] Scanning sources ...
+[2026-02-11 16:14:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:21] [INFO] Scanning sources end
+[2026-02-11 16:14:21] [INFO] Scanning sources ...
+[2026-02-11 16:14:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:14:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:14:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:14:21] [INFO] Scanning sources end
+[2026-02-11 16:14:25] [DEBUG] Media ID 85 added to Playlist ID 1
+[2026-02-11 16:14:36] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:16:38] [DEBUG] Loading plugins...
+[2026-02-11 16:16:38] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:16:38] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:16:38] [INFO] Loaded metadata plugin.
+[2026-02-11 16:16:38] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:16:38] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:16:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:16:38] [INFO] Scanning sources ...
+[2026-02-11 16:16:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:39] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:39] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:39] [INFO] Scanning sources end
+[2026-02-11 16:16:39] [INFO] Scanning sources ...
+[2026-02-11 16:16:39] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:39] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:40] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:40] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:40] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:40] [INFO] Scanning sources end
+[2026-02-11 16:16:40] [INFO] Scanning sources ...
+[2026-02-11 16:16:40] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:40] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:40] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:41] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:41] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:41] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:41] [INFO] Scanning sources end
+[2026-02-11 16:16:41] [INFO] Scanning sources ...
+[2026-02-11 16:16:41] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:41] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:41] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:41] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:41] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:16:42] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:16:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:16:42] [INFO] Scanning sources end
+[2026-02-11 16:16:48] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:16:59] [DEBUG] Playing media ID 84: fresco01_intro.mp3
+[2026-02-11 16:17:05] [DEBUG] Media ID 84 added to Playlist ID 1
+[2026-02-11 16:17:08] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:21:24] [DEBUG] Loading plugins...
+[2026-02-11 16:21:24] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:21:24] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:21:24] [INFO] Loaded metadata plugin.
+[2026-02-11 16:21:24] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:21:24] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:21:24] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:21:24] [INFO] Scanning sources ...
+[2026-02-11 16:21:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:25] [INFO] Scanning sources end
+[2026-02-11 16:21:25] [INFO] Scanning sources ...
+[2026-02-11 16:21:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:26] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:26] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:26] [INFO] Scanning sources end
+[2026-02-11 16:21:26] [INFO] Scanning sources ...
+[2026-02-11 16:21:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:26] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:27] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:27] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:27] [INFO] Scanning sources end
+[2026-02-11 16:21:27] [INFO] Scanning sources ...
+[2026-02-11 16:21:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:27] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:28] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:28] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:28] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:21:28] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:21:28] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:21:28] [INFO] Scanning sources end
+[2026-02-11 16:21:30] [DEBUG] Deleted playlist with ID 1
+[2026-02-11 16:21:35] [DEBUG] Created playlist 'test' with ID 1
+[2026-02-11 16:21:36] [DEBUG] Media ID 114 added to Playlist ID 1
+[2026-02-11 16:21:38] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:23:32] [DEBUG] Loading plugins...
+[2026-02-11 16:23:32] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:23:32] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:23:32] [INFO] Loaded metadata plugin.
+[2026-02-11 16:23:32] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:23:32] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:23:32] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:23:32] [INFO] Scanning sources ...
+[2026-02-11 16:23:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:33] [INFO] Scanning sources end
+[2026-02-11 16:23:33] [INFO] Scanning sources ...
+[2026-02-11 16:23:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:34] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:34] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:34] [INFO] Scanning sources end
+[2026-02-11 16:23:34] [INFO] Scanning sources ...
+[2026-02-11 16:23:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:34] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:35] [INFO] Scanning sources end
+[2026-02-11 16:23:35] [INFO] Scanning sources ...
+[2026-02-11 16:23:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:23:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:23:36] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:23:36] [INFO] Scanning sources end
+[2026-02-11 16:23:40] [DEBUG] Playing media ID 76: Bastet.mp3
+[2026-02-11 16:23:44] [DEBUG] Media ID 76 added to Playlist ID 1
+[2026-02-11 16:23:45] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:35:20] [DEBUG] Loading plugins...
+[2026-02-11 16:35:20] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:35:20] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:35:20] [INFO] Loaded metadata plugin.
+[2026-02-11 16:35:20] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:35:20] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:35:20] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:35:20] [INFO] Scanning sources ...
+[2026-02-11 16:35:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:21] [INFO] Scanning sources end
+[2026-02-11 16:35:21] [INFO] Scanning sources ...
+[2026-02-11 16:35:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:22] [INFO] Scanning sources end
+[2026-02-11 16:35:22] [INFO] Scanning sources ...
+[2026-02-11 16:35:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:23] [INFO] Scanning sources end
+[2026-02-11 16:35:23] [INFO] Scanning sources ...
+[2026-02-11 16:35:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:35:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:35:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:35:24] [INFO] Scanning sources end
+[2026-02-11 16:35:27] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:35:31] [DEBUG] Deleted playlist with ID 1
+[2026-02-11 16:35:38] [DEBUG] Created playlist 'test' with ID 1
+[2026-02-11 16:35:39] [DEBUG] Media ID 80 added to Playlist ID 1
+[2026-02-11 16:35:43] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:37:13] [DEBUG] Loading plugins...
+[2026-02-11 16:37:13] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:37:13] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:37:13] [INFO] Loaded metadata plugin.
+[2026-02-11 16:37:13] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:37:13] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:37:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:37:13] [INFO] Scanning sources ...
+[2026-02-11 16:37:13] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:13] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:13] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:13] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:13] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:13] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:13] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:14] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:14] [INFO] Scanning sources end
+[2026-02-11 16:37:14] [INFO] Scanning sources ...
+[2026-02-11 16:37:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:14] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:14] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:15] [INFO] Scanning sources end
+[2026-02-11 16:37:15] [INFO] Scanning sources ...
+[2026-02-11 16:37:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:15] [INFO] Scanning sources end
+[2026-02-11 16:37:15] [INFO] Scanning sources ...
+[2026-02-11 16:37:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:37:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:37:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:37:16] [INFO] Scanning sources end
+[2026-02-11 16:37:21] [DEBUG] Created playlist 'teste' with ID 2
+[2026-02-11 16:37:22] [DEBUG] Media ID 90 added to Playlist ID 2
+[2026-02-11 16:37:24] [ERROR] Error retrieving media from Playlist ID 2: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:49:05] [DEBUG] Loading plugins...
+[2026-02-11 16:49:05] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:49:05] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:49:05] [INFO] Loaded metadata plugin.
+[2026-02-11 16:49:05] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:49:05] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:49:05] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:49:05] [INFO] Scanning sources ...
+[2026-02-11 16:49:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:05] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:06] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:06] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:06] [INFO] Scanning sources end
+[2026-02-11 16:49:06] [INFO] Scanning sources ...
+[2026-02-11 16:49:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:06] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:06] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:07] [INFO] Scanning sources end
+[2026-02-11 16:49:07] [INFO] Scanning sources ...
+[2026-02-11 16:49:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:08] [INFO] Scanning sources end
+[2026-02-11 16:49:08] [INFO] Scanning sources ...
+[2026-02-11 16:49:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:49:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:49:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:49:08] [INFO] Scanning sources end
+[2026-02-11 16:49:13] [DEBUG] Media ID 90 added to Playlist ID 1
+[2026-02-11 16:49:15] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:52:12] [DEBUG] Loading plugins...
+[2026-02-11 16:52:12] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:52:12] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:52:12] [INFO] Loaded metadata plugin.
+[2026-02-11 16:52:12] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:52:12] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:52:12] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:52:12] [INFO] Scanning sources ...
+[2026-02-11 16:52:12] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:12] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:12] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:12] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:12] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:12] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:12] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:13] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:13] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:13] [INFO] Scanning sources end
+[2026-02-11 16:52:13] [INFO] Scanning sources ...
+[2026-02-11 16:52:13] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:13] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:13] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:13] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:13] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:13] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:13] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:13] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:13] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:13] [INFO] Scanning sources end
+[2026-02-11 16:52:14] [INFO] Scanning sources ...
+[2026-02-11 16:52:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:14] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:14] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:14] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:14] [INFO] Scanning sources end
+[2026-02-11 16:52:14] [INFO] Scanning sources ...
+[2026-02-11 16:52:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:52:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:52:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:52:15] [INFO] Scanning sources end
+[2026-02-11 16:52:19] [DEBUG] Media ID 71 added to Playlist ID 1
+[2026-02-11 16:52:21] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:55:04] [DEBUG] Loading plugins...
+[2026-02-11 16:55:04] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:55:04] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:55:04] [INFO] Loaded metadata plugin.
+[2026-02-11 16:55:04] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:55:04] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:55:04] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:55:04] [INFO] Scanning sources ...
+[2026-02-11 16:55:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:04] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:05] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:05] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:05] [INFO] Scanning sources end
+[2026-02-11 16:55:05] [INFO] Scanning sources ...
+[2026-02-11 16:55:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:05] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:06] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:06] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:06] [INFO] Scanning sources end
+[2026-02-11 16:55:06] [INFO] Scanning sources ...
+[2026-02-11 16:55:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:06] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:06] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:07] [INFO] Scanning sources end
+[2026-02-11 16:55:07] [INFO] Scanning sources ...
+[2026-02-11 16:55:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:55:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:55:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:55:08] [INFO] Scanning sources end
+[2026-02-11 16:55:16] [DEBUG] Created playlist 'test' with ID 1
+[2026-02-11 16:55:18] [DEBUG] Media ID 57 added to Playlist ID 1
+[2026-02-11 16:55:19] [ERROR] Error retrieving media from Playlist ID 1: no such column: position in 
+                SELECT media_id
+                FROM playlist_items
+                WHERE playlist_id = ?1
+                ORDER BY position ASC
+             at offset 133
+[2026-02-11 16:57:20] [DEBUG] Loading plugins...
+[2026-02-11 16:57:20] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:57:20] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:57:20] [INFO] Loaded metadata plugin.
+[2026-02-11 16:57:20] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:57:20] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:57:20] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:57:20] [INFO] Scanning sources ...
+[2026-02-11 16:57:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:21] [INFO] Scanning sources end
+[2026-02-11 16:57:21] [INFO] Scanning sources ...
+[2026-02-11 16:57:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:22] [INFO] Scanning sources end
+[2026-02-11 16:57:22] [INFO] Scanning sources ...
+[2026-02-11 16:57:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:23] [INFO] Scanning sources end
+[2026-02-11 16:57:23] [INFO] Scanning sources ...
+[2026-02-11 16:57:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:57:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:57:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:57:24] [INFO] Scanning sources end
+[2026-02-11 16:57:33] [DEBUG] Created playlist 'test' with ID 1
+[2026-02-11 16:57:34] [DEBUG] Media ID 2 added to Playlist ID 1
+[2026-02-11 16:57:58] [DEBUG] Media ID 44 added to Playlist ID 1
+[2026-02-11 16:58:12] [DEBUG] Created playlist 'gloubiboulga' with ID 2
+[2026-02-11 16:58:13] [DEBUG] Media ID 51 added to Playlist ID 2
+[2026-02-11 16:58:22] [DEBUG] Loading plugins...
+[2026-02-11 16:58:22] [DEBUG] Checking plugin file: "./plugins/musicbrainz_plugin.dll"
+[2026-02-11 16:58:22] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:58:22] [INFO] Loaded metadata plugin.
+[2026-02-11 16:58:22] [DEBUG] Checking plugin file: "./plugins/test_lib.dll"
+[2026-02-11 16:58:22] [DEBUG] ✓ Library loaded successfully: {:?}
+[2026-02-11 16:58:22] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-11 16:58:22] [INFO] Scanning sources ...
+[2026-02-11 16:58:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:23] [INFO] Scanning sources end
+[2026-02-11 16:58:23] [INFO] Scanning sources ...
+[2026-02-11 16:58:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:23] [INFO] Scanning sources end
+[2026-02-11 16:58:23] [INFO] Scanning sources ...
+[2026-02-11 16:58:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:24] [INFO] Scanning sources end
+[2026-02-11 16:58:24] [INFO] Scanning sources ...
+[2026-02-11 16:58:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 16:58:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 16:58:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 16:58:25] [INFO] Scanning sources end
+[2026-02-11 17:21:19] [INFO] Scanning sources ...
+[2026-02-11 17:21:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:20] [INFO] Scanning sources end
+[2026-02-11 17:21:20] [INFO] Scanning sources ...
+[2026-02-11 17:21:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:20] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:20] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:20] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:20] [INFO] Scanning sources end
+[2026-02-11 17:21:21] [INFO] Scanning sources ...
+[2026-02-11 17:21:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:21] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:21] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:21] [INFO] Scanning sources end
+[2026-02-11 17:21:22] [INFO] Scanning sources ...
+[2026-02-11 17:21:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:21:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:21:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:21:22] [INFO] Scanning sources end
+[2026-02-11 17:35:34] [INFO] Scanning sources ...
+[2026-02-11 17:35:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:35] [INFO] Scanning sources end
+[2026-02-11 17:35:35] [INFO] Scanning sources ...
+[2026-02-11 17:35:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:36] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:36] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:36] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:36] [INFO] Scanning sources end
+[2026-02-11 17:35:36] [INFO] Scanning sources ...
+[2026-02-11 17:35:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:38] [INFO] Scanning sources end
+[2026-02-11 17:35:38] [INFO] Scanning sources ...
+[2026-02-11 17:35:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:35:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:35:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:35:39] [INFO] Scanning sources end
+[2026-02-11 17:39:15] [INFO] Scanning sources ...
+[2026-02-11 17:39:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:16] [INFO] Scanning sources end
+[2026-02-11 17:39:16] [INFO] Scanning sources ...
+[2026-02-11 17:39:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:17] [INFO] Scanning sources end
+[2026-02-11 17:39:17] [INFO] Scanning sources ...
+[2026-02-11 17:39:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:18] [INFO] Scanning sources end
+[2026-02-11 17:39:18] [INFO] Scanning sources ...
+[2026-02-11 17:39:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:39:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:39:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:39:19] [INFO] Scanning sources end
+[2026-02-11 17:39:37] [DEBUG] Playing media ID 2: Intro.mp3
+[2026-02-11 17:39:42] [DEBUG] Playing media ID 35: MEGALOBOX OST mabanua feat COMA CHI - Slum City (Extended) (1).mp3
+[2026-02-11 17:46:40] [INFO] Scanning sources ...
+[2026-02-11 17:46:40] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:40] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:40] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:41] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:41] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:41] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:41] [INFO] Scanning sources end
+[2026-02-11 17:46:41] [INFO] Scanning sources ...
+[2026-02-11 17:46:41] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:41] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:41] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:41] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:41] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:42] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:42] [INFO] Scanning sources end
+[2026-02-11 17:46:42] [INFO] Scanning sources ...
+[2026-02-11 17:46:42] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:42] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:42] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:42] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:42] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:43] [INFO] Scanning sources end
+[2026-02-11 17:46:43] [INFO] Scanning sources ...
+[2026-02-11 17:46:43] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:43] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:43] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:46:43] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:46:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:46:43] [INFO] Scanning sources end
+[2026-02-11 17:47:36] [INFO] Scanning sources ...
+[2026-02-11 17:47:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:36] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:36] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:37] [INFO] Scanning sources end
+[2026-02-11 17:47:37] [INFO] Scanning sources ...
+[2026-02-11 17:47:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:38] [INFO] Scanning sources end
+[2026-02-11 17:47:38] [INFO] Scanning sources ...
+[2026-02-11 17:47:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:38] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:38] [INFO] Scanning sources end
+[2026-02-11 17:47:38] [INFO] Scanning sources ...
+[2026-02-11 17:47:38] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:39] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:39] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:47:39] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:47:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:47:39] [INFO] Scanning sources end
+[2026-02-11 17:53:49] [INFO] Scanning sources ...
+[2026-02-11 17:53:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:50] [INFO] Scanning sources end
+[2026-02-11 17:53:50] [INFO] Scanning sources ...
+[2026-02-11 17:53:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:50] [INFO] Scanning sources end
+[2026-02-11 17:53:50] [INFO] Scanning sources ...
+[2026-02-11 17:53:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:51] [INFO] Scanning sources end
+[2026-02-11 17:53:51] [INFO] Scanning sources ...
+[2026-02-11 17:53:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:53:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:53:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:53:52] [INFO] Scanning sources end
+[2026-02-11 17:54:02] [INFO] Scanning sources ...
+[2026-02-11 17:54:02] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:02] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:02] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:02] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:02] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:03] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:03] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:03] [INFO] Scanning sources end
+[2026-02-11 17:54:03] [INFO] Scanning sources ...
+[2026-02-11 17:54:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:03] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:03] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:03] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:03] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:03] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:03] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:03] [INFO] Scanning sources end
+[2026-02-11 17:54:03] [INFO] Scanning sources ...
+[2026-02-11 17:54:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:04] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:04] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:04] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:04] [INFO] Scanning sources end
+[2026-02-11 17:54:04] [INFO] Scanning sources ...
+[2026-02-11 17:54:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:05] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:05] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:54:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:54:05] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:54:05] [INFO] Scanning sources end
+[2026-02-11 17:56:00] [INFO] Scanning sources ...
+[2026-02-11 17:56:00] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:01] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:01] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:01] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:01] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:01] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:01] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:01] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:01] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:01] [INFO] Scanning sources end
+[2026-02-11 17:56:01] [INFO] Scanning sources ...
+[2026-02-11 17:56:01] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:02] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:02] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:02] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:02] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:02] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:02] [INFO] Scanning sources end
+[2026-02-11 17:56:02] [INFO] Scanning sources ...
+[2026-02-11 17:56:02] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:03] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:03] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:03] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:03] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:03] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:03] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:03] [INFO] Scanning sources end
+[2026-02-11 17:56:03] [INFO] Scanning sources ...
+[2026-02-11 17:56:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:04] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:04] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:04] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:04] [INFO] Scanning sources end
+[2026-02-11 17:56:14] [INFO] Scanning sources ...
+[2026-02-11 17:56:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:15] [INFO] Scanning sources end
+[2026-02-11 17:56:15] [INFO] Scanning sources ...
+[2026-02-11 17:56:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:16] [INFO] Scanning sources end
+[2026-02-11 17:56:16] [INFO] Scanning sources ...
+[2026-02-11 17:56:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:17] [INFO] Scanning sources end
+[2026-02-11 17:56:17] [INFO] Scanning sources ...
+[2026-02-11 17:56:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:18] [INFO] Scanning sources end
+[2026-02-11 17:56:22] [INFO] Scanning sources ...
+[2026-02-11 17:56:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:22] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:22] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:23] [INFO] Scanning sources end
+[2026-02-11 17:56:23] [INFO] Scanning sources ...
+[2026-02-11 17:56:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:23] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:24] [INFO] Scanning sources end
+[2026-02-11 17:56:24] [INFO] Scanning sources ...
+[2026-02-11 17:56:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:24] [INFO] Scanning sources end
+[2026-02-11 17:56:25] [INFO] Scanning sources ...
+[2026-02-11 17:56:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:56:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:56:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:56:25] [INFO] Scanning sources end
+[2026-02-11 17:59:23] [INFO] Scanning sources ...
+[2026-02-11 17:59:23] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:24] [INFO] Scanning sources end
+[2026-02-11 17:59:24] [INFO] Scanning sources ...
+[2026-02-11 17:59:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:25] [INFO] Scanning sources end
+[2026-02-11 17:59:25] [INFO] Scanning sources ...
+[2026-02-11 17:59:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:26] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:26] [INFO] Scanning sources end
+[2026-02-11 17:59:26] [INFO] Scanning sources ...
+[2026-02-11 17:59:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:26] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:26] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:27] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:27] [INFO] Scanning sources end
+[2026-02-11 17:59:48] [INFO] Scanning sources ...
+[2026-02-11 17:59:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:48] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:48] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:48] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:48] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:49] [INFO] Scanning sources end
+[2026-02-11 17:59:49] [INFO] Scanning sources ...
+[2026-02-11 17:59:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:49] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:49] [INFO] Scanning sources end
+[2026-02-11 17:59:50] [INFO] Scanning sources ...
+[2026-02-11 17:59:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:50] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:50] [INFO] Scanning sources end
+[2026-02-11 17:59:50] [INFO] Scanning sources ...
+[2026-02-11 17:59:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 17:59:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 17:59:51] [INFO] Scanning sources end
+[2026-02-11 18:13:24] [INFO] Scanning sources ...
+[2026-02-11 18:13:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:24] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:24] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:25] [INFO] Scanning sources end
+[2026-02-11 18:13:25] [INFO] Scanning sources ...
+[2026-02-11 18:13:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:25] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:26] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:26] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:26] [INFO] Scanning sources end
+[2026-02-11 18:13:26] [INFO] Scanning sources ...
+[2026-02-11 18:13:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:26] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:26] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:27] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:27] [INFO] Scanning sources end
+[2026-02-11 18:13:27] [INFO] Scanning sources ...
+[2026-02-11 18:13:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:27] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:27] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:13:28] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:13:28] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:13:28] [INFO] Scanning sources end
+[2026-02-11 18:18:29] [INFO] Scanning sources ...
+[2026-02-11 18:18:29] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:30] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:30] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:30] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:30] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:30] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:30] [INFO] Scanning sources end
+[2026-02-11 18:18:31] [INFO] Scanning sources ...
+[2026-02-11 18:18:31] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:31] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:31] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:31] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:31] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:31] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:31] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:31] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:31] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:31] [INFO] Scanning sources end
+[2026-02-11 18:18:31] [INFO] Scanning sources ...
+[2026-02-11 18:18:31] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:32] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:32] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:32] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:32] [INFO] Scanning sources end
+[2026-02-11 18:18:32] [INFO] Scanning sources ...
+[2026-02-11 18:18:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-11 18:18:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-11 18:18:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-11 18:18:33] [INFO] Scanning sources end
+[2026-02-11 18:18:55] [DEBUG] Playing media ID 42: Strummer Boy.mp3
+[2026-02-11 18:20:54] [DEBUG] Playing media ID 29: From the Slums to the Cities - Yuki Hayashi.mp3

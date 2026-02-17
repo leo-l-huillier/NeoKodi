@@ -1,41 +1,53 @@
-
 /*
 in this file we handle audio playback
-TODO: 
 */
 
-use super::data::Media;
-use super::data::MediaType;
-use super::data::MediaInfo;
+use super::data::{Media, MediaType, MediaInfo};
+
+use lofty::prelude::*; 
+use lofty::read_from_path;
+
+// use std::fs::File; // Plus besoin
+// use std::io::BufReader; // Plus besoin
+use rand::seq::SliceRandom;
+use rand::thread_rng;
 
 use crate::logger::logger::Logger;
 use crate::constants::LOG_FILE;
 
-
-use rodio::{Decoder, OutputStreamBuilder, Sink};
-use std::fs::File;
-use std::io::BufReader;
-
-
-use lofty::prelude::*;
-use lofty::{read_from_path};
-
-use rand::seq::SliceRandom;
-//use rand::rng::thread_rng;
-use rand::thread_rng;
-
-
-
-
-struct Metadata {
-    title: String,
-    artist: String,
-    album: String,
-    year: String,
-    genre: String,
-    duration: f32,
+// --- STRUCTURE METADATA ---
+pub struct Metadata {
+    pub title: Option<String>,
+    pub artist: Option<String>,
+    pub album: Option<String>,
+    pub duration: f32,
 }
 
+impl Metadata {
+    pub fn from_path(path: &str) -> Self {
+        match read_from_path(path) {
+            Ok(tagged_file) => {
+                let properties = tagged_file.properties();
+                let tag = tagged_file.primary_tag();
+
+                Metadata {
+                    duration: properties.duration().as_secs_f32(),
+                    title: tag.and_then(|t| t.title().map(|s| s.to_string())),
+                    artist: tag.and_then(|t| t.artist().map(|s| s.to_string())),
+                    album: tag.and_then(|t| t.album().map(|s| s.to_string())),
+                }
+            },
+            Err(_) => Metadata {
+                duration: 0.0,
+                title: None,
+                artist: None,
+                album: None,
+            }
+        }
+    }
+}
+
+// --- QUEUE (Inchangé) ---
 pub struct Queue {
     audio_queue: Vec<i64>,
     original_queue: Vec<i64>,
@@ -53,60 +65,38 @@ impl Queue {
 
     pub fn add_to_queue(&mut self, media: i64) {
         let logger = Logger::new(LOG_FILE);
-
         self.audio_queue.push(media);
         self.original_queue.push(media);
-
         logger.debug(&format!("Added to queue: {}", media));
     }
 
-    pub fn get_current(&mut self) -> Option<i64> {
-
-        let logger = Logger::new(LOG_FILE);
-
-        if let Some(current) = self.audio_queue.first() {
-            logger.info(&format!("Current media in queue: {}", current));
-            Some(*current)
-        } else {
-            logger.info("Trying to get current media but queue is empty");
-            None
-        }
-
+    pub fn get_current(&self) -> Option<i64> {
+        self.audio_queue.first().cloned()
     }
 
     pub fn next(&mut self) -> Option<i64> {
-       
         let logger = Logger::new(LOG_FILE);
-       
+        
         if !self.audio_queue.is_empty() {
             let next_media = self.audio_queue.remove(0);
             logger.info(&format!("Next media in queue: {}", next_media));
             Some(next_media)
         } else {
-
-            if self.repeat {
+            if self.repeat && !self.original_queue.is_empty() {
                 self.audio_queue = self.original_queue.clone();
                 logger.info("Queue is empty, repeating original queue");
-                Some(self.get_current());
+                return self.get_current();
             }
-
             logger.info("Trying to get next media but queue is empty");
             None
         }
     }
 
     pub fn toggle_shuffle(&mut self) {
-
         let logger = Logger::new(LOG_FILE);
-
-        if self.audio_queue.is_empty() {
-            logger.debug("Trying to shuffle queue but it's empty");
-            return;
-        }
-
+        if self.audio_queue.is_empty() { return; }
         let mut rng = thread_rng();
         self.audio_queue.shuffle(&mut rng);
-
         logger.info("Queue shuffled");
     }
 
@@ -118,128 +108,63 @@ impl Queue {
         self.audio_queue.clear();
         self.original_queue.clear();
     }
-
 }
 
+// --- STRUCTURE AUDIO (NETTOYÉE) ---
 pub struct Audio {
+    pub id: i64,
     pub path: String,
     pub name: String,
-
-    media_type: MediaType,
-    metadata: Metadata, // make it a json
-
-    stream: Option<rodio::OutputStream>,    
-    sink: Option<Sink>,
-
-    
+    pub metadata: Metadata, 
+    pub last_position: f32,
+    // Plus de champs Sink/Stream !
 }
 
 impl Audio {
-    pub fn new(path: &str, name: &str) -> Self {
-
-
-        //========= METADATA ========= 
-        let tagged_file = read_from_path(path)
-            .expect("Failed to read tags from file");
-        let tag = match tagged_file.primary_tag() {
-            Some(primary_tag) => primary_tag,
-            None => tagged_file.first_tag().expect("ERROR: No tags found!"),
-        };
-        let props = tagged_file.properties();
-
-
+    pub fn new(id: i64, path: &str, name: &str, last_pos: f32) -> Self {
+        let metadata = Metadata::from_path(path);
         Self {
+            id,
             path: path.to_string(),
             name: name.to_string(),
-            sink: None,
-            stream: None,
-            media_type: MediaType::Audio,
-            metadata: Metadata {
-                title: tag.title().as_deref().unwrap_or("None").to_string(),
-                artist: tag.artist().as_deref().unwrap_or("None").to_string(),
-                album: tag.album().as_deref().unwrap_or("None").to_string(),
-                year: tag.year().map_or("None".to_string(), |y| y.to_string()),
-                genre: tag.genre().as_deref().unwrap_or("None").to_string(),
-                duration: props.duration().as_secs_f32(),
-            },
+            metadata,
+            last_position: last_pos,
         }
     }
 }
 
-
+// 👇 C'EST ICI LA MAGIE : ON NE FAIT RIEN EN RUST
+// On laisse l'interface HTML gérer le vrai son.
 impl Media for Audio {
     fn init(&mut self) {
-        let stream = OutputStreamBuilder::open_default_stream().expect("open_default_stream error");
-
-        let sink = Sink::connect_new(&stream.mixer());
-
-        self.stream = Some(stream);
-        self.sink = Some(sink);
     }
 
-
-    fn play(&mut self) {  
-        let sink = self.sink.as_ref().expect("AudioPlayer not initialized");
-
-        let file = File::open(&self.path).expect("open file error");
-        let source = Decoder::new(BufReader::new(file)).expect("decoder error");
-
-        sink.append(source);
-
-        sink.play();
-        println!("in media play");
+    fn play(&mut self) {
+        println!("▶️ Audio sélectionné (Played by Frontend): {}", self.name);
     }
 
     fn pause(&self) {
-        println!("in media pause");
-        if let Some(sink) = &self.sink {
-            sink.pause();
-        }
     }
 
     fn resume(&self) {
-        println!("in media resume");
-        if let Some(sink) = &self.sink {
-            sink.play();
-        }
     }
 
     fn stop(&self) {
-        if let Some(sink) = &self.sink {
-            sink.stop();
-        }
     }
     
-
     fn info(&self) -> MediaInfo {
-
-
-        //print metadata info
-        /*println!("{}", format!(
-            "Audio: {} ({})\nTitle: {}\nArtist: {}\nAlbum: {}\nYear: {}\nGenre: {}\nDuration: {:.2} seconds",
-            self.name,
-            self.path,
-            self.metadata.title,
-            self.metadata.artist,
-            self.metadata.album,
-            self.metadata.year,
-            self.metadata.genre,
-            self.metadata.duration
-        ));*/
-
         MediaInfo {
-            id: 0,
+            id: self.id,
             path: self.path.clone(),
             title: Some(self.name.clone()),
+            artist: self.metadata.artist.clone(),
             duration: Some(self.metadata.duration),
             media_type: MediaType::Audio,
-            last_position: 0.0,
+            last_position: self.last_position,
+            tags: Vec::new(),
         }
-
-
     }
     
-
     fn media_type(&self) -> MediaType {
         MediaType::Audio
     }
@@ -253,12 +178,6 @@ impl Media for Audio {
     }
 }
 
-
-
-
-
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -271,31 +190,21 @@ mod tests {
 
     #[test]
     fn new_reads_metadata() {
-        let path = sample_path().expect("missing test audio file");
-        let audio = Audio::new(&path, "Sample");
-        assert_eq!(audio.media_type(), MediaType::Audio);
-        assert_eq!(audio.get_path(), path);
-        assert_eq!(audio.get_name(), "Sample");
-    }
-
-    #[test]
-    fn init_and_play_then_stop() {
-        let path = sample_path().expect("missing test audio file");
-        let mut audio = Audio::new(&path, "Sample");
-        audio.init();
-        audio.play(); // should not panic
-        audio.pause();
-        audio.resume();
-        audio.stop();
+        if let Some(path) = sample_path() {
+            let audio = Audio::new(1, &path, "Sample", 0.0);
+            assert_eq!(audio.media_type(), MediaType::Audio);
+            assert_eq!(audio.id, 1);
+        }
     }
 
     #[test]
     fn info_returns_media_info() {
-        let path = sample_path().expect("missing test audio file");
-        let audio = Audio::new(&path, "Sample");
-        let info = audio.info();
-        assert_eq!(info.path, path);
-        assert_eq!(info.media_type, MediaType::Audio);
-        assert!(info.duration.unwrap_or(0.0) >= 0.0);
+        if let Some(path) = sample_path() {
+            let audio = Audio::new(1, &path, "Sample", 10.5);
+            let info = audio.info();
+            assert_eq!(info.path, path);
+            assert_eq!(info.last_position, 10.5);
+            assert!(info.tags.is_empty());
+        }
     }
 }

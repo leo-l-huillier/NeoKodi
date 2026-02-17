@@ -41,7 +41,9 @@ pub fn App() -> Element {
         let _ = cmd_tx.send(Command::AddSource(root_path.clone(), MediaType::Audio));
         let _ = cmd_tx.send(Command::AddSource(root_path, MediaType::Image));
         let _ = cmd_tx.send(Command::GetAllMedia());
-
+        let _ = cmd_tx.send(Command::GetAllPlaylists());
+        let _ = cmd_tx.send(Command::GetPluginHistory);
+        
         Rc::new(Backend { tx: cmd_tx, rx: RefCell::new(Some(evt_rx)) })
     });
 
@@ -49,11 +51,13 @@ pub fn App() -> Element {
     
     // États globaux
     let mut media_list = use_context_provider(|| Signal::new(Vec::<MediaInfo>::new()));
+
+    // Pour recevoir le contenu d'une playlist
+    let mut playlists = use_context_provider(|| Signal::new(Vec::<(i64, String)>::new()));
+    let mut loaded_ids = use_context_provider(|| Signal::new(Vec::<i64>::new()));
     
     // Plugin Result
-    let mut plugin_result = use_context_provider(|| Signal::new(PluginSearchResult { 
-        text: String::from("En attente d'une recherche...") 
-    }));
+    let mut plugin_result = use_context_provider(|| Signal::new(Vec::<String>::new()));
     
     let mut root_path_signal = use_context_provider(|| Signal::new(String::new()));
     let current_config = AppConfig::load();
@@ -77,16 +81,17 @@ pub fn App() -> Element {
                     while let Ok(msg) = rx.try_recv() {
                         match msg {
                             Event::MediaList(list) => { media_list.set(list); },
+
+                            Event::PlaylistList(list) => { playlists.set(list); },
+                            Event::IDList(ids) => { loaded_ids.set(ids); },
                             
-                            // 👇 Ta gestion MusicBrainz (adaptée à 2 arguments path+info)
                             Event::ArtistInfoReceived(info) => {
-                                plugin_result.set(PluginSearchResult { text: info });
+                                plugin_result.write().insert(0, info);
                             },
 
                             Event::NowPlaying(id) => println!("▶️ Lecture ID: {}", id),
                             Event::Info(info) => println!("ℹ️ Info: {:?}", info.title),
                             Event::M3UList(channels) => {
-                                //println!("📺 UI : Reçu {} chaînes !", channels.len());
                                 iptv_channels.set(channels);
                                 iptv_loading.set(false);
                             },

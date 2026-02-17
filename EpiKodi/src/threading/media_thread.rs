@@ -103,13 +103,6 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     evt_tx.send(Event::IDList(media_list)).unwrap();
                 }
 
-                Ok(Command::GetMediaFromPlaylist(playlist_id)) => {
-                    let mut library = lib_thread.lock().unwrap();
-                    let media_list = library.get_media_from_playlist(playlist_id);
-                    // For simplicity, we just send the count of media items found
-                    evt_tx.send(Event::IDList(media_list)).unwrap();
-                }
-
                 Ok(Command::UpdateMediaState(media_id, status, time_stop)) => {
                     let mut library = lib_thread.lock().unwrap();
                     library.update_media_status_and_time(media_id, status, time_stop, 0.0);
@@ -189,8 +182,13 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                 }
 
                 Ok(Command::AddMediaToPlaylist(media_id, playlist_id)) => {
+                    println!("🔥 [THREAD] AJOUT: Media {} -> Playlist {}", media_id, playlist_id);
                     let mut library = lib_thread.lock().unwrap();
                     library.add_media_to_playlist(media_id, playlist_id);
+                }
+
+                Ok(Command::GetPlaylistId(_)) => {
+                // On ne fait rien pour l'instant, mais il faut le gérer
                 }
 
                 Ok(Command::DeletePlaylist(playlist_id)) => {
@@ -203,22 +201,46 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     library.remove_media_from_playlist(media_id, playlist_id);
                 }
 
-                Ok(Command::GetPlaylistId(name)) => {
+                Ok(Command::GetMediaFromPlaylist(playlist_id)) => {
+                    println!("🔥 [THREAD] LECTURE: Contenu Playlist {}", playlist_id);
+                    
                     let mut library = lib_thread.lock().unwrap();
-                    let playlist_id = library.get_playlist_id(&name);
-                    evt_tx.send(Event::Data(playlist_id.to_string())).unwrap();
+                    let ids = library.get_media_from_playlist(playlist_id);
+                    
+                    println!("🔥 [THREAD] IDs trouvés: {:?}", ids);
+                    
+                    evt_tx.send(Event::IDList(ids)).unwrap();
                 }
 
                 Ok(Command::GetAllPlaylists()) => {
                     let mut library = lib_thread.lock().unwrap();
                     let playlists = library.get_all_playlists();
-                    // For simplicity, we just send the count of playlists found
                     evt_tx.send(Event::PlaylistList(playlists)).unwrap();
                 }
 
+                Ok(Command::GetPluginHistory) => {
+                    let lib = lib_thread.lock().unwrap();
+                    if let Ok(history) = lib.database.get_all_artist_metadata() {
+                        for entry in history {
+                            evt_tx.send(Event::ArtistInfoReceived(entry)).unwrap();
+                        }
+                    }
+                },
+
                 Ok(Command::GetArtistMetadataFromPlugin(name)) => {
-                    let response = plugin_manager.get_metadata(name.as_str());
-                    evt_tx.send(Event::Data(response.to_string())).unwrap();
+                    let mut lib = lib_thread.lock().unwrap();
+                    let history = lib.database.get_all_artist_metadata().unwrap_or_default();
+                    
+                    if let Some(cached) = history.iter().find(|h| h.contains(&name)) {
+                        evt_tx.send(Event::ArtistInfoReceived(cached.clone())).unwrap();
+                    } else {
+                        drop(lib);
+                        let response = plugin_manager.get_metadata(name.as_str());
+                        
+                        let mut lib = lib_thread.lock().unwrap();
+                        let _ = lib.database.save_artist_metadata(&name, &response);
+                        evt_tx.send(Event::ArtistInfoReceived(response)).unwrap();
+                    }
                 }
 
                 Ok(Command::GetfilmMetadataFromPlugin(name)) =>{

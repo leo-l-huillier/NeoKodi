@@ -40,6 +40,15 @@ impl DB {
     //TODO: check if this is a corrct/clean way to do this
     pub fn init_db(&mut self) -> Result<()> {
         self.conn.execute(
+            "CREATE TABLE IF NOT EXISTS artist_metadata (
+                id INTEGER PRIMARY KEY,
+                artist_name TEXT UNIQUE NOT NULL,
+                info TEXT,
+                last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+            )",
+            [],
+        )?;
+        self.conn.execute(
             "
                 CREATE TABLE IF NOT EXISTS media (
                     id INTEGER PRIMARY KEY,
@@ -88,6 +97,7 @@ impl DB {
                 CREATE TABLE IF NOT EXISTS playlist_items (
                     playlist_id INTEGER NOT NULL,
                     media_id INTEGER NOT NULL,
+                    position INTEGER DEFAULT 0,
                     PRIMARY KEY (playlist_id, media_id),
                     FOREIGN KEY (playlist_id) REFERENCES playlists(id) ON DELETE CASCADE,
                     FOREIGN KEY (media_id) REFERENCES media(id) ON DELETE CASCADE
@@ -407,6 +417,21 @@ impl DB {
         Ok(rows.filter_map(Result::ok).collect())
     }
 
+    //========= PLAYLIST TABLE METHODS========
+
+    pub fn save_artist_metadata(&self, name: &str, info: &str) -> Result<()> {
+        self.conn.execute(
+            "INSERT OR REPLACE INTO artist_metadata (artist_name, info, last_updated) VALUES (?1, ?2, CURRENT_TIMESTAMP)",
+            (name, info),
+        )?;
+        Ok(())
+    }
+
+    pub fn get_all_artist_metadata(&self) -> Result<Vec<String>> {
+        let mut stmt = self.conn.prepare("SELECT info FROM artist_metadata ORDER BY last_updated ASC")?;
+        let rows = stmt.query_map([], |row| row.get(0))?;
+        Ok(rows.filter_map(|r| r.ok()).collect())
+    }
 
 
 

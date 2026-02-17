@@ -1,21 +1,25 @@
 
 use std::fmt;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum MediaType {
     Audio,
     Video,
     Image,
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct MediaInfo {
     pub id: i64,
     pub path: String,
     pub title: Option<String>,
+    pub artist: Option<String>,
     pub duration: Option<f32>,
     pub media_type: MediaType,
     pub last_position: f32,
+        #[serde(default)]
+    pub tags: Vec<String>,
 }
 
 impl MediaType {
