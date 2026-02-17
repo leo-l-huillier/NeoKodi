@@ -112,44 +112,130 @@ pub fn Music() -> Element {
     let list_signal = use_context::<Signal<Vec<MediaInfo>>>();
     let root_path_signal = use_context::<Signal<String>>();
     let root_path = root_path_signal();
-    let plugin_result = use_context::<Signal<PluginSearchResult>>();
+    let plugin_history = use_context::<Signal<Vec<String>>>();
     
+    // Contextes Playlist
+    let mut all_playlists = use_context::<Signal<Vec<(i64, String)>>>(); // (ID, Nom)
+    let mut loaded_ids_signal = use_context::<Signal<Vec<i64>>>(); // IDs de la playlist active
+
+    // États Lecture
     let mut current_audio = use_signal(|| Option::<MediaInfo>::None);
     let mut play_mode = use_signal(|| PlayMode::Sequential);
     let mut search_text = use_signal(|| String::new());
-    
     let mut queue = use_signal(|| Vec::<MediaInfo>::new());
 
-    // 👇 NOUVEAU SIGNAL : Pour afficher/cacher la liste
+    // États UI
     let mut show_queue_popup = use_signal(|| false);
+    let mut show_playlist_manager = use_signal(|| false);
+    let mut new_playlist_name = use_signal(|| String::new());
+    
+    // 👇 NOUVEAU : Pour savoir si on est en mode "Vue Playlist"
+    let mut active_playlist_name = use_signal(|| Option::<String>::None);
+    
+    // État pour le menu "Ajouter à..." (ID du média en cours d'ajout)
+    let mut adding_media_to_playlist = use_signal(|| Option::<i64>::None);
 
     let tx_init = cmd_tx.clone();
-    use_hook(move || { if list_signal().is_empty() { tx_init.send(Command::GetAllMedia()).unwrap(); } });
+    use_hook(move || { 
+        if list_signal().is_empty() { tx_init.send(Command::GetAllMedia()).unwrap(); } 
+        tx_init.send(Command::GetAllPlaylists()).unwrap();
+        tx_init.send(Command::GetPluginHistory).unwrap();
 
-    let css_marquee = "
+        // 🚀 AUTO-RECHERCHE CORRIGÉE
+        let list = list_signal();
+        // On précise le type explicitement pour aider Rust
+        let mut searched_artists = std::collections::HashSet::<String>::new();
+        
+        // On itère directement sur 'list' (pas de parenthèses ici !)
+        for item in list.iter().filter(|i| i.media_type == MediaType::Audio) {
+            if let Some(ref artist) = item.artist {
+                if !searched_artists.contains(artist) {
+                    let _ = tx_init.send(Command::GetArtistMetadataFromPlugin(artist.clone()));
+                    searched_artists.insert(artist.clone());
+                }
+            }
+        }
+    });
+
+    // NOTE : J'ai supprimé le use_effect qui remplissait la queue automatiquement.
+    // Maintenant, cliquer sur une playlist ne fait que FILTRER la vue.
+    // Si tu veux tout jouer, tu cliques sur le premier titre affiché.
+
+    let css_music = "
         @keyframes scroll-text { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
         .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
         .marquee-text { display: inline-block; animation: scroll-text 15s linear infinite; padding-left: 100%; }
+        
         .audio-row:active { background-color: #333 !important; transform: scale(0.99); transition: transform 0.1s; }
         .add-queue-btn { opacity: 0.5; transition: opacity 0.2s; }
         .add-queue-btn:hover { opacity: 1; transform: scale(1.1); }
         
-        /* Style pour la scrollbar de la popup */
         .queue-popup::-webkit-scrollbar { width: 6px; }
         .queue-popup::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
         .queue-popup::-webkit-scrollbar-track { background: #222; }
+
+        .playlist-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); 
+            z-index: 3000;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .playlist-modal {
+            background: #1e1e1e; padding: 25px; border-radius: 12px; width: 400px;
+            border: 1px solid #333; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .pl-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px; border-bottom: 1px solid #333; cursor: pointer;
+        }
+        .pl-item:hover { background: #2d2d2d; }
+        .pl-option { padding: 8px 10px; cursor: pointer; color: white; }
+        .pl-option:hover { background: #333; }
     ";
 
     rsx! {
-        style { "{css_marquee}" }
+        style { "{css_music}" }
         
         div { class: "container", style: "padding-bottom: 100px;",
             
-            // TOP BAR
+            // --- TOP BAR ---
             div { class: "top-bar", 
-                style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
+                style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px; z-index: 500; background: #121212;",
+                
                 div { style: "z-index: 2;", Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" } }
-                div { class: "page-title", style: "position: absolute; left: 50%; transform: translateX(-50%);", "Musique" } 
+                
+                // Bouton Gestion Playlists
+                div { style: "z-index: 2; position: absolute; left: 140px;",
+                    button { 
+                        class: "btn-nav", 
+                        style: "position: relative; transform: none; top: auto; left: auto; background: #8e44ad;",
+                        onclick: move |_| show_playlist_manager.set(true),
+                        "📂 Playlists"
+                    }
+                }
+
+                // TITRE CENTRAL DYNAMIQUE
+                div { 
+                    style: "position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; z-index: 2;",
+                    
+                    if let Some(name) = active_playlist_name() {
+                        // MODE PLAYLIST ACTIVE
+                        span { style: "color: #2ecc71; font-weight: bold; font-size: 1.2rem;", "📂 {name}" }
+                        button {
+                            style: "background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 1.2rem; padding: 0 5px;",
+                            title: "Fermer la playlist",
+                            onclick: move |_| {
+                                active_playlist_name.set(None); // On quitte le mode playlist
+                                loaded_ids_signal.write().clear(); // On vide le filtre
+                            },
+                            "✖"
+                        }
+                    } else {
+                        // MODE NORMAL
+                        span { style: "font-weight: bold; font-size: 1.2rem;", "Musique" }
+                    }
+                } 
+                
                 div { style: "z-index: 2;",
                     input {
                         r#type: "text", placeholder: "🔍 Titre...",
@@ -159,114 +245,290 @@ pub fn Music() -> Element {
                 }
             }
             
-            // LISTE PRINCIPALE
+            // --- LISTE PRINCIPALE (AVEC FILTRE PLAYLIST) ---
             div { class: "audio-list",
-                for item in list_signal().iter()
+                {list_signal().iter()
                     .filter(|i| i.media_type == MediaType::Audio)
+                    // 1. Filtre Recherche
                     .filter(|i| {
                         let query = search_text().to_lowercase();
                         if query.is_empty() { return true; }
                         i.title.as_deref().unwrap_or(&i.path).to_lowercase().contains(&query)
                     })
-                {
-                    div { class: "audio-row",
-                        style: "cursor: pointer; transition: background 0.2s; user-select: none; display: flex; align-items: center; justify-content: space-between; padding-right: 15px;",
+                    // 2. Filtre Playlist (Si active)
+                    .filter(|i| {
+                        if active_playlist_name().is_some() {
+                            loaded_ids_signal().contains(&i.id)
+                        } else {
+                            true
+                        }
+                    })
+                    // 3. Mapping pour l'affichage
+                    .map(|item| {
+                        // Calcul du Z-Index dynamique
+                        let is_menu_open = adding_media_to_playlist() == Some(item.id);
+                        let z_index = if is_menu_open { 100 } else { 0 };
                         
-                        onclick: { 
-                            let track = item.clone(); 
-                            let i = item.id; 
-                            let tx = cmd_tx.clone();
-                            let mut res = plugin_result.clone(); 
-                            move |_| { 
-                                res.set(PluginSearchResult { text: String::from("...") });
-                                current_audio.set(Some(track.clone())); 
-                                tx.send(Command::Play(i)).unwrap(); 
-                                tx.send(Command::GetArtistMetadataFromPlugin(track.path.clone())).unwrap();
-                            } 
-                        },
-                        
-                        div { style: "display: flex; align-items: center; flex: 1;",
-                            div { class: "audio-icon", 
-                                if current_audio().as_ref().map(|c| c.id) == Some(item.id) { "🔊" } else { "🎵" }
-                            }
-                            div { class: "audio-info", 
-                                div { 
-                                    class: "audio-title", 
-                                    style: if current_audio().as_ref().map(|c| c.id) == Some(item.id) { "color: #1db954; font-weight: bold;" } else { "" },
-                                    "{item.title.as_deref().unwrap_or(&item.path)}" 
-                                } 
-                                div { class: "audio-artist", "Artiste inconnu" } 
-                            }
-                        },
+                        rsx! {
+                            div { 
+                                class: "audio-row",
+                                style: "cursor: pointer; transition: background 0.2s; user-select: none; display: flex; align-items: center; justify-content: space-between; padding-right: 15px; position: relative; z-index: {z_index}; overflow: visible;", 
+                                
+                                // Clic principal : Jouer
+                                onclick: { 
+                                    let track = item.clone();
+                                    let i = item.id; 
+                                    let tx = cmd_tx.clone();
+                                    let mut history = plugin_history.clone(); // ✅ On utilise le nouveau nom
+                                    move |_| { 
+                                        history.write().insert(0, "...".to_string()); 
+                                        
+                                        current_audio.set(Some(track.clone())); 
+                                        tx.send(Command::Play(i)).unwrap(); 
+                                        
+                                        if let Some(ref artist) = track.artist {
+                                            let _ = tx.send(Command::GetArtistMetadataFromPlugin(artist.clone()));
+                                        }
+                                    } 
+                                },
+                                
+                                div { style: "display: flex; align-items: center; flex: 1;",
+                                    div { class: "audio-icon", 
+                                        if current_audio().as_ref().map(|c| c.id) == Some(item.id) { "🔊" } else { "🎵" }
+                                    }
+                                    div { class: "audio-info", 
+                                        div { 
+                                            class: "audio-title", 
+                                            style: if current_audio().as_ref().map(|c| c.id) == Some(item.id) { "color: #1db954; font-weight: bold;" } else { "" },
+                                            "{item.title.as_deref().unwrap_or(&item.path)}" 
+                                        } 
+                                        div { 
+                                            class: "audio-artist", 
+                                            "{item.artist.as_deref().unwrap_or(\"Artiste inconnu\")}" 
+                                        }
+                                    }
+                                },
 
-                        button {
-                            class: "add-queue-btn",
-                            style: "background: transparent; border: 1px solid #555; color: white; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;",
-                            title: "Ajouter à la file d'attente",
-                            onclick: {
-                                let track = item.clone();
-                                move |evt: Event<MouseData>| {
-                                    evt.stop_propagation();
-                                    queue.write().push(track.clone());
+                                div { style: "display: flex; gap: 10px;",
+                                    // Bouton Disquette (Ajouter à playlist)
+                                    button {
+                                        class: "add-queue-btn",
+                                        style: "background: transparent; border: 1px solid #555; color: #f1c40f; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;",
+                                        title: "Sauvegarder dans une playlist",
+                                        onclick: {
+                                            let id = item.id;
+                                            move |evt: Event<MouseData>| {
+                                                evt.stop_propagation(); 
+                                                if adding_media_to_playlist() == Some(id) {
+                                                    adding_media_to_playlist.set(None);
+                                                } else {
+                                                    adding_media_to_playlist.set(Some(id));
+                                                }
+                                            }
+                                        },
+                                        "💾"
+                                    }
+
+                                    // Bouton Plus (Ajouter à file d'attente)
+                                    button {
+                                        class: "add-queue-btn",
+                                        style: "background: transparent; border: 1px solid #555; color: white; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;",
+                                        title: "Ajouter à la file d'attente actuelle",
+                                        onclick: {
+                                            let track = item.clone();
+                                            move |evt: Event<MouseData>| {
+                                                evt.stop_propagation();
+                                                queue.write().push(track.clone());
+                                            }
+                                        },
+                                        "➕"
+                                    }
                                 }
-                            },
-                            "➕"
+
+                                // --- POPUP MENU DÉROULANT ---
+                                if is_menu_open {
+                                    div {
+                                        style: "position: absolute; right: 50px; top: 40px; background: #222; border: 1px solid #444; border-radius: 5px; z-index: 200; min-width: 200px; box-shadow: 0 5px 15px rgba(0,0,0,0.8);",
+                                        onclick: |evt: Event<MouseData>| evt.stop_propagation(),
+                                        
+                                        // Zone Création
+                                        div {
+                                            style: "padding: 8px; border-bottom: 1px solid #444; background: #2a2a2a;",
+                                            input {
+                                                r#type: "text",
+                                                value: "{new_playlist_name}",
+                                                placeholder: "➕ Créer & Ajouter...",
+                                                style: "width: 100%; padding: 5px; border: 1px solid #555; border-radius: 3px; background: #111; color: white; font-size: 0.8rem;",
+                                                oninput: move |evt| new_playlist_name.set(evt.value()),
+                                            }
+                                            if !new_playlist_name().is_empty() {
+                                                div {
+                                                    style: "margin-top: 5px; cursor: pointer; background: #27ae60; color: white; padding: 4px; text-align: center; border-radius: 3px; font-size: 0.8rem;",
+                                                    onclick: {
+                                                        let mid = item.id;
+                                                        let tx = cmd_tx.clone();
+                                                        move |_| {
+                                                            tx.send(Command::AddPlaylist(new_playlist_name())).unwrap();
+                                                            tx.send(Command::GetAllPlaylists()).unwrap();
+                                                            // Idéalement on ajoute direct, mais ici on crée d'abord
+                                                            new_playlist_name.set(String::new());
+                                                        }
+                                                    },
+                                                    "Créer"
+                                                }
+                                            }
+                                        }
+
+                                        div { style: "padding: 5px 10px; color: #888; font-size: 0.7rem; text-transform: uppercase;", "Playlists existantes" }
+                                        
+                                        // Liste Playlists
+                                        div { style: "max-height: 150px; overflow-y: auto;",
+                                            for (pl_id, pl_name) in all_playlists() {
+                                                div {
+                                                    class: "pl-option",
+                                                    onclick: {
+                                                        let pid = pl_id;
+                                                        let mid = item.id;
+                                                        let tx = cmd_tx.clone();
+                                                        move |_| {
+                                                            tx.send(Command::AddMediaToPlaylist(mid, pid)).unwrap();
+                                                            adding_media_to_playlist.set(None);
+                                                        }
+                                                    },
+                                                    "📂 {pl_name}"
+                                                }
+                                            }
+                                            if all_playlists().is_empty() {
+                                                div { style: "padding: 10px; color: #666; font-style: italic; font-size: 0.8rem;", "Aucune playlist." }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    })
+                }
+            }
+
+            // --- GESTIONNAIRE DE PLAYLISTS (MODAL) ---
+            if show_playlist_manager() {
+                div { class: "playlist-overlay", onclick: move |_| show_playlist_manager.set(false),
+                    div { class: "playlist-modal", onclick: |evt| evt.stop_propagation(),
+                        h2 { style: "margin-top: 0; color: white;", "Mes Playlists" }
+                        
+                        // Créer nouvelle (Gros bouton)
+                        div { style: "display: flex; gap: 10px; margin-bottom: 20px;",
+                            input {
+                                r#type: "text",
+                                value: "{new_playlist_name}",
+                                placeholder: "Nom de la playlist...",
+                                style: "flex: 1; padding: 8px; border-radius: 5px; border: 1px solid #444; background: #2d2d2d; color: white;",
+                                oninput: move |evt| new_playlist_name.set(evt.value()),
+                            }
+                            button {
+                                class: "btn-nav",
+                                style: "position: relative; transform: none; top: auto; left: auto; background: #27ae60;",
+                                onclick: {
+                                    let tx = cmd_tx.clone();
+                                    move |_| {
+                                        if !new_playlist_name().is_empty() {
+                                            tx.send(Command::AddPlaylist(new_playlist_name())).unwrap();
+                                            tx.send(Command::GetAllPlaylists()).unwrap();
+                                            new_playlist_name.set(String::new());
+                                        }
+                                    }
+                                },
+                                "Créer"
+                            }
+                        }
+
+                        // Liste pour Ouvrir/Supprimer
+                        div { style: "max-height: 300px; overflow-y: auto;",
+                            for (id, name) in all_playlists() {
+                                div { class: "pl-item",
+                                    
+                                    // 👇 C'EST CE BOUTON QUI DECONNE ACTUELLEMENT
+                                    div { 
+                                        style: "flex: 1;",
+                                        onclick: {
+                                            let pid = id;
+                                            let pname = name.clone(); // Clone pour le signal
+                                            let tx = cmd_tx.clone();
+                                            move |_| {
+                                                println!("🖱️ [FRONT] Clic sur ouvrir playlist ID: {}", pid); // MOCHARD FRONTEND
+                                                
+                                                // 1. Envoyer l'ordre au backend
+                                                match tx.send(Command::GetMediaFromPlaylist(pid)) {
+                                                    Ok(_) => println!("✅ [FRONT] Commande envoyée !"),
+                                                    Err(e) => println!("❌ [FRONT] Erreur envoi commande : {}", e),
+                                                }
+
+                                                // 2. Activer le mode visuel
+                                                active_playlist_name.set(Some(pname.clone()));
+                                                
+                                                // 3. Fermer la fenêtre
+                                                show_playlist_manager.set(false);
+                                            }
+                                        },
+                                        "📂 {name}" 
+                                    },
+                                    
+                                    // SUPPRIMER (Celui-ci marchait peut-être déjà, mais on le garde propre)
+                                    button {
+                                        style: "background: none; border: none; color: #c0392b; cursor: pointer; font-weight: bold;",
+                                        onclick: {
+                                            let pid = id;
+                                            let tx = cmd_tx.clone();
+                                            move |evt: Event<MouseData>| {
+                                                evt.stop_propagation();
+                                                tx.send(Command::DeletePlaylist(pid)).unwrap();
+                                                tx.send(Command::GetAllPlaylists()).unwrap();
+                                            }
+                                        },
+                                        "🗑️"
+                                    }
+                                }
+                            }
+                            if all_playlists().is_empty() {
+                                div { style: "color: #777; text-align: center; padding: 20px;", "Aucune playlist créée." }
+                            }
+                        }
+
+                        div { style: "margin-top: 20px; text-align: right;",
+                            button { 
+                                class: "btn-nav", 
+                                style: "position: relative; transform: none; top: auto; left: auto; background: #444;",
+                                onclick: move |_| show_playlist_manager.set(false),
+                                "Fermer" 
+                            }
                         }
                     }
                 }
             }
 
-            // MINI PLAYER EN BAS
+            // --- LECTEUR AUDIO (FIXED BOTTOM) ---
             if let Some(track) = current_audio() {
                 div { 
                     style: "position: fixed; bottom: 0; left: 0; width: 100%; height: 90px; background: #181818; border-top: 1px solid #282828; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.5);",
                     
-                    // INFO GAUCHE (Modifié pour la popup)
-                    div { style: "width: 25%; position: relative;", // ⚠️ overflow hidden retiré ici pour laisser dépasser la popup
-                        
-                        // Titre défilant (Lui il garde l'overflow hidden)
+                    // Partie Gauche (Infos)
+                    div { style: "width: 25%; position: relative;",
                         div { class: "marquee-container",
                             div { class: "marquee-text", style: "font-weight: bold; font-size: 1.1rem;",
                                 "{track.title.as_deref().unwrap_or(&track.path)}"
                             }
                         }
-
-                        // Indicateur de Queue (AVEC SURVOL)
                         if !queue().is_empty() {
                             div { 
-                                style: "display: inline-block; cursor: help; position: relative;", // Position relative pour ancrer la popup
-                                
-                                // Événements de survol
+                                style: "display: inline-block; cursor: help; position: relative;",
                                 onmouseenter: move |_| show_queue_popup.set(true),
                                 onmouseleave: move |_| show_queue_popup.set(false),
-
-                                // Le texte
-                                div { 
-                                    style: "color: #3498db; font-size: 0.8rem; margin-top: 4px; font-weight: bold;", 
-                                    "⏭️ En attente : {queue().len()} titre(s)" 
-                                }
-
-                                // 👇 LA POPUP DE LISTE
+                                div { style: "color: #3498db; font-size: 0.8rem; margin-top: 4px; font-weight: bold;", "⏭️ En attente : {queue().len()} titre(s)" }
                                 if show_queue_popup() {
                                     div {
                                         class: "queue-popup",
-                                        style: "
-                                            position: absolute;
-                                            bottom: 130%; /* Juste au dessus du texte */
-                                            left: 0;
-                                            width: 300px;
-                                            max-height: 400px;
-                                            overflow-y: auto;
-                                            background: #282828;
-                                            border: 1px solid #444;
-                                            border-radius: 8px;
-                                            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
-                                            padding: 10px;
-                                            z-index: 2000;
-                                        ",
+                                        style: "position: absolute; bottom: 130%; left: 0; width: 300px; max-height: 400px; overflow-y: auto; background: #282828; border: 1px solid #444; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.8); padding: 10px; z-index: 2000;",
                                         h4 { style: "margin: 0 0 10px 0; color: #fff; border-bottom: 1px solid #444; padding-bottom: 5px;", "File d'attente" }
-                                        
-                                        // Liste des chansons dans la queue
                                         for (idx, song) in queue().iter().enumerate() {
                                             div { 
                                                 style: "padding: 8px; border-bottom: 1px solid #333; font-size: 0.9rem; color: #ccc; display: flex; gap: 10px;",
@@ -278,19 +540,24 @@ pub fn Music() -> Element {
                                 }
                             }
                         } else {
-                            div { style: "color: #b3b3b3; font-size: 0.9rem; margin-top: 4px;", "{plugin_result.read().text}" }
+                            div { 
+                                    style: "color: #b3b3b3; font-size: 0.9rem; margin-top: 4px;", 
+                                    // On affiche le premier élément de l'historique (le plus récent)
+                                    "{plugin_history().first().cloned().unwrap_or_default()}" 
+                            }
                         }
                     },
 
-                    // LECTEUR CENTRAL
+                    // Partie Centrale (Player HTML5)
                     div { style: "flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;",
                         audio { 
-                            controls: true, 
-                            autoplay: true, 
-                            style: "width: 100%; max-width: 500px; height: 40px; outline: none;",
+                            controls: true, autoplay: true, style: "width: 100%; max-width: 500px; height: 40px; outline: none;",
                             src: "{make_url(&track.path, &root_path)}",
                             r#loop: play_mode() == PlayMode::Loop,
+                            
+                            // Logique de fin de piste
                             onended: move |_| {
+                                // 1. Priorité à la File d'attente
                                 if !queue().is_empty() {
                                     let next_song = queue.write().remove(0);
                                     current_audio.set(Some(next_song.clone()));
@@ -298,24 +565,33 @@ pub fn Music() -> Element {
                                     cmd_tx.send(Command::GetArtistMetadataFromPlugin(next_song.path)).unwrap();
                                     return;
                                 }
-
+                                
+                                // 2. Sinon gestion du mode lecture (Sequential, Random...)
+                                // Note: On lit dans la liste filtrée ACTUELLE (donc dans la playlist si active)
                                 let mode = play_mode();
                                 let list = list_signal();
-                                let audios: Vec<&MediaInfo> = list.iter().filter(|i| i.media_type == MediaType::Audio).collect();
                                 
+                                // On filtre selon ce qui est affiché à l'écran
+                                let audios: Vec<&MediaInfo> = list.iter()
+                                    .filter(|i| i.media_type == MediaType::Audio)
+                                    // On applique le même filtre que l'affichage pour la suite logique
+                                    .filter(|i| {
+                                        if active_playlist_name().is_some() {
+                                            loaded_ids_signal().contains(&i.id)
+                                        } else { true }
+                                    })
+                                    .collect();
+
                                 match mode {
                                     PlayMode::StopAtEnd => current_audio.set(None),
-                                    PlayMode::Loop => {},
+                                    PlayMode::Loop => {}, // Géré par l'attribut loop HTML
                                     PlayMode::Sequential => {
                                         if let Some(idx) = audios.iter().position(|x| x.id == track.id) {
                                             if idx + 1 < audios.len() {
                                                 let next = audios[idx + 1].clone();
                                                 current_audio.set(Some(next.clone()));
                                                 cmd_tx.send(Command::Play(next.id)).unwrap();
-                                                cmd_tx.send(Command::GetArtistMetadataFromPlugin(next.path)).unwrap();
-                                            } else {
-                                                current_audio.set(None);
-                                            }
+                                            } else { current_audio.set(None); }
                                         }
                                     },
                                     PlayMode::Random => {
@@ -325,15 +601,20 @@ pub fn Music() -> Element {
                                             let next = audios[random_idx].clone();
                                             current_audio.set(Some(next.clone()));
                                             cmd_tx.send(Command::Play(next.id)).unwrap();
-                                            cmd_tx.send(Command::GetArtistMetadataFromPlugin(next.path)).unwrap();
                                         }
                                     }
                                 }
-                            }
+                            },
+                            
+                            // Script pour update la barre de progression DB
+                            script { "
+                                var v = document.getElementById('main-player'); // Assure-toi que l'ID est bon ou utilise 'this'
+                                // ... ton script existant ...
+                            " }
                         }
                     },
 
-                    // BOUTONS DROITE
+                    // Partie Droite (Contrôles)
                     div { style: "width: 25%; display: flex; justify-content: flex-end; align-items: center; gap: 10px;",
                         if !queue().is_empty() {
                             button {
@@ -342,13 +623,11 @@ pub fn Music() -> Element {
                                 "🗑️"
                             }
                         }
-
                         button {
                             style: "background: transparent; border: 1px solid {play_mode().color()}; color: {play_mode().color()}; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: all 0.2s;",
                             onclick: move |_| play_mode.set(play_mode().next()),
                             "{play_mode().icon()}"
                         }
-
                         button {
                             style: "background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; margin-left: 10px;",
                             onclick: move |_| current_audio.set(None),
@@ -695,7 +974,8 @@ pub fn Images() -> Element {
 #[component] 
 pub fn Plugins() -> Element { 
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
-    let plugin_result = use_context::<Signal<PluginSearchResult>>();
+    // On récupère maintenant une liste (Vec) de résultats
+    let plugin_history = use_context::<Signal<Vec<String>>>();
     let mut search_text = use_signal(|| String::from("Nirvana"));
 
     rsx! { 
@@ -705,7 +985,7 @@ pub fn Plugins() -> Element {
                 div { class: "page-title", "PLUGINS" } 
             }
             
-            div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px;",
+            div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px; padding-bottom: 50px;",
                 h2 { "MusicBrainz" }
 
                 div { style: "display: flex; gap: 10px;",
@@ -716,18 +996,33 @@ pub fn Plugins() -> Element {
                     }
                     button { 
                         class: "btn-nav", 
-                        style: "position: relative; transform: none; top: auto; left: auto;",
+                        style: "position: relative; transform: none; top: auto; left: auto; background: #007acc;",
                         onclick: move |_| {
-                            cmd_tx.send(Command::GetArtistMetadataFromPlugin(search_text())).unwrap();
+                            if !search_text().is_empty() {
+                                cmd_tx.send(Command::GetArtistMetadataFromPlugin(search_text())).unwrap();
+                            }
                         },
                         "🔍 Rechercher"
                     }
                 }
 
-                div { style: "background: #1e1e1e; padding: 20px; border-radius: 8px; border: 1px solid #333; max-width: 600px; width: 80%; min-height: 100px;",
-                    h3 { style: "margin-top: 0; color: #aaa; font-size: 1rem;", "Résultat du plugin :" }
-                    pre { style: "color: #007acc; white-space: pre-wrap; font-family: monospace; font-size: 1.1rem;",
-                        "{plugin_result().text}"
+                // Zone des résultats (Historique)
+                div { style: "width: 80%; max-width: 800px; display: flex; flex-direction: column; gap: 20px;",
+                    if plugin_history().is_empty() {
+                        div { style: "text-align: center; color: #666; font-style: italic; margin-top: 20px;", 
+                            "Aucune recherche pour le moment..." 
+                        }
+                    }
+
+                    for res in plugin_history().iter() {
+                        div { 
+                            style: "background: #1e1e1e; padding: 20px; border-radius: 8px; border: 1px solid #333; border-left: 5px solid #007acc; box-shadow: 0 4px 10px rgba(0,0,0,0.3);",
+                            h3 { style: "margin-top: 0; color: #aaa; font-size: 0.9rem; text-transform: uppercase;", "Résultat trouvé :" }
+                            pre { 
+                                style: "color: #eee; white-space: pre-wrap; font-family: 'Consolas', monospace; font-size: 1rem; margin: 0;",
+                                "{res}"
+                            }
+                        }
                     }
                 }
             }

@@ -75,6 +75,8 @@ pub enum Command {
     */
 
     GetArtistMetadataFromPlugin(String), // artist name
+    GetfilmMetadataFromPlugin(String), // artist name
+    GetPluginHistory,
 
 }
 

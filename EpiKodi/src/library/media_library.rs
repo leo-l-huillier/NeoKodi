@@ -70,12 +70,18 @@ impl MediaLibrary {
     
         
         for row in self.database.media_rows.iter() {
-
             let media: Box<dyn Media> = match row.media_type {
-                MediaType::Audio => Box::new(Audio::new(&row.path,&row.title.as_deref().unwrap_or(""))),
-                MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""), row.last_position as f32, row.duration.unwrap_or(0.0))),
-                MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))), };
-
+                
+                MediaType::Audio => Box::new(Audio::new(
+                    row.id, 
+                    &row.path, 
+                    &row.title.as_deref().unwrap_or(""),
+                    row.last_position
+                )),
+                
+                MediaType::Video => Box::new(Video::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""), row.last_position, row.duration.unwrap_or(0.0))),
+                MediaType::Image => Box::new(Image::new(row.id, &row.path, &row.title.as_deref().unwrap_or(""))), 
+            };
             self.items.insert(row.id, media);
         }
 
@@ -115,6 +121,7 @@ impl MediaLibrary {
     }
 
     pub fn add_media_to_playlist(&mut self, media_id: i64, playlist_id: i64) {
+        println!("📚 [LIB] Appel DB pour ajout {} -> {}", media_id, playlist_id); // DEBUG
 
         let logger = Logger::new(LOG_FILE);
 
