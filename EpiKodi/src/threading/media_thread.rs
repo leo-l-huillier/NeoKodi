@@ -222,7 +222,7 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     let lib = lib_thread.lock().unwrap();
                     if let Ok(history) = lib.database.get_all_artist_metadata() {
                         for entry in history {
-                            evt_tx.send(Event::ArtistInfoReceived(entry)).unwrap();
+                            evt_tx.send(Event::PluginDataReceived(entry)).unwrap();
                         }
                     }
                 },
@@ -232,20 +232,20 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
                     let history = lib.database.get_all_artist_metadata().unwrap_or_default();
                     
                     if let Some(cached) = history.iter().find(|h| h.contains(&name)) {
-                        evt_tx.send(Event::ArtistInfoReceived(cached.clone())).unwrap();
+                        evt_tx.send(Event::PluginDataReceived(cached.clone())).unwrap();
                     } else {
                         drop(lib);
                         let response = plugin_manager.get_metadata(name.as_str());
                         
                         let mut lib = lib_thread.lock().unwrap();
                         let _ = lib.database.save_artist_metadata(&name, &response);
-                        evt_tx.send(Event::ArtistInfoReceived(response)).unwrap();
+                        evt_tx.send(Event::PluginDataReceived(response)).unwrap();
                     }
                 }
 
-                Ok(Command::GetfilmMetadataFromPlugin(name)) =>{
-                    let response = plugin_manager.get_film_metadata(name.as_str()); 
-                    evt_tx.send(Event::Data(response.to_string())).unwrap();
+                Ok(Command::GetfilmMetadataFromPlugin(name)) => {
+                    let response = plugin_manager.get_film_metadata(name.as_str());
+                    evt_tx.send(Event::PluginDataReceived(response)).unwrap();
                 }
 
                 Ok(Command::UpdateProgress(id, pos, total_duration)) => {

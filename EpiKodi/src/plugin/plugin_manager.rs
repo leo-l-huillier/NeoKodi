@@ -134,20 +134,26 @@ impl PluginManager {
     }
 
     // Changement ici aussi : on renvoie String
+    // Dans src/plugin/plugin_manager.rs
+
     pub fn get_film_metadata(&mut self, film: &str) -> String {
         let logger = Logger::new(LOG_FILE);
         let c_film = CString::new(film).unwrap();
 
+        // 👇 DEBUG : Combien de plugins de films sont chargés ?
+        println!("🎞️ [MANAGER] Nombre de plugins 'film' chargés : {}", self.film_metadata_libs.len());
+
         for lib in &self.film_metadata_libs {
             unsafe {
-                // Attention : j'ai corrigé le nom de la fonction cherchée ("metadata" -> "metadata" ou "film_metadata" selon ton code C)
-                // Je suppose que ta DLL film expose aussi "metadata" comme point d'entrée
                 let get_film_metadata: Result<Symbol<GetFilmMetadataFunc>, _> = lib.get(b"metadata\0");
 
                 match get_film_metadata {
                     Ok(func) => {
+                        println!("🚀 [MANAGER] Appel de la DLL TMDB pour '{}'...", film);
                         let metadata_ptr = func(c_film.as_ptr());
                         let result = CStr::from_ptr(metadata_ptr).to_str().unwrap_or("Error UTF8");
+                        
+                        println!("📥 [MANAGER] Réponse de la DLL : {}", result);
 
                         if result == "film not found" {
                              continue;
@@ -161,6 +167,7 @@ impl PluginManager {
                 }
             }
         }
+        println!("❌ [MANAGER] Aucun plugin n'a trouvé le film (ou aucun plugin chargé).");
         return "film not found".to_string();
     }
 }

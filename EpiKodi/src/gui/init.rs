@@ -85,7 +85,7 @@ pub fn App() -> Element {
                             Event::PlaylistList(list) => { playlists.set(list); },
                             Event::IDList(ids) => { loaded_ids.set(ids); },
                             
-                            Event::ArtistInfoReceived(info) => {
+                            Event::PluginDataReceived(info) => {
                                 plugin_result.write().insert(0, info);
                             },
 

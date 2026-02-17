@@ -64,7 +64,7 @@ impl Plugin for TMDBMetadata {
     }
 
     fn plugin_type(&self) -> String {
-        "film metadata".to_string()
+        "film_metadata".to_string()
     }
 
     fn metadata(&self, film_name: &str) -> String {
@@ -77,61 +77,57 @@ impl Plugin for TMDBMetadata {
 
 
 fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
-    // Get the movie title from command line
     let movie_query = name;
+    // Vérifie bien que cette clé est valide !
+    let api_key = "94de72cdcd31f017c82bc13fd54979b0"; 
     
-    // Replace this with your actual TMDb API key
-    let api_key = "94de72cdcd31f017c82bc13fd54979b0";
-    println!("Searching for: {}\n", movie_query);
-    
-    // Build the API URL
+    println!("🔍 [TMDB DLL] Recherche lancée pour : '{}'", movie_query);
+
     let url = format!(
-        "https://api.themoviedb.org/3/search/movie?api_key={}&query={}",
+        "https://api.themoviedb.org/3/search/movie?api_key={}&query={}&language=fr-FR", // J'ai ajouté language=fr-FR pour toi ;)
         api_key,
         urlencoding::encode(&movie_query)
     );
-    
-    // Make the HTTP request (blocking version)
+
+    println!("🌍 [TMDB DLL] URL appelée : {}", url); // Attention, ça affiche ta clé API dans la console
+
     let response = reqwest::blocking::get(&url)?;
     
-    if !response.status().is_success() {
-        eprintln!("Error: API request failed with status {}", response.status());
-        std::process::exit(1);
+    // 👇 DEBUG DU STATUS HTTP
+    let status = response.status();
+    println!("📡 [TMDB DLL] Statut HTTP : {}", status);
+
+    if !status.is_success() {
+        println!("❌ [TMDB DLL] Erreur API !");
+        return Ok(format!("Erreur API TMDB: {}", status));
     }
     
-    // Parse the JSON response
-    let search_results: SearchResponse = response.json()?;
-    
-    // Display results
+    // 👇 ON LIT LE JSON BRUT AVANT DE LE PARSER (Crucial pour debug)
+    let raw_body = response.text()?; 
+    println!("📦 [TMDB DLL] Réponse brute : {}", raw_body);
+
+    // On re-parse le JSON depuis la string
+    let search_results: SearchResponse = serde_json::from_str(&raw_body)?;
+
     if search_results.results.is_empty() {
-        return Ok(format!("No movies matching '{}'", movie_query));
+        println!("⚠️ [TMDB DLL] Aucun résultat trouvé dans le JSON.");
+        return Ok(format!("Aucun film trouvé pour '{}'", movie_query));
     } else {
+        println!("✅ [TMDB DLL] {} films trouvés.", search_results.results.len());
+        
         let mut result = String::new();
-        
-        for (index, movie) in search_results.results.iter().take(1).enumerate() {
-            result.push_str(&format!("{}. {}\n", index + 1, movie.title));
+        for (index, movie) in search_results.results.iter().take(1).enumerate() { 
+            result.push_str(&format!("🎬 {} ({})\n", movie.title, movie.release_date.split('-').next().unwrap_or("????")));
+            result.push_str(&format!("⭐ Note: {}/10\n", movie.vote_average));
             
-            // Extract year from release date
-            let year = if !movie.release_date.is_empty() {
-                &movie.release_date[0..4]
+            // Tu peux aussi afficher un synopsis un peu plus long si tu n'as qu'un seul film
+            let overview = if movie.overview.len() > 500 {
+                format!("{}...", &movie.overview[0..500])
             } else {
-                "N/A"
+                movie.overview.clone()
             };
-            
-            let overview = if movie.overview.is_empty() { 
-                "No overview available".to_string() 
-            } else { 
-                movie.overview.clone() 
-            };
-            
-            result.push_str(&format!(
-                "Year: {}, Rating: {}/10\nOverview: {}", 
-                year, 
-                movie.vote_average, 
-                overview
-            ));
+            result.push_str(&format!("📝 {}\n", overview));
         }
-        
         return Ok(result);
     }
 }
