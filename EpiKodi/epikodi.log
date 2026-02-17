@@ -4422,3 +4422,58 @@
 [2026-02-11 18:18:33] [INFO] Scanning sources end
 [2026-02-11 18:18:55] [DEBUG] Playing media ID 42: Strummer Boy.mp3
 [2026-02-11 18:20:54] [DEBUG] Playing media ID 29: From the Slums to the Cities - Yuki Hayashi.mp3
+[2026-02-17 09:07:58] [INFO] Loaded metadata plugin.
+[2026-02-17 09:07:58] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-17 09:07:58] [ERROR] ✗ Unknown plugin type: film metadata
+[2026-02-17 09:07:58] [INFO] Scanning sources ...
+[2026-02-17 09:07:58] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:07:59] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:07:59] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:07:59] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:07:59] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:07:59] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:07:59] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:07:59] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:07:59] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:07:59] [INFO] Scanning sources end
+[2026-02-17 09:08:00] [INFO] Scanning sources ...
+[2026-02-17 09:08:00] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:08:00] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:08:00] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:08:00] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:08:00] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:08:00] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:08:00] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:08:01] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:08:01] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:08:01] [INFO] Scanning sources end
+[2026-02-17 09:08:01] [INFO] Scanning sources ...
+[2026-02-17 09:08:01] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:08:01] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:08:01] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:08:01] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:08:01] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:08:01] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:08:01] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:08:01] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:08:01] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:08:01] [INFO] Scanning sources end
+[2026-02-17 09:08:01] [INFO] Scanning sources ...
+[2026-02-17 09:08:01] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:08:02] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:08:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:08:02] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:08:02] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:08:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:08:02] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 09:08:02] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-17 09:08:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-17 09:08:02] [INFO] Scanning sources end
+[2026-02-17 09:08:26] [DEBUG] Playing media ID 42: Strummer Boy.mp3
+[2026-02-17 09:08:31] [DEBUG] Playing media ID 33: LE SSERAFIM Reveals Uncomfortable Truths in the Hot Seat  Vanity Fair.wav
+[2026-02-17 09:08:34] [DEBUG] Media ID 33 added to Playlist ID 2
+[2026-02-17 09:08:37] [DEBUG] Playing media ID 33: LE SSERAFIM Reveals Uncomfortable Truths in the Hot Seat  Vanity Fair.wav
+[2026-02-17 09:09:07] [DEBUG] Playing media ID 51: 愛密集 i miss you - Shing02  Yakkle.mp3
+[2026-02-17 09:09:19] [DEBUG] Playing media ID 33: LE SSERAFIM Reveals Uncomfortable Truths in the Hot Seat  Vanity Fair.wav
+[2026-02-17 09:09:27] [DEBUG] Playing media ID 51: 愛密集 i miss you - Shing02  Yakkle.mp3
+[2026-02-17 09:09:34] [DEBUG] Playing media ID 33: LE SSERAFIM Reveals Uncomfortable Truths in the Hot Seat  Vanity Fair.wav
