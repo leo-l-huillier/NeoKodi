@@ -20,5 +20,7 @@ copilot-instructions.md
 .DS_Store
 Thumbs.db
 
+# Thrumbnails
+thumbnails/*
 
 /media/

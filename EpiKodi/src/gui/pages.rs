@@ -656,40 +656,29 @@ pub fn Videos() -> Element {
     
     let plugin_history = use_context::<Signal<Vec<String>>>();
     
-    let mut playing_video = use_signal(|| Option::<String>::None);
+    // 👇 On stocke l'objet COMPLET pour garder l'ID sous la main
+    let mut playing_video = use_signal(|| Option::<MediaInfo>::None);
     let mut selected_media = use_signal(|| Option::<MediaInfo>::None);
     let mut search_text = use_signal(|| String::new());
 
-    // --- LOGIQUE D'AFFICHAGE INTELLIGENT (UI) ---
-    // Est-ce que les contrôles (Bouton retour) doivent être visibles ?
     let mut ui_visible = use_signal(|| true);
-    // Un compteur pour gérer le timer (Debounce)
     let mut activity_id = use_signal(|| 0);
     
-    // Fonction appelée quand la souris bouge
+    // ⏱️ NOUVEAU : Signaux pour récupérer le temps en direct du lecteur HTML5
+    let mut current_time = use_signal(|| 0.0f32);
+    let mut current_duration = use_signal(|| 0.0f32);
+    
     let on_mouse_move = move |_| {
-        // 1. On rend l'interface visible
         if !ui_visible() { ui_visible.set(true); }
-        
-        // 2. On incrémente l'ID pour annuler les précédents timers
         let new_id = activity_id() + 1;
         activity_id.set(new_id);
 
-        // 3. On lance un compte à rebours de 3 secondes
         spawn(async move {
-            // On attend 3 secondes (3000ms)
-            // Note: On utilise le sleep de tokio (si dispo) ou std::thread::sleep est déconseillé en async
-            // Ici on utilise une petite astuce compatible Dioxus Desktop :
             tokio::time::sleep(std::time::Duration::from_millis(3000)).await;
-
-            // Si l'ID n'a pas changé (donc pas de nouveau mouvement entre temps)
-            if activity_id() == new_id {
-                ui_visible.set(false);
-            }
+            if activity_id() == new_id { ui_visible.set(false); }
         });
     };
 
-    // On lance le timer une fois au début pour qu'il disparaisse après 3s si on ne touche à rien
     use_hook(move || {
         let new_id = activity_id() + 1;
         activity_id.set(new_id);
@@ -698,7 +687,6 @@ pub fn Videos() -> Element {
             if activity_id() == new_id { ui_visible.set(false); }
         });
     });
-    // --------------------------------------------
     
     let tx_init = cmd_tx.clone();
     use_hook(move || { 
@@ -708,70 +696,20 @@ pub fn Videos() -> Element {
     });
 
     let css_style = "
-        /* --- MODAL STYLE --- */
-        .modal-backdrop {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85); z-index: 2000;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; animation: fadeIn 0.3s forwards;
-            backdrop-filter: blur(5px);
-        }
-        .modal-content {
-            background: #181818; width: 80%; max-width: 900px;
-            border-radius: 10px; overflow: hidden;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            display: flex; flex-direction: column;
-            transform: scale(0.9); animation: popIn 0.3s forwards;
-            border: 1px solid #333;
-        }
+        .modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; animation: fadeIn 0.3s forwards; backdrop-filter: blur(5px); }
+        .modal-content { background: #181818; width: 80%; max-width: 900px; border-radius: 10px; overflow: hidden; box-shadow: 0 0 50px rgba(0,0,0,0.5); display: flex; flex-direction: column; transform: scale(0.9); animation: popIn 0.3s forwards; border: 1px solid #333; }
         @keyframes fadeIn { to { opacity: 1; } }
         @keyframes popIn { to { transform: scale(1); } }
-        
         .modal-header { height: 300px; background-size: cover; background-position: center; position: relative; }
         .modal-gradient { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, #181818, transparent); }
         .modal-body { padding: 40px; color: white; margin-top: -50px; position: relative; z-index: 10; }
-        
-        .btn-play {
-            background: white; color: black; padding: 12px 30px; 
-            font-size: 1.2rem; font-weight: bold; border-radius: 4px;
-            border: none; cursor: pointer; display: flex; align-items: center; gap: 10px;
-            transition: transform 0.2s;
-        }
+        .btn-play { background: white; color: black; padding: 12px 30px; font-size: 1.2rem; font-weight: bold; border-radius: 4px; border: none; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: transform 0.2s; }
         .btn-play:hover { transform: scale(1.05); background: #ddd; }
-
-        .close-btn {
-            position: absolute; top: 20px; right: 20px;
-            background: rgba(0,0,0,0.5); color: white; border-radius: 50%;
-            width: 40px; height: 40px; border: 2px solid white;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 3000; font-size: 20px;
-        }
+        .close-btn { position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.5); color: white; border-radius: 50%; width: 40px; height: 40px; border: 2px solid white; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3000; font-size: 20px; }
         .close-btn:hover { background: white; color: black; }
-
-        .card-text {
-            width: 100%; padding: 0 10px 10px 10px;
-            font-size: 0.9rem; text-align: center; white-space: nowrap;
-            overflow: hidden; text-overflow: ellipsis; box-sizing: border-box;
-        }
-
-        .page-title-centered {
-            position: absolute; left: 50%; transform: translateX(-50%);
-            font-size: 1.5rem; font-weight: bold; text-transform: uppercase;
-            letter-spacing: 2px; pointer-events: none;
-        }
-
-        /* --- UI JOUEUR --- */
-        .player-ui {
-            position: absolute; top: 0; left: 0; 
-            width: 100%; height: 100px;
-            z-index: 10000;
-            display: flex; align-items: center; padding-left: 20px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-            transition: opacity 0.5s ease-in-out;
-            pointer-events: none; /* Laisse passer les clics si invisible */
-        }
-        
-        /* Quand l'UI est active, on active les clics */
+        .card-text { width: 100%; padding: 0 10px 10px 10px; font-size: 0.9rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-sizing: border-box; }
+        .page-title-centered { position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.5rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; pointer-events: none; }
+        .player-ui { position: absolute; top: 0; left: 0; width: 100%; height: 100px; z-index: 10000; display: flex; align-items: center; padding-left: 20px; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); transition: opacity 0.5s ease-in-out; pointer-events: none; }
         .player-ui.visible { opacity: 1; pointer-events: auto; }
         .player-ui.hidden { opacity: 0; }
     ";
@@ -781,34 +719,104 @@ pub fn Videos() -> Element {
 
         div { class: "container",
             
-            // 1. LE LECTEUR VIDÉO (Plein écran)
-            if let Some(path) = playing_video() {
+            // ==========================================
+            // 1. LE LECTEUR VIDÉO
+            // ==========================================
+            if let Some(media) = playing_video() {
                 div { 
-                    // CORRECTION BARRE TACHES : box-sizing et hauteur fixe
                     style: "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: black; z-index: 9999; display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box;",
-                    
-                    // On détecte le mouvement sur TOUT l'écran
                     onmousemove: on_mouse_move,
 
-                    // --- ZONE BOUTON RETOUR (Dynamique) ---
+                    // --- ZONE BOUTON RETOUR ---
                     div { 
                         class: if ui_visible() { "player-ui visible" } else { "player-ui hidden" },
-                        button { class: "btn-nav", onclick: move |_| playing_video.set(None), "⬅ Retour" }
+                        
+                        button { 
+                            class: "btn-nav", 
+                            onclick: {
+                                let tx = cmd_tx.clone();
+                                let mut list_sig = list_signal.clone();
+                                move |_| {
+                                    let time = current_time();
+                                    let dur = current_duration();
+                                    
+                                    // 💾 1. On envoie au backend (SQLite sera mis à jour direct)
+                                    tx.send(Command::UpdateProgress(media.id, time, dur)).unwrap();
+                                    
+                                    // 🚀 2. On met à jour la mémoire locale pour voir la barre rouge changer IMMÉDIATEMENT
+                                    if let Some(m) = list_sig.write().iter_mut().find(|i| i.id == media.id) {
+                                        m.last_position = time;
+                                        if dur > 0.0 { m.duration = Some(dur); }
+                                    }
+                                    
+                                    playing_video.set(None);
+                                    current_time.set(0.0);
+                                    current_duration.set(0.0);
+                                }
+                            }, 
+                            "⬅ Retour" 
+                        }
                     },
 
+                    // 📡 INPUT INVISIBLE (Sert de pont entre le Javascript du lecteur et Rust)
+                    input {
+                        id: "neokodi-time-tracker",
+                        r#type: "hidden",
+                        oninput: move |evt| {
+                            if let Some((t, d)) = evt.value().split_once(',') {
+                                if let (Ok(time), Ok(dur)) = (t.parse::<f32>(), d.parse::<f32>()) {
+                                    current_time.set(time);
+                                    current_duration.set(dur);
+                                }
+                            }
+                        }
+                    }
+
+                    // --- LE LECTEUR ---
                     div { 
-                        // CORRECTION BARRE TACHES : Petit padding-bottom pour remonter les contrôles
                         style: "flex: 1; display: flex; align-items: center; justify-content: center; background: black; width: 100%; height: 100%; padding-bottom: 5px;",
                         {
-                            let url = make_url(&path, &root_path);
+                            let mut url = make_url(&media.path, &root_path);
+                            // 🚀 L'ASTUCE : On ajoute #t=Secondes pour que la vidéo reprenne direct
+                            if media.last_position > 2.0 {
+                                url = format!("{}#t={}", url, media.last_position);
+                            }
+                            
                             rsx! {
-                                video { src: "{url}", controls: true, autoplay: true, style: "width: 100%; height: 100%; object-fit: contain;" }
+                                video { 
+                                    id: "neokodi-player",
+                                    src: "{url}", 
+                                    controls: true, 
+                                    autoplay: true, 
+                                    style: "width: 100%; height: 100%; object-fit: contain;" 
+                                }
+                                
+                                // 🧠 SCRIPT AVEC LES ACCOLADES DOUBLÉES POUR NE PAS CRASHER RUST
+                                script {
+                                    "
+                                    setTimeout(function() {{
+                                        var v = document.getElementById('neokodi-player');
+                                        var i = document.getElementById('neokodi-time-tracker');
+                                        if(v && i) {{
+                                            v.ontimeupdate = function() {{
+                                                if(!isNaN(v.duration)) {{
+                                                    i.value = v.currentTime + ',' + v.duration;
+                                                    i.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                                                }}
+                                            }};
+                                        }}
+                                    }}, 500);
+                                    "
+                                }
                             }
                         }
                     }
                 }
             } 
-            // 2. LA GRILLE
+            
+            // ==========================================
+            // 2. LA GRILLE DE VIDÉOS
+            // ==========================================
             else {
                 div { class: "top-bar", 
                     style: "display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 20px; position: relative;",
@@ -825,32 +833,56 @@ pub fn Videos() -> Element {
                 }
                 
                 div { class: "media-grid",
-                    for item in list_signal().iter().filter(|i| i.media_type == MediaType::Video)
-                        .filter(|i| { let q = search_text().to_lowercase(); if q.is_empty() { return true; } i.title.as_deref().unwrap_or(&i.path).to_lowercase().contains(&q) }) 
+                    for item in list_signal().iter().filter(|i| i.media_type == MediaType::Video).filter(|i| { let q = search_text().to_lowercase(); if q.is_empty() { return true; } i.title.as_deref().unwrap_or(&i.path).to_lowercase().contains(&q) }) 
                     {
-                        div { 
-                            class: "media-card",
-                            title: "{item.title.as_deref().unwrap_or(&item.path)}",
-                            onclick: { 
-                                let selected = item.clone();
-                                let tx = cmd_tx.clone();
-                                let raw_title = item.title.as_deref().unwrap_or(&item.path);
-                                let clean_title = std::path::Path::new(raw_title).file_stem().and_then(|s| s.to_str()).unwrap_or(raw_title).to_string();
-                                let mut history = plugin_history.clone();
-                                move |_| { 
-                                    history.write().insert(0, "Chargement des infos...".to_string());
-                                    selected_media.set(Some(selected.clone()));
-                                    tx.send(Command::GetfilmMetadataFromPlugin(clean_title.clone())).unwrap();
-                                } 
-                            },
-                            div { class: "card-icon", "🎬" }
-                            div { class: "card-text", "{item.title.as_deref().unwrap_or(&item.path)}" }
+                        {
+                            let last_pos = item.last_position;
+                            let dur = item.duration.unwrap_or(0.0);
+                            
+                            let progress = if dur > 0.0 { (last_pos / dur) * 100.0 } else { 0.0 };
+                            let is_started = last_pos > 5.0;
+
+                            rsx! {
+                                div { 
+                                    class: "media-card",
+                                    title: "{item.title.as_deref().unwrap_or(&item.path)}",
+                                    style: "position: relative; overflow: hidden; display: flex; flex-direction: column;",
+                                    
+                                    onclick: { 
+                                        let selected = item.clone();
+                                        let tx = cmd_tx.clone();
+                                        let raw_title = item.title.as_deref().unwrap_or(&item.path);
+                                        let clean_title = std::path::Path::new(raw_title).file_stem().and_then(|s| s.to_str()).unwrap_or(raw_title).to_string();
+                                        let mut history = plugin_history.clone();
+                                        move |_| { 
+                                            history.write().insert(0, "Chargement des infos...".to_string());
+                                            selected_media.set(Some(selected.clone()));
+                                            tx.send(Command::GetfilmMetadataFromPlugin(clean_title.clone())).unwrap();
+                                        } 
+                                    },
+                                    
+                                    div { class: "card-icon", "🎬" }
+                                    div { class: "card-text", "{item.title.as_deref().unwrap_or(&item.path)}" }
+                                    
+                                    if progress > 0.0 { 
+                                        div { style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 8px; background: rgba(0,0,0,0.8); z-index: 50;", 
+                                            div { style: "height: 100%; background: #e50914; width: {progress.max(2.0):.1}%;" } 
+                                        } 
+                                    } else if is_started { 
+                                        div { style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 8px; background: rgba(0,0,0,0.8); z-index: 50;", 
+                                            div { style: "height: 100%; background: #3498db; width: 100%;" } 
+                                        } 
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
 
+            // ==========================================
             // 3. LE POPUP NETFLIX
+            // ==========================================
             if let Some(media) = selected_media() {
                 div { 
                     class: "modal-backdrop",
@@ -858,11 +890,15 @@ pub fn Videos() -> Element {
                     div { 
                         class: "modal-content",
                         onclick: move |evt| evt.stop_propagation(), 
-                        div { 
-                            class: "modal-header",
-                            style: "background-image: linear-gradient(to bottom, #444, #181818);", 
-                            div { class: "close-btn", onclick: move |_| selected_media.set(None), "✕" }
-                            div { class: "modal-gradient" }
+                        {
+                            let thumb_url = make_url(&media.path, &root_path).replace("/drives/", "/thumbnail/");
+                            rsx! {
+                                div { 
+                                    class: "modal-header",
+                                    style: "background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), #181818), url('{thumb_url}'); background-size: cover; background-position: center; position: relative;", 
+                                    div { class: "close-btn", onclick: move |_| selected_media.set(None), "✕" }
+                                }
+                            }
                         }
                         div { class: "modal-body",
                             h1 { style: "font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 4px black;", 
@@ -873,7 +909,8 @@ pub fn Videos() -> Element {
                                     class: "btn-play",
                                     onclick: move |_| {
                                         let id = media.id;
-                                        playing_video.set(Some(media.path.clone()));
+                                        // 👇 CORRECTION : On passe l'objet média et non plus juste le path !
+                                        playing_video.set(Some(media.clone()));
                                         selected_media.set(None);
                                         cmd_tx.send(Command::Play(id)).unwrap();
                                     },
@@ -899,8 +936,12 @@ pub fn Videos() -> Element {
 pub fn Images() -> Element {
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
     let list_signal = use_context::<Signal<Vec<MediaInfo>>>();
-    let mut current_image = use_signal(|| Option::<String>::None);
     
+    // 👇 NOUVEAU : On récupère le root_path pour générer les URLs locales via Warp
+    let root_path_signal = use_context::<Signal<String>>();
+    let root_path = root_path_signal();
+    
+    let mut current_image = use_signal(|| Option::<String>::None);
     let mut search_text = use_signal(|| String::new());
 
     let tx_init = cmd_tx.clone();
@@ -908,29 +949,29 @@ pub fn Images() -> Element {
 
     rsx! {
         div { class: "container",
-            if let Some(data) = current_image() {
-                div { style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
-                    div { style: "height: 60px; padding: 10px;",
-                        button { class: "btn-nav", style: "position: relative; top: 0; left: 0; transform: none;", onclick: move |_| current_image.set(None), "Fermer" }
+            
+            // 1. VUE PLEIN ÉCRAN
+            if let Some(url) = current_image() {
+                div { 
+                    style: "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 9999; display: flex; flex-direction: column;",
+                    
+                    div { style: "height: 60px; padding: 10px; position: absolute; z-index: 10000;",
+                        button { class: "btn-nav", style: "position: relative; top: 0; left: 0; transform: none;", onclick: move |_| current_image.set(None), "⬅ Retour" }
                     }
-                    div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;",
-                         img { src: "{data}", style: "max-width: 100%; max-height: 100%; object-fit: contain;" }
+                    
+                    div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 40px;",
+                         img { src: "{url}", style: "max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8);" }
                     }
                 }
             } 
+            // 2. GRILLE D'IMAGES
             else {
                 div { class: "top-bar", 
                     style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
 
-                    div { style: "z-index: 2;",
-                        Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }
-                    }
-
-                    div { 
-                        class: "page-title", 
-                        style: "position: absolute; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;",
-                        "Images" 
-                    } 
+                    div { style: "z-index: 2;", Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" } }
+                    
+                    div { class: "page-title-centered", "Images" } 
 
                     div { style: "z-index: 2;",
                         input {
@@ -948,23 +989,44 @@ pub fn Images() -> Element {
                         .filter(|i| {
                             let query = search_text().to_lowercase();
                             if query.is_empty() { return true; }
-                            let name = i.title.as_deref().unwrap_or(&i.path).to_lowercase();
-                            name.contains(&query)
+                            i.title.as_deref().unwrap_or(&i.path).to_lowercase().contains(&query)
                         })
                     {
-                        div { class: "media-card",
-                            onclick: {
-                                let p=item.path.clone(); let i=item.id; let tx=cmd_tx.clone();
-                                move |_| { 
-                                    if let Ok(bytes) = fs::read(&p) {
-                                        let b64 = general_purpose::STANDARD.encode(&bytes);
-                                        current_image.set(Some(format!("data:image/png;base64,{}", b64)));
+                        {
+                            // On génère la vraie URL servie par Warp
+                            let url = make_url(&item.path, &root_path);
+                            
+                            rsx! {
+                                div { 
+                                    class: "media-card",
+                                    title: "{item.title.as_deref().unwrap_or(&item.path)}",
+                                    // Style spécifique : on enlève le padding pour que l'image prenne toute la carte
+                                    style: "padding: 0; overflow: hidden; position: relative; min-height: 200px; border: none;",
+                                    
+                                    onclick: {
+                                        let u = url.clone(); 
+                                        let i = item.id; 
+                                        let tx = cmd_tx.clone();
+                                        move |_| { 
+                                            // 🚀 FINI LE BASE64 LOURD ! On passe juste l'URL. Le navigateur s'occupe du reste.
+                                            current_image.set(Some(u.clone()));
+                                            tx.send(Command::Play(i)).unwrap();
+                                        }
+                                    },
+                                    
+                                    // La miniature (en fond pour gérer le ratio "cover" sans déformer)
+                                    div {
+                                        style: "width: 100%; height: 100%; background-image: url('{url}'); background-size: cover; background-position: center; transition: transform 0.3s;"
                                     }
-                                    tx.send(Command::Play(i)).unwrap();
+                                    
+                                    // Le texte avec un léger flou de fond (Glassmorphism) pour toujours être lisible
+                                    div { 
+                                        class: "card-text", 
+                                        style: "position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.7); padding: 10px; margin: 0; backdrop-filter: blur(5px); font-size: 0.85rem;", 
+                                        "{item.title.as_deref().unwrap_or(&item.path)}" 
+                                    }
                                 }
-                            },
-                            div { class: "card-icon", "🖼️" }
-                            div { class: "card-text", style: "overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;", "{item.title.as_deref().unwrap_or(&item.path)}" }
+                            }
                         }
                     }
                 }

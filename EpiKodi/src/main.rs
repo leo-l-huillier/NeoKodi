@@ -28,6 +28,8 @@ use dioxus::desktop::{Config, WindowBuilder};
 
 use warp::Filter;
 use tokio::sync::broadcast;
+use warp::Reply;
+
 
 fn main() {
     let logger = Logger::new(LOG_FILE);
@@ -84,19 +86,83 @@ fn main() {
                 
                 let log = warp::log("warp::server");
 
-                let routes = base_route
+                let thumbnail_route = warp::path("thumbnail")
+                    .and(warp::path::param())
+                    .and(warp::path::tail())
+                    .and_then(|drive_letter: String, tail: warp::path::Tail| async move {
+                        let raw_path = tail.as_str();
+                        let decoded_path = match urlencoding::decode(raw_path) {
+                            Ok(p) => p.to_string(),
+                            Err(_) => raw_path.to_string(),
+                        };
+                        let full_path = format!("{}:\\{}", drive_letter, decoded_path.replace("/", "\\"));
+
+                        let _ = std::fs::create_dir_all("thumbnails_cache");
+                        let safe_name = full_path.replace("\\", "_").replace(":", "_").replace(" ", "_");
+                        let cache_path = format!("thumbnails_cache/{}.jpg", safe_name);
+
+                        // Génération par FFmpeg si l'image n'existe pas
+                        if !std::path::Path::new(&cache_path).exists() {
+                            println!("🎬 Génération miniature pour : {}", full_path);
+                            
+                            // On extrait l'image à 1 minute (00:01:00) au lieu de 10 min
+                            let output = std::process::Command::new(".\\ffmpeg.exe")
+                                .args([
+                                    "-ss", "00:01:00", 
+                                    "-i", &full_path,
+                                    "-frames:v", "1",
+                                    "-q:v", "2",
+                                    "-y", 
+                                    &cache_path
+                                ])
+                                .output();
+                            
+                            // LOGS DE DEBUGGING POUR FFMPEG
+                            match output {
+                                Ok(out) => {
+                                    if !out.status.success() {
+                                        println!("❌ Erreur FFmpeg : {}", String::from_utf8_lossy(&out.stderr));
+                                    } else {
+                                        println!("✅ Miniature générée avec succès.");
+                                    }
+                                },
+                                Err(e) => println!("❌ Impossible de lancer ffmpeg.exe : {}", e),
+                            }
+                        }
+
+                        // On lit le fichier généré et on crée la réponse HTTP
+                        if let Ok(image_data) = std::fs::read(&cache_path) {
+                            let response = warp::http::Response::builder()
+                                .header("Content-Type", "image/jpeg")
+                                .body(image_data)
+                                .unwrap();
+                            Ok(response)
+                        } else {
+                            Err(warp::reject::not_found())
+                        }
+                    });
+                
+                
+                let file_routes = base_route
                     .or(final_drives_route)
                     .unify()
-                    .with(cors)
-                    .with(log);
+                    .map(|f: warp::fs::File| f.into_response());
 
                 println!("🚀 SERVEUR PRÊT sur http://127.0.0.1:3030");
+                let thumb_route = thumbnail_route
+                    .map(|r: warp::http::Response<Vec<u8>>| r.into_response());
+                
+                let routes = file_routes
+                    .or(thumb_route)
+                    .unify() 
+                    .with(cors)
+                    .with(log);
 
                 let (_addr, server) = warp::serve(routes)
                     .bind_with_graceful_shutdown(([127, 0, 0, 1], 3030), async move {
                         let _ = rx.recv().await;
                     });
-
+                
                 server.await;
                 println!("🔄 SERVEUR : Redémarrage...");
                 tokio::time::sleep(Duration::from_millis(1000)).await;

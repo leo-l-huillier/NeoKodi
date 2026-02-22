@@ -5462,3 +5462,922 @@
 [2026-02-17 18:03:18] [INFO] Scanning sources end
 [2026-02-17 18:03:25] [DEBUG] Playing media ID 99: la Princesse mononoké.mp4
 [2026-02-17 18:03:25] [DEBUG] Playing video: la Princesse mononoké.mp4
+[2026-02-17 23:28:04] [INFO] Loaded metadata plugin.
+[2026-02-17 23:28:04] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-17 23:28:04] [INFO] Loaded film metadata plugin.
+[2026-02-17 23:28:04] [INFO] Scanning sources ...
+[2026-02-17 23:28:04] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:05] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:05] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:06] [INFO] Scanning sources end
+[2026-02-17 23:28:06] [INFO] Scanning sources ...
+[2026-02-17 23:28:06] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:06] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:06] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:07] [INFO] Scanning sources end
+[2026-02-17 23:28:07] [INFO] Scanning sources ...
+[2026-02-17 23:28:07] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:07] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:08] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:08] [INFO] Scanning sources end
+[2026-02-17 23:28:08] [INFO] Scanning sources ...
+[2026-02-17 23:28:08] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:08] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:09] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:09] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:09] [INFO] Scanning sources end
+[2026-02-17 23:28:11] [DEBUG] Playing media ID 151: BigBuckBunny_320x180.mp4
+[2026-02-17 23:28:11] [DEBUG] Playing video: BigBuckBunny_320x180.mp4
+[2026-02-17 23:28:52] [INFO] Loaded metadata plugin.
+[2026-02-17 23:28:52] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-17 23:28:52] [INFO] Loaded film metadata plugin.
+[2026-02-17 23:28:52] [INFO] Scanning sources ...
+[2026-02-17 23:28:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:53] [INFO] Scanning sources end
+[2026-02-17 23:28:53] [INFO] Scanning sources ...
+[2026-02-17 23:28:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:54] [INFO] Scanning sources end
+[2026-02-17 23:28:55] [INFO] Scanning sources ...
+[2026-02-17 23:28:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:56] [INFO] Scanning sources end
+[2026-02-17 23:28:56] [INFO] Scanning sources ...
+[2026-02-17 23:28:56] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:56] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:57] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:28:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:28:57] [INFO] Scanning sources end
+[2026-02-17 23:30:42] [DEBUG] Playing media ID 151: BigBuckBunny_320x180.mp4
+[2026-02-17 23:30:42] [DEBUG] Playing video: BigBuckBunny_320x180.mp4
+[2026-02-17 23:35:53] [INFO] Loaded metadata plugin.
+[2026-02-17 23:35:53] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-17 23:35:53] [INFO] Loaded film metadata plugin.
+[2026-02-17 23:35:53] [INFO] Scanning sources ...
+[2026-02-17 23:35:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:54] [INFO] Scanning sources end
+[2026-02-17 23:35:54] [INFO] Scanning sources ...
+[2026-02-17 23:35:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:54] [INFO] Scanning sources end
+[2026-02-17 23:35:54] [INFO] Scanning sources ...
+[2026-02-17 23:35:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:55] [INFO] Scanning sources end
+[2026-02-17 23:35:55] [INFO] Scanning sources ...
+[2026-02-17 23:35:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:35:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:35:55] [INFO] Scanning sources end
+[2026-02-17 23:35:58] [DEBUG] Playing media ID 153: PXL_20240926_115444734.mp4
+[2026-02-17 23:35:58] [DEBUG] Playing video: PXL_20240926_115444734.mp4
+[2026-02-17 23:36:07] [DEBUG] Playing media ID 151: BigBuckBunny_320x180.mp4
+[2026-02-17 23:36:07] [DEBUG] Playing video: BigBuckBunny_320x180.mp4
+[2026-02-17 23:37:10] [INFO] Loaded metadata plugin.
+[2026-02-17 23:37:10] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-17 23:37:10] [INFO] Loaded film metadata plugin.
+[2026-02-17 23:37:10] [INFO] Scanning sources ...
+[2026-02-17 23:37:10] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:10] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:10] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:10] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:10] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:10] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:10] [INFO] Scanning sources end
+[2026-02-17 23:37:10] [INFO] Scanning sources ...
+[2026-02-17 23:37:10] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:10] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning sources end
+[2026-02-17 23:37:11] [INFO] Scanning sources ...
+[2026-02-17 23:37:11] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning sources end
+[2026-02-17 23:37:11] [INFO] Scanning sources ...
+[2026-02-17 23:37:11] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:11] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:12] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:12] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:12] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:12] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:12] [INFO] Scanning sources end
+[2026-02-17 23:37:18] [DEBUG] Playing media ID 190: iron man.mp4
+[2026-02-17 23:37:18] [DEBUG] Playing video: iron man.mp4
+[2026-02-17 23:37:26] [DEBUG] Playing media ID 191: princesse mononoké.mp4
+[2026-02-17 23:37:26] [DEBUG] Playing video: princesse mononoké.mp4
+[2026-02-17 23:37:52] [INFO] Loaded metadata plugin.
+[2026-02-17 23:37:52] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-17 23:37:52] [INFO] Loaded film metadata plugin.
+[2026-02-17 23:37:52] [INFO] Scanning sources ...
+[2026-02-17 23:37:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:52] [INFO] Scanning sources end
+[2026-02-17 23:37:52] [INFO] Scanning sources ...
+[2026-02-17 23:37:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:53] [INFO] Scanning sources end
+[2026-02-17 23:37:53] [INFO] Scanning sources ...
+[2026-02-17 23:37:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:53] [INFO] Scanning sources end
+[2026-02-17 23:37:53] [INFO] Scanning sources ...
+[2026-02-17 23:37:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-17 23:37:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-17 23:37:54] [INFO] Scanning sources end
+[2026-02-17 23:37:58] [DEBUG] Playing media ID 190: iron man.mp4
+[2026-02-17 23:37:58] [DEBUG] Playing video: iron man.mp4
+[2026-02-17 23:38:06] [DEBUG] Playing media ID 182: p4.png
+[2026-02-17 23:38:06] [DEBUG] Playing image: p4.png
+[2026-02-17 23:38:10] [DEBUG] Playing media ID 102: 5AM _From _Animal Crossing_ New Horizons_ _Piano Version_ - Masters of Sound.mp3
+[2026-02-17 23:38:19] [DEBUG] Playing media ID 119: fresco01_piece03_detailed.mp3
+[2026-02-22 16:44:50] [INFO] Loaded metadata plugin.
+[2026-02-22 16:44:50] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 16:44:50] [INFO] Loaded film metadata plugin.
+[2026-02-22 16:44:50] [INFO] Scanning sources ...
+[2026-02-22 16:44:50] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:50] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:51] [INFO] Scanning sources end
+[2026-02-22 16:44:52] [INFO] Scanning sources ...
+[2026-02-22 16:44:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:53] [INFO] Scanning sources end
+[2026-02-22 16:44:53] [INFO] Scanning sources ...
+[2026-02-22 16:44:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:54] [INFO] Scanning sources end
+[2026-02-22 16:44:54] [INFO] Scanning sources ...
+[2026-02-22 16:44:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:44:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:44:55] [INFO] Scanning sources end
+[2026-02-22 16:45:03] [DEBUG] Playing media ID 190: iron man.mp4
+[2026-02-22 16:45:03] [DEBUG] Playing video: iron man.mp4
+[2026-02-22 16:45:08] [DEBUG] Playing media ID 191: princesse mononoké.mp4
+[2026-02-22 16:45:08] [DEBUG] Playing video: princesse mononoké.mp4
+[2026-02-22 16:45:12] [DEBUG] Playing media ID 154: VID20240209113824.mp4
+[2026-02-22 16:45:12] [DEBUG] Playing video: VID20240209113824.mp4
+[2026-02-22 16:48:48] [INFO] Loaded metadata plugin.
+[2026-02-22 16:48:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 16:48:48] [INFO] Loaded film metadata plugin.
+[2026-02-22 16:48:48] [INFO] Scanning sources ...
+[2026-02-22 16:48:48] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:48] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:49] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:49] [INFO] Scanning sources end
+[2026-02-22 16:48:49] [INFO] Scanning sources ...
+[2026-02-22 16:48:49] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:50] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:50] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:50] [INFO] Scanning sources end
+[2026-02-22 16:48:50] [INFO] Scanning sources ...
+[2026-02-22 16:48:50] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:51] [INFO] Scanning sources end
+[2026-02-22 16:48:51] [INFO] Scanning sources ...
+[2026-02-22 16:48:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 16:48:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 16:48:53] [INFO] Scanning sources end
+[2026-02-22 17:16:44] [INFO] Loaded metadata plugin.
+[2026-02-22 17:16:44] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 17:16:44] [INFO] Loaded film metadata plugin.
+[2026-02-22 17:16:44] [INFO] Scanning sources ...
+[2026-02-22 17:16:44] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:44] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:44] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:44] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:45] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:45] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:45] [INFO] Scanning sources end
+[2026-02-22 17:16:45] [INFO] Scanning sources ...
+[2026-02-22 17:16:45] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:45] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:45] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:45] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:46] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:46] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:46] [INFO] Scanning sources end
+[2026-02-22 17:16:46] [INFO] Scanning sources ...
+[2026-02-22 17:16:46] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:46] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:46] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:46] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:47] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:47] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:47] [INFO] Scanning sources end
+[2026-02-22 17:16:47] [INFO] Scanning sources ...
+[2026-02-22 17:16:47] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:47] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:48] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:48] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:16:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:16:48] [INFO] Scanning sources end
+[2026-02-22 17:20:15] [INFO] Loaded metadata plugin.
+[2026-02-22 17:20:15] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 17:20:15] [INFO] Loaded film metadata plugin.
+[2026-02-22 17:20:15] [INFO] Scanning sources ...
+[2026-02-22 17:20:15] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:16] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:16] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:16] [INFO] Scanning sources end
+[2026-02-22 17:20:16] [INFO] Scanning sources ...
+[2026-02-22 17:20:16] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:17] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:17] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:17] [INFO] Scanning sources end
+[2026-02-22 17:20:17] [INFO] Scanning sources ...
+[2026-02-22 17:20:17] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:18] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:18] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:18] [INFO] Scanning sources end
+[2026-02-22 17:20:19] [INFO] Scanning sources ...
+[2026-02-22 17:20:19] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:19] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:19] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:19] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:20] [INFO] Scanning sources end
+[2026-02-22 17:20:52] [INFO] Loaded metadata plugin.
+[2026-02-22 17:20:52] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 17:20:52] [INFO] Loaded film metadata plugin.
+[2026-02-22 17:20:52] [INFO] Scanning sources ...
+[2026-02-22 17:20:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:53] [INFO] Scanning sources end
+[2026-02-22 17:20:53] [INFO] Scanning sources ...
+[2026-02-22 17:20:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:54] [INFO] Scanning sources end
+[2026-02-22 17:20:54] [INFO] Scanning sources ...
+[2026-02-22 17:20:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:56] [INFO] Scanning sources end
+[2026-02-22 17:20:56] [INFO] Scanning sources ...
+[2026-02-22 17:20:56] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:56] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:56] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:20:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:20:57] [INFO] Scanning sources end
+[2026-02-22 17:22:04] [INFO] Scanning sources ...
+[2026-02-22 17:22:04] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:04] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:05] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:05] [INFO] Scanning sources end
+[2026-02-22 17:22:19] [DEBUG] Playing media ID 190: iron man.mp4
+[2026-02-22 17:22:19] [DEBUG] Playing video: iron man.mp4
+[2026-02-22 17:22:23] [DEBUG] Playing media ID 192: avangers.mp4
+[2026-02-22 17:22:23] [DEBUG] Playing video: avangers.mp4
+[2026-02-22 17:22:48] [INFO] Loaded metadata plugin.
+[2026-02-22 17:22:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 17:22:48] [INFO] Loaded film metadata plugin.
+[2026-02-22 17:22:48] [INFO] Scanning sources ...
+[2026-02-22 17:22:48] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:48] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:48] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:49] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:49] [INFO] Scanning sources end
+[2026-02-22 17:22:49] [INFO] Scanning sources ...
+[2026-02-22 17:22:49] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:49] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:49] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:50] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:50] [INFO] Scanning sources end
+[2026-02-22 17:22:50] [INFO] Scanning sources ...
+[2026-02-22 17:22:50] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:51] [INFO] Scanning sources end
+[2026-02-22 17:22:51] [INFO] Scanning sources ...
+[2026-02-22 17:22:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:22:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:22:52] [INFO] Scanning sources end
+[2026-02-22 17:23:37] [INFO] Scanning sources ...
+[2026-02-22 17:23:37] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:23:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:23:37] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:23:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:23:37] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:23:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:23:38] [INFO] Scanning sources end
+[2026-02-22 17:35:25] [INFO] Loaded metadata plugin.
+[2026-02-22 17:35:25] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 17:35:25] [INFO] Loaded film metadata plugin.
+[2026-02-22 17:35:25] [INFO] Scanning sources ...
+[2026-02-22 17:35:25] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:25] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:26] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:26] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:26] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:27] [INFO] Scanning sources end
+[2026-02-22 17:35:27] [INFO] Scanning sources ...
+[2026-02-22 17:35:27] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:27] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:27] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:27] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:28] [INFO] Scanning sources end
+[2026-02-22 17:35:28] [INFO] Scanning sources ...
+[2026-02-22 17:35:28] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:28] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:28] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:28] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:28] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:28] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:29] [INFO] Scanning sources end
+[2026-02-22 17:35:29] [INFO] Scanning sources ...
+[2026-02-22 17:35:29] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:29] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:29] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:29] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:30] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:35:30] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:35:30] [INFO] Scanning sources end
+[2026-02-22 17:35:47] [DEBUG] Playing media ID 191: princesse mononoké.mp4
+[2026-02-22 17:35:47] [DEBUG] Playing video: princesse mononoké.mp4
+[2026-02-22 17:35:50] [DEBUG] Playing media ID 193: avengers.mp4
+[2026-02-22 17:35:50] [DEBUG] Playing video: avengers.mp4
+[2026-02-22 17:38:01] [INFO] Scanning sources ...
+[2026-02-22 17:38:01] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:01] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:02] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:02] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:02] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:38:02] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:02] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:03] [INFO] Scanning sources end
+[2026-02-22 17:38:03] [INFO] Scanning sources ...
+[2026-02-22 17:38:03] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:03] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:38:03] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:38:04] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:04] [INFO] Scanning sources end
+[2026-02-22 17:38:04] [INFO] Scanning sources ...
+[2026-02-22 17:38:04] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:38:05] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:38:05] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:38:06] [INFO] Scanning sources end
+[2026-02-22 17:38:06] [INFO] Scanning sources ...
+[2026-02-22 17:38:06] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:38:06] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:38:07] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:38:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:38:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:38:07] [INFO] Scanning sources end
+[2026-02-22 17:40:32] [INFO] Loaded metadata plugin.
+[2026-02-22 17:40:32] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 17:40:32] [INFO] Loaded film metadata plugin.
+[2026-02-22 17:40:32] [INFO] Scanning sources ...
+[2026-02-22 17:40:32] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:32] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:33] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:33] [INFO] Scanning sources end
+[2026-02-22 17:40:33] [INFO] Scanning sources ...
+[2026-02-22 17:40:33] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:34] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:34] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:34] [INFO] Scanning sources end
+[2026-02-22 17:40:34] [INFO] Scanning sources ...
+[2026-02-22 17:40:34] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:35] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:35] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:36] [INFO] Scanning sources end
+[2026-02-22 17:40:36] [INFO] Scanning sources ...
+[2026-02-22 17:40:36] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:36] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:36] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:40:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:40:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:40:37] [INFO] Scanning sources end
+[2026-02-22 17:41:33] [INFO] Loaded metadata plugin.
+[2026-02-22 17:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 17:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-22 17:41:33] [INFO] Scanning sources ...
+[2026-02-22 17:41:33] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:33] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:33] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:33] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:34] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:34] [INFO] Scanning sources end
+[2026-02-22 17:41:34] [INFO] Scanning sources ...
+[2026-02-22 17:41:34] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:34] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:34] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:34] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:35] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:35] [INFO] Scanning sources end
+[2026-02-22 17:41:35] [INFO] Scanning sources ...
+[2026-02-22 17:41:35] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:35] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:35] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:35] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:36] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:36] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:36] [INFO] Scanning sources end
+[2026-02-22 17:41:36] [INFO] Scanning sources ...
+[2026-02-22 17:41:36] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:36] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:37] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:37] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:41:37] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:41:37] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:41:37] [INFO] Scanning sources end
+[2026-02-22 17:57:03] [INFO] Loaded metadata plugin.
+[2026-02-22 17:57:03] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 17:57:03] [INFO] Loaded film metadata plugin.
+[2026-02-22 17:57:03] [INFO] Scanning sources ...
+[2026-02-22 17:57:03] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:03] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:03] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:04] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:04] [INFO] Scanning sources end
+[2026-02-22 17:57:04] [INFO] Scanning sources ...
+[2026-02-22 17:57:04] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:04] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:05] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:05] [INFO] Scanning sources end
+[2026-02-22 17:57:05] [INFO] Scanning sources ...
+[2026-02-22 17:57:05] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:06] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:06] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:06] [INFO] Scanning sources end
+[2026-02-22 17:57:06] [INFO] Scanning sources ...
+[2026-02-22 17:57:06] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:07] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:07] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 17:57:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 17:57:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 17:57:07] [INFO] Scanning sources end
+[2026-02-22 17:57:26] [DEBUG] Playing media ID 191: princesse mononoké.mp4
+[2026-02-22 17:57:26] [DEBUG] Playing video: princesse mononoké.mp4
+[2026-02-22 17:58:35] [DEBUG] Playing media ID 193: avengers.mp4
+[2026-02-22 17:58:35] [DEBUG] Playing video: avengers.mp4
+[2026-02-22 17:58:54] [DEBUG] Playing media ID 193: avengers.mp4
+[2026-02-22 17:58:54] [DEBUG] Playing video: avengers.mp4
+[2026-02-22 18:11:50] [INFO] Loaded metadata plugin.
+[2026-02-22 18:11:50] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 18:11:50] [INFO] Loaded film metadata plugin.
+[2026-02-22 18:11:50] [INFO] Scanning sources ...
+[2026-02-22 18:11:50] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:50] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:51] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:51] [INFO] Scanning sources end
+[2026-02-22 18:11:51] [INFO] Scanning sources ...
+[2026-02-22 18:11:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:52] [INFO] Scanning sources end
+[2026-02-22 18:11:53] [INFO] Scanning sources ...
+[2026-02-22 18:11:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:53] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:53] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:54] [INFO] Scanning sources end
+[2026-02-22 18:11:54] [INFO] Scanning sources ...
+[2026-02-22 18:11:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:11:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:11:55] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:11:55] [INFO] Scanning sources end
+[2026-02-22 18:12:56] [DEBUG] Playing media ID 226: Overwatch 2_10-06-2023_21-22-46-439.mp4
+[2026-02-22 18:12:56] [DEBUG] Playing video: Overwatch 2_10-06-2023_21-22-46-439.mp4
+[2026-02-22 18:15:36] [DEBUG] Playing media ID 193: avengers.mp4
+[2026-02-22 18:15:36] [DEBUG] Playing video: avengers.mp4
+[2026-02-22 18:16:54] [INFO] Loaded metadata plugin.
+[2026-02-22 18:16:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 18:16:54] [INFO] Loaded film metadata plugin.
+[2026-02-22 18:16:54] [INFO] Scanning sources ...
+[2026-02-22 18:16:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:55] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:55] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:55] [INFO] Scanning sources end
+[2026-02-22 18:16:55] [INFO] Scanning sources ...
+[2026-02-22 18:16:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:56] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:56] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:56] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:56] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:57] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:57] [INFO] Scanning sources end
+[2026-02-22 18:16:57] [INFO] Scanning sources ...
+[2026-02-22 18:16:57] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:57] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:57] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:57] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:57] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:58] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:58] [INFO] Scanning sources end
+[2026-02-22 18:16:58] [INFO] Scanning sources ...
+[2026-02-22 18:16:58] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:58] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:58] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:58] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:58] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:59] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:59] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:16:59] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:16:59] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:16:59] [INFO] Scanning sources end
+[2026-02-22 18:17:30] [DEBUG] Playing media ID 193: avengers.mp4
+[2026-02-22 18:17:30] [DEBUG] Playing video: avengers.mp4
+[2026-02-22 18:17:43] [DEBUG] Playing media ID 215: Overwatch 2_10-06-2023_20-4-56-452.mp4
+[2026-02-22 18:17:43] [DEBUG] Playing video: Overwatch 2_10-06-2023_20-4-56-452.mp4
+[2026-02-22 18:23:14] [INFO] Loaded metadata plugin.
+[2026-02-22 18:23:14] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 18:23:14] [INFO] Loaded film metadata plugin.
+[2026-02-22 18:23:14] [INFO] Scanning sources ...
+[2026-02-22 18:23:14] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:14] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:14] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:14] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:15] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:15] [INFO] Scanning sources end
+[2026-02-22 18:23:15] [INFO] Scanning sources ...
+[2026-02-22 18:23:15] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:15] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:15] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:15] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:16] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:16] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:16] [INFO] Scanning sources end
+[2026-02-22 18:23:16] [INFO] Scanning sources ...
+[2026-02-22 18:23:16] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:16] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:17] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:17] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:17] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:17] [INFO] Scanning sources end
+[2026-02-22 18:23:17] [INFO] Scanning sources ...
+[2026-02-22 18:23:17] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:17] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:18] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:18] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:18] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:23:18] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:23:19] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:23:19] [INFO] Scanning sources end
+[2026-02-22 18:23:30] [DEBUG] Playing media ID 193: avengers.mp4
+[2026-02-22 18:23:30] [DEBUG] Playing video: avengers.mp4
+[2026-02-22 18:23:41] [DEBUG] Playing media ID 193: avengers.mp4
+[2026-02-22 18:23:41] [DEBUG] Playing video: avengers.mp4
+[2026-02-22 18:32:51] [INFO] Loaded metadata plugin.
+[2026-02-22 18:32:51] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 18:32:51] [INFO] Loaded film metadata plugin.
+[2026-02-22 18:32:51] [INFO] Scanning sources ...
+[2026-02-22 18:32:51] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:51] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:52] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:52] [INFO] Scanning sources end
+[2026-02-22 18:32:53] [INFO] Scanning sources ...
+[2026-02-22 18:32:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:53] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:53] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:54] [INFO] Scanning sources end
+[2026-02-22 18:32:54] [INFO] Scanning sources ...
+[2026-02-22 18:32:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:55] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:55] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:55] [INFO] Scanning sources end
+[2026-02-22 18:32:55] [INFO] Scanning sources ...
+[2026-02-22 18:32:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:55] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:56] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:56] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:32:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:32:56] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:32:56] [INFO] Scanning sources end
+[2026-02-22 18:32:59] [DEBUG] Playing media ID 197: Overwatch 2_10-06-2023_17-31-1-589.mp4
+[2026-02-22 18:32:59] [DEBUG] Playing video: Overwatch 2_10-06-2023_17-31-1-589.mp4
+[2026-02-22 18:33:20] [DEBUG] Playing media ID 197: Overwatch 2_10-06-2023_17-31-1-589.mp4
+[2026-02-22 18:33:20] [DEBUG] Playing video: Overwatch 2_10-06-2023_17-31-1-589.mp4
+[2026-02-22 18:33:27] [DEBUG] Playing media ID 197: Overwatch 2_10-06-2023_17-31-1-589.mp4
+[2026-02-22 18:33:27] [DEBUG] Playing video: Overwatch 2_10-06-2023_17-31-1-589.mp4
+[2026-02-22 18:37:27] [DEBUG] Playing media ID 225: Overwatch 2_10-06-2023_20-9-18-441.mp4
+[2026-02-22 18:37:27] [DEBUG] Playing video: Overwatch 2_10-06-2023_20-9-18-441.mp4
+[2026-02-22 18:37:39] [DEBUG] Playing media ID 225: Overwatch 2_10-06-2023_20-9-18-441.mp4
+[2026-02-22 18:37:39] [DEBUG] Playing video: Overwatch 2_10-06-2023_20-9-18-441.mp4
+[2026-02-22 18:42:28] [INFO] Loaded metadata plugin.
+[2026-02-22 18:42:28] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 18:42:28] [INFO] Loaded film metadata plugin.
+[2026-02-22 18:42:28] [INFO] Scanning sources ...
+[2026-02-22 18:42:28] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:28] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:28] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:28] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:28] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:28] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:28] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:28] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:29] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:29] [INFO] Scanning sources end
+[2026-02-22 18:42:29] [INFO] Scanning sources ...
+[2026-02-22 18:42:29] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:29] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:29] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:29] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:29] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:30] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:30] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:30] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:30] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:30] [INFO] Scanning sources end
+[2026-02-22 18:42:30] [INFO] Scanning sources ...
+[2026-02-22 18:42:30] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:30] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:30] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:30] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:30] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:31] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:31] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:31] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:31] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:31] [INFO] Scanning sources end
+[2026-02-22 18:42:31] [INFO] Scanning sources ...
+[2026-02-22 18:42:31] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:31] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:32] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:32] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 18:42:32] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 18:42:32] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 18:42:32] [INFO] Scanning sources end
+[2026-02-22 18:42:37] [DEBUG] Playing media ID 193: avengers.mp4
+[2026-02-22 18:42:37] [DEBUG] Playing video: avengers.mp4
+[2026-02-22 18:42:46] [DEBUG] Playing media ID 193: avengers.mp4
+[2026-02-22 18:42:46] [DEBUG] Playing video: avengers.mp4
+[2026-02-22 18:42:53] [DEBUG] Playing media ID 197: Overwatch 2_10-06-2023_17-31-1-589.mp4
+[2026-02-22 18:42:53] [DEBUG] Playing video: Overwatch 2_10-06-2023_17-31-1-589.mp4
