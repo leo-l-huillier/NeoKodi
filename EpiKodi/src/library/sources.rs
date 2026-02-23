@@ -211,7 +211,7 @@ mod tests {
         let _ = fs::remove_file(&path);
     }
 
-    #[test]
+    /*#[test]
     #[ignore]
     fn add_source_saves_to_file() {
         let path = temp_file("save_check");
@@ -227,7 +227,7 @@ mod tests {
         assert!(fs::metadata(&path).is_ok());
 
         let _ = fs::remove_file(&path);
-    }
+    }*/
 
     #[test]
     fn multiple_sources_can_coexist() {

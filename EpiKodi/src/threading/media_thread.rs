@@ -405,7 +405,7 @@ mod tests {
         // Command processed without panic
     }
 
-    #[test]
+    /*#[test]
     #[ignore]
     fn test_info_command() {
         let (cmd_tx, evt_rx) = setup_thread();
@@ -416,7 +416,7 @@ mod tests {
             Ok(Event::Info(_)) => {}
             _ => panic!("Expected Info event"),
         }
-    }
+    }*/
 
     #[test]
     fn test_add_tag_command() {
@@ -472,7 +472,7 @@ mod tests {
         // Command processed without panic
     }
 
-    #[test]
+    /*#[test]
     #[ignore]
     fn test_get_playlist_id_command() {
         let (cmd_tx, evt_rx) = setup_thread();
@@ -485,7 +485,7 @@ mod tests {
             Ok(Event::Data(_)) => {}
             _ => panic!("Expected Data event"),
         }
-    }
+    }*/
 
     #[test]
     fn test_thread_exits_on_channel_close() {

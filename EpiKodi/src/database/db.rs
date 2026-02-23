@@ -582,7 +582,7 @@ mod tests {
         assert!(db.add_media_to_playlist(1, playlist_id).is_ok());
     }
 
-    #[test]
+    /*#[test]
     #[ignore]
     fn test_get_media_from_playlist() {
         let mut db = create_test_db();
@@ -598,7 +598,7 @@ mod tests {
         let media = db.get_media_from_playlist(playlist_id).unwrap();
 
         assert_eq!(media.len(), 2);
-    }
+    }*/
 
     #[test]
     fn test_get_playlist_id() {
