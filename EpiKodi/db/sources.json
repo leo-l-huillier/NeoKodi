@@ -2,35 +2,23 @@
   "sources": [],
   "music_sources": [
     {
-      "path": "C:\\Users\\Pier-Alexandre\\OneDrive\\Bureau\\NeoKodi\\EpiKodi"
+      "path": "/music1"
     },
     {
-      "path": "E:\\game\\Projet Pro\\NeoKodi\\EpiKodi"
+      "path": "/music2"
     },
     {
-      "path": "E:\\_record\\Outplayed\\Overwatch 2"
+      "path": "/test/music"
     }
   ],
   "video_sources": [
     {
-      "path": "C:\\Users\\Pier-Alexandre\\OneDrive\\Bureau\\NeoKodi\\EpiKodi"
-    },
-    {
-      "path": "E:\\game\\Projet Pro\\NeoKodi\\EpiKodi"
-    },
-    {
-      "path": "E:\\_record\\Outplayed\\Overwatch 2"
+      "path": "/videos1"
     }
   ],
   "image_sources": [
     {
-      "path": "C:\\Users\\Pier-Alexandre\\OneDrive\\Bureau\\NeoKodi\\EpiKodi"
-    },
-    {
-      "path": "E:\\game\\Projet Pro\\NeoKodi\\EpiKodi"
-    },
-    {
-      "path": "E:\\_record\\Outplayed\\Overwatch 2"
+      "path": "/images1"
     }
   ]
 }

@@ -207,4 +207,36 @@ mod tests {
             assert!(info.tags.is_empty());
         }
     }
+
+    #[test]
+    fn test_queue_flow() {
+        let mut q = Queue::new();
+        q.add_to_queue(10);
+        q.add_to_queue(20);
+
+        assert_eq!(q.get_current(), Some(10));
+        assert_eq!(q.next(), Some(10)); // Retire 10, le prochain devient 20
+        assert_eq!(q.next(), Some(20)); // Retire 20, la file est vide
+        assert_eq!(q.next(), None);
+    }
+
+    #[test]
+    fn test_queue_repeat() {
+        let mut q = Queue::new();
+        q.add_to_queue(42);
+        q.toggle_repeat();
+        
+        assert_eq!(q.next(), Some(42)); 
+        // Comme repeat est actif, ça doit recharger la file originale
+        assert_eq!(q.next(), Some(42)); 
+    }
+
+    #[test]
+    fn test_clear_queue() {
+        let mut q = Queue::new();
+        q.add_to_queue(5);
+        q.clear_queue();
+        assert_eq!(q.get_current(), None);
+        assert_eq!(q.next(), None);
+    }
 }

@@ -443,9 +443,11 @@ mod tests {
                 id: 0,
                 path: self.path.clone(),
                 title: Some(self.name.clone()),
+                artist: None,
                 duration: None,
                 media_type: MediaType::Audio,
                 last_position: 0.0,
+                tags: Vec::new(),
             }
         }
         fn media_type(&self) -> MediaType { MediaType::Audio }
@@ -511,5 +513,16 @@ mod tests {
         lib.pause_id(42);
         lib.resume_id(42);
         lib.stop_id(42);
+    }
+
+    #[test]
+    fn test_clear_library() {
+        let mut lib = test_library(vec![
+            TestMedia::new(1, "/a.mp3", "A", MediaType::Audio),
+        ]);
+        
+        assert_eq!(lib.get_all_media().len(), 1);
+        lib.clear();
+        assert_eq!(lib.get_all_media().len(), 0); // La RAM doit être vide
     }
 }

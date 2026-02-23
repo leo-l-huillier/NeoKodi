@@ -615,6 +615,47 @@ mod tests {
         
         assert_eq!(media.len(), 0);
     }
+
+    #[test]
+    fn test_update_media_status_and_time() {
+        let mut db = create_test_db();
+        db.insert_media("path/to/video.mp4", "Test Video", 0.0, "video").unwrap();
+        
+        // On simule qu'on a regardé 1h (3600 sec) sur un film de 2h (7200 sec)
+        let res = db.update_media_status_and_time(1, 1, 3600.0, 7200.0);
+        assert!(res.is_ok());
+
+        let media_list = db.get_all_media().unwrap();
+        assert_eq!(media_list.len(), 1);
+        assert_eq!(media_list[0].last_position, 3600.0);
+        assert_eq!(media_list[0].duration, Some(7200.0));
+    }
+
+    #[test]
+    fn test_remove_tag_from_media() {
+        let mut db = create_test_db();
+        db.insert_media("/path.mp4", "Vid", 0.0, "video").unwrap();
+        let tag_id = db.get_or_create_tag("sci-fi").unwrap();
+        
+        db.add_tag_to_media(1, tag_id).unwrap();
+        assert!(db.remove_tag_from_media(1, tag_id).is_ok());
+        
+        let media = db.get_media_by_tag("sci-fi").unwrap();
+        assert_eq!(media.len(), 0); // Le tag a bien été retiré
+    }
+
+    #[test]
+    fn test_delete_playlist_cascade() {
+        let mut db = create_test_db();
+        let pid = db.create_playlist("Soirée").unwrap();
+        db.insert_media("/audio.mp3", "Zik", 0.0, "audio").unwrap();
+        db.add_media_to_playlist(1, pid).unwrap();
+        
+        assert!(db.delete_playlist(pid).is_ok());
+        
+        let media = db.get_media_from_playlist(pid).unwrap();
+        assert_eq!(media.len(), 0); // La playlist a disparu
+    }
 }
 
 

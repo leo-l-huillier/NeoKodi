@@ -6381,3 +6381,506 @@
 [2026-02-22 18:42:46] [DEBUG] Playing video: avengers.mp4
 [2026-02-22 18:42:53] [DEBUG] Playing media ID 197: Overwatch 2_10-06-2023_17-31-1-589.mp4
 [2026-02-22 18:42:53] [DEBUG] Playing video: Overwatch 2_10-06-2023_17-31-1-589.mp4
+[2026-02-22 19:39:03] [INFO] Loaded metadata plugin.
+[2026-02-22 19:39:03] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 19:39:03] [INFO] Loaded film metadata plugin.
+[2026-02-22 19:39:03] [INFO] Scanning sources ...
+[2026-02-22 19:39:03] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:03] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:03] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:03] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:04] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:04] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:04] [INFO] Scanning sources end
+[2026-02-22 19:39:04] [INFO] Scanning sources ...
+[2026-02-22 19:39:04] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:04] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:05] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:05] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:05] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:05] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:06] [INFO] Scanning sources end
+[2026-02-22 19:39:06] [INFO] Scanning sources ...
+[2026-02-22 19:39:06] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:06] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:06] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:06] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:07] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:07] [INFO] Scanning sources end
+[2026-02-22 19:39:07] [INFO] Scanning sources ...
+[2026-02-22 19:39:07] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:07] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:07] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:07] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:08] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:39:08] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:39:08] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:39:08] [INFO] Scanning sources end
+[2026-02-22 19:39:28] [DEBUG] Playing media ID 195: Overwatch 2_10-06-2023_17-20-1-602.mp4
+[2026-02-22 19:39:28] [DEBUG] Playing video: Overwatch 2_10-06-2023_17-20-1-602.mp4
+[2026-02-22 19:39:54] [DEBUG] Playing media ID 231: Overwatch 2_10-06-2023_21-7-8-451.mp4
+[2026-02-22 19:39:54] [DEBUG] Playing video: Overwatch 2_10-06-2023_21-7-8-451.mp4
+[2026-02-22 19:40:52] [INFO] Loaded metadata plugin.
+[2026-02-22 19:40:52] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-22 19:40:52] [INFO] Loaded film metadata plugin.
+[2026-02-22 19:40:52] [INFO] Scanning sources ...
+[2026-02-22 19:40:52] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:52] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:53] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:53] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:53] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:53] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:54] [INFO] Scanning sources end
+[2026-02-22 19:40:54] [INFO] Scanning sources ...
+[2026-02-22 19:40:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:54] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:54] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:54] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:55] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:55] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:55] [INFO] Scanning sources end
+[2026-02-22 19:40:55] [INFO] Scanning sources ...
+[2026-02-22 19:40:55] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:55] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:56] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:56] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:56] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:56] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:56] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:56] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:56] [INFO] Scanning sources end
+[2026-02-22 19:40:57] [INFO] Scanning sources ...
+[2026-02-22 19:40:57] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:57] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:57] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:57] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:57] [INFO] Scanning: C:\Users\Pier-Alexandre\OneDrive\Bureau\NeoKodi\EpiKodi
+[2026-02-22 19:40:57] [INFO] Scanning: E:\game\Projet Pro\NeoKodi\EpiKodi
+[2026-02-22 19:40:58] [INFO] Scanning: E:\_record\Outplayed\Overwatch 2
+[2026-02-22 19:40:58] [INFO] Scanning sources end
+[2026-02-22 19:41:01] [DEBUG] Playing media ID 233: e___record_Outplayed_Overwatch_2_Overwatch_2_10-06-2023_17-16-14-304_Overwatch_2_10-06-2023_17-45-49-590.mp4.jpg
+[2026-02-22 19:41:01] [DEBUG] Playing image: e___record_Outplayed_Overwatch_2_Overwatch_2_10-06-2023_17-16-14-304_Overwatch_2_10-06-2023_17-45-49-590.mp4.jpg
+[2026-02-23 00:47:53] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 00:47:53] [DEBUG] Pausing media ID 42
+[2026-02-23 00:47:53] [DEBUG] Playing media ID 1: Song
+[2026-02-23 00:47:53] [DEBUG] Pausing media ID 1
+[2026-02-23 00:47:53] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 00:47:53] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 00:47:53] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 00:47:53] [DEBUG] Added to queue: 5
+[2026-02-23 00:47:53] [DEBUG] Added to queue: 10
+[2026-02-23 00:47:53] [INFO] Trying to get next media but queue is empty
+[2026-02-23 00:47:53] [DEBUG] Added to queue: 20
+[2026-02-23 00:47:53] [INFO] Next media in queue: 10
+[2026-02-23 00:47:53] [INFO] Next media in queue: 20
+[2026-02-23 00:47:53] [INFO] Trying to get next media but queue is empty
+[2026-02-23 00:47:53] [DEBUG] Added to queue: 42
+[2026-02-23 00:47:53] [INFO] Next media in queue: 42
+[2026-02-23 00:47:53] [INFO] Queue is empty, repeating original queue
+[2026-02-23 00:47:53] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:53] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 00:47:54] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [ERROR] Error retrieving tag ID for 'action': Query returned no rows
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [DEBUG] Pausing media ID 1
+[2026-02-23 00:47:54] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 00:47:54] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 00:47:54] [INFO] Loaded metadata plugin.
+[2026-02-23 00:47:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:47:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:47:54] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 00:47:54] [INFO] Scanning sources ...
+[2026-02-23 00:47:54] [INFO] Scanning: /music1
+[2026-02-23 00:47:54] [INFO] Scanning: /music2
+[2026-02-23 00:47:54] [INFO] Scanning: /test/music
+[2026-02-23 00:47:54] [INFO] Scanning: /videos1
+[2026-02-23 00:47:54] [INFO] Scanning: /images1
+[2026-02-23 00:47:54] [INFO] Scanning sources end
+[2026-02-23 00:47:54] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 00:47:54] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 00:47:54] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 00:49:19] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 00:49:19] [DEBUG] Pausing media ID 42
+[2026-02-23 00:49:19] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 00:49:19] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 00:49:19] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 00:49:19] [DEBUG] Playing media ID 1: Song
+[2026-02-23 00:49:19] [DEBUG] Pausing media ID 1
+[2026-02-23 00:49:19] [DEBUG] Added to queue: 10
+[2026-02-23 00:49:19] [DEBUG] Added to queue: 20
+[2026-02-23 00:49:19] [INFO] Next media in queue: 10
+[2026-02-23 00:49:19] [INFO] Next media in queue: 20
+[2026-02-23 00:49:19] [INFO] Trying to get next media but queue is empty
+[2026-02-23 00:49:19] [DEBUG] Added to queue: 5
+[2026-02-23 00:49:19] [DEBUG] Added to queue: 42
+[2026-02-23 00:49:19] [INFO] Trying to get next media but queue is empty
+[2026-02-23 00:49:19] [INFO] Next media in queue: 42
+[2026-02-23 00:49:19] [INFO] Queue is empty, repeating original queue
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /test/music
+[2026-02-23 00:49:19] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /test/music
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 00:49:19] [INFO] Scanning: /test/music
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning: /test/music
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /test/music
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /test/music
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /test/music
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /test/music
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /test/music
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [INFO] Loaded metadata plugin.
+[2026-02-23 00:49:19] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 00:49:19] [INFO] Loaded film metadata plugin.
+[2026-02-23 00:49:19] [INFO] Scanning sources ...
+[2026-02-23 00:49:19] [INFO] Scanning: /music1
+[2026-02-23 00:49:19] [INFO] Scanning: /music2
+[2026-02-23 00:49:19] [INFO] Scanning: /test/music
+[2026-02-23 00:49:19] [INFO] Scanning: /videos1
+[2026-02-23 00:49:19] [INFO] Scanning: /images1
+[2026-02-23 00:49:19] [INFO] Scanning sources end
+[2026-02-23 00:49:19] [DEBUG] Pausing media ID 1
+[2026-02-23 00:49:19] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 00:49:19] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 00:49:19] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 00:49:19] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 00:49:19] [ERROR] Error: media with ID 1 not found.

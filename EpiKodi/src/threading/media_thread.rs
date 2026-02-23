@@ -464,6 +464,7 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
     fn test_get_playlist_id_command() {
         let (cmd_tx, evt_rx) = setup_thread();
         

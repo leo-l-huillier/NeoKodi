@@ -38,3 +38,25 @@ impl AppConfig {
         let _ = fs::write(config_path, json);
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::fs;
+
+    #[test]
+    fn test_config_fallback_and_creation() {
+        let test_file = "config.json";
+        // On s'assure que le fichier n'existe pas
+        let _ = fs::remove_file(test_file);
+        
+        let config = AppConfig::load();
+        assert!(!config.media_path.is_empty());
+        
+        // Le fichier doit avoir été généré automatiquement
+        assert!(PathBuf::from(test_file).exists());
+        
+        // Nettoyage
+        let _ = fs::remove_file(test_file);
+    }
+}
