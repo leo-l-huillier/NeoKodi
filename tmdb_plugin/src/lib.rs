@@ -86,7 +86,6 @@ fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
 
     let response = reqwest::blocking::get(&url)?;
 
-    // 👇 DEBUG DU STATUS HTTP
     let status = response.status();
     println!("📡 [TMDB DLL] Statut HTTP : {}", status);
 
@@ -95,7 +94,6 @@ fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
         return Ok(format!("Erreur API TMDB: {}", status));
     }
 
-    // 👇 ON LIT LE JSON BRUT AVANT DE LE PARSER (Crucial pour debug)
     let raw_body = response.text()?;
     println!("📦 [TMDB DLL] Réponse brute : {}", raw_body);
 
@@ -104,7 +102,7 @@ fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
 
     if search_results.results.is_empty() {
         println!("⚠️ [TMDB DLL] Aucun résultat trouvé dans le JSON.");
-        return Ok(format!("Aucun film trouvé pour '{}'", movie_query));
+        Ok(format!("Aucun film trouvé pour '{}'", movie_query));
     } else {
         println!(
             "✅ [TMDB DLL] {} films trouvés.",
@@ -128,7 +126,7 @@ fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
             };
             result.push_str(&format!("📝 {}\n", overview));
         }
-        return Ok(result);
+        Ok(result);
     }
 }
 
@@ -169,7 +167,7 @@ pub extern "C" fn plugin_type() -> *mut c_char {
 
 // Export a C-compatible function that can be called via libloading
 #[unsafe(no_mangle)]
-pub extern "C" fn metadata(name_ptr: *const c_char) -> *mut c_char {
+pub unsafe extern "C" fn metadata(name_ptr: *const c_char) -> *mut c_char {
     // Safety: We assume the caller passes a valid C string
     let film_name = unsafe {
         if name_ptr.is_null() {
