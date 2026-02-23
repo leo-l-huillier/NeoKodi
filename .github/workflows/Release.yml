@@ -1,4 +1,4 @@
-name: Build & Release (DLL Incluse)
+name: Build & Release
 
 on:
   push:
@@ -25,7 +25,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Dépendances Linux (Toujours obligatoires pour compiler Dioxus)
       - name: Install Linux Dependencies
         if: runner.os == 'Linux'
         run: |
@@ -35,7 +34,6 @@ jobs:
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
 
-      # On build UNIQUEMENT l'application (pas le plugin)
       - name: Build EpiKodi
         working-directory: EpiKodi
         run: cargo build --release
@@ -49,20 +47,15 @@ jobs:
           mkdir dist\plugins
           mkdir dist\db
           
-          # 1. On copie l'exécutable qu'on vient de compiler
           copy EpiKodi\target\release\EpiKodi.exe dist\
           
-          # 2. On copie ta DLL (qui est déjà dans le repo)
-          # J'assume qu'elle est dans EpiKodi/plugins/musicbrainz_plugin.dll
-          # Si elle est ailleurs, change le chemin ci-dessous !
           if (Test-Path "EpiKodi\plugins\musicbrainz_plugin.dll") {
             copy EpiKodi\plugins\musicbrainz_plugin.dll dist\plugins\
-            Write-Host "✅ DLL copiée avec succès !"
+            Write-Host "✅ DLL successfully"
           } else {
-            Write-Error "❌ DLL introuvable ! Vérifie qu'elle est bien committée dans git."
+            Write-Error "❌ DLL not found"
           }
 
-          # 3. On zip le tout
           7z a ${{ matrix.asset_name }} ./dist/*
 
       # --- PACKAGING LINUX ---
