@@ -87,7 +87,7 @@ pub enum Event {
     Info(MediaInfo),
     IDList(Vec<i64>),
     MediaList(Vec<MediaInfo>),
-    ArtistInfoReceived(String),
     M3UList(Vec<crate::iptv::parser::TVChannel>),
     PlaylistList(Vec<(i64, String)>),
+    PluginDataReceived(String),
 }

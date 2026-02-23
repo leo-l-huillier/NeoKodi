@@ -54,36 +54,42 @@ impl PlayMode {
     }
 }
 
-fn make_url(full_path: &str, root_path: &str) -> String {
-    let clean_full = full_path.replace("\\", "/");
-    let clean_root = root_path.replace("\\", "/");
+fn make_url(full_path: &str, _root_path: &str) -> String {
+    // 1. On normalise les slashs (Windows utilise \, le web utilise /)
+    let clean_path = full_path.replace("\\", "/");
 
-    if let Some(colon_idx) = clean_full.find(':') {
+    // 2. On gère les lettres de lecteur (Ex: "C:/Films/Vacances.mp4")
+    if let Some(colon_idx) = clean_path.find(':') {
         if colon_idx == 1 { 
-            let drive_letter = &clean_full[0..1].to_lowercase();
-            let path_after_drive = &clean_full[3..];
+            // On récupère la lettre "c"
+            let drive_letter = &clean_path[0..1].to_lowercase();
+            
+            // On prend tout ce qu'il y a après "C:/"
+            // Attention : on vérifie qu'on ne dépasse pas la taille de la string
+            let path_after_drive = if clean_path.len() > 3 {
+                &clean_path[3..]
+            } else {
+                ""
+            };
 
-            let encoded_parts: Vec<_> = path_after_drive.split('/')
-                .map(|part| encode(part))
+            // 3. LA CLÉ DU SUCCÈS : On encode chaque dossier séparément
+            // Si on encode tout d'un coup, les "/" deviennent "%2F" et le serveur ne trouve pas le dossier.
+            let encoded_parts: Vec<String> = path_after_drive.split('/')
+                .map(|part| urlencoding::encode(part).to_string())
                 .collect();
             
+            // On reconstruit l'URL propre
             let url = format!("http://127.0.0.1:3030/drives/{}/{}", drive_letter, encoded_parts.join("/"));
+            
+            // Petit log pour vérifier
+            println!("🔗 URL FIXÉE : {} -> {}", full_path, url);
             return url;
         }
     }
 
-    let relative_path = if clean_full.starts_with(&clean_root) {
-        clean_full.replace(&clean_root, "").trim_start_matches('/').to_string()
-    } else {
-        clean_full.clone()
-    };
-
-    let encoded_parts: Vec<_> = relative_path.split('/')
-        .map(|part| encode(part))
-        .collect();
-
-    let url = format!("http://127.0.0.1:3030/media/{}", encoded_parts.join("/"));
-    url
+    // Cas de secours (si le chemin n'a pas de lettre de lecteur, rare sous Windows absolu)
+    let encoded_path = urlencoding::encode(&clean_path).to_string();
+    format!("http://127.0.0.1:3030/media/{}", encoded_path)
 }
 
 // --- ACCUEIL ---
@@ -648,239 +654,273 @@ pub fn Videos() -> Element {
     let root_path_signal = use_context::<Signal<String>>();
     let root_path = root_path_signal();
     
-    let mut current_video = use_signal(|| Option::<String>::None);
+    let plugin_history = use_context::<Signal<Vec<String>>>();
+    
+    // 👇 On stocke l'objet COMPLET pour garder l'ID sous la main
+    let mut playing_video = use_signal(|| Option::<MediaInfo>::None);
+    let mut selected_media = use_signal(|| Option::<MediaInfo>::None);
     let mut search_text = use_signal(|| String::new());
+
+    let mut ui_visible = use_signal(|| true);
+    let mut activity_id = use_signal(|| 0);
     
-    // États pour le feedback visuel (Netflix style)
-    let mut show_seek_back = use_signal(|| false);
-    let mut show_seek_forward = use_signal(|| false);
+    // ⏱️ NOUVEAU : Signaux pour récupérer le temps en direct du lecteur HTML5
+    let mut current_time = use_signal(|| 0.0f32);
+    let mut current_duration = use_signal(|| 0.0f32);
     
-    let tx_init = cmd_tx.clone(); 
+    let on_mouse_move = move |_| {
+        if !ui_visible() { ui_visible.set(true); }
+        let new_id = activity_id() + 1;
+        activity_id.set(new_id);
+
+        spawn(async move {
+            tokio::time::sleep(std::time::Duration::from_millis(3000)).await;
+            if activity_id() == new_id { ui_visible.set(false); }
+        });
+    };
+
+    use_hook(move || {
+        let new_id = activity_id() + 1;
+        activity_id.set(new_id);
+        spawn(async move {
+            tokio::time::sleep(std::time::Duration::from_millis(3000)).await;
+            if activity_id() == new_id { ui_visible.set(false); }
+        });
+    });
+    
+    let tx_init = cmd_tx.clone();
     use_hook(move || { 
         if list_signal().is_empty() { 
             tx_init.send(Command::GetAllMedia()).unwrap(); 
         } 
     });
 
-    // CSS pour l'animation d'apparition/disparition du feedback
-    let css_anim = "
-        @keyframes fadeOut {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(1.5); }
-        }
-        .seek-feedback {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            font-weight: bold;
-            color: white;
-            background: rgba(0,0,0,0.5);
-            padding: 20px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 30;
-            animation: fadeOut 0.8s forwards;
-        }
+    let css_style = "
+        .modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; animation: fadeIn 0.3s forwards; backdrop-filter: blur(5px); }
+        .modal-content { background: #181818; width: 80%; max-width: 900px; border-radius: 10px; overflow: hidden; box-shadow: 0 0 50px rgba(0,0,0,0.5); display: flex; flex-direction: column; transform: scale(0.9); animation: popIn 0.3s forwards; border: 1px solid #333; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes popIn { to { transform: scale(1); } }
+        .modal-header { height: 300px; background-size: cover; background-position: center; position: relative; }
+        .modal-gradient { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, #181818, transparent); }
+        .modal-body { padding: 40px; color: white; margin-top: -50px; position: relative; z-index: 10; }
+        .btn-play { background: white; color: black; padding: 12px 30px; font-size: 1.2rem; font-weight: bold; border-radius: 4px; border: none; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: transform 0.2s; }
+        .btn-play:hover { transform: scale(1.05); background: #ddd; }
+        .close-btn { position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.5); color: white; border-radius: 50%; width: 40px; height: 40px; border: 2px solid white; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3000; font-size: 20px; }
+        .close-btn:hover { background: white; color: black; }
+        .card-text { width: 100%; padding: 0 10px 10px 10px; font-size: 0.9rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-sizing: border-box; }
+        .page-title-centered { position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.5rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; pointer-events: none; }
+        .player-ui { position: absolute; top: 0; left: 0; width: 100%; height: 100px; z-index: 10000; display: flex; align-items: center; padding-left: 20px; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); transition: opacity 0.5s ease-in-out; pointer-events: none; }
+        .player-ui.visible { opacity: 1; pointer-events: auto; }
+        .player-ui.hidden { opacity: 0; }
     ";
 
     rsx! {
-        style { "{css_anim}" }
+        style { "{css_style}" }
 
         div { class: "container",
-            if let Some(path) = current_video() {
+            
+            // ==========================================
+            // 1. LE LECTEUR VIDÉO
+            // ==========================================
+            if let Some(media) = playing_video() {
                 div { 
-                    style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
-                    
-                    div { style: "height: 60px; padding: 10px; z-index: 1000; position: relative;",
-                        button { class: "btn-nav", onclick: move |_| current_video.set(None), "⬅ Retour" }
+                    style: "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: black; z-index: 9999; display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box;",
+                    onmousemove: on_mouse_move,
+
+                    // --- ZONE BOUTON RETOUR ---
+                    div { 
+                        class: if ui_visible() { "player-ui visible" } else { "player-ui hidden" },
+                        
+                        button { 
+                            class: "btn-nav", 
+                            onclick: {
+                                let tx = cmd_tx.clone();
+                                let mut list_sig = list_signal.clone();
+                                move |_| {
+                                    let time = current_time();
+                                    let dur = current_duration();
+                                    
+                                    // 💾 1. On envoie au backend (SQLite sera mis à jour direct)
+                                    tx.send(Command::UpdateProgress(media.id, time, dur)).unwrap();
+                                    
+                                    // 🚀 2. On met à jour la mémoire locale pour voir la barre rouge changer IMMÉDIATEMENT
+                                    if let Some(m) = list_sig.write().iter_mut().find(|i| i.id == media.id) {
+                                        m.last_position = time;
+                                        if dur > 0.0 { m.duration = Some(dur); }
+                                    }
+                                    
+                                    playing_video.set(None);
+                                    current_time.set(0.0);
+                                    current_duration.set(0.0);
+                                }
+                            }, 
+                            "⬅ Retour" 
+                        }
+                    },
+
+                    // 📡 INPUT INVISIBLE (Sert de pont entre le Javascript du lecteur et Rust)
+                    input {
+                        id: "neokodi-time-tracker",
+                        r#type: "hidden",
+                        oninput: move |evt| {
+                            if let Some((t, d)) = evt.value().split_once(',') {
+                                if let (Ok(time), Ok(dur)) = (t.parse::<f32>(), d.parse::<f32>()) {
+                                    current_time.set(time);
+                                    current_duration.set(dur);
+                                }
+                            }
+                        }
                     }
 
-                    div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; position: relative; background: black;",
+                    // --- LE LECTEUR ---
+                    div { 
+                        style: "flex: 1; display: flex; align-items: center; justify-content: center; background: black; width: 100%; height: 100%; padding-bottom: 5px;",
                         {
-                            let url = make_url(&path, &root_path);
-                            let current_media = list_signal().iter().find(|m| m.path == path).cloned();
-                            let start_time = current_media.as_ref().map(|m| m.last_position).unwrap_or(0.0);
-                            let media_id = current_media.as_ref().map(|m| m.id).unwrap_or(0);
-                            let tx = cmd_tx.clone();
-
+                            let mut url = make_url(&media.path, &root_path);
+                            // 🚀 L'ASTUCE : On ajoute #t=Secondes pour que la vidéo reprenne direct
+                            if media.last_position > 2.0 {
+                                url = format!("{}#t={}", url, media.last_position);
+                            }
+                            
                             rsx! {
-                                input {
-                                    id: "spy-input",
-                                    r#type: "hidden",
-                                    value: "",
-                                    oninput: move |evt| {
-                                        let val = evt.value();
-                                        let parts: Vec<&str> = val.split('|').collect();
-                                        if parts.len() == 2 {
-                                            if let (Ok(time), Ok(duration)) = (parts[0].parse::<f32>(), parts[1].parse::<f32>()) {
-                                                if media_id > 0 { tx.send(Command::UpdateProgress(media_id, time, duration)).unwrap(); }
-                                                list_signal.write().iter_mut().find(|m| m.id == media_id).map(|m| {
-                                                    m.last_position = time;
-                                                    m.duration = Some(duration);
-                                                });
-                                            }
-                                        }
-                                    }
-                                }
-
                                 video { 
-                                    id: "main-player", 
-                                    key: "{url}", 
+                                    id: "neokodi-player",
                                     src: "{url}", 
                                     controls: true, 
                                     autoplay: true, 
-                                    style: "max-width: 100%; max-height: 100%; width: 100%;",
+                                    style: "width: 100%; height: 100%; object-fit: contain;" 
                                 }
                                 
-                                // === ZONES TACTILES INVISIBLES ===
-
-                                // ZONE GAUCHE (-10s)
-                                div {
-                                    style: "position: absolute; top: 0; left: 0; width: 30%; height: 80%; z-index: 10; cursor: pointer;",
-                                    ondblclick: move |_| {
-                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) v.currentTime -= 10;"#);
-                                        spawn(async move { eval.recv().await; });
-                                        show_seek_back.set(false);
-                                        spawn(async move { show_seek_back.set(true); });
-                                    },
-                                    onclick: move |_| {
-                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) { if(v.paused) v.play(); else v.pause(); }"#);
-                                        spawn(async move { eval.recv().await; });
-                                    }
+                                // 🧠 SCRIPT AVEC LES ACCOLADES DOUBLÉES POUR NE PAS CRASHER RUST
+                                script {
+                                    "
+                                    setTimeout(function() {{
+                                        var v = document.getElementById('neokodi-player');
+                                        var i = document.getElementById('neokodi-time-tracker');
+                                        if(v && i) {{
+                                            v.ontimeupdate = function() {{
+                                                if(!isNaN(v.duration)) {{
+                                                    i.value = v.currentTime + ',' + v.duration;
+                                                    i.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                                                }}
+                                            }};
+                                        }}
+                                    }}, 500);
+                                    "
                                 }
-
-                                // ZONE DROITE (+10s)
-                                div {
-                                    style: "position: absolute; top: 0; right: 0; width: 30%; height: 80%; z-index: 10; cursor: pointer;",
-                                    ondblclick: move |_| {
-                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) v.currentTime += 10;"#);
-                                        spawn(async move { eval.recv().await; });
-                                        show_seek_forward.set(false);
-                                        spawn(async move { show_seek_forward.set(true); });
-                                    },
-                                    onclick: move |_| {
-                                        let mut eval = eval(r#"var v=document.getElementById('main-player'); if(v) { if(v.paused) v.play(); else v.pause(); }"#);
-                                        spawn(async move { eval.recv().await; });
-                                    }
-                                }
-
-                                // === FEEDBACK VISUEL ===
-                                if show_seek_back() {
-                                    div { 
-                                        class: "seek-feedback", 
-                                        style: "left: 15%;", 
-                                        onanimationend: move |_| show_seek_back.set(false), 
-                                        "⏪ -10s" 
-                                    }
-                                }
-                                if show_seek_forward() {
-                                    div { 
-                                        class: "seek-feedback", 
-                                        style: "right: 15%;", 
-                                        onanimationend: move |_| show_seek_forward.set(false),
-                                        "+10s ⏩" 
-                                    }
-                                }
-
-                                script { "
-                                    var v = document.getElementById('main-player');
-                                    var spy = document.getElementById('spy-input');
-                                    
-                                    // 👇 CORRECTION : On attend que les métadonnées soient chargées
-                                    if (v && {start_time} > 0) {{
-                                        // Tentative immédiate
-                                        v.currentTime = {start_time};
-                                        
-                                        // Assurance vie : dès que la vidéo sait quelle durée elle fait, on saute
-                                        v.onloadedmetadata = function() {{
-                                            console.log('Reprise à : ' + {start_time});
-                                            v.currentTime = {start_time};
-                                        }};
-                                    }}
-
-                                    if (v && spy) {{
-                                        v.ontimeupdate = function() {{
-                                            var total = v.duration || 0; 
-                                            spy.value = v.currentTime + '|' + total;
-                                            spy.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                                        }};
-                                    }}
-                                " }
                             }
                         }
                     }
                 }
             } 
-            // ==========================
-            // GRILLE DES VIDÉOS (LISTE)
-            // ==========================
+            
+            // ==========================================
+            // 2. LA GRILLE DE VIDÉOS
+            // ==========================================
             else {
                 div { class: "top-bar", 
-                    style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
-
+                    style: "display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 20px; position: relative;",
+                    
+                    div { style: "z-index: 2;", Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" } }
+                    div { class: "page-title-centered", "Vidéos" }
                     div { style: "z-index: 2;",
-                        Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }
-                    }
-
-                    div { 
-                        class: "page-title", 
-                        style: "position: absolute; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;",
-                        "Vidéos" 
-                    }
-
-                    input {
-                        r#type: "text",
-                        placeholder: "🔍 Rechercher un film...",
-                        style: "padding: 8px; border-radius: 5px; border: none; background: #333; color: white; width: 250px;",
-                        oninput: move |evt| search_text.set(evt.value()),
+                        input {
+                            r#type: "text", placeholder: "🔍 Rechercher...",
+                            style: "padding: 8px; border-radius: 5px; border: none; background: #333; color: white; width: 250px;",
+                            oninput: move |evt| search_text.set(evt.value()),
+                        }
                     }
                 }
                 
                 div { class: "media-grid",
-                    for item in list_signal().iter()
-                        .filter(|i| i.media_type == MediaType::Video)
-                        .filter(|i| {
-                            let query = search_text().to_lowercase();
-                            if query.is_empty() { return true; }
-                            let name = i.title.as_deref().unwrap_or(&i.path).to_lowercase();
-                            name.contains(&query)
-                        }) 
+                    for item in list_signal().iter().filter(|i| i.media_type == MediaType::Video).filter(|i| { let q = search_text().to_lowercase(); if q.is_empty() { return true; } i.title.as_deref().unwrap_or(&i.path).to_lowercase().contains(&q) }) 
                     {
                         {
-                            let (progress_percent, has_started) = match item.duration {
-                                Some(total) if total > 0.0 => ((item.last_position / total) * 100.0, item.last_position > 5.0),
-                                _ => (0.0, item.last_position > 5.0),
-                            };
+                            let last_pos = item.last_position;
+                            let dur = item.duration.unwrap_or(0.0);
+                            
+                            let progress = if dur > 0.0 { (last_pos / dur) * 100.0 } else { 0.0 };
+                            let is_started = last_pos > 5.0;
 
                             rsx! {
                                 div { 
                                     class: "media-card",
-                                    style: "position: relative; overflow: hidden;", 
+                                    title: "{item.title.as_deref().unwrap_or(&item.path)}",
+                                    style: "position: relative; overflow: hidden; display: flex; flex-direction: column;",
+                                    
                                     onclick: { 
-                                        let p=item.path.clone(); 
-                                        let i=item.id; 
-                                        let tx=cmd_tx.clone(); 
-                                        move |_| { current_video.set(Some(p.clone())); tx.send(Command::Play(i)).unwrap(); } 
+                                        let selected = item.clone();
+                                        let tx = cmd_tx.clone();
+                                        let raw_title = item.title.as_deref().unwrap_or(&item.path);
+                                        let clean_title = std::path::Path::new(raw_title).file_stem().and_then(|s| s.to_str()).unwrap_or(raw_title).to_string();
+                                        let mut history = plugin_history.clone();
+                                        move |_| { 
+                                            history.write().insert(0, "Chargement des infos...".to_string());
+                                            selected_media.set(Some(selected.clone()));
+                                            tx.send(Command::GetfilmMetadataFromPlugin(clean_title.clone())).unwrap();
+                                        } 
                                     },
-
+                                    
                                     div { class: "card-icon", "🎬" }
-
-                                    if progress_percent > 0.0 {
-                                        div { 
-                                            style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: rgba(0,0,0,0.6); z-index: 10;",
-                                            div { style: "height: 100%; background: #e50914; width: {progress_percent}%; transition: width 0.3s;" }
-                                        }
-                                    } else if has_started {
-                                        div { 
-                                            style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: rgba(0,0,0,0.6); z-index: 10;",
+                                    div { class: "card-text", "{item.title.as_deref().unwrap_or(&item.path)}" }
+                                    
+                                    if progress > 0.0 { 
+                                        div { style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 8px; background: rgba(0,0,0,0.8); z-index: 50;", 
+                                            div { style: "height: 100%; background: #e50914; width: {progress.max(2.0):.1}%;" } 
+                                        } 
+                                    } else if is_started { 
+                                        div { style: "position: absolute; bottom: 0; left: 0; width: 100%; height: 8px; background: rgba(0,0,0,0.8); z-index: 50;", 
                                             div { style: "height: 100%; background: #3498db; width: 100%;" } 
-                                        }
+                                        } 
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
-                                    div { class: "card-text", style: "overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;", 
-                                        "{item.title.as_deref().unwrap_or(&item.path)}" 
-                                    }
+            // ==========================================
+            // 3. LE POPUP NETFLIX
+            // ==========================================
+            if let Some(media) = selected_media() {
+                div { 
+                    class: "modal-backdrop",
+                    onclick: move |_| selected_media.set(None),
+                    div { 
+                        class: "modal-content",
+                        onclick: move |evt| evt.stop_propagation(), 
+                        {
+                            let thumb_url = make_url(&media.path, &root_path).replace("/drives/", "/thumbnail/");
+                            rsx! {
+                                div { 
+                                    class: "modal-header",
+                                    style: "background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), #181818), url('{thumb_url}'); background-size: cover; background-position: center; position: relative;", 
+                                    div { class: "close-btn", onclick: move |_| selected_media.set(None), "✕" }
+                                }
+                            }
+                        }
+                        div { class: "modal-body",
+                            h1 { style: "font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 4px black;", 
+                                "{media.title.as_deref().unwrap_or(&media.path)}" 
+                            }
+                            div { style: "display: flex; gap: 15px; margin-bottom: 20px;",
+                                button { 
+                                    class: "btn-play",
+                                    onclick: move |_| {
+                                        let id = media.id;
+                                        // 👇 CORRECTION : On passe l'objet média et non plus juste le path !
+                                        playing_video.set(Some(media.clone()));
+                                        selected_media.set(None);
+                                        cmd_tx.send(Command::Play(id)).unwrap();
+                                    },
+                                    "▶ Lecture"
+                                }
+                            }
+                            div { 
+                                style: "background: #222; padding: 20px; border-radius: 8px; min-height: 100px;",
+                                if let Some(info) = plugin_history().first() {
+                                    pre { style: "white-space: pre-wrap; font-family: 'Segoe UI', sans-serif; color: #ccc; line-height: 1.6;", "{info}" }
                                 }
                             }
                         }
@@ -896,8 +936,12 @@ pub fn Videos() -> Element {
 pub fn Images() -> Element {
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
     let list_signal = use_context::<Signal<Vec<MediaInfo>>>();
-    let mut current_image = use_signal(|| Option::<String>::None);
     
+    // 👇 NOUVEAU : On récupère le root_path pour générer les URLs locales via Warp
+    let root_path_signal = use_context::<Signal<String>>();
+    let root_path = root_path_signal();
+    
+    let mut current_image = use_signal(|| Option::<String>::None);
     let mut search_text = use_signal(|| String::new());
 
     let tx_init = cmd_tx.clone();
@@ -905,29 +949,29 @@ pub fn Images() -> Element {
 
     rsx! {
         div { class: "container",
-            if let Some(data) = current_image() {
-                div { style: "position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 999; display: flex; flex-direction: column;",
-                    div { style: "height: 60px; padding: 10px;",
-                        button { class: "btn-nav", style: "position: relative; top: 0; left: 0; transform: none;", onclick: move |_| current_image.set(None), "Fermer" }
+            
+            // 1. VUE PLEIN ÉCRAN
+            if let Some(url) = current_image() {
+                div { 
+                    style: "position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 9999; display: flex; flex-direction: column;",
+                    
+                    div { style: "height: 60px; padding: 10px; position: absolute; z-index: 10000;",
+                        button { class: "btn-nav", style: "position: relative; top: 0; left: 0; transform: none;", onclick: move |_| current_image.set(None), "⬅ Retour" }
                     }
-                    div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center;",
-                         img { src: "{data}", style: "max-width: 100%; max-height: 100%; object-fit: contain;" }
+                    
+                    div { style: "flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 40px;",
+                         img { src: "{url}", style: "max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8);" }
                     }
                 }
             } 
+            // 2. GRILLE D'IMAGES
             else {
                 div { class: "top-bar", 
                     style: "display: flex; align-items: center; justify-content: space-between; position: relative; height: 60px; padding: 0 20px;",
 
-                    div { style: "z-index: 2;",
-                        Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" }
-                    }
-
-                    div { 
-                        class: "page-title", 
-                        style: "position: absolute; left: 50%; transform: translateX(-50%); width: auto; white-space: nowrap;",
-                        "Images" 
-                    } 
+                    div { style: "z-index: 2;", Link { to: Route::Home {}, class: "btn-nav", "🏠 Accueil" } }
+                    
+                    div { class: "page-title-centered", "Images" } 
 
                     div { style: "z-index: 2;",
                         input {
@@ -945,23 +989,44 @@ pub fn Images() -> Element {
                         .filter(|i| {
                             let query = search_text().to_lowercase();
                             if query.is_empty() { return true; }
-                            let name = i.title.as_deref().unwrap_or(&i.path).to_lowercase();
-                            name.contains(&query)
+                            i.title.as_deref().unwrap_or(&i.path).to_lowercase().contains(&query)
                         })
                     {
-                        div { class: "media-card",
-                            onclick: {
-                                let p=item.path.clone(); let i=item.id; let tx=cmd_tx.clone();
-                                move |_| { 
-                                    if let Ok(bytes) = fs::read(&p) {
-                                        let b64 = general_purpose::STANDARD.encode(&bytes);
-                                        current_image.set(Some(format!("data:image/png;base64,{}", b64)));
+                        {
+                            // On génère la vraie URL servie par Warp
+                            let url = make_url(&item.path, &root_path);
+                            
+                            rsx! {
+                                div { 
+                                    class: "media-card",
+                                    title: "{item.title.as_deref().unwrap_or(&item.path)}",
+                                    // Style spécifique : on enlève le padding pour que l'image prenne toute la carte
+                                    style: "padding: 0; overflow: hidden; position: relative; min-height: 200px; border: none;",
+                                    
+                                    onclick: {
+                                        let u = url.clone(); 
+                                        let i = item.id; 
+                                        let tx = cmd_tx.clone();
+                                        move |_| { 
+                                            // 🚀 FINI LE BASE64 LOURD ! On passe juste l'URL. Le navigateur s'occupe du reste.
+                                            current_image.set(Some(u.clone()));
+                                            tx.send(Command::Play(i)).unwrap();
+                                        }
+                                    },
+                                    
+                                    // La miniature (en fond pour gérer le ratio "cover" sans déformer)
+                                    div {
+                                        style: "width: 100%; height: 100%; background-image: url('{url}'); background-size: cover; background-position: center; transition: transform 0.3s;"
                                     }
-                                    tx.send(Command::Play(i)).unwrap();
+                                    
+                                    // Le texte avec un léger flou de fond (Glassmorphism) pour toujours être lisible
+                                    div { 
+                                        class: "card-text", 
+                                        style: "position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.7); padding: 10px; margin: 0; backdrop-filter: blur(5px); font-size: 0.85rem;", 
+                                        "{item.title.as_deref().unwrap_or(&item.path)}" 
+                                    }
                                 }
-                            },
-                            div { class: "card-icon", "🖼️" }
-                            div { class: "card-text", style: "overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;", "{item.title.as_deref().unwrap_or(&item.path)}" }
+                            }
                         }
                     }
                 }
@@ -974,9 +1039,13 @@ pub fn Images() -> Element {
 #[component] 
 pub fn Plugins() -> Element { 
     let cmd_tx = use_context::<std::sync::mpsc::Sender<Command>>();
-    // On récupère maintenant une liste (Vec) de résultats
     let plugin_history = use_context::<Signal<Vec<String>>>();
-    let mut search_text = use_signal(|| String::from("Nirvana"));
+    
+    // On garde le texte de recherche
+    let mut search_text = use_signal(|| String::from("Inception")); 
+    
+    // 👇 NOUVEAU : On gère le mode de recherche (Music ou Film)
+    let mut search_mode = use_signal(|| "music"); // "music" ou "film"
 
     rsx! { 
         div { class: "container", 
@@ -986,27 +1055,55 @@ pub fn Plugins() -> Element {
             }
             
             div { style: "display: flex; flex-direction: column; align-items: center; gap: 30px; margin-top: 50px; padding-bottom: 50px;",
-                h2 { "MusicBrainz" }
+                
+                // --- SÉLECTEUR DE TYPE ---
+                div { style: "display: flex; gap: 20px; background: #1e1e1e; padding: 5px; border-radius: 8px; border: 1px solid #333;",
+                    button {
+                        style: if search_mode() == "music" { 
+                            "background: #007acc; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;" 
+                        } else { 
+                            "background: transparent; color: #aaa; padding: 10px 20px; border: none; cursor: pointer;" 
+                        },
+                        onclick: move |_| { search_mode.set("music"); search_text.set("Nirvana".to_string()); },
+                        "🎵 Musique (MusicBrainz)"
+                    }
+                    button {
+                        style: if search_mode() == "film" { 
+                            "background: #e50914; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;" 
+                        } else { 
+                            "background: transparent; color: #aaa; padding: 10px 20px; border: none; cursor: pointer;" 
+                        },
+                        onclick: move |_| { search_mode.set("film"); search_text.set("Inception".to_string()); },
+                        "🎬 Films (TMDB)"
+                    }
+                }
 
+                // --- BARRE DE RECHERCHE ---
                 div { style: "display: flex; gap: 10px;",
                     input {
                         style: "padding: 10px; border-radius: 4px; border: 1px solid #333; background: #1e1e1e; color: white; width: 300px;",
                         value: "{search_text}",
+                        placeholder: if search_mode() == "music" { "Nom de l'artiste..." } else { "Titre du film..." },
                         oninput: move |evt| search_text.set(evt.value())
                     }
                     button { 
                         class: "btn-nav", 
-                        style: "position: relative; transform: none; top: auto; left: auto; background: #007acc;",
+                        style: "position: relative; transform: none; top: auto; left: auto; background: #27ae60;",
                         onclick: move |_| {
                             if !search_text().is_empty() {
-                                cmd_tx.send(Command::GetArtistMetadataFromPlugin(search_text())).unwrap();
+                                // 👇 LOGIQUE DE CHOIX DU PLUGIN
+                                if search_mode() == "music" {
+                                    cmd_tx.send(Command::GetArtistMetadataFromPlugin(search_text())).unwrap();
+                                } else {
+                                    cmd_tx.send(Command::GetfilmMetadataFromPlugin(search_text())).unwrap();
+                                }
                             }
                         },
                         "🔍 Rechercher"
                     }
                 }
 
-                // Zone des résultats (Historique)
+                // --- RÉSULTATS ---
                 div { style: "width: 80%; max-width: 800px; display: flex; flex-direction: column; gap: 20px;",
                     if plugin_history().is_empty() {
                         div { style: "text-align: center; color: #666; font-style: italic; margin-top: 20px;", 
@@ -1016,10 +1113,15 @@ pub fn Plugins() -> Element {
 
                     for res in plugin_history().iter() {
                         div { 
-                            style: "background: #1e1e1e; padding: 20px; border-radius: 8px; border: 1px solid #333; border-left: 5px solid #007acc; box-shadow: 0 4px 10px rgba(0,0,0,0.3);",
-                            h3 { style: "margin-top: 0; color: #aaa; font-size: 0.9rem; text-transform: uppercase;", "Résultat trouvé :" }
+                            // Petit changement de style selon le contenu (simple detection)
+                            style: if res.contains("Year:") { 
+                                "background: #1e1e1e; padding: 20px; border-radius: 8px; border: 1px solid #333; border-left: 5px solid #e50914;" // Rouge pour Films
+                            } else {
+                                "background: #1e1e1e; padding: 20px; border-radius: 8px; border: 1px solid #333; border-left: 5px solid #007acc;" // Bleu pour Musique
+                            },
+                            h3 { style: "margin-top: 0; color: #aaa; font-size: 0.9rem; text-transform: uppercase;", "Résultat :" }
                             pre { 
-                                style: "color: #eee; white-space: pre-wrap; font-family: 'Consolas', monospace; font-size: 1rem; margin: 0;",
+                                style: "color: #eee; white-space: pre-wrap; font-family: 'Segoe UI', sans-serif; font-size: 1rem; margin: 0;",
                                 "{res}"
                             }
                         }

@@ -54,3 +54,21 @@ impl Media for Image {
     fn get_name(&self) -> String { self.name.clone() }
     fn get_path(&self) -> String { self.path.clone() }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_image_creation_and_info() {
+        let img = Image::new(99, "/photos/mars_colony.jpg", "Colonie Martienne");
+        let info = img.info();
+        
+        assert_eq!(info.id, 99);
+        assert_eq!(info.path, "/photos/mars_colony.jpg");
+        assert_eq!(info.title, Some("Colonie Martienne".to_string()));
+        assert_eq!(info.duration, None); // Une image n'a pas de durée
+        assert_eq!(info.last_position, 0.0);
+        assert_eq!(info.media_type, MediaType::Image);
+    }
+}
