@@ -186,7 +186,7 @@ pub unsafe extern "C" fn metadata(name_ptr: *const c_char) -> *mut c_char {
 
 // Helper function to free strings allocated by the plugin
 #[unsafe(no_mangle)]
-pub extern "C" fn free_string(s: *mut c_char) {
+pub unsafe extern "C" fn free_string(s: *mut c_char) {
     unsafe {
         if !s.is_null() {
             let _ = CString::from_raw(s);
