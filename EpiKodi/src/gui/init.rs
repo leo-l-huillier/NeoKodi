@@ -19,6 +19,17 @@ use std::time::Duration;
 
 pub static RELOAD_SIGNAL: OnceLock<broadcast::Sender<()>> = OnceLock::new();
 
+fn startup_commands(root_path: PathBuf) -> Vec<Command> {
+    vec![
+        Command::AddSource(root_path.clone(), MediaType::Video),
+        Command::AddSource(root_path.clone(), MediaType::Audio),
+        Command::AddSource(root_path, MediaType::Image),
+        Command::GetAllMedia(),
+        Command::GetAllPlaylists(),
+        Command::GetPluginHistory,
+    ]
+}
+
 struct Backend {
     tx: mpsc::Sender<Command>,
     rx: RefCell<Option<mpsc::Receiver<Event>>>,
@@ -36,12 +47,9 @@ pub fn App() -> Element {
         let root_path = PathBuf::from(config.media_path);
 
         // Initialisation scan
-        let _ = cmd_tx.send(Command::AddSource(root_path.clone(), MediaType::Video));
-        let _ = cmd_tx.send(Command::AddSource(root_path.clone(), MediaType::Audio));
-        let _ = cmd_tx.send(Command::AddSource(root_path, MediaType::Image));
-        let _ = cmd_tx.send(Command::GetAllMedia());
-        let _ = cmd_tx.send(Command::GetAllPlaylists());
-        let _ = cmd_tx.send(Command::GetPluginHistory);
+        for command in startup_commands(root_path) {
+            let _ = cmd_tx.send(command);
+        }
 
         Rc::new(Backend {
             tx: cmd_tx,
@@ -113,4 +121,54 @@ pub fn App() -> Element {
     });
 
     rsx! { Router::<Route> {} }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::startup_commands;
+    use crate::media::data::MediaType;
+    use crate::threading::command::Command;
+    use std::path::PathBuf;
+
+    #[test]
+    fn startup_commands_build_expected_sequence() {
+        let root_path = PathBuf::from("C:/media");
+        let commands = startup_commands(root_path.clone());
+
+        assert_eq!(commands.len(), 6);
+
+        assert!(matches!(
+            &commands[0],
+            Command::AddSource(path, MediaType::Video) if path == &root_path
+        ));
+        assert!(matches!(
+            &commands[1],
+            Command::AddSource(path, MediaType::Audio) if path == &root_path
+        ));
+        assert!(matches!(
+            &commands[2],
+            Command::AddSource(path, MediaType::Image) if path == &root_path
+        ));
+        assert!(matches!(commands[3], Command::GetAllMedia()));
+        assert!(matches!(commands[4], Command::GetAllPlaylists()));
+        assert!(matches!(commands[5], Command::GetPluginHistory));
+    }
+
+    #[test]
+    fn startup_commands_use_distinct_path_instances() {
+        let commands = startup_commands(PathBuf::from("C:/media"));
+
+        let paths: Vec<*const PathBuf> = commands
+            .iter()
+            .filter_map(|command| match command {
+                Command::AddSource(path, _) => Some(path as *const PathBuf),
+                _ => None,
+            })
+            .collect();
+
+        assert_eq!(paths.len(), 3);
+        assert_ne!(paths[0], paths[1]);
+        assert_ne!(paths[1], paths[2]);
+        assert_ne!(paths[0], paths[2]);
+    }
 }
