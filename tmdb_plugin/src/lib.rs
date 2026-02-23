@@ -102,7 +102,7 @@ fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
 
     if search_results.results.is_empty() {
         println!("⚠️ [TMDB DLL] Aucun résultat trouvé dans le JSON.");
-        Ok(format!("Aucun film trouvé pour '{}'", movie_query));
+        Ok(format!("Aucun film trouvé pour '{}'", movie_query))
     } else {
         println!(
             "✅ [TMDB DLL] {} films trouvés.",
@@ -126,7 +126,7 @@ fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
             };
             result.push_str(&format!("📝 {}\n", overview));
         }
-        Ok(result);
+        Ok(result)
     }
 }
 
