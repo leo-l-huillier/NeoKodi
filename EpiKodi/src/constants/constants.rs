@@ -1,4 +1,3 @@
-
 /*
 This file contains constant values used throughout the application
 TODO: check the if there is a correct way to do that and good practices

@@ -1,39 +1,38 @@
 #![allow(non_snake_case)]
 
-mod constants;
-mod threading;
-mod database;
-mod media;
-mod library;
-mod scan;
 mod config;
+mod constants;
+mod database;
 mod gui;
 mod iptv;
-mod logger; 
+mod library;
+mod logger;
+mod media;
 mod plugin;
+mod scan;
+mod threading;
 
-use crate::logger::logger::Logger;
 use crate::constants::LOG_FILE;
+use crate::logger::logger::Logger;
 
-use crate::gui::style::GLOBAL_STYLE;
 use crate::config::AppConfig;
-use crate::gui::init::{App, RELOAD_SIGNAL}; 
+use crate::gui::init::{App, RELOAD_SIGNAL};
+use crate::gui::style::GLOBAL_STYLE;
 
+use std::path::Path;
 use std::thread;
 use std::time::Duration;
-use std::path::Path;
 
-use dioxus::prelude::*;
 use dioxus::desktop::{Config, WindowBuilder};
+use dioxus::prelude::*;
 
-use warp::Filter;
 use tokio::sync::broadcast;
+use warp::Filter;
 use warp::Reply;
-
 
 fn main() {
     let logger = Logger::new(LOG_FILE);
-    
+
     unsafe {
         std::env::set_var("RUST_LOG", "warp=info");
         std::env::set_var("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--disable-web-security --allow-file-access-from-files --allow-running-insecure-content --autoplay-policy=no-user-gesture-required");
@@ -52,9 +51,8 @@ fn main() {
                 println!("\n🌍 SERVEUR : Initialisation...");
 
                 let mut rx = reload_tx_server.subscribe();
-                
-                let base_route = warp::path("media")
-                    .and(warp::fs::dir(server_root));
+
+                let base_route = warp::path("media").and(warp::fs::dir(server_root));
 
                 let mut drives_filter: Option<warp::filters::BoxedFilter<(warp::fs::File,)>> = None;
 
@@ -63,8 +61,12 @@ fn main() {
                     let drive_path = format!("{}:\\", char_letter);
 
                     if Path::new(&drive_path).exists() {
-                        println!("✅ Disque détecté et monté : {} (Route: /drives/{})", drive_path, char_letter.to_lowercase());
-                        
+                        println!(
+                            "✅ Disque détecté et monté : {} (Route: /drives/{})",
+                            drive_path,
+                            char_letter.to_lowercase()
+                        );
+
                         let this_drive = warp::path("drives")
                             .and(warp::path(char_letter.to_lowercase().to_string())) // "e"
                             .and(warp::fs::dir(drive_path));
@@ -82,8 +84,10 @@ fn main() {
                         .boxed()
                 });
 
-                let cors = warp::cors().allow_any_origin().allow_methods(vec!["GET", "HEAD"]);
-                
+                let cors = warp::cors()
+                    .allow_any_origin()
+                    .allow_methods(vec!["GET", "HEAD"]);
+
                 let log = warp::log("warp::server");
 
                 let thumbnail_route = warp::path("thumbnail")
@@ -95,37 +99,48 @@ fn main() {
                             Ok(p) => p.to_string(),
                             Err(_) => raw_path.to_string(),
                         };
-                        let full_path = format!("{}:\\{}", drive_letter, decoded_path.replace("/", "\\"));
+                        let full_path =
+                            format!("{}:\\{}", drive_letter, decoded_path.replace("/", "\\"));
 
                         let _ = std::fs::create_dir_all("thumbnails_cache");
-                        let safe_name = full_path.replace("\\", "_").replace(":", "_").replace(" ", "_");
+                        let safe_name = full_path
+                            .replace("\\", "_")
+                            .replace(":", "_")
+                            .replace(" ", "_");
                         let cache_path = format!("thumbnails_cache/{}.jpg", safe_name);
 
                         // Génération par FFmpeg si l'image n'existe pas
                         if !std::path::Path::new(&cache_path).exists() {
                             println!("🎬 Génération miniature pour : {}", full_path);
-                            
+
                             // On extrait l'image à 1 minute (00:01:00) au lieu de 10 min
                             let output = std::process::Command::new(".\\ffmpeg.exe")
                                 .args([
-                                    "-ss", "00:01:00", 
-                                    "-i", &full_path,
-                                    "-frames:v", "1",
-                                    "-q:v", "2",
-                                    "-y", 
-                                    &cache_path
+                                    "-ss",
+                                    "00:01:00",
+                                    "-i",
+                                    &full_path,
+                                    "-frames:v",
+                                    "1",
+                                    "-q:v",
+                                    "2",
+                                    "-y",
+                                    &cache_path,
                                 ])
                                 .output();
-                            
+
                             // LOGS DE DEBUGGING POUR FFMPEG
                             match output {
                                 Ok(out) => {
                                     if !out.status.success() {
-                                        println!("❌ Erreur FFmpeg : {}", String::from_utf8_lossy(&out.stderr));
+                                        println!(
+                                            "❌ Erreur FFmpeg : {}",
+                                            String::from_utf8_lossy(&out.stderr)
+                                        );
                                     } else {
                                         println!("✅ Miniature générée avec succès.");
                                     }
-                                },
+                                }
                                 Err(e) => println!("❌ Impossible de lancer ffmpeg.exe : {}", e),
                             }
                         }
@@ -141,28 +156,25 @@ fn main() {
                             Err(warp::reject::not_found())
                         }
                     });
-                
-                
+
                 let file_routes = base_route
                     .or(final_drives_route)
                     .unify()
                     .map(|f: warp::fs::File| f.into_response());
 
                 println!("🚀 SERVEUR PRÊT sur http://127.0.0.1:3030");
-                let thumb_route = thumbnail_route
-                    .map(|r: warp::http::Response<Vec<u8>>| r.into_response());
-                
-                let routes = file_routes
-                    .or(thumb_route)
-                    .unify() 
-                    .with(cors)
-                    .with(log);
+                let thumb_route =
+                    thumbnail_route.map(|r: warp::http::Response<Vec<u8>>| r.into_response());
 
-                let (_addr, server) = warp::serve(routes)
-                    .bind_with_graceful_shutdown(([127, 0, 0, 1], 3030), async move {
+                let routes = file_routes.or(thumb_route).unify().with(cors).with(log);
+
+                let (_addr, server) = warp::serve(routes).bind_with_graceful_shutdown(
+                    ([127, 0, 0, 1], 3030),
+                    async move {
                         let _ = rx.recv().await;
-                    });
-                
+                    },
+                );
+
                 server.await;
                 println!("🔄 SERVEUR : Redémarrage...");
                 tokio::time::sleep(Duration::from_millis(1000)).await;
@@ -170,8 +182,13 @@ fn main() {
         });
     });
 
-    let window = WindowBuilder::new().with_title("NeoKodi").with_resizable(true).with_maximized(true);
-    let config_dioxus = Config::new().with_window(window).with_custom_head(format!("<style>{}</style>", GLOBAL_STYLE));
+    let window = WindowBuilder::new()
+        .with_title("NeoKodi")
+        .with_resizable(true)
+        .with_maximized(true);
+    let config_dioxus = Config::new()
+        .with_window(window)
+        .with_custom_head(format!("<style>{}</style>", GLOBAL_STYLE));
 
     LaunchBuilder::new().with_cfg(config_dioxus).launch(App);
 }

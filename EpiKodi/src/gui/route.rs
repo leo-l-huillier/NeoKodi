@@ -1,5 +1,5 @@
-use dioxus::prelude::*;
 use super::pages::*;
+use dioxus::prelude::*;
 
 #[derive(Routable, Clone)]
 #[rustfmt::skip]

@@ -24,14 +24,13 @@ pub struct DB {
     pub media_rows: Vec<MediaRow>,
 }
 
-
 impl DB {
     pub fn new() -> Self {
         if !Path::new("db").exists() {
             println!("📁 Dossier 'db' introuvable, création automatique...");
             fs::create_dir("db").expect("Impossible de créer le dossier 'db'");
         }
-        
+
         DB {
             conn: Connection::open("db/library.db").unwrap(),
             media_rows: Vec::new(),
@@ -116,7 +115,13 @@ impl DB {
     }
 
     //status : 0 = not started, 1 = playing, 2 = finished
-    pub fn update_media_status_and_time(&mut self, media_id: i64, status: i32, time_stop: f64, duration: f32) -> Result<()> {
+    pub fn update_media_status_and_time(
+        &mut self,
+        media_id: i64,
+        status: i32,
+        time_stop: f64,
+        duration: f32,
+    ) -> Result<()> {
         self.conn.execute(
             "
                 UPDATE media
@@ -129,7 +134,13 @@ impl DB {
     }
     //========MEDIA TABLE METHODS========
 
-    pub fn insert_media(&mut self, path: &str, title: &str, duration: f32, media_type: &str) -> Result<()> {
+    pub fn insert_media(
+        &mut self,
+        path: &str,
+        title: &str,
+        duration: f32,
+        media_type: &str,
+    ) -> Result<()> {
         self.conn.execute(
             "
                 INSERT OR IGNORE INTO media (path, title, duration, media_type)
@@ -141,10 +152,9 @@ impl DB {
     }
 
     pub fn get_all_media(&mut self) -> Result<&Vec<MediaRow>> {
-
-        let mut stmt = self.conn.prepare(
-            "SELECT id, path, title, duration, media_type, time_stop FROM media"
-        )?;
+        let mut stmt = self
+            .conn
+            .prepare("SELECT id, path, title, duration, media_type, time_stop FROM media")?;
 
         let rows = stmt.query_map([], |row| {
             Ok(MediaRow {
@@ -159,18 +169,24 @@ impl DB {
 
         for r in rows {
             //println!("id: {}", r.as_ref().unwrap().id);
-           self.media_rows.push(r?);
+            self.media_rows.push(r?);
         }
         Ok(&self.media_rows)
     }
-
 
     pub fn print_media_rows(&mut self) {
         //println!("{:#?}", self.media_rows);
 
         for media in &self.media_rows {
-            println!("ID: {}, Path: {}, Title: {:?}, Duration: {:?}, Type: {:?}, Last Position: {}",
-                media.id, media.path, media.title, media.duration, media.media_type, media.last_position);
+            println!(
+                "ID: {}, Path: {}, Title: {:?}, Duration: {:?}, Type: {:?}, Last Position: {}",
+                media.id,
+                media.path,
+                media.title,
+                media.duration,
+                media.media_type,
+                media.last_position
+            );
         }
     }
 
@@ -194,7 +210,10 @@ impl DB {
         Ok(())
     }
 
-    pub fn upsert_media_from_scan(&mut self, scanned_media: Vec<ScannedMedia>) -> rusqlite::Result<()> {
+    pub fn upsert_media_from_scan(
+        &mut self,
+        scanned_media: Vec<ScannedMedia>,
+    ) -> rusqlite::Result<()> {
         let tx = self.conn.transaction()?;
         {
             let mut stmt = tx.prepare(
@@ -221,14 +240,23 @@ impl DB {
         Ok(())
     }
 
-    pub fn cleanup_missing_media(&mut self, scanned_media: Vec<ScannedMedia>) -> rusqlite::Result<()> {
-
+    pub fn cleanup_missing_media(
+        &mut self,
+        scanned_media: Vec<ScannedMedia>,
+    ) -> rusqlite::Result<()> {
         let scanned_paths: Vec<String> = scanned_media.iter().map(|m| m.path.clone()).collect();
-        let placeholders = scanned_paths.iter().map(|_| "?").collect::<Vec<_>>().join(", ");
+        let placeholders = scanned_paths
+            .iter()
+            .map(|_| "?")
+            .collect::<Vec<_>>()
+            .join(", ");
         let sql = format!("DELETE FROM media WHERE path NOT IN ({})", placeholders);
 
         let mut stmt = self.conn.prepare(&sql)?;
-        let params: Vec<&dyn rusqlite::ToSql> = scanned_paths.iter().map(|p| p as &dyn rusqlite::ToSql).collect();
+        let params: Vec<&dyn rusqlite::ToSql> = scanned_paths
+            .iter()
+            .map(|p| p as &dyn rusqlite::ToSql)
+            .collect();
         stmt.execute(rusqlite::params_from_iter(params))?;
         Ok(())
     }
@@ -236,25 +264,21 @@ impl DB {
     //========= TAGS TABLE METHODS========
 
     pub fn get_or_create_tag(&mut self, name: &str) -> rusqlite::Result<i64> {
-        self.conn.execute(
-            "INSERT OR IGNORE INTO tags (name) VALUES (?1)",
-            [name],
-        )?;
+        self.conn
+            .execute("INSERT OR IGNORE INTO tags (name) VALUES (?1)", [name])?;
 
-        self.conn.query_row(
-            "SELECT id FROM tags WHERE name = ?1",
-            [name],
-            |row| row.get(0),
-        )
+        self.conn
+            .query_row("SELECT id FROM tags WHERE name = ?1", [name], |row| {
+                row.get(0)
+            })
     }
 
     //TODO: y a pas de gestion d'erreur ici c'est important à corriger
     pub fn get_tag_id(&mut self, name: &str) -> rusqlite::Result<i64> {
-        self.conn.query_row(
-            "SELECT id FROM tags WHERE name = ?1",
-            [name],
-            |row| row.get(0),
-        )
+        self.conn
+            .query_row("SELECT id FROM tags WHERE name = ?1", [name], |row| {
+                row.get(0)
+            })
     }
 
     pub fn get_all_tags(&mut self) -> rusqlite::Result<Vec<(i64, String)>> {
@@ -266,13 +290,10 @@ impl DB {
             ",
         )?;
 
-        let rows = stmt.query_map([], |row| {
-            Ok((row.get(0)?, row.get(1)?))
-        })?;
+        let rows = stmt.query_map([], |row| Ok((row.get(0)?, row.get(1)?)))?;
 
         Ok(rows.filter_map(Result::ok).collect())
     }
-
 
     pub fn add_tag_to_media(&mut self, media_id: i64, tag_id: i64) -> rusqlite::Result<()> {
         self.conn.execute(
@@ -314,7 +335,6 @@ impl DB {
         Ok(())
     }
 
-
     pub fn get_media_by_tag(&mut self, tag_name: &str) -> rusqlite::Result<Vec<i64>> {
         let mut stmt = self.conn.prepare(
             "
@@ -333,35 +353,31 @@ impl DB {
 
     //========= PLAYLIST TABLE METHODS========
 
-
     pub fn create_playlist(&mut self, name: &str) -> rusqlite::Result<i64> {
+        self.conn
+            .execute("INSERT OR IGNORE INTO playlists (name) VALUES (?1)", [name])?;
 
-        self.conn.execute(
-            "INSERT OR IGNORE INTO playlists (name) VALUES (?1)",
-            [name],
-        )?;
-
-        self.conn.query_row(
-            "SELECT id FROM playlists WHERE name = ?1",
-            [name],
-            |row| row.get(0),
-        )
+        self.conn
+            .query_row("SELECT id FROM playlists WHERE name = ?1", [name], |row| {
+                row.get(0)
+            })
     }
 
     pub fn delete_playlist(&mut self, playlist_id: i64) -> rusqlite::Result<()> {
-
         self.conn.execute(
             "DELETE FROM playlist_items WHERE playlist_id = ?1",
             [playlist_id],
         )?;
-        self.conn.execute(
-            "DELETE FROM playlists WHERE id = ?1",
-            [playlist_id],
-        )?;
+        self.conn
+            .execute("DELETE FROM playlists WHERE id = ?1", [playlist_id])?;
         Ok(())
     }
 
-    pub fn add_media_to_playlist(&mut self, media_id: i64, playlist_id: i64) -> rusqlite::Result<()> {
+    pub fn add_media_to_playlist(
+        &mut self,
+        media_id: i64,
+        playlist_id: i64,
+    ) -> rusqlite::Result<()> {
         self.conn.execute(
             "
             INSERT OR REPLACE INTO playlist_items
@@ -373,7 +389,11 @@ impl DB {
         Ok(())
     }
 
-    pub fn remove_media_from_playlist(&mut self, media_id: i64, playlist_id: i64) -> rusqlite::Result<()> {
+    pub fn remove_media_from_playlist(
+        &mut self,
+        media_id: i64,
+        playlist_id: i64,
+    ) -> rusqlite::Result<()> {
         self.conn.execute(
             "
             DELETE FROM playlist_items
@@ -398,14 +418,13 @@ impl DB {
 
         Ok(rows.filter_map(Result::ok).collect())
     }
-    
+
     //ORDER BY position ASC
     pub fn get_playlist_id(&mut self, name: &str) -> rusqlite::Result<i64> {
-        self.conn.query_row(
-            "SELECT id FROM playlists WHERE name = ?1",
-            [name],
-            |row| row.get(0),
-        )
+        self.conn
+            .query_row("SELECT id FROM playlists WHERE name = ?1", [name], |row| {
+                row.get(0)
+            })
     }
 
     pub fn get_all_playlists(&mut self) -> rusqlite::Result<Vec<(i64, String)>> {
@@ -417,9 +436,7 @@ impl DB {
             ",
         )?;
 
-        let rows = stmt.query_map([], |row| {
-            Ok((row.get(0)?, row.get(1)?))
-        })?;
+        let rows = stmt.query_map([], |row| Ok((row.get(0)?, row.get(1)?)))?;
 
         Ok(rows.filter_map(Result::ok).collect())
     }
@@ -435,25 +452,17 @@ impl DB {
     }
 
     pub fn get_all_artist_metadata(&self) -> Result<Vec<String>> {
-        let mut stmt = self.conn.prepare("SELECT info FROM artist_metadata ORDER BY last_updated ASC")?;
+        let mut stmt = self
+            .conn
+            .prepare("SELECT info FROM artist_metadata ORDER BY last_updated ASC")?;
         let rows = stmt.query_map([], |row| row.get(0))?;
         Ok(rows.filter_map(|r| r.ok()).collect())
     }
 
-
-
-
-
-
-
-
     //========TESTING PURPOSES ONLY========
 
     pub fn clear_media_table(&mut self) -> Result<()> {
-        self.conn.execute(
-            "DELETE FROM media",
-            [],
-        )?;
+        self.conn.execute("DELETE FROM media", [])?;
         Ok(())
     }
 
@@ -463,21 +472,7 @@ impl DB {
         self.insert_media("path/to/media3.jpg", "Sample Media 3", 0.0, "image")?;
         Ok(())
     }
-
-    
-
-} 
-
-
-
-
-
-
-
-
-
-
-
+}
 
 #[cfg(test)]
 mod tests {
@@ -505,14 +500,17 @@ mod tests {
     fn test_insert_media() {
         let mut db = create_test_db();
 
-        assert!(db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video").is_ok());
+        assert!(db
+            .insert_media("path/to/video.mp4", "Test Video", 120.5, "video")
+            .is_ok());
     }
 
     #[test]
     fn test_get_all_media() {
         let mut db = create_test_db();
-        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video").unwrap();
-        
+        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video")
+            .unwrap();
+
         let media = db.get_all_media().unwrap();
 
         assert_eq!(media.len(), 1);
@@ -541,24 +539,27 @@ mod tests {
     #[test]
     fn test_add_tag_to_media() {
         let mut db = create_test_db();
-        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video").unwrap();
-        
+        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video")
+            .unwrap();
+
         let tag_id = db.get_or_create_tag("action").unwrap();
-        
+
         assert!(db.add_tag_to_media(1, tag_id).is_ok());
     }
 
     #[test]
     fn test_get_media_by_tag() {
         let mut db = create_test_db();
-        db.insert_media("path/to/video1.mp4", "Video 1", 120.0, "video").unwrap();
-        db.insert_media("path/to/video2.mp4", "Video 2", 150.0, "video").unwrap();
-        
+        db.insert_media("path/to/video1.mp4", "Video 1", 120.0, "video")
+            .unwrap();
+        db.insert_media("path/to/video2.mp4", "Video 2", 150.0, "video")
+            .unwrap();
+
         let tag_id = db.get_or_create_tag("action").unwrap();
         db.add_tag_to_media(1, tag_id).unwrap();
-        
+
         let media = db.get_media_by_tag("action").unwrap();
-        
+
         assert_eq!(media.len(), 1);
         assert_eq!(media[0], 1);
     }
@@ -567,16 +568,17 @@ mod tests {
     fn test_create_playlist() {
         let mut db = create_test_db();
         let playlist_id = db.create_playlist("My Playlist").unwrap();
-        
+
         assert!(playlist_id > 0);
     }
 
     #[test]
     fn test_add_media_to_playlist() {
         let mut db = create_test_db();
-        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video").unwrap();
+        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video")
+            .unwrap();
         let playlist_id = db.create_playlist("My Playlist").unwrap();
-        
+
         assert!(db.add_media_to_playlist(1, playlist_id).is_ok());
     }
 
@@ -584,15 +586,17 @@ mod tests {
     #[ignore]
     fn test_get_media_from_playlist() {
         let mut db = create_test_db();
-        db.insert_media("path/to/video1.mp4", "Video 1", 120.0, "video").unwrap();
-        db.insert_media("path/to/video2.mp4", "Video 2", 150.0, "video").unwrap();
-        
+        db.insert_media("path/to/video1.mp4", "Video 1", 120.0, "video")
+            .unwrap();
+        db.insert_media("path/to/video2.mp4", "Video 2", 150.0, "video")
+            .unwrap();
+
         let playlist_id = db.create_playlist("My Playlist").unwrap();
         db.add_media_to_playlist(1, playlist_id).unwrap();
         db.add_media_to_playlist(2, playlist_id).unwrap();
-        
+
         let media = db.get_media_from_playlist(playlist_id).unwrap();
-        
+
         assert_eq!(media.len(), 2);
     }
 
@@ -608,19 +612,21 @@ mod tests {
     #[test]
     fn test_clear_media_table() {
         let mut db = create_test_db();
-        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video").unwrap();
-        
+        db.insert_media("path/to/video.mp4", "Test Video", 120.5, "video")
+            .unwrap();
+
         assert!(db.clear_media_table().is_ok());
         let media = db.get_all_media().unwrap();
-        
+
         assert_eq!(media.len(), 0);
     }
 
     #[test]
     fn test_update_media_status_and_time() {
         let mut db = create_test_db();
-        db.insert_media("path/to/video.mp4", "Test Video", 0.0, "video").unwrap();
-        
+        db.insert_media("path/to/video.mp4", "Test Video", 0.0, "video")
+            .unwrap();
+
         // On simule qu'on a regardé 1h (3600 sec) sur un film de 2h (7200 sec)
         let res = db.update_media_status_and_time(1, 1, 3600.0, 7200.0);
         assert!(res.is_ok());
@@ -636,10 +642,10 @@ mod tests {
         let mut db = create_test_db();
         db.insert_media("/path.mp4", "Vid", 0.0, "video").unwrap();
         let tag_id = db.get_or_create_tag("sci-fi").unwrap();
-        
+
         db.add_tag_to_media(1, tag_id).unwrap();
         assert!(db.remove_tag_from_media(1, tag_id).is_ok());
-        
+
         let media = db.get_media_by_tag("sci-fi").unwrap();
         assert_eq!(media.len(), 0); // Le tag a bien été retiré
     }
@@ -650,12 +656,10 @@ mod tests {
         let pid = db.create_playlist("Soirée").unwrap();
         db.insert_media("/audio.mp3", "Zik", 0.0, "audio").unwrap();
         db.add_media_to_playlist(1, pid).unwrap();
-        
+
         assert!(db.delete_playlist(pid).is_ok());
-        
+
         let media = db.get_media_from_playlist(pid).unwrap();
         assert_eq!(media.len(), 0); // La playlist a disparu
     }
 }
-
-

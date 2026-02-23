@@ -1,11 +1,11 @@
 /* src/media/video.rs */
 
 use super::data::Media;
-use super::data::MediaType;
 use super::data::MediaInfo;
+use super::data::MediaType;
 
-use crate::logger::logger::Logger;
 use crate::constants::LOG_FILE;
+use crate::logger::logger::Logger;
 
 // On garde une structure simple pour les métadonnées (optionnel pour l'instant)
 #[derive(Clone)]
@@ -29,9 +29,7 @@ impl Video {
             last_position,
             path: path.to_string(),
             name: name.to_string(),
-            metadata: VideoMetadata {
-            duration: duration,
-            }
+            metadata: VideoMetadata { duration: duration },
         }
     }
 }
@@ -61,7 +59,13 @@ impl Media for Video {
         }
     }
 
-    fn media_type(&self) -> MediaType { MediaType::Video }
-    fn get_name(&self) -> String { self.name.clone() }
-    fn get_path(&self) -> String { self.path.clone() }
+    fn media_type(&self) -> MediaType {
+        MediaType::Video
+    }
+    fn get_name(&self) -> String {
+        self.name.clone()
+    }
+    fn get_path(&self) -> String {
+        self.path.clone()
+    }
 }

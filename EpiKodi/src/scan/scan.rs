@@ -2,18 +2,17 @@
 
 */
 
-use crate::library::sources::LibraryConfig;
 use crate::library::media_library::ScannedMedia;
+use crate::library::sources::LibraryConfig;
 use crate::media::data::MediaType;
 
-use crate::constants::{SOURCE_FILE, AUDIO_EXTS, VIDEO_EXTS, IMAGE_EXTS};
+use crate::constants::{AUDIO_EXTS, IMAGE_EXTS, SOURCE_FILE, VIDEO_EXTS};
 
-use crate::logger::logger::Logger;
 use crate::constants::{LOG_FILE, LOG_FILE_MEDIA_ITEMS};
+use crate::logger::logger::Logger;
 
-use std::path::Path;
 use std::fs;
-
+use std::path::Path;
 
 pub struct Scan {
     pub libraries: LibraryConfig,
@@ -29,14 +28,28 @@ impl Scan {
     }
 
     pub fn scan_libraries(&mut self) {
-
         let logger = Logger::new(LOG_FILE);
 
         //=========== SCAN SOURCES ===========
 
-        let music_source_paths: Vec<_> = self.libraries.music_sources.iter().map(|source| source.path.clone()).collect();
-        let video_source_paths: Vec<_> = self.libraries.video_sources.iter().map(|source| source.path.clone()).collect();
-        let image_source_paths: Vec<_> = self.libraries.image_sources.iter().map(|source| source.path.clone()).collect();
+        let music_source_paths: Vec<_> = self
+            .libraries
+            .music_sources
+            .iter()
+            .map(|source| source.path.clone())
+            .collect();
+        let video_source_paths: Vec<_> = self
+            .libraries
+            .video_sources
+            .iter()
+            .map(|source| source.path.clone())
+            .collect();
+        let image_source_paths: Vec<_> = self
+            .libraries
+            .image_sources
+            .iter()
+            .map(|source| source.path.clone())
+            .collect();
 
         logger.info("Scanning sources ...");
         for path in music_source_paths {
@@ -55,7 +68,7 @@ impl Scan {
 
         self.debug_print_items();
     }
-    
+
     fn scan_audio_libraries(&mut self, folder: &Path) {
         if let Ok(entries) = fs::read_dir(folder) {
             for entry in entries.flatten() {
@@ -77,11 +90,7 @@ impl Scan {
                 if is_audio {
                     self.scan.push(ScannedMedia {
                         path: path.to_string_lossy().to_string(),
-                        name: path
-                            .file_name()
-                            .unwrap()
-                            .to_string_lossy()
-                            .to_string(),
+                        name: path.file_name().unwrap().to_string_lossy().to_string(),
                         duration: 0.0, //TODO: get duration
                         media_type: MediaType::Audio,
                     });
@@ -91,7 +100,6 @@ impl Scan {
     }
 
     pub fn scan_video_libraries(&mut self, folder: &Path) {
-        
         if let Ok(entries) = fs::read_dir(folder) {
             for entry in entries.flatten() {
                 let path = entry.path();
@@ -111,11 +119,7 @@ impl Scan {
                 if is_video {
                     self.scan.push(ScannedMedia {
                         path: path.to_string_lossy().to_string(),
-                        name: path
-                            .file_name()
-                            .unwrap()
-                            .to_string_lossy()
-                            .to_string(),
+                        name: path.file_name().unwrap().to_string_lossy().to_string(),
                         duration: 0.0, //TODO: get duration
                         media_type: MediaType::Video,
                     });
@@ -145,11 +149,7 @@ impl Scan {
                 if is_image {
                     self.scan.push(ScannedMedia {
                         path: path.to_string_lossy().to_string(),
-                        name: path
-                            .file_name()
-                            .unwrap()
-                            .to_string_lossy()
-                            .to_string(),
+                        name: path.file_name().unwrap().to_string_lossy().to_string(),
                         duration: 0.0, //TODO: get duration
                         media_type: MediaType::Image,
                     });
@@ -161,32 +161,21 @@ impl Scan {
     // pour afficher la liste des items dans la bibliotheque
     //TODO : a enlever plus tard, c'est juste pour debug
     pub fn debug_print_items(&self) {
-
         let logger = Logger::new(LOG_FILE_MEDIA_ITEMS);
         logger.debug("=== Library Content start ===");
 
         for item in &self.scan {
-            logger.debug(&format!("{} - {} ({})", item.media_type.to_string(), item.name, item.path));
+            logger.debug(&format!(
+                "{} - {} ({})",
+                item.media_type.to_string(),
+                item.name,
+                item.path
+            ));
         }
 
         logger.debug("=== Library Content end ===");
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #[cfg(test)]
 mod tests {

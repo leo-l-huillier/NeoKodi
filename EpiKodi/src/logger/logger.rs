@@ -2,8 +2,7 @@
 logger.rs - A simple logging utility for EpiKodi
 */
 
-
-/* 
+/*
     let logger = Logger::new(LOG_FILE);
 
     // Log some messages
@@ -13,9 +12,9 @@ logger.rs - A simple logging utility for EpiKodi
     logger.error("This is an error message");
 */
 
+use chrono::Local;
 use std::fs::OpenOptions;
 use std::io::Write;
-use chrono::Local;
 
 use crate::constants::constants::{DEBUG, LOG_IN_CONSOLE};
 
@@ -57,20 +56,22 @@ impl Logger {
     pub fn log(&self, level: LogLevel, message: &str) {
         // Get current timestamp
         let timestamp = Local::now().format("%Y-%m-%d %H:%M:%S");
-        
+
         // Format the log entry
         let log_entry = format!("[{}] [{}] {}\n", timestamp, level.as_str(), message);
-        
+
         // Print to console
-        if LOG_IN_CONSOLE {print!("{}", log_entry);}
-        
+        if LOG_IN_CONSOLE {
+            print!("{}", log_entry);
+        }
+
         // Write to file
         let mut file = OpenOptions::new()
             .create(true)
             .append(true)
             .open(&self.log_file)
             .expect("Failed to open log file");
-        
+
         file.write_all(log_entry.as_bytes())
             .expect("Failed to write to log file");
     }

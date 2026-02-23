@@ -1,2 +1,2 @@
-pub mod media_thread;
 pub mod command;
+pub mod media_thread;

@@ -2,9 +2,9 @@
 in this file we handle audio playback
 */
 
-use super::data::{Media, MediaType, MediaInfo};
+use super::data::{Media, MediaInfo, MediaType};
 
-use lofty::prelude::*; 
+use lofty::prelude::*;
 use lofty::read_from_path;
 
 // use std::fs::File; // Plus besoin
@@ -12,8 +12,8 @@ use lofty::read_from_path;
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 
-use crate::logger::logger::Logger;
 use crate::constants::LOG_FILE;
+use crate::logger::logger::Logger;
 
 // --- STRUCTURE METADATA ---
 pub struct Metadata {
@@ -36,13 +36,13 @@ impl Metadata {
                     artist: tag.and_then(|t| t.artist().map(|s| s.to_string())),
                     album: tag.and_then(|t| t.album().map(|s| s.to_string())),
                 }
-            },
+            }
             Err(_) => Metadata {
                 duration: 0.0,
                 title: None,
                 artist: None,
                 album: None,
-            }
+            },
         }
     }
 }
@@ -76,7 +76,7 @@ impl Queue {
 
     pub fn next(&mut self) -> Option<i64> {
         let logger = Logger::new(LOG_FILE);
-        
+
         if !self.audio_queue.is_empty() {
             let next_media = self.audio_queue.remove(0);
             logger.info(&format!("Next media in queue: {}", next_media));
@@ -94,7 +94,9 @@ impl Queue {
 
     pub fn toggle_shuffle(&mut self) {
         let logger = Logger::new(LOG_FILE);
-        if self.audio_queue.is_empty() { return; }
+        if self.audio_queue.is_empty() {
+            return;
+        }
         let mut rng = thread_rng();
         self.audio_queue.shuffle(&mut rng);
         logger.info("Queue shuffled");
@@ -115,7 +117,7 @@ pub struct Audio {
     pub id: i64,
     pub path: String,
     pub name: String,
-    pub metadata: Metadata, 
+    pub metadata: Metadata,
     pub last_position: f32,
     // Plus de champs Sink/Stream !
 }
@@ -136,22 +138,18 @@ impl Audio {
 // 👇 C'EST ICI LA MAGIE : ON NE FAIT RIEN EN RUST
 // On laisse l'interface HTML gérer le vrai son.
 impl Media for Audio {
-    fn init(&mut self) {
-    }
+    fn init(&mut self) {}
 
     fn play(&mut self) {
         println!("▶️ Audio sélectionné (Played by Frontend): {}", self.name);
     }
 
-    fn pause(&self) {
-    }
+    fn pause(&self) {}
 
-    fn resume(&self) {
-    }
+    fn resume(&self) {}
 
-    fn stop(&self) {
-    }
-    
+    fn stop(&self) {}
+
     fn info(&self) -> MediaInfo {
         MediaInfo {
             id: self.id,
@@ -164,7 +162,7 @@ impl Media for Audio {
             tags: Vec::new(),
         }
     }
-    
+
     fn media_type(&self) -> MediaType {
         MediaType::Audio
     }
@@ -185,7 +183,11 @@ mod tests {
 
     fn sample_path() -> Option<String> {
         let p = Path::new("tests/data/sample.mp3");
-        if p.exists() { Some(p.to_string_lossy().to_string()) } else { None }
+        if p.exists() {
+            Some(p.to_string_lossy().to_string())
+        } else {
+            None
+        }
     }
 
     #[test]
@@ -225,10 +227,10 @@ mod tests {
         let mut q = Queue::new();
         q.add_to_queue(42);
         q.toggle_repeat();
-        
-        assert_eq!(q.next(), Some(42)); 
+
+        assert_eq!(q.next(), Some(42));
         // Comme repeat est actif, ça doit recharger la file originale
-        assert_eq!(q.next(), Some(42)); 
+        assert_eq!(q.next(), Some(42));
     }
 
     #[test]

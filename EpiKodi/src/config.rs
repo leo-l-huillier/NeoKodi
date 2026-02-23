@@ -11,7 +11,7 @@ pub struct AppConfig {
 impl AppConfig {
     pub fn load() -> Self {
         let config_path = PathBuf::from("config.json"); // <--- Juste ici, à la racine !
-        
+
         // Si le fichier existe, on le charge
         if config_path.exists() {
             if let Ok(content) = fs::read_to_string(&config_path) {
@@ -27,7 +27,9 @@ impl AppConfig {
             .to_string_lossy()
             .to_string();
 
-        let new_config = AppConfig { media_path: default_path };
+        let new_config = AppConfig {
+            media_path: default_path,
+        };
         new_config.save(); // On le crée tout de suite !
         new_config
     }
@@ -49,13 +51,13 @@ mod tests {
         let test_file = "config.json";
         // On s'assure que le fichier n'existe pas
         let _ = fs::remove_file(test_file);
-        
+
         let config = AppConfig::load();
         assert!(!config.media_path.is_empty());
-        
+
         // Le fichier doit avoir été généré automatiquement
         assert!(PathBuf::from(test_file).exists());
-        
+
         // Nettoyage
         let _ = fs::remove_file(test_file);
     }

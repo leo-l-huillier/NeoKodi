@@ -1,7 +1,7 @@
 use plugin_api::Plugin;
+use serde::Deserialize;
 use std::ffi::{CStr, CString};
 use std::os::raw::c_char;
-use serde::Deserialize;
 use std::panic;
 use std::time::Duration;
 
@@ -31,23 +31,32 @@ struct LifeSpan {
 struct MusicBrainzMetadata;
 
 impl Plugin for MusicBrainzMetadata {
-    fn name(&self) -> String { "MusicBrainz".to_string() }
-    fn version(&self) -> String { "1.0.0".to_string() }
-    fn plugin_type(&self) -> String { "metadata".to_string() }
+    fn name(&self) -> String {
+        "MusicBrainz".to_string()
+    }
+    fn version(&self) -> String {
+        "1.0.0".to_string()
+    }
+    fn plugin_type(&self) -> String {
+        "metadata".to_string()
+    }
 
     fn metadata(&self, artist_name: &str) -> String {
         // Mouchard interne pour voir si ça marche
-        println!("DLL [INTERNAL]: Appel metadata() reçu pour '{}'", artist_name);
-        
+        println!(
+            "DLL [INTERNAL]: Appel metadata() reçu pour '{}'",
+            artist_name
+        );
+
         match search_artist(artist_name) {
             Ok(info) => {
                 println!("DLL [INTERNAL]: Succès ! Données récupérées.");
                 info
-            },
+            }
             Err(e) => {
                 println!("DLL [INTERNAL]: Erreur -> {}", e);
                 format!("Erreur plugin : {}", e)
-            },
+            }
         }
     }
 }
@@ -67,7 +76,8 @@ fn search_artist(name: &str) -> Result<String, Box<dyn std::error::Error>> {
         .timeout_write(Duration::from_secs(5))
         .build();
 
-    let response = agent.get(&url)
+    let response = agent
+        .get(&url)
         .set("User-Agent", "NeoKodiPlugin/1.0 (educational-purpose)")
         .call();
 
@@ -79,23 +89,31 @@ fn search_artist(name: &str) -> Result<String, Box<dyn std::error::Error>> {
             if let Some(artist) = result.artists.first() {
                 // Construction du texte affiché dans l'appli
                 let mut info = format!("🎵 Artiste : {}", artist.name);
-                if let Some(t) = &artist.artist_type { info.push_str(&format!("\nType : {}", t)); }
-                if let Some(c) = &artist.country { info.push_str(&format!("\nPays : {}", c)); }
-                
-                if let Some(ls) = &artist.life_span {
-                    if let Some(b) = &ls.begin { info.push_str(&format!("\nDébut : {}", b)); }
-                    if let Some(e) = &ls.end { info.push_str(&format!(" - Fin : {}", e)); }
+                if let Some(t) = &artist.artist_type {
+                    info.push_str(&format!("\nType : {}", t));
                 }
-                
+                if let Some(c) = &artist.country {
+                    info.push_str(&format!("\nPays : {}", c));
+                }
+
+                if let Some(ls) = &artist.life_span {
+                    if let Some(b) = &ls.begin {
+                        info.push_str(&format!("\nDébut : {}", b));
+                    }
+                    if let Some(e) = &ls.end {
+                        info.push_str(&format!(" - Fin : {}", e));
+                    }
+                }
+
                 Ok(info)
             } else {
                 Ok("Aucun artiste trouvé sur MusicBrainz.".to_string())
             }
-        },
+        }
         Err(e) => {
             println!("DLL [INTERNAL]: Echec HTTP -> {:?}", e);
             // On renvoie l'erreur sous forme de texte pour qu'elle s'affiche dans l'appli
-            Ok(format!("Erreur de connexion : {:?}", e)) 
+            Ok(format!("Erreur de connexion : {:?}", e))
         }
     }
 }
@@ -108,10 +126,14 @@ fn to_c_string(s: String) -> *mut c_char {
 }
 
 #[unsafe(no_mangle)]
-pub extern "C" fn name() -> *mut c_char { to_c_string("MusicBrainz".to_string()) }
+pub extern "C" fn name() -> *mut c_char {
+    to_c_string("MusicBrainz".to_string())
+}
 
 #[unsafe(no_mangle)]
-pub extern "C" fn version() -> *mut c_char { to_c_string("1.0.0".to_string()) }
+pub extern "C" fn version() -> *mut c_char {
+    to_c_string("1.0.0".to_string())
+}
 
 #[unsafe(no_mangle)]
 pub extern "C" fn plugin_type() -> *mut c_char {
@@ -132,8 +154,11 @@ pub extern "C" fn metadata(name_ptr: *const c_char) -> *mut c_char {
     // Empêche le plugin de faire crasher toute l'application en cas de panique
     let result = panic::catch_unwind(|| {
         let artist_name = unsafe {
-            if name_ptr.is_null() { "Inconnu" } 
-            else { CStr::from_ptr(name_ptr).to_str().unwrap_or("Inconnu") }
+            if name_ptr.is_null() {
+                "Inconnu"
+            } else {
+                CStr::from_ptr(name_ptr).to_str().unwrap_or("Inconnu")
+            }
         };
 
         let plugin = MusicBrainzMetadata;

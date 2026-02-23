@@ -1,2 +1,2 @@
-pub mod plugin_manager;
 pub mod functions;
+pub mod plugin_manager;

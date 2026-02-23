@@ -52,12 +52,12 @@ pub fn parse_m3u(content: &str) -> Vec<TVChannel> {
                 group: current_group.clone(),
                 content_type,
             });
-            
+
             current_title.clear();
             current_group = None;
         }
     }
-    
+
     channels
 }
 
@@ -65,13 +65,14 @@ fn detect_type(group: &Option<String>) -> ContentType {
     match group {
         Some(g) => {
             let g_upper = g.to_uppercase();
-            
+
             // Mots-clés pour SÉRIES (très large)
-            if g_upper.contains("SERIE") || 
-               g_upper.contains("SÉRIE") || 
-               g_upper.contains("SEASON") || 
-               g_upper.contains("SAISON") ||
-               g_upper.contains("EPISODE") {
+            if g_upper.contains("SERIE")
+                || g_upper.contains("SÉRIE")
+                || g_upper.contains("SEASON")
+                || g_upper.contains("SAISON")
+                || g_upper.contains("EPISODE")
+            {
                 return ContentType::Series;
             }
 
@@ -82,16 +83,17 @@ fn detect_type(group: &Option<String>) -> ContentType {
                g_upper.contains("CINEMA") || 
                g_upper.contains("4K") || // Souvent les films sont tagués 4K
                g_upper.contains("FHD") || 
-               g_upper.contains("HEVC") {
-                // Attention : Parfois les chaînes live ont aussi FHD, 
+               g_upper.contains("HEVC")
+            {
+                // Attention : Parfois les chaînes live ont aussi FHD,
                 // mais dans les M3U IPTV, VOD est souvent explicite.
                 // Si ton M3U mélange tout, c'est plus dur.
-                
+
                 // Raffinement : Si ça contient "VOD", c'est sûr que c'est un film/série
                 if g_upper.contains("VOD") {
-                     return ContentType::Movie;
+                    return ContentType::Movie;
                 }
-                
+
                 // Sinon on tente le coup sur "FILM"
                 if g_upper.contains("FILM") || g_upper.contains("MOVIE") {
                     return ContentType::Movie;
@@ -99,7 +101,7 @@ fn detect_type(group: &Option<String>) -> ContentType {
             }
 
             ContentType::Live
-        },
+        }
         None => ContentType::Live,
     }
 }

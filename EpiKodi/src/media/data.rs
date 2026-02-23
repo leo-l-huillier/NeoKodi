@@ -1,6 +1,5 @@
-
-use std::fmt;
 use serde::{Deserialize, Serialize};
+use std::fmt;
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum MediaType {
@@ -18,7 +17,7 @@ pub struct MediaInfo {
     pub duration: Option<f32>,
     pub media_type: MediaType,
     pub last_position: f32,
-        #[serde(default)]
+    #[serde(default)]
     pub tags: Vec<String>,
 }
 
@@ -41,7 +40,6 @@ impl MediaType {
     }
 }
 
-
 impl fmt::Display for MediaType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
@@ -55,7 +53,7 @@ impl fmt::Display for MediaType {
 //TODO: implement finished event handling
 pub trait Media: Send + Sync {
     fn init(&mut self);
-    
+
     fn play(&mut self);
     fn pause(&self);
     fn resume(&self);

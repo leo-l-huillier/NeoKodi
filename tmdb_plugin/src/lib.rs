@@ -1,11 +1,9 @@
-use reqwest;
 use plugin_api::Plugin;
+use reqwest;
 use serde::{Deserialize, Serialize};
 use std::env;
 use std::ffi::{CStr, CString};
 use std::os::raw::c_char;
-
-
 
 // Structs to deserialize the JSON response from TMDb
 #[derive(Debug, Serialize, Deserialize)]
@@ -27,9 +25,6 @@ struct SearchResponse {
     total_results: u32,
 }
 
-
-
-
 #[derive(Deserialize, Debug)]
 struct ArtistSearchResult {
     artists: Vec<Artist>,
@@ -50,7 +45,6 @@ struct LifeSpan {
     begin: Option<String>,
     end: Option<String>,
 }
-
 
 struct TMDBMetadata;
 
@@ -75,12 +69,11 @@ impl Plugin for TMDBMetadata {
     }
 }
 
-
 fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
     let movie_query = name;
     // Vérifie bien que cette clé est valide !
-    let api_key = "94de72cdcd31f017c82bc13fd54979b0"; 
-    
+    let api_key = "94de72cdcd31f017c82bc13fd54979b0";
+
     println!("🔍 [TMDB DLL] Recherche lancée pour : '{}'", movie_query);
 
     let url = format!(
@@ -92,7 +85,7 @@ fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
     println!("🌍 [TMDB DLL] URL appelée : {}", url); // Attention, ça affiche ta clé API dans la console
 
     let response = reqwest::blocking::get(&url)?;
-    
+
     // 👇 DEBUG DU STATUS HTTP
     let status = response.status();
     println!("📡 [TMDB DLL] Statut HTTP : {}", status);
@@ -101,9 +94,9 @@ fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
         println!("❌ [TMDB DLL] Erreur API !");
         return Ok(format!("Erreur API TMDB: {}", status));
     }
-    
+
     // 👇 ON LIT LE JSON BRUT AVANT DE LE PARSER (Crucial pour debug)
-    let raw_body = response.text()?; 
+    let raw_body = response.text()?;
     println!("📦 [TMDB DLL] Réponse brute : {}", raw_body);
 
     // On re-parse le JSON depuis la string
@@ -113,13 +106,20 @@ fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
         println!("⚠️ [TMDB DLL] Aucun résultat trouvé dans le JSON.");
         return Ok(format!("Aucun film trouvé pour '{}'", movie_query));
     } else {
-        println!("✅ [TMDB DLL] {} films trouvés.", search_results.results.len());
-        
+        println!(
+            "✅ [TMDB DLL] {} films trouvés.",
+            search_results.results.len()
+        );
+
         let mut result = String::new();
-        for (index, movie) in search_results.results.iter().take(1).enumerate() { 
-            result.push_str(&format!("🎬 {} ({})\n", movie.title, movie.release_date.split('-').next().unwrap_or("????")));
+        for (index, movie) in search_results.results.iter().take(1).enumerate() {
+            result.push_str(&format!(
+                "🎬 {} ({})\n",
+                movie.title,
+                movie.release_date.split('-').next().unwrap_or("????")
+            ));
             result.push_str(&format!("⭐ Note: {}/10\n", movie.vote_average));
-            
+
             // Tu peux aussi afficher un synopsis un peu plus long si tu n'as qu'un seul film
             let overview = if movie.overview.len() > 500 {
                 format!("{}...", &movie.overview[0..500])
@@ -136,39 +136,35 @@ fn search_film(name: &str) -> Result<String, Box<dyn std::error::Error>> {
     // Print search results for "Inception"
     let film_info = search_film("Inception")?;
     println!("{}", film_info);
-    
+
     Ok(())
 }*/
-
 
 // Export a C-compatible function that can be called via libloading
 #[unsafe(no_mangle)]
 pub extern "C" fn name() -> *mut c_char {
-
     let metadata = TMDBMetadata;
     let name = metadata.name();
-    
+
     CString::new(name).unwrap().into_raw()
 }
 
 // Export a C-compatible function that can be called via libloading
 #[unsafe(no_mangle)]
 pub extern "C" fn version() -> *mut c_char {
-
     let metadata = TMDBMetadata;
     let version = metadata.version();
-    
+
     CString::new(version).unwrap().into_raw()
 }
 
 // Export a C-compatible function that can be called via libloading
 #[unsafe(no_mangle)]
 pub extern "C" fn plugin_type() -> *mut c_char {
-
     let metadata = TMDBMetadata;
     let plugin_type = metadata.plugin_type();
-    
-   CString::new(plugin_type).unwrap().into_raw()
+
+    CString::new(plugin_type).unwrap().into_raw()
 }
 
 // Export a C-compatible function that can be called via libloading
@@ -182,10 +178,10 @@ pub extern "C" fn metadata(name_ptr: *const c_char) -> *mut c_char {
             CStr::from_ptr(name_ptr).to_str().unwrap_or("invalid name")
         }
     };
-    
+
     let metadata = TMDBMetadata;
     let result = metadata.metadata(film_name);
-    
+
     // Convert result to C string
     CString::new(result).unwrap().into_raw()
 }
@@ -205,6 +201,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Print search results for "Inception"
     let film_info = search_film("Inception").await?;
     println!("{}", film_info);
-    
+
     Ok(())
 }*/

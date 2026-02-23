@@ -1,6 +1,6 @@
-use dioxus::prelude::*;
-use super::route::Route;       // On a besoin de connaître les routes pour les liens
-use super::style::GLOBAL_STYLE; // On importe le style
+use super::route::Route; // On a besoin de connaître les routes pour les liens
+use super::style::GLOBAL_STYLE;
+use dioxus::prelude::*; // On importe le style
 
 pub fn AppLayout() -> Element {
     rsx! {
