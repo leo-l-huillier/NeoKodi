@@ -11,8 +11,18 @@ env:
 
 jobs:
   test:
-    name: Build & Test
+    name: Test - ${{ matrix.project }}
     runs-on: windows-latest
+    strategy:
+      fail-fast: false # Si un plugin plante, on continue de tester les autres
+      matrix:
+        # La liste de tous tes sous-dossiers contenant un Cargo.toml
+        project: [EpiKodi, plugin_api, plugin_music, tmdb_plugin]
+
+    # On dit à Github de se placer dans le bon dossier pour chaque job
+    defaults:
+      run:
+        working-directory: ./${{ matrix.project }}
 
     steps:
       - name: Checkout du code
@@ -23,17 +33,17 @@ jobs:
         with:
           components: clippy, rustfmt
 
-      - name: Cache Rust (Pour accélérer la CI)
+      - name: Cache Rust (pour aller plus vite)
         uses: Swatinem/rust-cache@v2
+        with:
+          # On adapte le cache pour chaque sous-dossier
+          workspaces: ./${{ matrix.project }} -> target
 
       - name: Vérification du formatage
         run: cargo fmt --all -- --check
 
       - name: Linter (Clippy)
-        # On ne bloque pas la CI sur les warnings pour l'instant, 
-        # mais tu pourras rajouter "-- -D warnings" quand ton code sera nickel
         run: cargo clippy --all-targets --all-features
 
-      - name: Lancement des tests (EpiKodi + Plugins)
-        # --workspace permet de tester EpiKodi ET tes dossiers de plugins s'ils sont dans un workspace
-        run: cargo test --workspace --verbose
+      - name: Lancement des tests
+        run: cargo test --verbose
