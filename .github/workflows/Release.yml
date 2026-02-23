@@ -51,6 +51,7 @@ jobs:
           
           if (Test-Path "EpiKodi\plugins\musicbrainz_plugin.dll") {
             copy EpiKodi\plugins\musicbrainz_plugin.dll dist\plugins\
+            copy EpiKodi\plugins\tmdb_plugin.dll dist\plugins\
             Write-Host "✅ DLL successfully"
           } else {
             Write-Error "❌ DLL not found"
