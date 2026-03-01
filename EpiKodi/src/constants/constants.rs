@@ -28,3 +28,8 @@ pub const PLUGIN_EXT: &str = if cfg!(target_os = "windows") {
 pub const NOT_STARTED: i32 = 0;
 pub const PLAYING: i32 = 1;
 pub const FINISHED: i32 = 2;
+
+
+pub const MUSIC_OUTPUT_DIR: &str = "./media/music";
+pub const MUSIC_FORMAT: &str = "mp3"; //mp3, flac
+pub const MUSIC_MAX_PARALLEL_DOWNLOADS: usize = 3;

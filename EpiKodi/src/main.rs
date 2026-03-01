@@ -12,6 +12,8 @@ mod plugin;
 mod scan;
 mod threading;
 
+mod music_download;
+
 use crate::constants::LOG_FILE;
 use crate::logger::logger::Logger;
 

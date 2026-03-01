@@ -27,3 +27,7 @@ chrono = "0.4.43"
 urlencoding = "2.1"
 lazy_static = "1.4.0"
 rand = "0.8.0"
+clap = { version = "4", features = ["derive"] }
+colored = "2" 
+toml = "0.8"
+id3 = "1"

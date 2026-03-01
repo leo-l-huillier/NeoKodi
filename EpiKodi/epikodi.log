@@ -6883,4 +6883,2343 @@
 [2026-02-23 00:49:19] [DEBUG] Tag 'action' has ID 2
 [2026-02-23 00:49:19] [ERROR] Error: media with ID 1 not found.
 [2026-02-23 00:49:19] [ERROR] Error: media with ID 1 not found.
-[2026-02-23 00:49:19] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 00:49:19] [ERROR] Error: media with ID 1 not found.[2026-02-23 11:58:38] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 11:58:38] [DEBUG] Pausing media ID 42
+[2026-02-23 11:58:38] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 11:58:38] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 11:58:38] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 11:58:38] [DEBUG] Playing media ID 1: Song
+[2026-02-23 11:58:38] [DEBUG] Pausing media ID 1
+[2026-02-23 11:58:39] [DEBUG] Added to queue: 5
+[2026-02-23 11:58:39] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:01:38] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:01:38] [DEBUG] Pausing media ID 42
+[2026-02-23 12:01:38] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:01:38] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:01:38] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:01:38] [DEBUG] Playing media ID 1: Song
+[2026-02-23 12:01:38] [DEBUG] Pausing media ID 1
+[2026-02-23 12:01:38] [DEBUG] Added to queue: 5
+[2026-02-23 12:01:38] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:01:38] [DEBUG] Added to queue: 10
+[2026-02-23 12:01:38] [DEBUG] Added to queue: 20
+[2026-02-23 12:01:38] [DEBUG] Added to queue: 42
+[2026-02-23 12:01:38] [INFO] Next media in queue: 10
+[2026-02-23 12:01:38] [INFO] Next media in queue: 20
+[2026-02-23 12:01:38] [INFO] Next media in queue: 42
+[2026-02-23 12:01:38] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:01:38] [INFO] Queue is empty, repeating original queue
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /music1
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /music2
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /music1
+[2026-02-23 12:01:38] [INFO] Scanning: /music1
+[2026-02-23 12:01:38] [INFO] Scanning: /videos1
+[2026-02-23 12:01:38] [INFO] Scanning: /music1
+[2026-02-23 12:01:38] [INFO] Scanning: /music2
+[2026-02-23 12:01:38] [INFO] Scanning: /images1
+[2026-02-23 12:01:38] [INFO] Scanning: /music2
+[2026-02-23 12:01:38] [INFO] Scanning: /music2
+[2026-02-23 12:01:38] [INFO] Scanning: /videos1
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Scanning: /videos1
+[2026-02-23 12:01:38] [INFO] Scanning: /videos1
+[2026-02-23 12:01:38] [INFO] Scanning: /images1
+[2026-02-23 12:01:38] [INFO] Scanning: /images1
+[2026-02-23 12:01:38] [INFO] Scanning: /images1
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /music1
+[2026-02-23 12:01:38] [INFO] Scanning: /music2
+[2026-02-23 12:01:38] [INFO] Scanning: /videos1
+[2026-02-23 12:01:38] [INFO] Scanning: /images1
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /test/music
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 12:01:38] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 12:01:38] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /test/music
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /test/music
+[2026-02-23 12:01:38] [INFO] Scanning: /test/music
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [INFO] Scanning: /test/music
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /test/music
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /test/music
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /test/music
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning: /test/music
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [INFO] Loaded metadata plugin.
+[2026-02-23 12:01:38] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:01:38] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:01:38] [INFO] Scanning sources ...
+[2026-02-23 12:01:38] [INFO] Scanning: /test/music
+[2026-02-23 12:01:38] [INFO] Scanning: /videos
+[2026-02-23 12:01:38] [INFO] Scanning sources end
+[2026-02-23 12:01:38] [DEBUG] Pausing media ID 1
+[2026-02-23 12:01:38] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:01:38] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 12:01:38] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:01:38] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:01:38] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:04:07] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:04:07] [DEBUG] Playing media ID 1: Song
+[2026-02-23 12:04:07] [DEBUG] Pausing media ID 42
+[2026-02-23 12:04:07] [DEBUG] Pausing media ID 1
+[2026-02-23 12:04:07] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:04:07] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:04:07] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:04:07] [DEBUG] Added to queue: 5
+[2026-02-23 12:04:07] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:04:07] [DEBUG] Added to queue: 10
+[2026-02-23 12:04:07] [DEBUG] Added to queue: 20
+[2026-02-23 12:04:07] [DEBUG] Added to queue: 42
+[2026-02-23 12:04:07] [INFO] Next media in queue: 42
+[2026-02-23 12:04:07] [INFO] Queue is empty, repeating original queue
+[2026-02-23 12:04:07] [INFO] Next media in queue: 10
+[2026-02-23 12:04:07] [INFO] Next media in queue: 20
+[2026-02-23 12:04:07] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /videos1
+[2026-02-23 12:04:07] [INFO] Scanning: /videos1
+[2026-02-23 12:04:07] [INFO] Scanning: /images1
+[2026-02-23 12:04:07] [INFO] Scanning: /images1
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /videos1
+[2026-02-23 12:04:07] [INFO] Scanning: /videos1
+[2026-02-23 12:04:07] [INFO] Scanning: /images1
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Scanning: /images1
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /test/music
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 12:04:07] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /test/music
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /test/music
+[2026-02-23 12:04:07] [INFO] Scanning: /test/music
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /test/music
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /test/music
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /test/music
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /test/music
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /test/music
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:07] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 12:04:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:07] [DEBUG] Pausing media ID 1
+[2026-02-23 12:04:07] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:07] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:04:07] [INFO] Scanning sources ...
+[2026-02-23 12:04:07] [INFO] Scanning: /music1
+[2026-02-23 12:04:07] [INFO] Scanning: /music2
+[2026-02-23 12:04:07] [INFO] Scanning: /test/music
+[2026-02-23 12:04:07] [INFO] Scanning sources end
+[2026-02-23 12:04:07] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:04:07] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:04:07] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:04:30] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:04:30] [DEBUG] Pausing media ID 42
+[2026-02-23 12:04:30] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:04:30] [DEBUG] Playing media ID 1: Song
+[2026-02-23 12:04:30] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:04:30] [DEBUG] Pausing media ID 1
+[2026-02-23 12:04:30] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:04:30] [DEBUG] Added to queue: 5
+[2026-02-23 12:04:30] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:04:30] [DEBUG] Added to queue: 10
+[2026-02-23 12:04:30] [DEBUG] Added to queue: 42
+[2026-02-23 12:04:30] [DEBUG] Added to queue: 20
+[2026-02-23 12:04:30] [INFO] Next media in queue: 42
+[2026-02-23 12:04:30] [INFO] Queue is empty, repeating original queue
+[2026-02-23 12:04:30] [INFO] Next media in queue: 10
+[2026-02-23 12:04:30] [INFO] Next media in queue: 20
+[2026-02-23 12:04:30] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /test/music
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /test/music
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /test/music
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /test/music
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /test/music
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /test/music
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning: /test/music
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /test/music
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /test/music
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Loaded metadata plugin.
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:04:30] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:04:30] [INFO] Scanning sources ...
+[2026-02-23 12:04:30] [INFO] Scanning: /music1
+[2026-02-23 12:04:30] [INFO] Scanning: /music2
+[2026-02-23 12:04:30] [INFO] Scanning: /test/music
+[2026-02-23 12:04:30] [INFO] Scanning: /videos1
+[2026-02-23 12:04:30] [INFO] Scanning: /images1
+[2026-02-23 12:04:30] [INFO] Scanning sources end
+[2026-02-23 12:04:30] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:04:30] [DEBUG] Pausing media ID 1
+[2026-02-23 12:04:30] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:04:30] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 12:04:30] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:04:30] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:07:54] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:07:54] [DEBUG] Pausing media ID 42
+[2026-02-23 12:07:54] [DEBUG] Playing media ID 1: Song
+[2026-02-23 12:07:54] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:07:54] [DEBUG] Pausing media ID 1
+[2026-02-23 12:07:54] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:07:54] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:07:54] [DEBUG] Added to queue: 5
+[2026-02-23 12:07:54] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:07:54] [DEBUG] Added to queue: 10
+[2026-02-23 12:07:54] [DEBUG] Added to queue: 20
+[2026-02-23 12:07:54] [DEBUG] Added to queue: 42
+[2026-02-23 12:07:54] [INFO] Next media in queue: 42
+[2026-02-23 12:07:54] [INFO] Next media in queue: 10
+[2026-02-23 12:07:54] [INFO] Queue is empty, repeating original queue
+[2026-02-23 12:07:54] [INFO] Next media in queue: 20
+[2026-02-23 12:07:54] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:07:54] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /test/music
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /test/music
+[2026-02-23 12:07:54] [INFO] Scanning: /test/music
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /test/music
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /test/music
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /test/music
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [INFO] Scanning: /test/music
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /test/music
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /test/music
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [INFO] Loaded metadata plugin.
+[2026-02-23 12:07:54] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:07:54] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:07:54] [INFO] Scanning sources ...
+[2026-02-23 12:07:54] [INFO] Scanning: /music1
+[2026-02-23 12:07:54] [INFO] Scanning: /music2
+[2026-02-23 12:07:54] [INFO] Scanning: /test/music
+[2026-02-23 12:07:54] [INFO] Scanning: /videos1
+[2026-02-23 12:07:54] [INFO] Scanning: /images1
+[2026-02-23 12:07:54] [INFO] Scanning sources end
+[2026-02-23 12:07:54] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 12:07:54] [DEBUG] Pausing media ID 1
+[2026-02-23 12:07:54] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:07:54] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:07:54] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:07:54] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:09:13] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:09:13] [DEBUG] Pausing media ID 42
+[2026-02-23 12:09:13] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:09:13] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:09:13] [DEBUG] Playing media ID 1: Song
+[2026-02-23 12:09:13] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:09:13] [DEBUG] Pausing media ID 1
+[2026-02-23 12:09:13] [DEBUG] Added to queue: 5
+[2026-02-23 12:09:13] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:09:13] [DEBUG] Added to queue: 42
+[2026-02-23 12:09:13] [DEBUG] Added to queue: 10
+[2026-02-23 12:09:13] [INFO] Next media in queue: 42
+[2026-02-23 12:09:13] [DEBUG] Added to queue: 20
+[2026-02-23 12:09:13] [INFO] Queue is empty, repeating original queue
+[2026-02-23 12:09:13] [INFO] Next media in queue: 10
+[2026-02-23 12:09:13] [INFO] Next media in queue: 20
+[2026-02-23 12:09:13] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:09:13] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /test/music
+[2026-02-23 12:09:13] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /test/music
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /test/music
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /test/music
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /test/music
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning: /test/music
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning: /test/music
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /test/music
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /test/music
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [INFO] Loaded metadata plugin.
+[2026-02-23 12:09:13] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:09:13] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:09:13] [INFO] Scanning sources ...
+[2026-02-23 12:09:13] [INFO] Scanning: /music1
+[2026-02-23 12:09:13] [INFO] Scanning: /music2
+[2026-02-23 12:09:13] [INFO] Scanning: /test/music
+[2026-02-23 12:09:13] [INFO] Scanning: /videos1
+[2026-02-23 12:09:13] [INFO] Scanning: /images1
+[2026-02-23 12:09:13] [INFO] Scanning sources end
+[2026-02-23 12:09:13] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 12:09:13] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:09:13] [DEBUG] Pausing media ID 1
+[2026-02-23 12:09:13] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:09:13] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:09:13] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:12:40] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:12:40] [DEBUG] Pausing media ID 42
+[2026-02-23 12:12:40] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:12:40] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:12:40] [DEBUG] Playing media ID 1: Song
+[2026-02-23 12:12:40] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:12:40] [DEBUG] Pausing media ID 1
+[2026-02-23 12:12:40] [DEBUG] Added to queue: 5
+[2026-02-23 12:12:40] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:12:40] [DEBUG] Added to queue: 10
+[2026-02-23 12:12:40] [DEBUG] Added to queue: 20
+[2026-02-23 12:12:40] [INFO] Next media in queue: 10
+[2026-02-23 12:12:40] [INFO] Next media in queue: 20
+[2026-02-23 12:12:40] [DEBUG] Added to queue: 42
+[2026-02-23 12:12:40] [INFO] Next media in queue: 42
+[2026-02-23 12:12:40] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:12:40] [INFO] Queue is empty, repeating original queue
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:12:40] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 12:12:40] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:12:40] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /test/music
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /test/music
+[2026-02-23 12:12:40] [INFO] Scanning: /test/music
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /test/music
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /test/music
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /test/music
+[2026-02-23 12:12:40] [INFO] Scanning: /test/music
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /test/music
+[2026-02-23 12:12:40] [INFO] Scanning: /test/music
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [INFO] Loaded metadata plugin.
+[2026-02-23 12:12:40] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:12:40] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:12:40] [INFO] Scanning sources ...
+[2026-02-23 12:12:40] [INFO] Scanning: /music1
+[2026-02-23 12:12:40] [INFO] Scanning: /music2
+[2026-02-23 12:12:40] [INFO] Scanning: /test/music
+[2026-02-23 12:12:40] [INFO] Scanning: /videos1
+[2026-02-23 12:12:40] [INFO] Scanning: /images1
+[2026-02-23 12:12:40] [INFO] Scanning sources end
+[2026-02-23 12:12:40] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 12:12:40] [DEBUG] Pausing media ID 1
+[2026-02-23 12:12:40] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:12:40] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:12:40] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:12:40] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:13:48] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:13:48] [DEBUG] Playing media ID 1: Song
+[2026-02-23 12:13:48] [DEBUG] Pausing media ID 42
+[2026-02-23 12:13:48] [DEBUG] Pausing media ID 1
+[2026-02-23 12:13:48] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:13:48] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:13:48] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 12:13:48] [DEBUG] Added to queue: 5
+[2026-02-23 12:13:48] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:13:48] [DEBUG] Added to queue: 10
+[2026-02-23 12:13:48] [DEBUG] Added to queue: 20
+[2026-02-23 12:13:48] [INFO] Next media in queue: 10
+[2026-02-23 12:13:48] [INFO] Next media in queue: 20
+[2026-02-23 12:13:48] [DEBUG] Added to queue: 42
+[2026-02-23 12:13:48] [INFO] Trying to get next media but queue is empty
+[2026-02-23 12:13:48] [INFO] Next media in queue: 42
+[2026-02-23 12:13:48] [INFO] Queue is empty, repeating original queue
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /test/music
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /test/music
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Scanning: /test/music
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /test/music
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning: /test/music
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /test/music
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [INFO] Loaded metadata plugin.
+[2026-02-23 12:13:48] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:13:48] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:13:48] [INFO] Scanning sources ...
+[2026-02-23 12:13:48] [INFO] Scanning: /music1
+[2026-02-23 12:13:48] [INFO] Scanning: /music2
+[2026-02-23 12:13:48] [INFO] Scanning: /test/music
+[2026-02-23 12:13:48] [INFO] Scanning: /videos1
+[2026-02-23 12:13:48] [INFO] Scanning: /images1
+[2026-02-23 12:13:48] [INFO] Scanning sources end
+[2026-02-23 12:13:48] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:13:48] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:13:48] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 12:13:48] [DEBUG] Pausing media ID 1
+[2026-02-23 12:13:48] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:13:48] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 12:14:22] [INFO] Loaded metadata plugin.
+[2026-02-23 12:14:22] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:14:22] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:14:22] [INFO] Scanning sources ...
+[2026-02-23 12:14:22] [INFO] Scanning: /music1
+[2026-02-23 12:14:22] [INFO] Scanning: /music2
+[2026-02-23 12:14:22] [INFO] Scanning: /test/music
+[2026-02-23 12:14:22] [INFO] Scanning: /videos1
+[2026-02-23 12:14:22] [INFO] Scanning: /images1
+[2026-02-23 12:14:22] [INFO] Scanning sources end
+[2026-02-23 12:14:22] [INFO] Scanning sources ...
+[2026-02-23 12:14:22] [INFO] Scanning: /music1
+[2026-02-23 12:14:22] [INFO] Scanning: /music2
+[2026-02-23 12:14:22] [INFO] Scanning: /test/music
+[2026-02-23 12:14:22] [INFO] Scanning: /videos1
+[2026-02-23 12:14:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:24] [INFO] Scanning: /images1
+[2026-02-23 12:14:24] [INFO] Scanning sources end
+[2026-02-23 12:14:24] [INFO] Scanning sources ...
+[2026-02-23 12:14:24] [INFO] Scanning: /music1
+[2026-02-23 12:14:24] [INFO] Scanning: /music2
+[2026-02-23 12:14:24] [INFO] Scanning: /test/music
+[2026-02-23 12:14:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:25] [INFO] Scanning: /videos1
+[2026-02-23 12:14:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:25] [INFO] Scanning: /images1
+[2026-02-23 12:14:25] [INFO] Scanning sources end
+[2026-02-23 12:14:26] [INFO] Scanning sources ...
+[2026-02-23 12:14:26] [INFO] Scanning: /music1
+[2026-02-23 12:14:26] [INFO] Scanning: /music2
+[2026-02-23 12:14:26] [INFO] Scanning: /test/music
+[2026-02-23 12:14:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:26] [INFO] Scanning: /videos1
+[2026-02-23 12:14:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:27] [INFO] Scanning: /images1
+[2026-02-23 12:14:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:27] [INFO] Scanning sources end
+[2026-02-23 12:14:29] [INFO] Scanning sources ...
+[2026-02-23 12:14:29] [INFO] Scanning: /music1
+[2026-02-23 12:14:29] [INFO] Scanning: /music2
+[2026-02-23 12:14:29] [INFO] Scanning: /test/music
+[2026-02-23 12:14:29] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:30] [INFO] Scanning: /videos1
+[2026-02-23 12:14:30] [INFO] Scanning: /images1
+[2026-02-23 12:14:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:30] [INFO] Scanning sources end
+[2026-02-23 12:14:30] [INFO] Scanning sources ...
+[2026-02-23 12:14:30] [INFO] Scanning: /music1
+[2026-02-23 12:14:30] [INFO] Scanning: /music2
+[2026-02-23 12:14:30] [INFO] Scanning: /test/music
+[2026-02-23 12:14:30] [INFO] Scanning: /videos1
+[2026-02-23 12:14:30] [INFO] Scanning: /images1
+[2026-02-23 12:14:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:31] [INFO] Scanning sources end
+[2026-02-23 12:14:31] [INFO] Scanning sources ...
+[2026-02-23 12:14:31] [INFO] Scanning: /music1
+[2026-02-23 12:14:31] [INFO] Scanning: /music2
+[2026-02-23 12:14:31] [INFO] Scanning: /test/music
+[2026-02-23 12:14:31] [INFO] Scanning: /videos1
+[2026-02-23 12:14:31] [INFO] Scanning: /images1
+[2026-02-23 12:14:31] [INFO] Scanning sources end
+[2026-02-23 12:14:31] [INFO] Scanning sources ...
+[2026-02-23 12:14:31] [INFO] Scanning: /music1
+[2026-02-23 12:14:31] [INFO] Scanning: /music2
+[2026-02-23 12:14:31] [INFO] Scanning: /test/music
+[2026-02-23 12:14:31] [INFO] Scanning: /images1
+[2026-02-23 12:14:31] [INFO] Scanning sources end
+[2026-02-23 12:14:31] [INFO] Scanning sources ...
+[2026-02-23 12:14:31] [INFO] Scanning: /music1
+[2026-02-23 12:14:31] [INFO] Scanning: /music2
+[2026-02-23 12:14:31] [INFO] Scanning: /test/music
+[2026-02-23 12:14:31] [INFO] Scanning: /images1
+[2026-02-23 12:14:31] [INFO] Scanning sources end
+[2026-02-23 12:14:32] [INFO] Scanning sources ...
+[2026-02-23 12:14:32] [INFO] Scanning: /music1
+[2026-02-23 12:14:32] [INFO] Scanning: /music2
+[2026-02-23 12:14:32] [INFO] Scanning: /test/music
+[2026-02-23 12:14:32] [INFO] Scanning: /images1
+[2026-02-23 12:14:32] [INFO] Scanning sources end
+[2026-02-23 12:14:32] [INFO] Scanning sources ...
+[2026-02-23 12:14:32] [INFO] Scanning: /music1
+[2026-02-23 12:14:32] [INFO] Scanning: /music2
+[2026-02-23 12:14:32] [INFO] Scanning: /test/music
+[2026-02-23 12:14:32] [INFO] Scanning: /images1
+[2026-02-23 12:14:32] [INFO] Scanning sources end
+[2026-02-23 12:14:32] [INFO] Scanning sources ...
+[2026-02-23 12:14:32] [INFO] Scanning: /music1
+[2026-02-23 12:14:32] [INFO] Scanning: /music2
+[2026-02-23 12:14:32] [INFO] Scanning: /images1
+[2026-02-23 12:14:32] [INFO] Scanning sources end
+[2026-02-23 12:14:32] [INFO] Scanning sources ...
+[2026-02-23 12:14:32] [INFO] Scanning: /music1
+[2026-02-23 12:14:32] [INFO] Scanning: /music2
+[2026-02-23 12:14:32] [INFO] Scanning: /images1
+[2026-02-23 12:14:32] [INFO] Scanning sources end
+[2026-02-23 12:14:37] [INFO] Scanning sources ...
+[2026-02-23 12:14:37] [INFO] Scanning: /music1
+[2026-02-23 12:14:37] [INFO] Scanning: /music2
+[2026-02-23 12:14:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:37] [INFO] Scanning: /images1
+[2026-02-23 12:14:37] [INFO] Scanning sources end
+[2026-02-23 12:14:38] [INFO] Scanning sources ...
+[2026-02-23 12:14:38] [INFO] Scanning: /music1
+[2026-02-23 12:14:38] [INFO] Scanning: /music2
+[2026-02-23 12:14:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:38] [INFO] Scanning: /images1
+[2026-02-23 12:14:38] [INFO] Scanning sources end
+[2026-02-23 12:14:38] [INFO] Scanning sources ...
+[2026-02-23 12:14:38] [INFO] Scanning: /music1
+[2026-02-23 12:14:38] [INFO] Scanning: /music2
+[2026-02-23 12:14:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:38] [INFO] Scanning: /images1
+[2026-02-23 12:14:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:38] [INFO] Scanning sources end
+[2026-02-23 12:14:38] [INFO] Scanning sources ...
+[2026-02-23 12:14:38] [INFO] Scanning: /music1
+[2026-02-23 12:14:38] [INFO] Scanning: /music2
+[2026-02-23 12:14:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:38] [INFO] Scanning: /images1
+[2026-02-23 12:14:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:38] [INFO] Scanning sources end
+[2026-02-23 12:14:44] [DEBUG] Playing media ID 4: Hamnet.mkv
+[2026-02-23 12:14:44] [DEBUG] Playing video: Hamnet.mkv
+[2026-02-23 12:14:51] [INFO] Loaded metadata plugin.
+[2026-02-23 12:14:51] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 12:14:51] [INFO] Loaded film metadata plugin.
+[2026-02-23 12:14:51] [INFO] Scanning sources ...
+[2026-02-23 12:14:51] [INFO] Scanning: /music1
+[2026-02-23 12:14:51] [INFO] Scanning: /music2
+[2026-02-23 12:14:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:51] [INFO] Scanning: /images1
+[2026-02-23 12:14:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:51] [INFO] Scanning sources end
+[2026-02-23 12:14:51] [INFO] Scanning sources ...
+[2026-02-23 12:14:51] [INFO] Scanning: /music1
+[2026-02-23 12:14:51] [INFO] Scanning: /music2
+[2026-02-23 12:14:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:51] [INFO] Scanning: /images1
+[2026-02-23 12:14:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:51] [INFO] Scanning sources end
+[2026-02-23 12:14:52] [INFO] Scanning sources ...
+[2026-02-23 12:14:52] [INFO] Scanning: /music1
+[2026-02-23 12:14:52] [INFO] Scanning: /music2
+[2026-02-23 12:14:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:52] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:53] [INFO] Scanning: /images1
+[2026-02-23 12:14:53] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:53] [INFO] Scanning sources end
+[2026-02-23 12:14:53] [INFO] Scanning sources ...
+[2026-02-23 12:14:53] [INFO] Scanning: /music1
+[2026-02-23 12:14:53] [INFO] Scanning: /music2
+[2026-02-23 12:14:53] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:53] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:54] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:54] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:54] [INFO] Scanning: /images1
+[2026-02-23 12:14:54] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media
+[2026-02-23 12:14:54] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 12:14:55] [INFO] Scanning sources end
+[2026-02-23 12:15:01] [DEBUG] Playing media ID 69: 000012840023.jpg
+[2026-02-23 12:15:01] [DEBUG] Playing image: 000012840023.jpg
+[2026-02-23 12:15:04] [DEBUG] Playing media ID 43: 2f8039f3fdcf90342b109d8bf7bc7d2e.jpg
+[2026-02-23 12:15:04] [DEBUG] Playing image: 2f8039f3fdcf90342b109d8bf7bc7d2e.jpg
+[2026-02-23 13:41:33] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 13:41:33] [DEBUG] Pausing media ID 42
+[2026-02-23 13:41:33] [DEBUG] Playing media ID 1: Song
+[2026-02-23 13:41:33] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 13:41:33] [DEBUG] Pausing media ID 1
+[2026-02-23 13:41:33] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 13:41:33] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 13:41:33] [DEBUG] Added to queue: 5
+[2026-02-23 13:41:33] [INFO] Trying to get next media but queue is empty
+[2026-02-23 13:41:33] [DEBUG] Added to queue: 10
+[2026-02-23 13:41:33] [DEBUG] Added to queue: 20
+[2026-02-23 13:41:33] [DEBUG] Added to queue: 42
+[2026-02-23 13:41:33] [INFO] Next media in queue: 10
+[2026-02-23 13:41:33] [INFO] Next media in queue: 42
+[2026-02-23 13:41:33] [INFO] Next media in queue: 20
+[2026-02-23 13:41:33] [INFO] Queue is empty, repeating original queue
+[2026-02-23 13:41:33] [INFO] Trying to get next media but queue is empty
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Scanning: /music1
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Scanning: /music2
+[2026-02-23 13:41:33] [INFO] Scanning: /videos1
+[2026-02-23 13:41:33] [INFO] Scanning: /images1
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning: /music1
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning: /music2
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning: /music1
+[2026-02-23 13:41:33] [INFO] Scanning: /music1
+[2026-02-23 13:41:33] [INFO] Scanning: /videos1
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning: /music2
+[2026-02-23 13:41:33] [INFO] Scanning: /images1
+[2026-02-23 13:41:33] [INFO] Scanning: /music2
+[2026-02-23 13:41:33] [INFO] Scanning: /music1
+[2026-02-23 13:41:33] [INFO] Scanning: /videos1
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning: /videos1
+[2026-02-23 13:41:33] [INFO] Scanning: /music2
+[2026-02-23 13:41:33] [INFO] Scanning: /images1
+[2026-02-23 13:41:33] [INFO] Scanning: /images1
+[2026-02-23 13:41:33] [INFO] Scanning: /videos1
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning: /images1
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning: /music1
+[2026-02-23 13:41:33] [INFO] Scanning: /music2
+[2026-02-23 13:41:33] [INFO] Scanning: /videos1
+[2026-02-23 13:41:33] [INFO] Scanning: /images1
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning: /test/music
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 13:41:33] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning: /test/music
+[2026-02-23 13:41:33] [INFO] Scanning: /test/music
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Scanning: /music1
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Scanning: /music2
+[2026-02-23 13:41:33] [INFO] Scanning: /videos1
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning: /test/music
+[2026-02-23 13:41:33] [INFO] Scanning: /images1
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning: /test/music
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Scanning: /test/music
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [INFO] Loaded metadata plugin.
+[2026-02-23 13:41:33] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:41:33] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:41:33] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning: /test/music
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning: /test/music
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning: /test/music
+[2026-02-23 13:41:33] [INFO] Scanning sources ...
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [INFO] Scanning: /test/music
+[2026-02-23 13:41:33] [INFO] Scanning sources end
+[2026-02-23 13:41:33] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 13:41:33] [DEBUG] Pausing media ID 1
+[2026-02-23 13:41:33] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 13:41:33] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 13:41:33] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 13:41:33] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 13:42:11] [INFO] Loaded metadata plugin.
+[2026-02-23 13:42:11] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 13:42:11] [INFO] Loaded film metadata plugin.
+[2026-02-23 13:42:11] [INFO] Scanning sources ...
+[2026-02-23 13:42:11] [INFO] Scanning: /test/music
+[2026-02-23 13:42:11] [INFO] Scanning sources end
+[2026-02-23 13:42:11] [INFO] Scanning sources ...
+[2026-02-23 13:42:11] [INFO] Scanning: /test/music
+[2026-02-23 13:42:11] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 13:42:12] [INFO] Scanning sources end
+[2026-02-23 13:42:12] [INFO] Scanning sources ...
+[2026-02-23 13:42:12] [INFO] Scanning: /test/music
+[2026-02-23 13:42:12] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 13:42:13] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 13:42:13] [INFO] Scanning sources end
+[2026-02-23 13:42:13] [INFO] Scanning sources ...
+[2026-02-23 13:42:13] [INFO] Scanning: /test/music
+[2026-02-23 13:42:13] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 13:42:14] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 13:42:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-02-23 13:42:15] [INFO] Scanning sources end
+[2026-02-23 13:42:41] [DEBUG] Playing media ID 12: Better Days - LAKEY INSPIRED.mp3
+[2026-02-23 13:42:51] [DEBUG] Playing media ID 23: MEGALOBOX OST mabanua feat COMA CHI - Slum City (Extended) (1).mp3
+[2026-02-23 13:43:12] [DEBUG] Playing media ID 4: Hamnet.mkv
+[2026-02-23 13:43:12] [DEBUG] Playing video: Hamnet.mkv
+[2026-02-23 13:43:50] [DEBUG] Playing media ID 5: PXL_20241228_185458137.mp4
+[2026-02-23 13:43:50] [DEBUG] Playing video: PXL_20241228_185458137.mp4
+[2026-02-23 14:34:21] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 14:34:21] [DEBUG] Pausing media ID 42
+[2026-02-23 14:34:21] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 14:34:21] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 14:34:21] [ERROR] Error: media with ID 42 not found.
+[2026-02-23 14:34:21] [DEBUG] Playing media ID 1: Song
+[2026-02-23 14:34:21] [DEBUG] Pausing media ID 1
+[2026-02-23 14:34:21] [DEBUG] Added to queue: 5
+[2026-02-23 14:34:21] [DEBUG] Added to queue: 10
+[2026-02-23 14:34:21] [INFO] Trying to get next media but queue is empty
+[2026-02-23 14:34:21] [DEBUG] Added to queue: 20
+[2026-02-23 14:34:21] [INFO] Next media in queue: 10
+[2026-02-23 14:34:21] [INFO] Next media in queue: 20
+[2026-02-23 14:34:21] [INFO] Trying to get next media but queue is empty
+[2026-02-23 14:34:21] [DEBUG] Added to queue: 42
+[2026-02-23 14:34:21] [INFO] Next media in queue: 42
+[2026-02-23 14:34:21] [INFO] Queue is empty, repeating original queue
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [DEBUG] Created playlist 'My Playlist' with ID 3
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [ERROR] Error adding Media ID 1 to Playlist ID 1: FOREIGN KEY constraint failed
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [DEBUG] Tag 'favorite' has ID 1
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [ERROR] Error adding Tag ID 1 to Media ID 1: FOREIGN KEY constraint failed
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [DEBUG] Tag 'action' has ID 2
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [DEBUG] Pausing media ID 1
+[2026-02-23 14:34:21] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [INFO] Loaded metadata plugin.
+[2026-02-23 14:34:21] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-02-23 14:34:21] [INFO] Loaded film metadata plugin.
+[2026-02-23 14:34:21] [INFO] Scanning sources ...
+[2026-02-23 14:34:21] [INFO] Scanning: /music1
+[2026-02-23 14:34:21] [INFO] Scanning: /music2
+[2026-02-23 14:34:21] [INFO] Scanning: /test/music
+[2026-02-23 14:34:21] [INFO] Scanning: /videos1
+[2026-02-23 14:34:21] [INFO] Scanning: /images1
+[2026-02-23 14:34:21] [INFO] Scanning sources end
+[2026-02-23 14:34:21] [ERROR] Error: media with ID 1 not found.
+[2026-02-23 14:34:21] [ERROR] Error: media with ID 1 not found.
+[2026-03-01 17:59:34] [INFO] Loaded metadata plugin.
+[2026-03-01 17:59:34] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-03-01 17:59:34] [INFO] Loaded film metadata plugin.
+[2026-03-01 17:59:34] [INFO] Scanning sources ...
+[2026-03-01 17:59:34] [INFO] Scanning: /music1
+[2026-03-01 17:59:34] [INFO] Scanning: /music2
+[2026-03-01 17:59:34] [INFO] Scanning: /test/music
+[2026-03-01 17:59:34] [INFO] Scanning: /videos1
+[2026-03-01 17:59:34] [INFO] Scanning: /images1
+[2026-03-01 17:59:34] [INFO] Scanning sources end
+[2026-03-01 17:59:34] [INFO] Scanning sources ...
+[2026-03-01 17:59:34] [INFO] Scanning: /music1
+[2026-03-01 17:59:34] [INFO] Scanning: /music2
+[2026-03-01 17:59:34] [INFO] Scanning: /test/music
+[2026-03-01 17:59:34] [INFO] Scanning: /videos1
+[2026-03-01 17:59:34] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 17:59:38] [INFO] Scanning: /images1
+[2026-03-01 17:59:38] [INFO] Scanning sources end
+[2026-03-01 17:59:38] [INFO] Scanning sources ...
+[2026-03-01 17:59:38] [INFO] Scanning: /music1
+[2026-03-01 17:59:38] [INFO] Scanning: /music2
+[2026-03-01 17:59:38] [INFO] Scanning: /test/music
+[2026-03-01 17:59:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 17:59:38] [INFO] Scanning: /videos1
+[2026-03-01 17:59:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 17:59:39] [INFO] Scanning: /images1
+[2026-03-01 17:59:39] [INFO] Scanning sources end
+[2026-03-01 17:59:39] [INFO] Scanning sources ...
+[2026-03-01 17:59:39] [INFO] Scanning: /music1
+[2026-03-01 17:59:39] [INFO] Scanning: /music2
+[2026-03-01 17:59:39] [INFO] Scanning: /test/music
+[2026-03-01 17:59:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 17:59:39] [INFO] Scanning: /videos1
+[2026-03-01 17:59:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 17:59:40] [INFO] Scanning: /images1
+[2026-03-01 17:59:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 17:59:40] [INFO] Scanning sources end
+[2026-03-01 17:59:40] [INFO] Scanning sources ...
+[2026-03-01 17:59:40] [INFO] Scanning: /music1
+[2026-03-01 17:59:40] [INFO] Scanning: /music2
+[2026-03-01 17:59:40] [INFO] Scanning: /test/music
+[2026-03-01 17:59:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 17:59:41] [INFO] Scanning: /videos1
+[2026-03-01 17:59:41] [INFO] Scanning: /images1
+[2026-03-01 17:59:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 17:59:41] [INFO] Scanning sources end
+[2026-03-01 17:59:41] [INFO] Scanning sources ...
+[2026-03-01 17:59:41] [INFO] Scanning: /music1
+[2026-03-01 17:59:41] [INFO] Scanning: /music2
+[2026-03-01 17:59:41] [INFO] Scanning: /test/music
+[2026-03-01 17:59:41] [INFO] Scanning: /videos1
+[2026-03-01 17:59:41] [INFO] Scanning: /images1
+[2026-03-01 17:59:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 17:59:42] [INFO] Scanning sources end
+[2026-03-01 17:59:42] [INFO] Scanning sources ...
+[2026-03-01 17:59:42] [INFO] Scanning: /music1
+[2026-03-01 17:59:42] [INFO] Scanning: /music2
+[2026-03-01 17:59:42] [INFO] Scanning: /test/music
+[2026-03-01 17:59:42] [INFO] Scanning: /videos1
+[2026-03-01 17:59:42] [INFO] Scanning: /images1
+[2026-03-01 17:59:42] [INFO] Scanning sources end
+[2026-03-01 17:59:42] [INFO] Scanning sources ...
+[2026-03-01 17:59:42] [INFO] Scanning: /music1
+[2026-03-01 17:59:42] [INFO] Scanning: /music2
+[2026-03-01 17:59:42] [INFO] Scanning: /test/music
+[2026-03-01 17:59:42] [INFO] Scanning: /images1
+[2026-03-01 17:59:42] [INFO] Scanning sources end
+[2026-03-01 17:59:42] [INFO] Scanning sources ...
+[2026-03-01 17:59:42] [INFO] Scanning: /music1
+[2026-03-01 17:59:42] [INFO] Scanning: /music2
+[2026-03-01 17:59:42] [INFO] Scanning: /test/music
+[2026-03-01 17:59:42] [INFO] Scanning: /images1
+[2026-03-01 17:59:42] [INFO] Scanning sources end
+[2026-03-01 17:59:42] [INFO] Scanning sources ...
+[2026-03-01 17:59:42] [INFO] Scanning: /music1
+[2026-03-01 17:59:42] [INFO] Scanning: /music2
+[2026-03-01 17:59:42] [INFO] Scanning: /test/music
+[2026-03-01 17:59:42] [INFO] Scanning: /images1
+[2026-03-01 17:59:42] [INFO] Scanning sources end
+[2026-03-01 17:59:42] [INFO] Scanning sources ...
+[2026-03-01 17:59:42] [INFO] Scanning: /music1
+[2026-03-01 17:59:42] [INFO] Scanning: /music2
+[2026-03-01 17:59:42] [INFO] Scanning: /test/music
+[2026-03-01 17:59:42] [INFO] Scanning: /images1
+[2026-03-01 17:59:42] [INFO] Scanning sources end
+[2026-03-01 17:59:42] [INFO] Scanning sources ...
+[2026-03-01 17:59:42] [INFO] Scanning: /music1
+[2026-03-01 17:59:42] [INFO] Scanning: /music2
+[2026-03-01 17:59:42] [INFO] Scanning: /images1
+[2026-03-01 17:59:42] [INFO] Scanning sources end
+[2026-03-01 17:59:43] [INFO] Scanning sources ...
+[2026-03-01 17:59:43] [INFO] Scanning: /music1
+[2026-03-01 17:59:43] [INFO] Scanning: /music2
+[2026-03-01 17:59:43] [INFO] Scanning: /images1
+[2026-03-01 17:59:43] [INFO] Scanning sources end
+[2026-03-01 17:59:43] [INFO] Scanning sources ...
+[2026-03-01 17:59:43] [INFO] Scanning: /music1
+[2026-03-01 17:59:43] [INFO] Scanning: /music2
+[2026-03-01 17:59:43] [INFO] Scanning: /images1
+[2026-03-01 17:59:43] [INFO] Scanning sources end
+[2026-03-01 17:59:43] [INFO] Scanning sources ...
+[2026-03-01 17:59:43] [INFO] Scanning: /music2
+[2026-03-01 17:59:43] [INFO] Scanning: /images1
+[2026-03-01 17:59:43] [INFO] Scanning sources end
+[2026-03-01 17:59:43] [INFO] Scanning sources ...
+[2026-03-01 17:59:43] [INFO] Scanning: /music2
+[2026-03-01 17:59:43] [INFO] Scanning: /images1
+[2026-03-01 17:59:43] [INFO] Scanning sources end
+[2026-03-01 17:59:43] [INFO] Scanning sources ...
+[2026-03-01 17:59:43] [INFO] Scanning: /music2
+[2026-03-01 17:59:43] [INFO] Scanning: /images1
+[2026-03-01 17:59:43] [INFO] Scanning sources end
+[2026-03-01 17:59:43] [INFO] Scanning sources ...
+[2026-03-01 17:59:43] [INFO] Scanning: /images1
+[2026-03-01 17:59:43] [INFO] Scanning sources end
+[2026-03-01 17:59:44] [INFO] Scanning sources ...
+[2026-03-01 17:59:44] [INFO] Scanning: /images1
+[2026-03-01 17:59:44] [INFO] Scanning sources end
+[2026-03-01 17:59:51] [INFO] Scanning sources ...
+[2026-03-01 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:51] [INFO] Scanning: /images1
+[2026-03-01 17:59:51] [INFO] Scanning sources end
+[2026-03-01 17:59:51] [INFO] Scanning sources ...
+[2026-03-01 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:51] [INFO] Scanning: /images1
+[2026-03-01 17:59:51] [INFO] Scanning sources end
+[2026-03-01 17:59:51] [INFO] Scanning sources ...
+[2026-03-01 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:51] [INFO] Scanning: /images1
+[2026-03-01 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:51] [INFO] Scanning sources end
+[2026-03-01 17:59:51] [INFO] Scanning sources ...
+[2026-03-01 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:51] [INFO] Scanning: /images1
+[2026-03-01 17:59:51] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:51] [INFO] Scanning sources end
+[2026-03-01 17:59:53] [INFO] Scanning sources ...
+[2026-03-01 17:59:53] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:53] [INFO] Scanning: /images1
+[2026-03-01 17:59:53] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:53] [INFO] Scanning sources end
+[2026-03-01 17:59:54] [INFO] Scanning sources ...
+[2026-03-01 17:59:54] [INFO] Scanning: /images1
+[2026-03-01 17:59:54] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 17:59:54] [INFO] Scanning sources end
+[2026-03-01 17:59:54] [INFO] Scanning sources ...
+[2026-03-01 17:59:54] [INFO] Scanning: /images1
+[2026-03-01 17:59:54] [INFO] Scanning sources end
+[2026-03-01 17:59:54] [INFO] Scanning sources ...
+[2026-03-01 17:59:54] [INFO] Scanning: /images1
+[2026-03-01 17:59:54] [INFO] Scanning sources end
+[2026-03-01 17:59:55] [INFO] Scanning sources ...
+[2026-03-01 17:59:55] [INFO] Scanning: /images1
+[2026-03-01 17:59:55] [INFO] Scanning sources end
+[2026-03-01 17:59:55] [INFO] Scanning sources ...
+[2026-03-01 17:59:55] [INFO] Scanning sources end
+[2026-03-01 18:00:02] [INFO] Scanning sources ...
+[2026-03-01 18:00:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 18:00:02] [INFO] Scanning sources end
+[2026-03-01 18:00:02] [INFO] Scanning sources ...
+[2026-03-01 18:00:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 18:00:02] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 18:00:02] [INFO] Scanning sources end
+[2026-03-01 18:00:03] [INFO] Scanning sources ...
+[2026-03-01 18:00:03] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 18:00:03] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 18:00:03] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 18:00:03] [INFO] Scanning sources end
+[2026-03-01 18:00:04] [INFO] Scanning sources ...
+[2026-03-01 18:00:04] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 18:00:04] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 18:00:04] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 18:00:04] [INFO] Scanning sources end
+[2026-03-01 18:00:08] [DEBUG] Playing media ID 110: 【花冷え。】 - お先に失礼します。 (Pardon Me, I Have To Go Now) - Music Video 【HANABIE.】.flac
+[2026-03-01 18:01:05] [DEBUG] Playing media ID 112: 정국 (Jung Kook) 'Standing Next to You' Official MV.flac
+[2026-03-01 19:36:43] [INFO] Scanning sources ...
+[2026-03-01 19:36:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:43] [INFO] Scanning sources end
+[2026-03-01 19:36:43] [DEBUG] MusicDownloader: starting 1 download(s)
+[2026-03-01 19:36:43] [INFO] Scanning sources ...
+[2026-03-01 19:36:43] [DEBUG] [1/1] Downloading: https://...
+[2026-03-01 19:36:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:36:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:43] [INFO] Scanning sources end
+[2026-03-01 19:36:44] [INFO] Scanning sources ...
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:44] [INFO] Scanning sources end
+[2026-03-01 19:36:44] [INFO] Scanning sources ...
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:36:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:36:44] [INFO] Scanning sources end
+[2026-03-01 19:36:46] [ERROR] [1/1] Failed: https://...
+[2026-03-01 19:36:46] [DEBUG] MusicDownloader: searching 'lofi hip hop'
+[2026-03-01 19:36:46] [DEBUG] [1/1] Downloading: ytsearch3:lofi hip hop
+[2026-03-01 19:38:15] [INFO] Loaded metadata plugin.
+[2026-03-01 19:38:15] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-03-01 19:38:15] [INFO] Loaded film metadata plugin.
+[2026-03-01 19:38:15] [INFO] Scanning sources ...
+[2026-03-01 19:38:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:25] [INFO] Scanning sources end
+[2026-03-01 19:38:26] [INFO] Scanning sources ...
+[2026-03-01 19:38:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:26] [DEBUG] MusicDownloader: starting 1 download(s)
+[2026-03-01 19:38:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:26] [DEBUG] [1/1] Downloading: https://...
+[2026-03-01 19:38:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:28] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:28] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:29] [INFO] Scanning sources end
+[2026-03-01 19:38:29] [INFO] Scanning sources ...
+[2026-03-01 19:38:29] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:29] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:31] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:31] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:32] [INFO] Scanning sources end
+[2026-03-01 19:38:33] [INFO] Scanning sources ...
+[2026-03-01 19:38:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:34] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:34] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:38:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:38:36] [INFO] Scanning sources end
+[2026-03-01 19:39:39] [INFO] Loaded metadata plugin.
+[2026-03-01 19:39:39] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-03-01 19:39:39] [INFO] Loaded film metadata plugin.
+[2026-03-01 19:39:39] [INFO] Scanning sources ...
+[2026-03-01 19:39:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:41] [INFO] Scanning sources end
+[2026-03-01 19:39:41] [INFO] Scanning sources ...
+[2026-03-01 19:39:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:41] [DEBUG] MusicDownloader: starting 1 download(s)
+[2026-03-01 19:39:41] [DEBUG] [1/1] Downloading: https://...
+[2026-03-01 19:39:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:44] [INFO] Scanning sources end
+[2026-03-01 19:39:44] [INFO] Scanning sources ...
+[2026-03-01 19:39:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:45] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:45] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:46] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:46] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:47] [INFO] Scanning sources end
+[2026-03-01 19:39:47] [INFO] Scanning sources ...
+[2026-03-01 19:39:47] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:47] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:39:50] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:39:51] [INFO] Scanning sources end
+[2026-03-01 19:46:07] [INFO] Loaded metadata plugin.
+[2026-03-01 19:46:07] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-03-01 19:46:07] [INFO] Loaded film metadata plugin.
+[2026-03-01 19:46:07] [INFO] Scanning sources ...
+[2026-03-01 19:46:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:07] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:08] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:09] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:09] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:10] [INFO] Scanning sources end
+[2026-03-01 19:46:10] [INFO] Scanning sources ...
+[2026-03-01 19:46:10] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:10] [DEBUG] MusicDownloader: starting 1 download(s)
+[2026-03-01 19:46:10] [DEBUG] [1/1] Downloading: https://...
+[2026-03-01 19:46:10] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:11] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:11] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:12] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:12] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:13] [INFO] Scanning sources end
+[2026-03-01 19:46:13] [INFO] Scanning sources ...
+[2026-03-01 19:46:13] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:13] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:14] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:14] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:15] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:16] [INFO] Scanning sources end
+[2026-03-01 19:46:16] [INFO] Scanning sources ...
+[2026-03-01 19:46:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:16] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:17] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:46:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:46:19] [INFO] Scanning sources end
+[2026-03-01 19:48:23] [INFO] Loaded metadata plugin.
+[2026-03-01 19:48:23] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-03-01 19:48:23] [INFO] Loaded film metadata plugin.
+[2026-03-01 19:48:23] [INFO] Scanning sources ...
+[2026-03-01 19:48:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:23] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:25] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:27] [INFO] Scanning sources end
+[2026-03-01 19:48:27] [INFO] Scanning sources ...
+[2026-03-01 19:48:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:27] [DEBUG] MusicDownloader: starting 1 download(s)
+[2026-03-01 19:48:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:27] [DEBUG] [1/1] Downloading: https://...
+[2026-03-01 19:48:29] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:29] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:32] [INFO] Scanning sources end
+[2026-03-01 19:48:32] [INFO] Scanning sources ...
+[2026-03-01 19:48:32] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:32] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:36] [INFO] Scanning sources end
+[2026-03-01 19:48:37] [INFO] Scanning sources ...
+[2026-03-01 19:48:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:48:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:48:41] [INFO] Scanning sources end
+[2026-03-01 19:50:35] [INFO] Loaded metadata plugin.
+[2026-03-01 19:50:35] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-03-01 19:50:35] [INFO] Loaded film metadata plugin.
+[2026-03-01 19:50:35] [INFO] Scanning sources ...
+[2026-03-01 19:50:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:36] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:36] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:37] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:38] [INFO] Scanning sources end
+[2026-03-01 19:50:38] [INFO] Scanning sources ...
+[2026-03-01 19:50:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:38] [DEBUG] MusicDownloader: starting 1 download(s)
+[2026-03-01 19:50:38] [DEBUG] [1/1] Downloading: https://...
+[2026-03-01 19:50:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:40] [ERROR] [1/1] Failed: https://...
+[2026-03-01 19:50:40] [DEBUG] MusicDownloader: searching 'lofi hip hop'
+[2026-03-01 19:50:40] [DEBUG] [1/1] Downloading: ytsearch3:lofi hip hop
+[2026-03-01 19:50:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:41] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:42] [INFO] Scanning sources end
+[2026-03-01 19:50:42] [INFO] Scanning sources ...
+[2026-03-01 19:50:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:43] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:46] [INFO] Scanning sources end
+[2026-03-01 19:50:46] [INFO] Scanning sources ...
+[2026-03-01 19:50:46] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:46] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:47] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:47] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:48] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:50:48] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:50:50] [INFO] Scanning sources end
+[2026-03-01 19:59:34] [INFO] Loaded metadata plugin.
+[2026-03-01 19:59:34] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-03-01 19:59:34] [INFO] Loaded film metadata plugin.
+[2026-03-01 19:59:34] [INFO] Scanning sources ...
+[2026-03-01 19:59:34] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:34] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:35] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:36] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:36] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:37] [INFO] Scanning sources end
+[2026-03-01 19:59:38] [DEBUG] MusicDownloader: starting 1 download(s)
+[2026-03-01 19:59:38] [INFO] Scanning sources ...
+[2026-03-01 19:59:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:38] [DEBUG] [1/1] Downloading: https://...
+[2026-03-01 19:59:38] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:39] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:40] [ERROR] [1/1] Failed: https://...
+[2026-03-01 19:59:40] [DEBUG] MusicDownloader: searching 'lofi hip hop'
+[2026-03-01 19:59:40] [DEBUG] [1/1] Downloading: ytsearch3:lofi hip hop
+[2026-03-01 19:59:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:40] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:42] [INFO] Scanning sources end
+[2026-03-01 19:59:42] [INFO] Scanning sources ...
+[2026-03-01 19:59:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:42] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:44] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:45] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:45] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:46] [INFO] Scanning sources end
+[2026-03-01 19:59:46] [INFO] Scanning sources ...
+[2026-03-01 19:59:46] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:46] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:47] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:47] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 19:59:49] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 19:59:50] [INFO] Scanning sources end
+[2026-03-01 20:05:18] [INFO] Loaded metadata plugin.
+[2026-03-01 20:05:18] [ERROR] ✗ Failed to load 'plugin_type' function: GetProcAddress failed 
+[2026-03-01 20:05:18] [INFO] Loaded film metadata plugin.
+[2026-03-01 20:05:18] [INFO] Scanning sources ...
+[2026-03-01 20:05:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:18] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:19] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:21] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:22] [INFO] Scanning sources end
+[2026-03-01 20:05:22] [INFO] Scanning sources ...
+[2026-03-01 20:05:22] [DEBUG] MusicDownloader: starting 1 download(s)
+[2026-03-01 20:05:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:22] [DEBUG] [1/1] Downloading: https://music.youtube.com/playlist?list=OLAK5uy_npeWPzDXD8RMe3nFy-nQhPL3U-jOxoJIg
+[2026-03-01 20:05:22] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:24] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:26] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:27] [INFO] Scanning sources end
+[2026-03-01 20:05:27] [INFO] Scanning sources ...
+[2026-03-01 20:05:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:27] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:29] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:29] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:30] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:32] [INFO] Scanning sources end
+[2026-03-01 20:05:32] [INFO] Scanning sources ...
+[2026-03-01 20:05:32] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:32] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:33] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:34] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\music-dl\music
+[2026-03-01 20:05:34] [INFO] Scanning: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi
+[2026-03-01 20:05:36] [INFO] Scanning sources end
+[2026-03-01 20:05:59] [DEBUG] [1/1] Done: C:\Users\leo\Documents\GitHub\NeoKodi\EpiKodi\media\music\TEENAGE RAMBLE\CIGARETTE (DEMO).mp3
+[2026-03-01 20:05:59] [DEBUG] MusicDownloader: searching 'lofi hip hop'
+[2026-03-01 20:05:59] [DEBUG] [1/1] Downloading: ytsearch3:lofi hip hop
+[2026-03-01 20:07:17] [DEBUG] Playing media ID 42: [M⧸V] The Flash ｜ 권은비(KWON EUNBI).flac
+[2026-03-01 20:07:20] [DEBUG] Playing media ID 36: TEENAGE RAMBLE.mp3
+[2026-03-01 20:07:27] [DEBUG] Playing media ID 53: Beep.mp3
+[2026-03-01 20:07:28] [DEBUG] Playing media ID 44: 【花冷え。】 - お先に失礼します。 (Pardon Me, I Have To Go Now) - Music Video 【HANABIE.】.flac
+[2026-03-01 20:07:33] [DEBUG] Playing media ID 35: POP GIRL.mp3
+[2026-03-01 20:07:41] [DEBUG] Playing media ID 16: Jessi (제시) - 'Gum' MV.flac
+[2026-03-01 20:07:51] [DEBUG] Playing media ID 13: DPR IAN - Don't Go Insane (Official Music Video) ｜ Dear Insanity....flac

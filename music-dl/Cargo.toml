@@ -1,0 +1,14 @@
+[package]
+name = "music-dl"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+colored = "2"
+serde = { version = "1", features = ["derive"] }  # serialize/deserialize data
+toml = "0.8"                                       # read/write .toml config files
+id3 = "1"                                          # write MP3 metadata tags
+reqwest = { version = "0.11", features = ["blocking", "json"] }  # HTTP requests
+dirs = "5"                                         # find home directory (~/)

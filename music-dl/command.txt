@@ -1,0 +1,44 @@
+# Download a single song
+cargo run -- get 'https://www.youtube.com/watch?v=Onq7Njnlug4'
+
+# Download multiple songs in parallel
+cargo run -- get 'https://url1' 'https://url2' 'https://url3'
+
+# Search and download
+cargo run -- search lofi hip hop
+cargo run -- search --count 3 jazz piano
+
+# Override format just for this run
+cargo run -- get --format flac 'https://...'
+
+# View your config
+cargo run -- config show
+
+# Change a setting permanently
+cargo run -- config set format flac
+cargo run -- config set output_dir ~/Music
+cargo run -- config set max_parallel_downloads 5
+
+# View download history
+cargo run -- history
+
+# Let yt-dlp detect the album (works well with YouTube Music album URLs)
+cargo run -- get 'https://music.youtube.com/playlist?list=...'
+
+# Force a specific album name (great for a single video or mixed playlist)
+cargo run -- get --album "Dark Side of the Moon" 'https://...' 'https://...'
+
+# Search and put results in a named album folder
+cargo run -- search --album "Lofi Chill" --count 5 lofi hip hop
+```
+
+The result will be organized like:
+```
+music/
+├── Dark Side of the Moon/
+│   ├── Money.mp3
+│   └── Time.mp3
+├── Lofi Chill/
+│   └── Tokyo Cafe.mp3
+└── Unknown Album/
+    └── Some Random Video.mp3

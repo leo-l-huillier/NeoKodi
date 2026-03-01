@@ -7,6 +7,8 @@ use super::command::Event;
 use crate::library::media_library::MediaLibrary;
 use crate::media::data::MediaType;
 
+use crate::music_download::MusicDownloader;
+
 use crate::plugin::plugin_manager::PluginManager;
 
 use std::path::PathBuf;
@@ -23,6 +25,25 @@ pub fn launch_media_thread(cmd_rx: mpsc::Receiver<Command>, evt_tx: mpsc::Sender
     thread::spawn(move || {
         let mut library = lib_thread.lock().unwrap();
         library.init();
+
+        
+
+        // Create it once (e.g. store it in your app state like MediaLibrary)
+        thread::spawn(move || {
+            // Create a tokio runtime for this thread
+            let rt = tokio::runtime::Runtime::new().unwrap();
+            
+            rt.block_on(async move {
+                let downloader = MusicDownloader::new();
+                
+                downloader.download(
+                    vec!["https://music.youtube.com/playlist?list=OLAK5uy_npeWPzDXD8RMe3nFy-nQhPL3U-jOxoJIg".to_string()],
+                    None
+                ).await;
+                
+                downloader.search_and_download("lofi hip hop", 3, None).await;
+            });
+        });
 
         // ----TESTS----
         //library.play_id(3);

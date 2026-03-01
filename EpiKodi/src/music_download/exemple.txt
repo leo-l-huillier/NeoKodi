@@ -1,0 +1,69 @@
+thread::spawn(move || {
+    let rt = tokio::runtime::Runtime::new().unwrap();
+    
+    rt.block_on(async move {
+        let downloader = MusicDownloader::new();
+        
+        // --- DOWNLOAD BY URL ---
+
+        // Single song
+        downloader.download(
+            vec!["https://www.youtube.com/watch?v=dQw4w9WgXcQ".to_string()],
+            None, // no album folder, will use yt-dlp's metadata or "Unknown Album"
+        ).await;
+
+        // Single song forced into an album folder
+        downloader.download(
+            vec!["https://www.youtube.com/watch?v=dQw4w9WgXcQ".to_string()],
+            Some("My Album".to_string()),
+        ).await;
+
+        // Multiple songs at once (downloaded in parallel)
+        downloader.download(
+            vec![
+                "https://www.youtube.com/watch?v=url1".to_string(),
+                "https://www.youtube.com/watch?v=url2".to_string(),
+                "https://www.youtube.com/watch?v=url3".to_string(),
+            ],
+            Some("My Playlist".to_string()),
+        ).await;
+
+        // Full YouTube playlist URL (yt-dlp handles the rest)
+        downloader.download(
+            vec!["https://www.youtube.com/playlist?list=PLxxxxxx".to_string()],
+            Some("Playlist Name".to_string()),
+        ).await;
+
+        // YouTube Music album
+        downloader.download(
+            vec!["https://music.youtube.com/playlist?list=OLAKxxxxxx".to_string()],
+            None, // let yt-dlp detect the album name from metadata
+        ).await;
+
+        // --- SEARCH AND DOWNLOAD ---
+
+        // Search and download the top result
+        downloader.search_and_download("never gonna give you up", 1, None).await;
+
+        // Search and download top 3 results into an album folder
+        downloader.search_and_download("lofi hip hop", 3, Some("Lofi Chill".to_string())).await;
+
+        // Search and download top 5 results, no album grouping
+        downloader.search_and_download("jazz piano relaxing", 5, None).await;
+
+        // --- HISTORY ---
+
+        // Check if a URL was already downloaded (returns true/false)
+        let already_done = downloader.already_downloaded("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+        println!("Already downloaded: {}", already_done);
+
+        // Get the full list of downloaded URLs
+        let history = downloader.get_history();
+        for url in &history {
+            println!("  - {}", url);
+        }
+
+        // Wipe the history (next download of same URLs won't be skipped)
+        downloader.clear_history();
+    });
+});

@@ -1,19 +1,21 @@
-TODO: Tags -> #357
-GUI  : add tags management (add audio to tags, remove audio from tags, create tags, delete tags) to GUI
-
-TODO: Interface dans l'application pour activer/désactiver des plugins
-Gui  :implement (c'est un bool)
 
 
 
 
+IMPORTANT
 
-TODO: Plugins -> #63
-GUI  : add m3u Plugins (#63), add metadata call if plugin
+TODO: connect music donwload to main app and gui
 
-TODO: ajouter des commentaire dans tous les fichier (en haut)
+TODO: checker si un album existe avant de le telecharger genre regarder le resultat de la recherche ? genre afficher la pochette
 
-TODO: make sure tests cover more than 70% of the code
+TODO: 
+add the artists, album, song display in gui
+add the artist and album info for songs in db
+
+TODO: add thumbnails to albums
+
+TODO: add a section for devs in the app, add the logs in it
+
 
 TODO: get more metadata informations with plugin
 music : album, année, genre, pochette
@@ -21,3 +23,31 @@ film : année, réalisateur, acteurs, synopsis, affiche
 
 
 
+
+
+LATER BUT IMPORTANT
+
+TODO: faire en sorte que quand on fait une release ca reinitialise pas les playlists ou le folder de musique
+
+TODO: connect letterboxd to have films recomendations from friend, have a music list
+
+TODO: separate front and back into two executable to make them run on a server
+
+
+
+
+
+DETAILS
+
+TODO: Tags -> #357
+GUI  : add tags management (add audio to tags, remove audio from tags, create tags, delete tags) to GUI
+
+TODO: Interface dans l'application pour activer/désactiver des plugins
+Gui  :implement (c'est un bool)
+
+TODO: Plugins -> #63
+GUI  : add m3u Plugins (#63), add metadata call if plugin
+
+TODO: ajouter des commentaire dans tous les fichier (en haut)
+
+TODO: make sure tests cover more than 70% of the code

@@ -2,23 +2,26 @@
   "sources": [],
   "music_sources": [
     {
-      "path": "/music1"
+      "path": "C:\\Users\\leo\\Documents\\GitHub\\NeoKodi\\music-dl\\music"
     },
     {
-      "path": "/music2"
-    },
-    {
-      "path": "/test/music"
+      "path": "C:\\Users\\leo\\Documents\\GitHub\\NeoKodi\\EpiKodi"
     }
   ],
   "video_sources": [
     {
-      "path": "/videos1"
+      "path": "C:\\Users\\leo\\Documents\\GitHub\\NeoKodi\\music-dl\\music"
+    },
+    {
+      "path": "C:\\Users\\leo\\Documents\\GitHub\\NeoKodi\\EpiKodi"
     }
   ],
   "image_sources": [
     {
-      "path": "/images1"
+      "path": "C:\\Users\\leo\\Documents\\GitHub\\NeoKodi\\music-dl\\music"
+    },
+    {
+      "path": "C:\\Users\\leo\\Documents\\GitHub\\NeoKodi\\EpiKodi"
     }
   ]
 }
